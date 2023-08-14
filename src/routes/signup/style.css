@@ -20,7 +20,7 @@
         width: 100vw;
         background-color: #243347;
         display: grid;
-        grid-template-rows: 1fr 400px;
+        grid-template-rows: 1fr 500px;
         background-image: url("/bg10.png");
         background-size: cover;
         background-position: center;
