@@ -3,7 +3,7 @@
 </script>
 
 <form>
-	<div>
+	<div style="margin-top: 42px;">
 		<div>
 			<label for="email">University Email:</label>
 			<input
@@ -26,18 +26,9 @@
 				placeholder="Enter your password here"
 			/>
 		</div>
-
-		<div>
-			<label for="confirm-password">Confirm Password:</label>
-			<input
-				type="password"
-				id="password"
-				name="password"
-				class="input-field"
-				placeholder="Enter your password here"
-			/>
-		</div>
 	</div>
 
-	<input type="button" value="Sign Up" class="signup-button" />
+	<input type="button" value="Login to your account" class="login-button" />
+
+	<a href="/" class="forgot-password">I forgot my password</a>
 </form>
