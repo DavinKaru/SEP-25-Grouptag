@@ -48,7 +48,6 @@ label {
     .box {
         height: calc(100vh - 250px);
     }
-
     .forgot-password {
         padding: 0px auto;
         margin-bottom: 0px;
