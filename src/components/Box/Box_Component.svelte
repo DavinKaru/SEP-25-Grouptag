@@ -1,8 +1,9 @@
 <script>
 	export let boxClass = '';
+	export let boxId = '';
 </script>
 
-<div class={`box ${boxClass}`}>
+<div class={`box ${boxClass} boxId ${boxId}`}>
 	<slot />
 </div>
 
@@ -28,6 +29,10 @@
 		align-items: center;
 		width: 100%;
 		min-height: 300px;
+
+		position: static;
+		top: 100px;
+		
 	}
 
 	.login-box {
@@ -43,7 +48,8 @@
 		-webkit-box-shadow: 0px 0px 15px 0px rgba(202, 162, 242, 0.35);
 		-moz-box-shadow: 0px 0px 15px 0px rgba(202, 162, 242, 0.35);
 		width: 100%;
-		height: 530px;
+		height: 100%;
 		border-radius: 10px 10px 0 0;
 	}
+
 </style>

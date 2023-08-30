@@ -41,9 +41,13 @@
 		border: none;
 	}
 
-	@media screen and (max-height: 667px) {
-		.box {
-			height: calc(100vh - 250px);
+	/* If screen's height is smaller than that of the required value to display 
+		the form's input fields, adjust their height so they can fit on the screen. */
+		@media screen and (max-height: 750px) {
+		.signup-button {
+			height: 7vh;
+			line-height: 7vh;
 		}
 	}
+
 </style>
