@@ -1,9 +1,8 @@
 <script>
 	export let boxClass = '';
-	export let boxId = '';
 </script>
 
-<div class={`box ${boxClass} boxId ${boxId}`}>
+<div class={`box ${boxClass}`}>
 	<slot />
 </div>
 
@@ -22,7 +21,6 @@
 		width: 100%;
 		height: 419px;
 		min-height: 300px;
-<<<<<<< HEAD
 		border-radius: 10px 10px 0 0; /* Rounded corners on top left and right */
 
 		/* Text Styles */
@@ -34,11 +32,6 @@
 		flex-direction: column; /* Stack children vertically */
 		justify-content: center; /* Center children vertically */
 		align-items: center; /* Center children horizontally */
-||||||| 4c17e8a
-=======
-
-		position: static;
->>>>>>> 4b6afb014aae5fdade8eb159a6ffa0c6c1bfbb95
 	}
 
 	/* Styling for the login box */
@@ -62,16 +55,7 @@
 
 		/* Dimensions */
 		width: 100%;
-<<<<<<< HEAD
 		height: 530px;
 		border-radius: 10px 10px 0 0; /* Rounded corners on top left and right */
-||||||| 4c17e8a
-		height: 530px;
-		border-radius: 10px 10px 0 0;
-=======
-		height: 100%;
-		border-radius: 10px 10px 0 0;
->>>>>>> 4b6afb014aae5fdade8eb159a6ffa0c6c1bfbb95
 	}
-
 </style>

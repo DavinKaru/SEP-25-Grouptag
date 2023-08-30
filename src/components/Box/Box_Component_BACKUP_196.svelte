@@ -34,7 +34,6 @@
 		flex-direction: column; /* Stack children vertically */
 		justify-content: center; /* Center children vertically */
 		align-items: center; /* Center children horizontally */
-||||||| 4c17e8a
 =======
 
 		position: static;
@@ -65,9 +64,6 @@
 <<<<<<< HEAD
 		height: 530px;
 		border-radius: 10px 10px 0 0; /* Rounded corners on top left and right */
-||||||| 4c17e8a
-		height: 530px;
-		border-radius: 10px 10px 0 0;
 =======
 		height: 100%;
 		border-radius: 10px 10px 0 0;
