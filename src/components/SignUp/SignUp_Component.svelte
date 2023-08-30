@@ -43,13 +43,20 @@
 		height: 60px;
 		width: 100%;
 		border-radius: 10px;
-		padding: 0 20px;
+		padding: 0 20px; /* 0px on top and bottom, 20px on left and right */
 		font-size: 15px;
 		background-color: #f4fcff;
-		border: none;
-		margin: 8px auto;
+		border: none; /* remove the border */
+		margin: 8px auto; /* 8px on top and bottom, auto on left and right (Horizontally Centered)*/
 		text-align: left;
-		box-sizing: border-box;
+		box-sizing: border-box; /* make sure the padding is included in the width */
+	}
+
+	form > div > div {
+		/* Select the divs inside the divs inside the form, which contains label and input element */
+		margin: auto; /* Horizontally Centered */
+		width: 80%; /* 80% of the parent element */
+		text-align: left;
 	}
 
 	.signup-button {
@@ -60,16 +67,10 @@
 		font-weight: bold;
 		background-color: #caa2f2;
 		color: white;
-		border: none;
-		cursor: pointer;
+		border: none; /* remove the border */
+		cursor: pointer; /* add a pointer cursor on mouse-over */
 		margin-top: 30px;
 		margin-bottom: 8px;
-	}
-
-	form > div > div {
-		margin: auto;
-		width: 80%;
-		text-align: left;
 	}
 
 	label {
@@ -79,6 +80,7 @@
 	}
 
 	@media screen and (max-height: 667px) {
+		/* style for screen heigh 667px and below */
 		.input-field {
 			margin: auto;
 		}
