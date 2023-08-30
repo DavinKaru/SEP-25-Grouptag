@@ -5,29 +5,6 @@
 
 <style>
 	.welcome {
-<<<<<<< HEAD
-		flex-grow: 1; /* make sure the welcome div takes up the remaining space */
-		color: #ffffff;
-		text-align: center;
-		font-size: 29px;
-		font-weight: bold;
-		font-family: 'Lincoln Road', Arial, Helvetica, sans-serif;
-		display: flex; /* make sure the welcome div is a flexbox */
-		justify-content: center; /* center the content horizontally */
-		align-items: center; /* center the content vertically */
-		flex-direction: column; /* make sure the content is stacked vertically */
-||||||| 4c17e8a
-		flex-grow: 1;
-		color: #ffffff;
-		text-align: center;
-		font-size: 29px;
-		font-weight: bold;
-		font-family: 'Lincoln Road', Arial, Helvetica, sans-serif;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-=======
 		display: flex;
 		flex-direction: column;
 		height: 175px;
@@ -39,7 +16,6 @@
 		@media screen and (max-height: 700px) {
 			height: 150px;
 		}
->>>>>>> 4b6afb014aae5fdade8eb159a6ffa0c6c1bfbb95
 	}
 
 	.header-text {

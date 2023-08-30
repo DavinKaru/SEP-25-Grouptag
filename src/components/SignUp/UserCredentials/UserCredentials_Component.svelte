@@ -65,22 +65,6 @@
 		text-align: left;
 	}
 
-<<<<<<< HEAD:src/components/SignUp/SignUp_Component.svelte
-	.signup-button {
-		height: 60px;
-		width: 257px;
-		border-radius: 10px;
-		font-size: 20px;
-		font-weight: bold;
-		background-color: #caa2f2;
-		color: white;
-		border: none; /* remove the border */
-		cursor: pointer; /* add a pointer cursor on mouse-over */
-		margin-top: 30px;
-		margin-bottom: 8px;
-	}
-
-||||||| 4c17e8a:src/components/SignUp/SignUp_Component.svelte
 	.signup-button {
 		height: 60px;
 		width: 257px;
@@ -100,31 +84,16 @@
 		width: 80%;
 		text-align: left;
 	}
-
-=======
-	form > div > div {
-		margin: auto;
-		width: 80%;
-		text-align: left;
-	}
-
->>>>>>> 4b6afb014aae5fdade8eb159a6ffa0c6c1bfbb95:src/components/SignUp/UserCredentials/UserCredentials_Component.svelte
-	label {
+	label
+	 {
 		color: #f4fcff;
 		font-size: 15px;
 		font-weight: bold;
 	}
 
-<<<<<<< HEAD:src/components/SignUp/SignUp_Component.svelte
-	@media screen and (max-height: 667px) {
-		/* style for screen heigh 667px and below */
-||||||| 4c17e8a:src/components/SignUp/SignUp_Component.svelte
-	@media screen and (max-height: 667px) {
-=======
 	/* If screen's height is smaller than that of the required value to display 
 		the form's input fields, adjust their height so they can fit on the screen. */
 	@media screen and (max-height: 750px) {
->>>>>>> 4b6afb014aae5fdade8eb159a6ffa0c6c1bfbb95:src/components/SignUp/UserCredentials/UserCredentials_Component.svelte
 		.input-field {
 			height: 6.5vh;
 		}

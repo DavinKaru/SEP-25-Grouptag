@@ -40,18 +40,12 @@
 	/* Styling for the login button */
 	.login-button {
 		background-color: #44c7f7;
-<<<<<<< HEAD
-		border: none; /* Removes the border */
-||||||| 4c17e8a
-		border: none;
-=======
 		border: none;
 
 		@media screen and (max-height: 700px) {
 			height: 7vh;
 			line-height: 7vh;
 		}
->>>>>>> 4b6afb014aae5fdade8eb159a6ffa0c6c1bfbb95
 	}
 
 	/* Styling for the signup button */
@@ -59,22 +53,12 @@
 		background-color: #caa2f2;
 		border: none;
 
-<<<<<<< HEAD
-	/* Media query for screens with a max height of 667px */
-	@media screen and (max-height: 667px) {
-		.box {
-			height: calc(100vh - 250px); /* Adjusts the height of the box based on the viewport height */
-||||||| 4c17e8a
-	@media screen and (max-height: 667px) {
-		.box {
-			height: calc(100vh - 250px);
-=======
+
 		/* If screen's height is smaller than that of the required value to display 
 		the form's input fields, adjust their height so they can fit on the screen. */
 		@media screen and (max-height: 700px) {
 			height: 7vh;
 			line-height: 7vh;
->>>>>>> 4b6afb014aae5fdade8eb159a6ffa0c6c1bfbb95
 		}
 	}
 
