@@ -31,8 +31,6 @@
 		min-height: 300px;
 
 		position: static;
-		top: 100px;
-		
 	}
 
 	.login-box {

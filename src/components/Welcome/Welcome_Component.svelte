@@ -1,25 +1,44 @@
 <div class="welcome">
-	Welcome to
-	<br />
-	<img src="/grouptag-logo.png" alt="Grouptag Logo" />
+	<h1 class="header-text">Welcome to</h1>
+	<img src="/grouptag-logo.png" alt="Grouptag Logo" id="logo"/>
 </div>
 
 <style>
 	.welcome {
-		flex-grow: 1;
-		color: #ffffff;
-		text-align: center;
-		font-size: 29px;
-		font-weight: bold;
-		font-family: 'Lincoln Road', Arial, Helvetica, sans-serif;
 		display: flex;
-		justify-content: center;
-		align-items: center;
 		flex-direction: column;
+		height: 175px;
+
+		/* Prevent items from fitting onto one line */
+		flex-wrap: nowrap;
+
+		/* You'll see a lot of these - I built them to alter the CSS for smaller devices */
+		@media screen and (max-height: 700px) {
+			height: 150px;
+		}
 	}
 
-	.welcome > img {
-		width: 266px;
-		height: auto;
+	.header-text {
+		position: relative;
+		color: #ffffff;
+		font-size: 20px;
+		font-weight: bold;
+		font-family: 'Poppins';
+		text-align: center;
+		top: 25%;
 	}
+
+	#logo {
+		position: relative;
+		width: 250px;
+		height: auto;
+		margin-left: auto;
+		margin-right: auto;
+		top: 25%;
+
+		@media screen and (max-height: 700px) {
+			width: 150px;
+		}
+	}
+
 </style>

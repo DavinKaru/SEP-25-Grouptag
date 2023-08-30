@@ -31,8 +31,7 @@
 				id="dob"
 				name="dob"
 				class="input-field"
-				placeholder="Enter your DOB here"
-				style="margin-bottom: 31px;"
+ 				style="margin-bottom: 31px;"
 			/>
 		</div>
 
@@ -80,14 +79,6 @@
 		color: #f4fcff;
 		font-size: 15px;
 		font-weight: bold;
-	}
-
-	/*  */
-	@media screen and (min-height: 750px) {
-		.input-field {
-			margin: auto;
-		}
-		
 	}
 
 	/* If screen's height is smaller than that of the required value to display 

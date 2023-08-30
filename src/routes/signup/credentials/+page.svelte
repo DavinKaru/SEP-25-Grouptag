@@ -1,5 +1,4 @@
 <script>
-    import './style.css';
 	import UserCredentialsComponent from '../../../components/SignUp/UserCredentials/UserCredentials_Component.svelte';
 	import HeaderComponent from '../../../components/Header/Header_Component.svelte';
 	import BoxComponent from '../../../components/Box/Box_Component.svelte';
@@ -15,3 +14,19 @@
 		</BoxComponent>
 	</div>
 </body>
+
+<style>
+	.frame {
+		height: 100vh;
+		width: 100vw;
+		background-color: #243347;
+		background-image: url('/bg10.png');
+		background-size: cover;
+		background-position: center;
+
+		/* I know flexboxes are dodgy but trust me ;) */
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+	}
+</style>
