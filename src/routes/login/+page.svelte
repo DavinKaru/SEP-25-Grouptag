@@ -16,13 +16,13 @@
 
 <style>
 	.frame {
-		height: 100vh;
-		width: 100vw;
+		height: 100vh; /* 100% of the viewport height */
+		width: 100vw; /* 100% of the viewport width */
 		background-color: #243347;
-		display: grid;
-		grid-template-rows: 1fr min-content;
+		display: grid; /* make sure the frame is a grid */
+		grid-template-rows: 1fr min-content; /* 1fr for the welcome component, min-content for the login component */
 		background-image: url('/bg10.png');
-		background-size: cover;
+		background-size: cover; /* make sure the background image covers the entire frame */
 		background-position: center;
 	}
 </style>

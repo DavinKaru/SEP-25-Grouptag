@@ -34,13 +34,20 @@
 		height: 60px;
 		width: 100%;
 		border-radius: 10px;
-		padding: 0 20px;
+		padding: 0 20px; /* 0px on top and bottom, 20px on left and right */
 		font-size: 15px;
 		background-color: #f4fcff;
-		border: none;
-		margin: 8px auto;
+		border: none; /* remove the border */
+		margin: 8px auto; /* 8px on top and bottom, auto on left and right (Horizontally Centered)*/
 		text-align: left;
-		box-sizing: border-box;
+		box-sizing: border-box; /* make sure the padding is included in the width */
+	}
+
+	form > div > div {
+		/* Select the divs inside the divs inside the form, which contains label and input element */
+		margin: auto; /* Horizontally Centered */
+		width: 80%; /* 80% of the parent element */
+		text-align: left;
 	}
 
 	.login-button {
@@ -51,26 +58,20 @@
 		font-weight: bold;
 		background-color: #44c7f7;
 		color: white;
-		border: none;
-		cursor: pointer;
+		border: none; /* remove the border */
+		cursor: pointer; /* add a pointer cursor on mouse-over */
 		margin-top: 30px;
 		margin-bottom: 8px;
 	}
 
 	.forgot-password {
-		display: block;
+		display: block; /* display the link as a block element */
 		font-size: 10px;
 		font-weight: bold;
 		text-align: center;
-		text-decoration: none;
+		text-decoration: none; /* remove the underline */
 		color: #e87e7e;
 		margin-bottom: 30px;
-	}
-
-	form > div > div {
-		margin: auto;
-		width: 80%;
-		text-align: left;
 	}
 
 	label {
@@ -80,13 +81,14 @@
 	}
 
 	@media screen and (max-height: 667px) {
+		/* style for screen heigh 667px and below */
 		.forgot-password {
-			padding: 0px auto;
+			padding: 0px auto; /* 0 padding top and bottom, auto padding left and right*/
 			margin-bottom: 0px;
 		}
 
 		.input-field {
-			margin: auto;
+			margin: auto; /* Horizontally Centered */
 		}
 	}
 </style>
