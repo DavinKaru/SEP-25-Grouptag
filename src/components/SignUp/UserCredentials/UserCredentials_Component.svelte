@@ -1,44 +1,50 @@
 <form>
 	<div>
 		<div>
-			<label for="email">University Email:</label>
+			<label for="email">University Email</label>
 			<input
 				type="email"
 				id="email"
 				name="email"
 				class="input-field"
-				placeholder="Enter your university email here"
+				placeholder="Enter your University Email here"
 				style="margin-bottom: 31px;"
 			/>
 		</div>
 
 		<div>
-			<label for="password">Password:</label>
+			<label for="password">Password</label>
 			<input
 				type="password"
 				id="password"
-				name="password"
+				name="email"
 				class="input-field"
 				placeholder="Enter your password here"
+				style="margin-bottom: 31px;"
 			/>
 		</div>
 
 		<div>
-			<label for="confirm-password">Confirm Password:</label>
+			<label for="cPassword">Confirm Password</label>
 			<input
 				type="password"
-				id="password"
-				name="password"
+				id="cPassword"
+				name="cPassword"
 				class="input-field"
-				placeholder="Enter your password here"
+				placeholder="Re-enter your password here"
 			/>
 		</div>
 	</div>
-
-	<input type="button" value="Sign Up" class="signup-button" />
 </form>
 
 <style>
+	/* Reset browser default */
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
 	.input-field {
 		height: 60px;
 		width: 100%;
@@ -67,22 +73,29 @@
 		font-weight: bold;
 		background-color: #caa2f2;
 		color: white;
-		border: none; /* remove the border */
-		cursor: pointer; /* add a pointer cursor on mouse-over */
+		border: none;
+		cursor: pointer;
 		margin-top: 30px;
 		margin-bottom: 8px;
 	}
 
-	label {
+	form > div > div {
+		margin: auto;
+		width: 80%;
+		text-align: left;
+	}
+	label
+	 {
 		color: #f4fcff;
 		font-size: 15px;
 		font-weight: bold;
 	}
 
-	@media screen and (max-height: 667px) {
-		/* style for screen heigh 667px and below */
+	/* If screen's height is smaller than that of the required value to display 
+		the form's input fields, adjust their height so they can fit on the screen. */
+	@media screen and (max-height: 750px) {
 		.input-field {
-			margin: auto;
+			height: 6.5vh;
 		}
 	}
 </style>

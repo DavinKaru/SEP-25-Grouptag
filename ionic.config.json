@@ -1,0 +1,7 @@
+{
+  "name": "sep-25-grouptag",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}

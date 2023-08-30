@@ -1,10 +1,14 @@
-<div class="welcome">
-	<h1 class="header-text">Welcome to</h1>
-	<img src="/grouptag-logo.png" alt="Grouptag Logo" id="logo"/>
+<script>
+	export let text = 'default text';
+</script>
+
+<div class="header">
+	<img src="/grouptag-logo.png" alt="Grouptag Logo" id="logo" />
+	<h1 class="header-text">{text}</h1>
 </div>
 
 <style>
-	.welcome {
+	.header {
 		display: flex;
 		flex-direction: column;
 		height: 175px;
@@ -16,16 +20,6 @@
 		@media screen and (max-height: 700px) {
 			height: 150px;
 		}
-	}
-
-	.header-text {
-		position: relative;
-		color: #ffffff;
-		font-size: 20px;
-		font-weight: bold;
-		font-family: 'Poppins';
-		text-align: center;
-		top: 25%;
 	}
 
 	#logo {
@@ -41,4 +35,17 @@
 		}
 	}
 
+	.header-text {
+		position: relative;
+		color: #ffffff;
+		font-size: 20px;
+		font-weight: bold;
+		font-family: 'Poppins';
+		text-align: center;
+		top: 30%;
+
+		@media screen and (max-height: 700px) {
+			font-size: 20px;
+		}
+	}
 </style>
