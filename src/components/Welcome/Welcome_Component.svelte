@@ -6,16 +6,16 @@
 
 <style>
 	.welcome {
-		flex-grow: 1;
+		flex-grow: 1; /* make sure the welcome div takes up the remaining space */
 		color: #ffffff;
 		text-align: center;
 		font-size: 29px;
 		font-weight: bold;
 		font-family: 'Lincoln Road', Arial, Helvetica, sans-serif;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
+		display: flex; /* make sure the welcome div is a flexbox */
+		justify-content: center; /* center the content horizontally */
+		align-items: center; /* center the content vertically */
+		flex-direction: column; /* make sure the content is stacked vertically */
 	}
 
 	.welcome > img {
