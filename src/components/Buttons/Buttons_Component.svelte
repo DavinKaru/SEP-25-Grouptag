@@ -46,6 +46,8 @@
 			height: 7vh;
 			line-height: 7vh;
 		}
+
+		margin-bottom: 10px;
 	}
 
 	/* Styling for the signup button */
