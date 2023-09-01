@@ -4,7 +4,7 @@
 	import Navbar from '../components/Navbar/Navbar_Component.svelte';
 </script>
 
-<Navbar active="home" />
+<Navbar />
 
 <main>
 	<slot />
