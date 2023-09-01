@@ -1,3 +1,4 @@
+<!-- Welcome page -->
 <script>
 	import ButtonsComponent from '../components/Buttons/Buttons_Component.svelte';
 	import WelcomeComponent from '../components/Welcome/Welcome_Component.svelte';

@@ -1,3 +1,4 @@
+<!-- Sign Up page -->
 <script>
 	import SignUpComponent from '../../components/SignUp/SignUp_Component.svelte';
 	import WelcomeComponent from '../../components/Welcome/Welcome_Component.svelte';
