@@ -38,7 +38,7 @@
 			/>
 		</div>
 	</div>
-	<ButtonsComponent text="Next" buttonClass="signup-button" href="/welcome/signup/credentials" />
+	<ButtonsComponent text="Next" buttonClass="signup-button" href="/welcome/signup/industry" />
 </form>
 
 <style>

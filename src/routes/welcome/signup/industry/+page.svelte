@@ -1,14 +1,14 @@
 <script>
 	import HeaderComponent from '../../../../components/Header/Header_Component.svelte';
-	import UserEnrolmentComponent from '../../../../components/SignUp/UserEnrolment/UserEnrolment_Component.svelte';
 	import BoxComponent from '../../../../components/Box/Box_Component.svelte';
+    import UserIndustryComponent from '../../../../components/SignUp/UserIndustry/UserIndustry_Component.svelte';
 </script>
 
 <body>
 	<div class="frame">
-		<HeaderComponent text="Great to have you join us!" />
+		<HeaderComponent text="Last of all..." />
 		<BoxComponent boxClass="signup-box">
-			<UserEnrolmentComponent />
+            <UserIndustryComponent/>
 		</BoxComponent>
 	</div>
 </body>
