@@ -1,3 +1,6 @@
+<script> 
+	import ButtonsComponent from "../../Buttons/Buttons_Component.svelte";
+</script>
 <form>
 	<div>
 		<div>
@@ -35,6 +38,7 @@
 			/>
 		</div>
 	</div>
+	<ButtonsComponent text="Next" buttonClass="signup-button" href="/signup/credentials" />
 </form>
 
 <style>
