@@ -1,3 +1,6 @@
+<script>
+	import ButtonsComponent from "../../Buttons/Buttons_Component.svelte";
+</script>
 <form>
 	<div>
 		<div>
@@ -26,13 +29,7 @@
 
 		<div>
 			<label for="dob">DOB</label>
-			<input
-				type="date"
-				id="dob"
-				name="dob"
-				class="input-field"
- 				style="margin-bottom: 31px;"
-			/>
+			<input type="date" id="dob" name="dob" class="input-field" style="margin-bottom: 31px;" />
 		</div>
 
 		<div>
@@ -46,6 +43,7 @@
 			/>
 		</div>
 	</div>
+	<ButtonsComponent text="Next" buttonClass="signup-button" href="/signup/credentials" />
 </form>
 
 <style>
@@ -60,22 +58,24 @@
 		height: 60px;
 		width: 100%;
 		border-radius: 10px;
-		padding: 0 20px;
+		padding: 0 20px; /* 0px on top and bottom, 20px on left and right */
 		font-size: 15px;
 		background-color: #f4fcff;
-		border: none;
-		margin: 8px auto;
+		border: none; /* remove the border */
+		margin: 8px auto; /* 8px on top and bottom, auto on left and right (Horizontally Centered)*/
 		text-align: left;
-		box-sizing: border-box;
+		box-sizing: border-box; /* make sure the padding is included in the width */
 	}
 
 	form > div > div {
-		margin: auto;
-		width: 80%;
+		/* Select the divs inside the divs inside the form, which contains label and input element */
+		margin: auto; /* Horizontally Centered */
+		width: 92%; /* 80% of the parent element */
 		text-align: left;
 	}
 
-	label {
+	label
+	 {
 		color: #f4fcff;
 		font-size: 15px;
 		font-weight: bold;
@@ -89,3 +89,4 @@
 		}
 	}
 </style>
+

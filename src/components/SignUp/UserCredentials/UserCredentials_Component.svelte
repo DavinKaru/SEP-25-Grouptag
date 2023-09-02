@@ -1,3 +1,6 @@
+<script> 
+	import ButtonsComponent from "../../Buttons/Buttons_Component.svelte";
+</script>
 <form>
 	<div>
 		<div>
@@ -35,6 +38,7 @@
 			/>
 		</div>
 	</div>
+	<ButtonsComponent text="Next" buttonClass="signup-button" href="/signup/credentials" />
 </form>
 
 <style>
@@ -65,25 +69,6 @@
 		text-align: left;
 	}
 
-	.signup-button {
-		height: 60px;
-		width: 257px;
-		border-radius: 10px;
-		font-size: 20px;
-		font-weight: bold;
-		background-color: #caa2f2;
-		color: white;
-		border: none;
-		cursor: pointer;
-		margin-top: 30px;
-		margin-bottom: 8px;
-	}
-
-	form > div > div {
-		margin: auto;
-		width: 80%;
-		text-align: left;
-	}
 	label
 	 {
 		color: #f4fcff;
