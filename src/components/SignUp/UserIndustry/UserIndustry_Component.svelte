@@ -14,10 +14,10 @@
 				name="Tech"
 			/>
 			<CircleIconComponent
-				icon1="/Icons/Industry Icons/TechOn.svg"
-                icon2="/Icons/Industry Icons/TechOff.svg"
-				alt="Tech Industry Icon"
-				name="Tech"
+				icon1="/Icons/Industry Icons/EngineeringOn.svg"
+                icon2="/Icons/Industry Icons/EngineeringOff.svg"
+				alt="Engineering Industry Icon"
+				name="Engineering"
 			/>
 			<CircleIconComponent
 				icon1="/Icons/Industry Icons/TechOn.svg"
