@@ -1,16 +1,14 @@
-<!-- Login page -->
 <script>
-	import LoginComponent from '../../components/Login/Login_Component.svelte';
-	import BoxComponent from '../../components/Box/Box_Component.svelte';
-	import HeaderComponent from '../../components/Header/Header_Component.svelte';
+	import UserCredentialsComponent from '../../../../components/SignUp/UserCredentials/UserCredentials_Component.svelte';
+	import HeaderComponent from '../../../../components/Header/Header_Component.svelte';
+	import BoxComponent from '../../../../components/Box/Box_Component.svelte';
 </script>
 
 <body>
 	<div class="frame">
-		<HeaderComponent text="Great to Have You Back!"/>
-
+		<HeaderComponent text="Almost there..." />
 		<BoxComponent boxClass="signup-box">
-			<LoginComponent />
+			<UserCredentialsComponent />
 		</BoxComponent>
 	</div>
 </body>

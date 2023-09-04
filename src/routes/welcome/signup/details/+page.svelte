@@ -1,14 +1,14 @@
 <script>
-	import UserCredentialsComponent from '../../../components/SignUp/UserCredentials/UserCredentials_Component.svelte';
-	import HeaderComponent from '../../../components/Header/Header_Component.svelte';
-	import BoxComponent from '../../../components/Box/Box_Component.svelte';
+	import HeaderComponent from '../../../../components/Header/Header_Component.svelte';
+	import UserDetailsComponent from '../../../../components/SignUp/UserDetails/UserDetails_Component.svelte';
+	import BoxComponent from '../../../../components/Box/Box_Component.svelte';
 </script>
 
 <body>
 	<div class="frame">
-		<HeaderComponent text="Almost there..." />
+		<HeaderComponent text="Just a few more things..." />
 		<BoxComponent boxClass="signup-box">
-			<UserCredentialsComponent />
+			<UserDetailsComponent />
 		</BoxComponent>
 	</div>
 </body>

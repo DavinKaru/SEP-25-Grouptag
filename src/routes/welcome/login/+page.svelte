@@ -1,14 +1,16 @@
+<!-- Login page -->
 <script>
-	import HeaderComponent from '../../../components/Header/Header_Component.svelte';
-	import UserEnrolmentComponent from '../../../components/SignUp/UserEnrolment/UserEnrolment_Component.svelte';
+	import LoginComponent from '../../../components/Login/Login_Component.svelte';
 	import BoxComponent from '../../../components/Box/Box_Component.svelte';
+	import HeaderComponent from '../../../components/Header/Header_Component.svelte';
 </script>
 
 <body>
 	<div class="frame">
-		<HeaderComponent text="Great to have you join us!" />
+		<HeaderComponent text="Great to Have You Back!"/>
+
 		<BoxComponent boxClass="signup-box">
-			<UserEnrolmentComponent />
+			<LoginComponent />
 		</BoxComponent>
 	</div>
 </body>
@@ -28,4 +30,3 @@
 		flex-wrap: nowrap;
 	}
 </style>
-

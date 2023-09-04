@@ -1,7 +1,6 @@
 <!-- Welcome page -->
 <script>
 	import ButtonsComponent from '../components/Buttons/Buttons_Component.svelte';
-	import WelcomeComponent from '../components/Welcome/Welcome_Component.svelte';
 	import BoxComponent from '../components/Box/Box_Component.svelte';
 	import HeaderComponent from '../components/Header/Header_Component.svelte';
 </script>
@@ -12,8 +11,8 @@
 
 		<BoxComponent boxClass="signup-box">
 			<h2>Get Started</h2>
-			<ButtonsComponent text="Login" href="/login" buttonClass="login-button" />
-			<ButtonsComponent text="Sign Up" href="/signup/enrolment" buttonClass="signup-button" />
+			<ButtonsComponent text="Login" href="/welcome/login" buttonClass="login-button" />
+			<ButtonsComponent text="Sign Up" href="/welcome/signup/enrolment" buttonClass="signup-button" />
 		</BoxComponent>
 	</div>
 </body>
