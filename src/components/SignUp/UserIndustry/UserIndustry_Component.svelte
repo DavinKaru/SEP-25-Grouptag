@@ -20,50 +20,50 @@
 				name="Engineering"
 			/>
 			<CircleIconComponent
-				icon1="/Icons/Industry Icons/TechOn.svg"
-                icon2="/Icons/Industry Icons/TechOff.svg"
-				alt="Tech Industry Icon"
-				name="Tech"
+				icon1="/Icons/Industry Icons/ScienceOn.svg"
+                icon2="/Icons/Industry Icons/ScienceOff.svg"
+				alt="Science Industry Icon"
+				name="Science"
 			/>
 		</div>
 		<div class="column">
 			<CircleIconComponent
-				icon1="/Icons/Industry Icons/TechOn.svg"
-                icon2="/Icons/Industry Icons/TechOff.svg"
-				alt="Tech Industry Icon"
-				name="Tech"
+				icon1="/Icons/Industry Icons/MedicalOn.svg"
+                icon2="/Icons/Industry Icons/MedicalOff.svg"
+				alt="Medical Industry Icon"
+				name="Medical"
 			/>
 			<CircleIconComponent
-				icon1="/Icons/Industry Icons/TechOn.svg"
-                icon2="/Icons/Industry Icons/TechOff.svg"
-				alt="Tech Industry Icon"
-				name="Tech"
+				icon1="/Icons/Industry Icons/BusinessOn.svg"
+                icon2="/Icons/Industry Icons/BusinessOff.svg"
+				alt="Business Industry Icon"
+				name="Business"
 			/>
 			<CircleIconComponent
-				icon1="/Icons/Industry Icons/TechOn.svg"
-                icon2="/Icons/Industry Icons/TechOff.svg"
-				alt="Tech Industry Icon"
-				name="Tech"
+				icon1="/Icons/Industry Icons/LawOn.svg"
+                icon2="/Icons/Industry Icons/LawOff.svg"
+				alt="Law Industry Icon"
+				name="Law"
 			/>
 		</div>
 		<div class="column">
 			<CircleIconComponent
-				icon1="/Icons/Industry Icons/TechOn.svg"
-                icon2="/Icons/Industry Icons/TechOff.svg"
-				alt="Tech Industry Icon"
-				name="Tech"
+				icon1="/Icons/Industry Icons/PoliticsOn.svg"
+                icon2="/Icons/Industry Icons/PoliticsOff.svg"
+				alt="Politics Industry Icon"
+				name="Politics"
 			/>
 			<CircleIconComponent
-				icon1="/Icons/Industry Icons/TechOn.svg"
-                icon2="/Icons/Industry Icons/TechOff.svg"
-				alt="Tech Industry Icon"
-				name="Tech"
+				icon1="/Icons/Industry Icons/EducationOn.svg"
+                icon2="/Icons/Industry Icons/EducationOff.svg"
+				alt="Education Industry Icon"
+				name="Education"
 			/>
 			<CircleIconComponent
-				icon1="/Icons/Industry Icons/TechOn.svg"
-                icon2="/Icons/Industry Icons/TechOff.svg"
-				alt="Tech Industry Icon"
-				name="Tech"
+				icon1="/Icons/Industry Icons/ArtsOn.svg"
+                icon2="/Icons/Industry Icons/ArtsOff.svg"
+				alt="Arts Industry Icon"
+				name="Arts"
 			/>
 		</div>
 	</div>
