@@ -29,6 +29,6 @@
     <!-- Gets rid of some annoying IDE Warnings (Code is fine)-->
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-    <img src={icon1} alt={alt} on:click={swapIcon} />
+    <img src={icon2} alt={alt} on:click={swapIcon} />
     <h3>{name}</h3>
 </div>
