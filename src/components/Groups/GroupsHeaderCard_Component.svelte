@@ -76,21 +76,19 @@
 <style>
 	.container {
 		display: flex;
-		position: absolute;
-		top: 22.1%;
 		height: 14.5%;
 		width: 88.8%;
 		border-radius: 15px;
 		padding-bottom: 1%;
 		background-color: #324456;
+		margin-top: 50%; /* Added margin to push it down */
 	}
 
 	.groups-img {
-		position: absolute;
-		top: -31.6%; /* overflow the groups image at the top*/
-		left: 5.8%;
-		height: 79.7%;
-		width: 43.5%;
+		margin-top: -21.6%; /* overflow the groups image at the top */
+		margin-left: -5%;
+		min-height: 79.7%;
+		width: 100%;
 		border-radius: 15px;
 		background-color: #000000;
 	}
@@ -101,23 +99,15 @@
 		color: #c4c4c4;
 		display: flex;
 		flex-direction: column;
-		flex-wrap: nowrap;
-		height: 100%;
-		width: 47%;
+		align-items: flex-start;
 	}
 
 	.members {
-		position: absolute;
-		top: 55%; /* Place it below .groups-img */
-		height: 100%;
+		margin-top: 7%;
+		flex-grow: 1;
+		width: 100%;
 		display: flex;
-		flex-wrap: wrap; /* Allows the icons to wrap onto the next line */
-	}
-
-	.members-icons {
-		position: absolute;
-		top: 10%; /* Place it below .groups-img */
-		width: 180px;
+		flex-direction: column;
 	}
 
 	.icon {
@@ -126,7 +116,6 @@
 		border-radius: 50%;
 		background-position: center; /* Center the background */
 		background-size: cover; /* Cover the entire area */
-		display: inline-block;
 		background-color: #ffffff;
 		border: 1px solid #f5f5f5;
 		display: inline-block;
@@ -134,28 +123,24 @@
 	}
 
 	.groups-right {
-		flex: 1.05;
+		flex: 1;
 		margin-right: 2%;
 		gap: 7%;
 		display: flex;
 		flex-direction: column;
-		flex-wrap: nowrap;
-
-		height: 100%;
-		width: 47%;
 	}
+
 	.text {
-		margin: 1% 0;
 		width: 100%;
-		flex-grow: 0; /* Prevents the text from growing */
-		flex-basis: 40%; /* 55% of groups-right's height */
+		flex-grow: 0;
+		flex-basis: 55%;
+		position: relative;
 	}
 
 	h2 {
 		font-size: 1.3vh;
-		position: absolute;
-		top: -15%; /* overflow the groups name at the top*/
-		text-align: left;
+		position: absolute; /* Added position: absolute; */
+		top: -20px; /* Adjust this value to your needs */
 	}
 
 	p {
@@ -165,9 +150,6 @@
 	.tags {
 		display: flex;
 		justify-content: right;
-		width: 100%;
-		flex-grow: 0; /* Prevents the tags from growing */
-		flex-basis: 11%; /* 11% of groups-right's height */
 		gap: 1.5%; /* Gap between tags */
 	}
 
@@ -177,14 +159,12 @@
 		width: fit-content;
 		padding: 0.5% 4%;
 		font-size: 0.86vh;
-		text-align: center;
 		text-shadow: #0000008a 0px 0px 5px;
 	}
 
 	.join-button {
 		align-self: end; /* Aligning the button to end of the container */
-		flex-grow: 0; /* Prevents the button from growing */
-		flex-basis: 20%; /* 20.1% of groups-right's height */
+		flex-basis: 18%; /* 20.1% of groups-right's height */
 		font-size: 1.3vh;
 
 		width: 45%;
@@ -194,14 +174,68 @@
 		color: #ffffff;
 	}
 
-	@media (max-width: 380px) {
-		.container {
-			flex-direction: row;
+	@media (max-width: 912px) {
+		.groups-img {
+			margin-top: -19%; /* overflow the groups image at the top */
+		}
+
+		.members {
+			margin-top: 5%;
+			flex-grow: 1;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.icon {
+			height: 4vh;
+			width: 4vh;
+			margin-right: 1%; /* Gap between icons */
+		}
+
+		h2 {
+			top: -40%; /* Adjust this value to your needs */
+		}
+
+		p {
+			margin-top: 1%;
 		}
 
 		.groups-left,
 		.groups-right {
 			width: 40%;
+		}
+
+		.join-button {
+			margin-top: 5%;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.members {
+			margin-top: 5%;
+			flex-grow: 1;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.members-icons {
+			width: 500px;
+		}
+
+		.icon {
+			width: 3vh;
+			height: 3vh;
+			margin-right: 1%; /* Gap between icons */
+		}
+
+		h2 {
+			top: -40%; /* Adjust this value to your needs */
+		}
+
+		p {
+			margin-top: 1%;
 		}
 	}
 </style>

@@ -1,9 +1,9 @@
 <!-- Groups page -->
 
 <script>
-	import GroupsHeader from '../../../components/Groups/GroupsHeader_Component.svelte';
+	import GroupsHeaderCard from '../../../components/Groups/GroupsHeaderCard_Component.svelte';
 </script>
 
 <body>
-	<GroupsHeader />
+	<GroupsHeaderCard />
 </body>
