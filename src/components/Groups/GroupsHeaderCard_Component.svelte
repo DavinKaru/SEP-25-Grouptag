@@ -140,7 +140,7 @@
 	h2 {
 		font-size: 1.3vh;
 		position: absolute; /* Added position: absolute; */
-		top: -20px; /* Adjust this value to your needs */
+		top: -20px;
 	}
 
 	p {
@@ -194,7 +194,7 @@
 		}
 
 		h2 {
-			top: -40%; /* Adjust this value to your needs */
+			top: -40%;
 		}
 
 		p {
@@ -231,7 +231,7 @@
 		}
 
 		h2 {
-			top: -40%; /* Adjust this value to your needs */
+			top: -40%;
 		}
 
 		p {
