@@ -44,6 +44,7 @@
 
 		/* Dimensions */
 		width: 100%;
+		height: 100%;
 		border-radius: 10px 10px 0 0; /* Rounded corners on top left and right */
 	}
 
@@ -59,5 +60,4 @@
 		height: 100%;
 		border-radius: 10px 10px 0 0;
 	}
-
 </style>
