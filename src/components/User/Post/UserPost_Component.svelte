@@ -3,7 +3,7 @@
 	import TagIconComponent from '../../TagIcons/TagIcon_Component.svelte';
 </script>
 
-<div id="card">
+<div id="post-card">
 	<!-- Left hand side contains post media or group logo , right side contains details-->
 	<div id="post-media">
 		<img src="/temp_post_media.svg" alt="Temp Post Media" />
@@ -42,7 +42,7 @@
 </div>
 
 <style>
-	#card {
+	#post-card {
 		/* Colors */
 		background-color: rgba(255, 255, 255, 0.127);
 
