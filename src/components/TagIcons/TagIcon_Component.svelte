@@ -15,6 +15,6 @@
     }
 
     p {
-        font-size: 0.65rem;
+        font-size: 10px;
     }
 </style>
