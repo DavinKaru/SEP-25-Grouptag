@@ -61,13 +61,13 @@
 	}
 
 	#jobRole {
-		font-size: 1rem;
+		font-size: 15px;
 		font: 'Poppins', sans-serif;
         text-wrap: nowrap;
 	}
 
 	#jobDetails {
-		font-size: 0.5rem;
+		font-size: 10px;
 	}
 
     /* Another flexbox to contain the date values.
@@ -80,13 +80,13 @@
     }
 
 	.month {
-		font-size: 0.75rem;
+		font-size: 12px;
 		text-align: center;
 		color: #dddddd;
 	}
 
 	.year {
-		font-size: 0.5rem;
+		font-size: 8px;
 		text-align: center;
 		color: #dddddd;
 	}

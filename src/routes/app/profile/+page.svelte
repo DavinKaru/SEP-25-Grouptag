@@ -1,12 +1,14 @@
 <script>
-	import UserPostComponent from "../../../components/User/Post/UserPost_Component.svelte";
-	import UserExperienceComponent from "../../../components/User/UserExperience/UserExperience_Component.svelte";
+	import MyPostsComponent from '../../../components/User/MyPosts/MyPosts_component.svelte';
+	import MyExperienceComponent from '../../../components/User/MyExperience/MyExperience_component.svelte';
+	import MyGroupsComponent from '../../../components/User/MyGroups/MyGroups_component.svelte';
 </script>
 
 <body>
 	<div class="frame">
-		<UserPostComponent />
-		<UserExperienceComponent />
+		<MyPostsComponent/>
+		<MyExperienceComponent/>
+		<MyGroupsComponent />
 	</div>
 </body>
 
@@ -24,4 +26,5 @@
 		flex-direction: column;
 		flex-wrap: nowrap;
 	}
+
 </style>
