@@ -1,10 +1,12 @@
 <script>
 	import UserPostComponent from "../../../components/User/Post/UserPost_Component.svelte";
+	import UserExperienceComponent from "../../../components/User/UserExperience/UserExperience_Component.svelte";
 </script>
 
 <body>
 	<div class="frame">
 		<UserPostComponent />
+		<UserExperienceComponent />
 	</div>
 </body>
 
