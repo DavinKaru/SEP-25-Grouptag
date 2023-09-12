@@ -6,7 +6,6 @@
 
 <body>
 	<div class="frame">
-		<MyPostsComponent/>
 		<MyExperienceComponent/>
 		<MyGroupsComponent />
 	</div>

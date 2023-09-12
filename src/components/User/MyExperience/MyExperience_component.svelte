@@ -67,7 +67,7 @@
 	}
 
 	#jobDetails {
-		font-size: 10px;
+		font-size: 8px;
 	}
 
     /* Another flexbox to contain the date values.
