@@ -31,8 +31,10 @@
 
 		position: fixed;
 		bottom: 2.5%;
-		left: 15.5%; /* Centering the navbar (100% - 69%) / 2 */
+		margin-left: auto;
+		margin-right: auto;
 		width: 69%;
+		max-width: 850px;
 		height: 4.72vh; /* 4.72% of viewport */
 
 		border-radius: 50px;

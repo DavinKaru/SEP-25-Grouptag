@@ -1,5 +1,5 @@
 <script>
-	import UserProfilePictureComponent from '../Profile Picture/UserProfilePicture_Component.svelte';
+	import ProfileIcon from '../ProfileIcon/ProfileIcon_component.svelte';
 	import TagIconComponent from '../../TagIcons/TagIcon_Component.svelte';
 </script>
 
@@ -15,7 +15,7 @@
 		<div id="row-1">
 			<!--Column 1 of Row 1-->
 			<div id="column-1">
-				<UserProfilePictureComponent --width="3rem" />
+				<ProfileIcon --width="3rem" />
 			</div>
 
 			<!--Column 2 of Row 1-->
