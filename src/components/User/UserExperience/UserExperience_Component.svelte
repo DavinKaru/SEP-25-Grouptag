@@ -1,4 +1,4 @@
-<div id="card">
+<div id="experience-card">
 	<!--Card is split into 5 columns.-->
 
 	<!--Column 1: Company Logo-->
@@ -37,7 +37,7 @@
 </div>
 
 <style>
-	#card {
+	#experience-card {
 		/* Colors */
 		background-color: rgba(255, 255, 255, 0.127);
 
