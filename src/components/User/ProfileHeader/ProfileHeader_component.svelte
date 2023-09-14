@@ -10,8 +10,6 @@
         margin-right: auto;
         display: flex;
         justify-content: space-between;
-        width: 85%;
-        max-width: 850px;
         margin-top: 10px;
         margin-bottom: 10px;
     }

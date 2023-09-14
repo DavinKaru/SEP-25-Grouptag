@@ -47,11 +47,9 @@
 		background-color: rgba(255, 255, 255, 0.127);
 
 		/* Dimensions */
-		margin-top: 100px;
-		width: 85%;
+		margin-top: 10px;
 		height: 17.5%;
 		min-height: 210px; /* Force card to render at a minimun of 150 pixels */
-		max-width: 850px; /* Prevent any card from getting too big */
 		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
 
 		margin-left: auto;
