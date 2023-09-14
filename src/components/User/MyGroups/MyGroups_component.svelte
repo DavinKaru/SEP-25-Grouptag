@@ -26,22 +26,20 @@
 		background-color: rgba(255, 255, 255, 0.127);
 
 		/* Dimensions */
-		margin-top: 100px;
-		width: 85%;
+		margin-top: 10px;
 		height: 6rem;
 		min-height: 6rem; /* Force card to render at a minimun of 150 pixels */
-		max-width: 850px; /* Prevent any card from getting too big */
 		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
 
 		margin-left: auto;
 		margin-right: auto;
 
-		gap: 20px;
-
 		/* Flexbox layout */
 		display: flex;
 		flex-direction: row;
 		flex-wrap: nowrap;
+		gap: 20px;
+
 	}
 
 	#column2 {
