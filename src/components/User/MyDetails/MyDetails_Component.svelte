@@ -19,7 +19,7 @@
 		gap: 10px;
 
         background-color: rgba(255, 255, 255, 0.127);
-        padding: 10px;
+        padding: 15px;
         border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
 	}
 
