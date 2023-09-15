@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="42.213" height="42.213" viewBox="0 0 42.213 42.213">
+  <g id="Group_325" data-name="Group 325" transform="translate(-0.25)">
+    <g id="Msg" transform="translate(0.25)">
+      <circle id="Ellipse_13" data-name="Ellipse 13" cx="21.106" cy="21.106" r="21.106" fill="#fff"/>
+      <g id="message" transform="translate(10.094 10.094)" style="isolation: isolate">
+        <path id="messages" d="M17.436,3.671h-1.01A4.6,4.6,0,0,0,11.93,0H4.588A4.594,4.594,0,0,0,0,4.588v11.8a1.972,1.972,0,0,0,3.064,1.642l2.707-1.805a4.6,4.6,0,0,0,4.323,3.05h5.228L18.96,21.7a1.972,1.972,0,0,0,3.064-1.642V8.259a4.594,4.594,0,0,0-4.588-4.588ZM2.046,16.5a.129.129,0,0,1-.139.006.126.126,0,0,1-.072-.12V4.588A2.756,2.756,0,0,1,4.587,1.835h7.341a2.756,2.756,0,0,1,2.753,2.753v6.424a2.756,2.756,0,0,1-2.753,2.753H6.423a.91.91,0,0,0-.518.161L2.045,16.5Zm18.142,3.557a.136.136,0,0,1-.211.114L16.11,17.59a.92.92,0,0,0-.509-.154H10.094A2.757,2.757,0,0,1,7.5,15.6H11.93a4.594,4.594,0,0,0,4.588-4.588V5.506h.918a2.756,2.756,0,0,1,2.753,2.753v11.8Z" fill="#141c2b"/>
+        <rect id="Rectangle_125" data-name="Rectangle 125" width="9.177" height="1.835" rx="0.918" transform="translate(3.671 3.671)" fill="#141c2b"/>
+        <rect id="Rectangle_126" data-name="Rectangle 126" width="9.177" height="1.835" rx="0.918" transform="translate(3.671 6.424)" fill="#141c2b"/>
+        <rect id="Rectangle_127" data-name="Rectangle 127" width="9.177" height="1.835" rx="0.918" transform="translate(3.671 9.177)" fill="#141c2b"/>
+      </g>
+    </g>
+  </g>
+</svg>
