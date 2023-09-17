@@ -18,7 +18,7 @@
 	<a href="/notifications">
 		<img src="/Icons/Navbar Icons/Notification.svg" alt="Notification Icon" class="navIcon" />
 	</a>
-	<a href="/profile">
+	<a href="/app/profile">
 		<img src="/Icons/Navbar Icons/Profile.svg" alt="Profile Icon" class="navIcon" />
 	</a>
 </nav>
