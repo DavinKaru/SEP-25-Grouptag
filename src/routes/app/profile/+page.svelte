@@ -4,10 +4,7 @@
 	import ContentSelectorComponent from '../../../components/User/ContentSelector/ContentSelector_Component.svelte';
 	import MyDetailsComponent from '../../../components/User/MyDetails/MyDetails_Component.svelte';
 	import ConnectWithMeComponent from '../../../components/User/ConnectWithMe/ConnectWithMe_Component.svelte';
-	import MyPostsComponent from '../../../components/User/MyPosts/MyPosts_component.svelte';
-	import MyExperienceComponent from '../../../components/User/MyExperience/MyExperience_component.svelte';
-	import MyGroupsComponent from '../../../components/User/MyGroups/MyGroups_component.svelte';
-	import MyMutualsComponent from '../../../components/User/MyMutuals/MyMutuals_Component.svelte';
+	import MyContentListComponent from '../../../components/User/MyContentList/MyContentList_Component.svelte';
 
 	let selected = "Experience";
 
@@ -31,15 +28,7 @@
 		<div id="userActivity">
 			<ConnectWithMeComponent />
 			<ContentSelectorComponent bind:selected={selected} on:submit={handleSubmit}/>
-			{#if selected == "Experience"}
-				<MyExperienceComponent />
-			{:else if selected == "Posts"}
-				<MyPostsComponent />
-			{:else if selected == "Groups"}
-				<MyGroupsComponent />
-			{:else if selected == "Mutuals"}
-				<MyMutualsComponent />
-			{/if}
+			<MyContentListComponent content={selected}/>
 		</div>
 	</div>
 </body>

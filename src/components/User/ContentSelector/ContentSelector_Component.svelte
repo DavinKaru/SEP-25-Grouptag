@@ -72,8 +72,14 @@
         gap: 10px;
     }
 
+    option {
+        color:rgb(215, 215, 213);
+
+    }
+
     .selector {
         border-bottom: 2px solid white;
+        color: white;
     }
 
 </style>

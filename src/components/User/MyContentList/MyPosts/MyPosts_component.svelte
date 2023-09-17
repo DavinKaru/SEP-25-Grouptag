@@ -1,6 +1,6 @@
 <script>
-	import ProfileIcon from '../ProfileIcon/ProfileIcon_component.svelte';
-	import TagIconComponent from '../../TagIcons/TagIcon_Component.svelte';
+	import ProfileIcon from '../../ProfileIcon/ProfileIcon_component.svelte';
+	import TagIconComponent from '../../../TagIcons/TagIcon_Component.svelte';
 </script>
 
 <div id="post-card">
@@ -48,8 +48,7 @@
 
 		/* Dimensions */
 		margin-top: 10px;
-		height: 17.5%;
-		min-height: 210px; /* Force card to render at a minimun of 150 pixels */
+		height: 32vh; /* Force card to render at a minimun of 150 pixels */
 		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
 
 		margin-left: auto;
@@ -136,5 +135,12 @@
 
 	p {
 		font-size: 0.65rem;
+	}
+
+	/* Tablet + PC Layout */
+	@media only screen and (min-width: 600px) {
+		#post-card {
+			height: 175px;
+		}
 	}
 </style>
