@@ -1,11 +1,18 @@
 <script>
 	import ProfileHeaderComponent from '../../../components/User/ProfileHeader/ProfileHeader_component.svelte';
 	import ProfilePictureComponent from '../../../components/User/ProfilePicture/ProfilePicture_component.svelte';
+	import ContentSelectorComponent from '../../../components/User/ContentSelector/ContentSelector_Component.svelte';
 	import MyDetailsComponent from '../../../components/User/MyDetails/MyDetails_Component.svelte';
 	import ConnectWithMeComponent from '../../../components/User/ConnectWithMe/ConnectWithMe_Component.svelte';
 	import MyPostsComponent from '../../../components/User/MyPosts/MyPosts_component.svelte';
 	import MyExperienceComponent from '../../../components/User/MyExperience/MyExperience_component.svelte';
 	import MyGroupsComponent from '../../../components/User/MyGroups/MyGroups_component.svelte';
+	import MyMutualsComponent from '../../../components/User/MyMutuals/MyMutuals_Component.svelte';
+
+	let selected = "Experience";
+
+	function handleSubmit() {
+		console.log(selected);	}
 </script>
 
 <body>
@@ -23,9 +30,16 @@
 		</div>
 		<div id="userActivity">
 			<ConnectWithMeComponent />
-			<MyExperienceComponent />
-			<MyGroupsComponent />
-			<MyPostsComponent />
+			<ContentSelectorComponent bind:selected={selected} on:submit={handleSubmit}/>
+			{#if selected == "Experience"}
+				<MyExperienceComponent />
+			{:else if selected == "Posts"}
+				<MyPostsComponent />
+			{:else if selected == "Groups"}
+				<MyGroupsComponent />
+			{:else if selected == "Mutuals"}
+				<MyMutualsComponent />
+			{/if}
 		</div>
 	</div>
 </body>
