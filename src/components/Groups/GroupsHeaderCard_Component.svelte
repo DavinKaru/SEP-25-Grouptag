@@ -221,7 +221,7 @@
 		}
 
 		.members-icons {
-			width: 500px;
+			width: 180px;
 		}
 
 		.icon {
