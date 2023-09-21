@@ -6,71 +6,81 @@
 		{ name: 'Tech', color: '51, 87, 255' }
 	];
 
-	let members = [
+	let Group = [
 		{
-			name: 'John Doe',
-			icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
-		},
-		{
-			name: 'John Doe',
-			icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
-		},
-		{
-			name: 'John Doe',
-			icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
-		},
-		{
-			name: 'John Doe',
-			icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
-		},
-		{
-			name: 'John Doe',
-			icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
-		},
-		{
-			name: 'John Doe',
-			icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
+			groupName: 'Cyber Security Club',
+			groupDesc:
+				'Swinburne Cyber Security Club unites students passionate about cybersecurity. Engage in hands-on learning, networking, and collaboration to become a cybersecurity expert. Join us!',
+			groupImage: 'https://studentlife.swinburne.edu.au/Clubs/LogoImage/374?MaxH=300',
+			members: [
+				{
+					name: 'John Doe',
+					icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
+				},
+				{
+					name: 'John Doe',
+					icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
+				},
+				{
+					name: 'John Doe',
+					icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
+				},
+				{
+					name: 'John Doe',
+					icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
+				},
+				{
+					name: 'John Doe',
+					icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
+				},
+				{
+					name: 'John Doe',
+					icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
+				}
+			]
 		}
 	];
 </script>
 
 <div class="container">
-	<div class="groups-left">
-		<div class="groups-img" />
-		<div class="members">
-			<div><p>Members</p></div>
-			<div class="members-icons">
-				{#each members as member, i}
-					<!-- Only show the first 6 members -->
-					{#if i < 6}
-						<span class="icon" style="background-image: url({member.icon});" />
-					{/if}
-				{/each}
+	{#each Group as { groupName, groupDesc, groupImage, members }}
+		<div class="groups-left">
+			<img src={groupImage} alt="groups image" class="groups-img" />
+
+			<div class="members">
+				<div><p>Members</p></div>
+				<div class="members-icons">
+					{#each members as member, i}
+						<!-- Only show the first 6 members -->
+						{#if i < 6}
+							<span class="icon" style="background-image: url({member.icon});" />
+						{/if}
+					{/each}
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="groups-right">
-		<div class="text">
-			<h2>Group Name</h2>
-			<p>
-				Swinburne Cyber Security Club unites students passionate about cybersecurity. Engage in
-				hands-on learning, networking, and collaboration to become a cybersecurity expert. Join us!
-			</p>
-		</div>
+		<div class="groups-right">
+			<div class="text">
+				<h2>{groupName}</h2>
+				<p>
+					{groupDesc}
+				</p>
+			</div>
 
-		<div class="tags">
-			{#each tagColors as tag}
-				<span
-					class="tag"
-					style="color: rgb({tag.color}); background-color: rgba({tag.color}, 0.21);"
-				>
-					{tag.name}
-				</span>
-			{/each}
+			<div class="tags">
+				{#each tagColors as tag}
+					<span
+						class="tag"
+						style="color: rgb({tag.color}); background-color: rgba({tag.color}, 0.21);"
+					>
+						{tag.name}
+					</span>
+				{/each}
+			</div>
+			<button class="join-button">JOIN</button>
 		</div>
-		<button class="join-button">JOIN</button>
-	</div>
+	{/each}
 </div>
 
 <style>
@@ -85,9 +95,10 @@
 	}
 
 	.groups-img {
-		margin-top: -21.6%; /* overflow the groups image at the top */
+		margin-top: -10%;
 		margin-left: -5%;
 		min-height: 79.7%;
+		max-height: 79.7%;
 		width: 100%;
 		border-radius: 15px;
 		background-color: #000000;
