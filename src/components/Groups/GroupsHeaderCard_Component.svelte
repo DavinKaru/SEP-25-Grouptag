@@ -1,76 +1,62 @@
-<!-- Groups Header -->
+<!-- Groups Header Component-->
 <script>
-	let tagColors = [
-		{ name: 'Cycling', color: '255, 87, 51' },
-		{ name: 'Gaming', color: '51, 255, 87' },
-		{ name: 'Tech', color: '51, 87, 255' }
-	];
+	import TagIcon from '../TagIcons/TagIcon_Component.svelte'; // Import the TagIcon component
+	export let data; // Receive data as a prop from the parent component
+	const { Groups, GroupUsers, Users } = data;
 
-	let members = [
-		{
-			name: 'John Doe',
-			icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
-		},
-		{
-			name: 'John Doe',
-			icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
-		},
-		{
-			name: 'John Doe',
-			icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
-		},
-		{
-			name: 'John Doe',
-			icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
-		},
-		{
-			name: 'John Doe',
-			icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
-		},
-		{
-			name: 'John Doe',
-			icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
-		}
-	];
+	// Debug logs
+	console.log('Data received:', data);
+
+	// Fetch members using groupid
+	function getMembers(groupId) {
+		const groupUserIds = GroupUsers.filter((gu) => gu.group_id === groupId).map((gu) => gu.user_id);
+		const members = Users.filter((user) => groupUserIds.includes(user.user_id));
+
+		// Debug logs
+		console.log('Group User IDs:', groupUserIds);
+		console.log('Members:', members);
+		return members;
+	}
 </script>
 
 <div class="container">
-	<div class="groups-left">
-		<div class="groups-img" />
-		<div class="members">
-			<div><p>Members</p></div>
-			<div class="members-icons">
-				{#each members as member, i}
-					<!-- Only show the first 6 members -->
-					{#if i < 6}
-						<span class="icon" style="background-image: url({member.icon});" />
-					{/if}
-				{/each}
+	{#each Groups as group}
+		<div class="groups-left">
+			<img src={group.logo} alt="" class="groups-img" />
+
+			<div class="members">
+				<div><p>Members</p></div>
+				<div class="members-icons">
+					{#each getMembers(group.group_id) as member, i}
+						<!-- Only show the first 6 members -->
+						{#if i < 6}
+							<span class="icon" style="background-image: url({member.media});" />
+						{/if}
+					{/each}
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="groups-right">
-		<div class="text">
-			<h2>Group Name</h2>
-			<p>
-				Swinburne Cyber Security Club unites students passionate about cybersecurity. Engage in
-				hands-on learning, networking, and collaboration to become a cybersecurity expert. Join us!
-			</p>
-		</div>
+		<div class="groups-right">
+			<div class="text">
+				<h2>{group.name}</h2>
+				<p>
+					{group.description}
+				</p>
+			</div>
 
-		<div class="tags">
-			{#each tagColors as tag}
-				<span
-					class="tag"
-					style="color: rgb({tag.color}); background-color: rgba({tag.color}, 0.21);"
-				>
-					{tag.name}
-				</span>
-			{/each}
+			<div class="tags">
+				{#each group.tags as tag}
+					<TagIcon
+						text={tag.name}
+						customeClass="tag"
+						customStyle={`color: rgb(${tag.color}); background-color: rgba(${tag.color}, 0.21);`}
+					/>
+				{/each}
+			</div>
+			<button class="join-button">JOIN</button>
 		</div>
-		<button class="join-button">JOIN</button>
-	</div>
+	{/each}
 </div>
 
 <style>
@@ -85,9 +71,10 @@
 	}
 
 	.groups-img {
-		margin-top: -21.6%; /* overflow the groups image at the top */
+		margin-top: -10%;
 		margin-left: -5%;
 		min-height: 79.7%;
+		max-height: 79.7%;
 		width: 100%;
 		border-radius: 15px;
 		background-color: #000000;
@@ -151,15 +138,6 @@
 		display: flex;
 		justify-content: right;
 		gap: 1.5%; /* Gap between tags */
-	}
-
-	.tag {
-		align-self: center;
-		border-radius: 25px;
-		width: fit-content;
-		padding: 0.5% 4%;
-		font-size: 0.86vh;
-		text-shadow: #0000008a 0px 0px 5px;
 	}
 
 	.join-button {
