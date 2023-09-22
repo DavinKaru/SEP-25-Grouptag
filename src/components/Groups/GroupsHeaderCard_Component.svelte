@@ -1,19 +1,20 @@
 <!-- Groups Header Component-->
 <script>
+	import TagIcon from '../TagIcons/TagIcon_Component.svelte'; // Import the TagIcon component
 	export let data; // Receive data as a prop from the parent component
-	console.log('Data received:', data); // Debug log
-
 	const { Groups, GroupUsers, Users } = data;
-	console.log('Groups:', GroupUsers); // Debug log
 
-	// Function to get members of a specific group
+	// Debug logs
+	console.log('Data received:', data);
+
+	// Fetch members using groupid
 	function getMembers(groupId) {
 		const groupUserIds = GroupUsers.filter((gu) => gu.group_id === groupId).map((gu) => gu.user_id);
-		console.log('Group User IDs:', groupUserIds); // Debug log
-
 		const members = Users.filter((user) => groupUserIds.includes(user.user_id));
-		console.log('Members:', members); // Debug log
 
+		// Debug logs
+		console.log('Group User IDs:', groupUserIds);
+		console.log('Members:', members);
 		return members;
 	}
 </script>
@@ -21,7 +22,7 @@
 <div class="container">
 	{#each Groups as group}
 		<div class="groups-left">
-			<img src={group.logo} alt="groups image" class="groups-img" />
+			<img src={group.logo} alt="" class="groups-img" />
 
 			<div class="members">
 				<div><p>Members</p></div>
@@ -46,12 +47,11 @@
 
 			<div class="tags">
 				{#each group.tags as tag}
-					<span
-						class="tag"
-						style="color: rgb({tag.color}); background-color: rgba({tag.color}, 0.21);"
-					>
-						{tag.name}
-					</span>
+					<TagIcon
+						text={tag.name}
+						customeClass="tag"
+						customStyle={`color: rgb(${tag.color}); background-color: rgba(${tag.color}, 0.21);`}
+					/>
 				{/each}
 			</div>
 			<button class="join-button">JOIN</button>
@@ -138,15 +138,6 @@
 		display: flex;
 		justify-content: right;
 		gap: 1.5%; /* Gap between tags */
-	}
-
-	.tag {
-		align-self: center;
-		border-radius: 25px;
-		width: fit-content;
-		padding: 0.5% 4%;
-		font-size: 0.86vh;
-		text-shadow: #0000008a 0px 0px 5px;
 	}
 
 	.join-button {
