@@ -1,59 +1,35 @@
-<!-- Groups Header -->
+<!-- Groups Header Component-->
 <script>
-	let tagColors = [
-		{ name: 'Cycling', color: '255, 87, 51' },
-		{ name: 'Gaming', color: '51, 255, 87' },
-		{ name: 'Tech', color: '51, 87, 255' }
-	];
+	export let data; // Receive data as a prop from the parent component
+	console.log('Data received:', data); // Debug log
 
-	let Group = [
-		{
-			groupName: 'Cyber Security Club',
-			groupDesc:
-				'Swinburne Cyber Security Club unites students passionate about cybersecurity. Engage in hands-on learning, networking, and collaboration to become a cybersecurity expert. Join us!',
-			groupImage: 'https://studentlife.swinburne.edu.au/Clubs/LogoImage/374?MaxH=300',
-			members: [
-				{
-					name: 'John Doe',
-					icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
-				},
-				{
-					name: 'John Doe',
-					icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
-				},
-				{
-					name: 'John Doe',
-					icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
-				},
-				{
-					name: 'John Doe',
-					icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
-				},
-				{
-					name: 'John Doe',
-					icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
-				},
-				{
-					name: 'John Doe',
-					icon: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80'
-				}
-			]
-		}
-	];
+	const { Groups, GroupUsers, Users } = data;
+	console.log('Groups:', GroupUsers); // Debug log
+
+	// Function to get members of a specific group
+	function getMembers(groupId) {
+		const groupUserIds = GroupUsers.filter((gu) => gu.group_id === groupId).map((gu) => gu.user_id);
+		console.log('Group User IDs:', groupUserIds); // Debug log
+
+		const members = Users.filter((user) => groupUserIds.includes(user.user_id));
+		console.log('Members:', members); // Debug log
+
+		return members;
+	}
 </script>
 
 <div class="container">
-	{#each Group as { groupName, groupDesc, groupImage, members }}
+	{#each Groups as group}
 		<div class="groups-left">
-			<img src={groupImage} alt="groups image" class="groups-img" />
+			<img src={group.logo} alt="groups image" class="groups-img" />
 
 			<div class="members">
 				<div><p>Members</p></div>
 				<div class="members-icons">
-					{#each members as member, i}
+					{#each getMembers(group.group_id) as member, i}
 						<!-- Only show the first 6 members -->
 						{#if i < 6}
-							<span class="icon" style="background-image: url({member.icon});" />
+							<span class="icon" style="background-image: url({member.media});" />
 						{/if}
 					{/each}
 				</div>
@@ -62,14 +38,14 @@
 
 		<div class="groups-right">
 			<div class="text">
-				<h2>{groupName}</h2>
+				<h2>{group.name}</h2>
 				<p>
-					{groupDesc}
+					{group.description}
 				</p>
 			</div>
 
 			<div class="tags">
-				{#each tagColors as tag}
+				{#each group.tags as tag}
 					<span
 						class="tag"
 						style="color: rgb({tag.color}); background-color: rgba({tag.color}, 0.21);"
