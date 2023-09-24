@@ -1,5 +1,7 @@
 <!-- Groups Header Component-->
 <script>
+// @ts-nocheck
+
 	import TagIcon from '../TagIcons/TagIcon_Component.svelte'; // Import the TagIcon component
 	export let data; // Receive data as a prop from the parent component
 	const { Groups, GroupUsers, Users } = data;
@@ -8,8 +10,11 @@
 	console.log('Data received:', data);
 
 	// Fetch members using groupid
+	/**
+	 * @param {any} groupId
+	 */
 	function getMembers(groupId) {
-		const groupUserIds = GroupUsers.filter((gu) => gu.group_id === groupId).map((gu) => gu.user_id);
+		const groupUserIds = GroupUsers.filter((/** @type {{ group_id: any; }} */ gu) => gu.group_id === groupId).map((gu) => gu.user_id);
 		const members = Users.filter((user) => groupUserIds.includes(user.user_id));
 
 		// Debug logs
