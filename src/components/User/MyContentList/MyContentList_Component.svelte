@@ -63,7 +63,7 @@
         margin-left: 10%;
         margin-right: 10%;
 
-        /* A iece of dodgy code that creates a large bottom so that the navbar does not obscure the content at the bottom of the screen.
+        /* A piece of dodgy code that creates a large bottom so that the navbar does not obscure the content at the bottom of the screen.
             This will be rectified within the actual navbar component in a scalable manner at a later date */
             margin-bottom: 60px;
     }

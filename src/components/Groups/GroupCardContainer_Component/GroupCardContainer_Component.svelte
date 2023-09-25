@@ -1,48 +1,95 @@
 <script>
-    import GroupCardComponent from "./GroupCard_Component/GroupCard_Component.svelte";
-
-    let screenSize = window.innerWidth;
+	import GroupCardComponent from './GroupCard_Component/GroupCard_Component.svelte';
+	let innerWidth = 0;
 </script>
 
-<svelte:window bind:innerWidth={screenSize} />
+<svelte:window bind:innerWidth />
 
-<div id="group-card-container">
+<!--A very inadequate container for Group Cards. Currently loads in a preset amount of cards depending
+    on the device's screen size. TO-DO: Improve responsiveness and load data dynamically from backend-->
 
-    <!--If device is not a mobile-->
-    {#if screenSize >= 400}
-    <div class="row">
-        <GroupCardComponent />
-        <GroupCardComponent />
-        <GroupCardComponent />
-        <GroupCardComponent />
-        <GroupCardComponent />
-    </div>
-    <div class="row">
-        <GroupCardComponent />
-        <GroupCardComponent />
-        <GroupCardComponent />
-        <GroupCardComponent />
-        <GroupCardComponent />
-    </div>
-    {:else}
-    <div class="row">
-        <GroupCardComponent />
-        <GroupCardComponent />
-    </div>
-    {/if}
+<!--If the device is a very large Tablet or PC-->
+{#if innerWidth >= 1100}
+	<div class="group-card-container">
+		<div class="row">
+			<GroupCardComponent />
+			<GroupCardComponent />
+			<GroupCardComponent />
+			<GroupCardComponent />
+            <GroupCardComponent />
+            <GroupCardComponent />
+			<GroupCardComponent />
+		</div>
+		<div class="row">
+			<GroupCardComponent />
+			<GroupCardComponent />
+			<GroupCardComponent />
+			<GroupCardComponent />
+            <GroupCardComponent />
+            <GroupCardComponent />
+			<GroupCardComponent />
+		</div>
+		<div id="load" style="margin-bottom:12vh;">
+			<p>Load more...</p>
+		</div>
+	</div>
+    
 
-</div>
+<!--If the device is a Tablet or PC-->
+{:else if innerWidth >= 700 && innerWidth <= 1100}
+	<div class="group-card-container">
+		<div class="row">
+			<GroupCardComponent />
+			<GroupCardComponent />
+			<GroupCardComponent />
+			<GroupCardComponent />
+		</div>
+		<div class="row">
+			<GroupCardComponent />
+			<GroupCardComponent />
+			<GroupCardComponent />
+			<GroupCardComponent />
+		</div>
+		<div id="load" style="margin-bottom:10vh;">
+			<p>Load more...</p>
+		</div>
+	</div>
+    
+<!--If the device is a Smartphone-->
+{:else}
+	<div class="group-card-container">
+		<div class="row">
+			<GroupCardComponent />
+			<GroupCardComponent />
+		</div>
+		<div class="row">
+			<GroupCardComponent />
+			<GroupCardComponent />
+		</div>
+		<div class="row">
+			<GroupCardComponent />
+			<GroupCardComponent />
+		</div>
+		<div id="load" style="margin-bottom:10vh;">
+			<p>Load more...</p>
+		</div>
+	</div>
+{/if}
 
 <style>
-    
-#group-card-container {
-    display: flex;
-    flex-direction: column;
+	.group-card-container {
+		display: flex; 
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
 
-}
+	.row {
+		display: flex;
+	}
 
-.row {
-    display: flex;
-}
-
+	#load {
+		text-align: center;
+		margin-top: 15px;
+	}
 </style>

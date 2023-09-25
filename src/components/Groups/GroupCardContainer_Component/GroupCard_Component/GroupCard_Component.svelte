@@ -11,7 +11,7 @@
 
 	<div id="row2">
 		<h1>Swinburne Razorbacks</h1>
-		<p>The official group of the Swinburne Razorbacks! What do we do? Who knows!</p>
+		<p>Representing Swinburne on the field since 1983.</p>
 		<div id="tag-icons">
 			<TagIconComponent text="Swinburne" />
 			<TagIconComponent text="Mascot" />
@@ -26,13 +26,13 @@
 		background-color: rgba(255, 255, 255, 0.127);
 
 		/* Dimensions */
-		margin-top: 10px;
+		margin-top: 20px;
         width: 8rem;
         height: fit-content;
 		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
 
 		margin-left: auto;
-		margin-right: auto;
+		margin-right: 20px;
 
 		/* Flexbox layout */
 		display: flex;
