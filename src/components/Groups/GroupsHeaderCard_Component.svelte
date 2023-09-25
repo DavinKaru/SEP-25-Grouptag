@@ -269,7 +269,7 @@
 
 	@media (max-width: 425px) {
 		.container {
-			padding-bottom: 1vh;
+			padding-bottom: 2vh;
 		}
 		.groups-img {
 			margin-top: -5vh;
