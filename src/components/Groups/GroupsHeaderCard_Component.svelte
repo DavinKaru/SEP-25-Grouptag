@@ -7,30 +7,30 @@
 	// Debug logs
 	console.log('Data received:', data);
 
-	// Fetch members using groupid
-	function getMembers(groupId) {
+	// Fetch users using groupid
+	function getUsers(groupId) {
 		const groupUserIds = GroupUsers.filter((gu) => gu.group_id === groupId).map((gu) => gu.user_id);
-		const members = Users.filter((user) => groupUserIds.includes(user.user_id));
+		const users = Users.filter((user) => groupUserIds.includes(user.user_id));
 
 		// Debug logs
 		console.log('Group User IDs:', groupUserIds);
-		console.log('Members:', members);
-		return members;
+		console.log('Users:', users);
+		return users;
 	}
 </script>
 
 <div class="container">
 	{#each Groups as group}
 		<div class="groups-left">
-			<img src={group.logo} alt="" class="groups-img" />
+			<img src={group.logo_url} alt="" class="groups-img" />
 
 			<div class="members">
 				<div><p>Members</p></div>
 				<div class="members-icons">
-					{#each getMembers(group.group_id) as member, i}
-						<!-- Only show the first 6 members -->
+					{#each getUsers(group.group_id) as user, i}
+						<!-- Only show the first 6 users -->
 						{#if i < 6}
-							<span class="icon" style="background-image: url({member.media});" />
+							<span class="icon" style="background-image: url({user.image_url});" />
 						{/if}
 					{/each}
 				</div>
