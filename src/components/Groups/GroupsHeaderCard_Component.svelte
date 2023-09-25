@@ -263,7 +263,7 @@
 
 		.join-button {
 			margin-top: 7%;
-			margin-bottom: 0%;
+			margin-bottom: 2%;
 		}
 	}
 
@@ -338,7 +338,7 @@
 
 		.join-button {
 			margin-top: 0%;
-			margin-bottom: 10%;
+			margin-bottom: 2%;
 		}
 	}
 
