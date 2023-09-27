@@ -26,13 +26,13 @@
 		background-color: rgba(255, 255, 255, 0.127);
 
 		/* Dimensions */
-		margin-top: 20px;
+		margin-top: 10px;
         width: 8rem;
         height: fit-content;
 		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
 
-		margin-left: auto;
-		margin-right: 20px;
+		margin-left: 10px;
+		margin-right: 10px;
 
 		/* Flexbox layout */
 		display: flex;
