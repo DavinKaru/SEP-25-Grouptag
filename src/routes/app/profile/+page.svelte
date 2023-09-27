@@ -6,10 +6,13 @@
 	import ConnectWithMeComponent from '../../../components/User/ConnectWithMe/ConnectWithMe_Component.svelte';
 	import MyContentListComponent from '../../../components/User/MyContentList/MyContentList_Component.svelte';
 
-	let selected = "Experience";
+	let selected = 'Experience';
+	const currentUserId = 'f8fe9f2f-2ddb-4c64-945a-6f686a0d614f'; //Will need to get this from login session in the future
+	export let data;
 
 	function handleSubmit() {
-		console.log(selected);	}
+		console.log(selected);
+	}
 </script>
 
 <body>
@@ -27,8 +30,14 @@
 		</div>
 		<div id="userActivity">
 			<ConnectWithMeComponent />
-			<ContentSelectorComponent bind:selected={selected} on:submit={handleSubmit}/>
-			<MyContentListComponent content={selected}/>
+			<ContentSelectorComponent bind:selected on:submit={handleSubmit} />
+			<MyContentListComponent
+				content={selected}
+				posts={data.Posts}
+				user_id={currentUserId}
+				users={data.Users}
+				groups={data.Groups}
+			/>
 		</div>
 	</div>
 </body>
