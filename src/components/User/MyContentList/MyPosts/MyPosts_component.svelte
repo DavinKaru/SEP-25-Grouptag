@@ -1,6 +1,38 @@
 <script>
 	import ProfileIcon from '../../ProfileIcon/ProfileIcon_component.svelte';
 	import TagIconComponent from '../../../TagIcons/TagIcon_Component.svelte';
+
+	export let post;
+	export let users;
+	let user = users.find((u) => u.user_id === post.user_id);
+
+	export let groups;
+	let group = groups.find((g) => g.group_id === post.group_id);
+	let groupName = group ? group.name : 'Unknown Group';
+
+	//Calculation for timestamp
+	let createdAt = new Date(post.created_at);
+
+	// Get the current date
+	let now = new Date();
+
+	// Calculate the difference
+	let difference = now - createdAt;
+
+	//Conversion
+	let minutes = Math.floor(difference / 1000 / 60);
+	let hours = Math.floor(minutes / 60);
+
+	let timeSince;
+
+	if (hours > 0) {
+		timeSince = `${hours} HOURS AGO`;
+	} else {
+		timeSince = `${minutes} MINUTES AGO`;
+	}
+
+	// Debug logs
+	console.log('MyPosts:', post.tags);
 </script>
 
 <div id="post-card">
@@ -20,23 +52,23 @@
 
 			<!--Column 2 of Row 1-->
 			<div id="column-2">
-				<h1>Post Title</h1>
-				<h2>Post Author</h2>
+				<h1>{post.title}</h1>
+				<h2>{user ? `${user.first_name} ${user.last_name}` : 'Unknown Author'}</h2>
 			</div>
 		</div>
 
 		<!--Row 2-->
 		<div id="row-2">
 			<p id="post-text">
-				Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+				{post.content}
 			</p>
 			<div id="tag-icons">
-				<TagIconComponent text="Science" />
-				<TagIconComponent text="Research" />
-				<TagIconComponent text="Business" />
+				{#each post.tags as tag}
+					<TagIconComponent text={tag.name} />
+				{/each}
 			</div>
-			<p id="post-group">Group Name</p>
-			<p id="post-timestamp">3 HOURS AGO</p>
+			<p id="post-group">{groupName}</p>
+			<p id="post-timestamp">{timeSince}</p>
 		</div>
 	</div>
 </div>
@@ -48,7 +80,7 @@
 
 		/* Dimensions */
 		margin-top: 10px;
-		height: 32vh; /* Force card to render at a minimun of 150 pixels */
+		height: 23vh; /* Force card to render at a minimun of 150 pixels */
 		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
 
 		margin-left: auto;

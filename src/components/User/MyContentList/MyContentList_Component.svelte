@@ -5,24 +5,32 @@
 	import MyMutualsComponent from '../../../components/User/MyContentList/MyMutuals/MyMutuals_Component.svelte';
 
 	export let content = 'Experience';
+	export let posts = [];
+	export let groups = [];
+	export let user_id;
+	export let users = [];
+	let filteredPosts = posts.filter((post) => post.user_id === user_id);
+
+	console.log('MyContentList', filteredPosts);
+	console.log('Groups in MyContentList:', groups);
 </script>
 
 <div id="ContentList">
 	<!-- In future this will be used to dynamically generate components and populate the list with them as required. However, as we are not 
         connecting to the database yet, this is not required currently. -->
 	{#if content == 'Experience'}
-        <p class="year">2023</p>
+		<p class="year">2023</p>
 		<MyExperienceComponent />
 		<MyExperienceComponent />
-        <p class="year" id="notFirstYear">2022</p>
+		<p class="year" id="notFirstYear">2022</p>
 		<MyExperienceComponent />
-        <p class="year" id="notFirstYear">2021</p>
+		<p class="year" id="notFirstYear">2021</p>
 		<MyExperienceComponent />
 		<MyExperienceComponent />
 	{:else if content == 'Posts'}
-		<MyPostsComponent />
-		<MyPostsComponent />
-		<MyPostsComponent />
+		{#each filteredPosts as post}
+			<MyPostsComponent {post} {users} {groups} />
+		{/each}
 	{:else if content == 'Groups'}
 		<MyGroupsComponent />
 		<MyGroupsComponent />
@@ -36,44 +44,43 @@
 		<MyMutualsComponent />
 		<MyMutualsComponent />
 	{/if}
-    <div id="page-selectors">
-        <p id="back">Previous Page</p>
-        <p id="page-number">Page 1 of 5</p>
-        <p id="forward">Next Page</p>
-    </div>
-
+	<div id="page-selectors">
+		<p id="back">Previous Page</p>
+		<p id="page-number">Page 1 of 5</p>
+		<p id="forward">Next Page</p>
+	</div>
 </div>
 
 <style>
-    .year {
-        font-size: 12px;
-        color:rgb(215, 215, 213);
-        margin-top: 10px;
-        margin-bottom: -6px;
-        text-align: center;
-    }
+	.year {
+		font-size: 12px;
+		color: rgb(215, 215, 213);
+		margin-top: 10px;
+		margin-bottom: -6px;
+		text-align: center;
+	}
 
-    #page-selectors {
-        margin-top: 5px;
-        font-size: 12px;
-        color:rgb(215, 215, 213);
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: nowrap;
-        margin-left: 10%;
-        margin-right: 10%;
+	#page-selectors {
+		margin-top: 5px;
+		font-size: 12px;
+		color: rgb(215, 215, 213);
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: nowrap;
+		margin-left: 10%;
+		margin-right: 10%;
 
-        /* A iece of dodgy code that creates a large bottom so that the navbar does not obscure the content at the bottom of the screen.
+		/* A iece of dodgy code that creates a large bottom so that the navbar does not obscure the content at the bottom of the screen.
             This will be rectified within the actual navbar component in a scalable manner at a later date */
-            margin-bottom: 60px;
-    }
+		margin-bottom: 60px;
+	}
 
-    #back, #forward {
-        font-style: italic;
-    }
+	#back,
+	#forward {
+		font-style: italic;
+	}
 
-    #page-number {
-        margin-right: 25px;
-    }
-
+	#page-number {
+		margin-right: 25px;
+	}
 </style>
