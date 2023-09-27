@@ -3,6 +3,7 @@
 	import GroupsSelectorComponent from "../../../components/Group/GroupSelector_Component/GroupSelector_Component.svelte";
 	import GroupCardContainerComponent from "../../../components/Group/GroupCardContainer_Component/GroupCardContainer_Component.svelte";
 	export let data;
+
 </script>
 
 <body>
