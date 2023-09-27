@@ -1,14 +1,18 @@
 <script>
+// @ts-nocheck
+
 	import MyPostsComponent from '../../../components/User/MyContentList/MyPosts/MyPosts_component.svelte';
 	import MyExperienceComponent from '../../../components/User/MyContentList/MyExperience/MyExperience_component.svelte';
 	import MyGroupsComponent from '../../../components/User/MyContentList/MyGroups/MyGroups_component.svelte';
 	import MyMutualsComponent from '../../../components/User/MyContentList/MyMutuals/MyMutuals_Component.svelte';
 
 	export let content = 'Experience';
+
 	export let posts = [];
 	export let groups = [];
 	export let user_id;
 	export let users = [];
+	
 	let filteredPosts = posts.filter((post) => post.user_id === user_id);
 
 	console.log('MyContentList', filteredPosts);
@@ -70,7 +74,7 @@
 		margin-left: 10%;
 		margin-right: 10%;
 
-		/* A iece of dodgy code that creates a large bottom so that the navbar does not obscure the content at the bottom of the screen.
+        /* A piece of dodgy code that creates a large bottom so that the navbar does not obscure the content at the bottom of the screen.
             This will be rectified within the actual navbar component in a scalable manner at a later date */
 		margin-bottom: 60px;
 	}
