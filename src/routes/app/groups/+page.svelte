@@ -1,14 +1,14 @@
 <script>
-	import GroupsHeaderCardComponent from "../../../components/Group/GroupsHeaderCard_Component.svelte";
-	import GroupsSelectorComponent from "../../../components/Group/GroupSelector_Component/GroupSelector_Component.svelte";
-	import GroupCardContainerComponent from "../../../components/Group/GroupCardContainer_Component/GroupCardContainer_Component.svelte";
+	import GroupsHeaderCardComponent from '../../../components/Group/GroupsHeaderCard_Component.svelte';
+	import GroupsSelectorComponent from '../../../components/Group/GroupSelector_Component/GroupSelector_Component.svelte';
+	import GroupCardContainerComponent from '../../../components/Group/GroupCardContainer_Component/GroupCardContainer_Component.svelte';
 	export let data;
-
 </script>
 
 <body>
 	<div class="frame">
- 		<GroupsSelectorComponent />
+		<GroupsHeaderCardComponent {data} />
+		<GroupsSelectorComponent />
 		<GroupCardContainerComponent />
 	</div>
 </body>
