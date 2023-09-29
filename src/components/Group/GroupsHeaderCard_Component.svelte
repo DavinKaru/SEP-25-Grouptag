@@ -64,6 +64,7 @@
 		border-radius: 1.5vh;
 		padding-bottom: 1vh;
 		background-color: #324456;
+		margin: auto;
 		margin-top: 15vh;
 		flex-wrap: wrap;
 	}
