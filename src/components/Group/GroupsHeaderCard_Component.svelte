@@ -225,7 +225,7 @@
 		}
 		h2 {
 			top: -5vw;
-			font-size: 2vh;
+			font-size: 3vw;
 		}
 		p {
 			margin-top: 1%;

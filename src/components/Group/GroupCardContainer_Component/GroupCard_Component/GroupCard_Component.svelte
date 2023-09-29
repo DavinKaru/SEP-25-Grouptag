@@ -1,5 +1,5 @@
 <script>
-    import TagIconComponent from "../../../TagIcons/TagIcon_Component.svelte";
+	import TagIconComponent from '../../../TagIcons/TagIcon_Component.svelte';
 </script>
 
 <div id="group-card">
@@ -27,10 +27,10 @@
 
 		/* Dimensions */
 		margin-top: 10px;
-        width: 8rem;
-        height: fit-content;
-		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
-
+		width: 8rem;
+		width: 41.5vw;
+		height: fit-content;
+		border-radius: 10px; /* Rounded corners on top left and right */
 		margin-left: 10px;
 		margin-right: 10px;
 
@@ -43,17 +43,17 @@
 	#row2 {
 		display: flex;
 		flex-direction: column;
-        width: 100%;
+		width: 100%;
 		margin-top: -10px;
 		margin-right: 5px;
 		gap: 2px;
-        padding: 10px;
+		padding: 10px;
 	}
 
 	#tag-icons {
 		margin-top: 3px;
 		display: flex;
-        flex-direction: column;
+		flex-direction: column;
 		gap: 3px;
 	}
 
@@ -67,6 +67,7 @@
 	}
 
 	img {
-		width: 8rem;
+		width: 100%;
+		height: 100%;
 	}
 </style>
