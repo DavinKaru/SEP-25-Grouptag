@@ -80,7 +80,12 @@
 
 		/* Dimensions */
 		margin-top: 10px;
-		height: 23vh; /* Force card to render at a minimun of 150 pixels */
+		height: 22vh; 
+
+		/* If device screen is too narrow, force a certain height for component */
+		@media screen and (max-width: 400px) {
+			min-height: 210px; /* Force card to render at a minimun of 150 pixels */
+		}
 		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
 
 		margin-left: auto;
