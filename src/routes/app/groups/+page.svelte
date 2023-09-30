@@ -7,7 +7,6 @@
 
 <body>
 	<div class="frame">
-		<GroupsHeaderCardComponent {data} />
 		<GroupsSelectorComponent />
 		<GroupCardContainerComponent />
 	</div>

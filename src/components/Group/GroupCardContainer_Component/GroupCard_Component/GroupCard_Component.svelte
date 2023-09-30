@@ -27,8 +27,7 @@
 
 		/* Dimensions */
 		margin-top: 10px;
-		width: 8rem;
-		width: 41.5vw;
+		width: 8rem; /* Do not change plz! */
 		height: fit-content;
 		border-radius: 10px; /* Rounded corners on top left and right */
 		margin-left: 10px;
@@ -67,7 +66,7 @@
 	}
 
 	img {
-		width: 100%;
+		width: 100%; /* Automatically uses 100% of the pre-allocated group-card width (see line 30) */
 		height: 100%;
 	}
 </style>
