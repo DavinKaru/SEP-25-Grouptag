@@ -11,7 +11,7 @@
 
 	<div id="column2">
 		<h1>Swinburne Razorbacks</h1>
-		<h2>The official group of the Swinburne Razorbacks! What do we do? Who knows!</h2>
+		<p>The official group of the Swinburne Razorbacks! What do we do? Who knows!</p>
 		<div id="tag-icons">
 			<TagIconComponent text="Swinburne" />
 			<TagIconComponent text="Mascot" />
@@ -61,7 +61,7 @@
 		color: white;
 	}
 
-	h2 {
+	p {
 		font-size: 9px;
 	}
 
