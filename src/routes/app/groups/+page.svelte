@@ -1,12 +1,14 @@
 <script>
-	import GroupsHeaderCardComponent from '../../../components/Group/GroupsHeaderCard_Component.svelte';
-	import GroupsSelectorComponent from '../../../components/Group/GroupSelector_Component/GroupSelector_Component.svelte';
-	import GroupCardContainerComponent from '../../../components/Group/GroupCardContainer_Component/GroupCardContainer_Component.svelte';
+	import GroupHeaderComponent from '../../../components/Group/GroupHeader/GroupHeader_Component.svelte';
+	import FeatuedGroupComponent from '../../../components/Group/FeaturedGroup/FeaturedGroup_Component.svelte';
+	import GroupsSelectorComponent from '../../../components/Group/GroupSelector/GroupSelector_Component.svelte';
+	import GroupCardContainerComponent from '../../../components/Group/GroupCardContainer/GroupCardContainer_Component.svelte';
 	export let data;
 </script>
 
 <body>
 	<div class="frame">
+		<GroupHeaderComponent />
 		<GroupsSelectorComponent />
 		<GroupCardContainerComponent />
 	</div>
@@ -15,7 +17,7 @@
 <style>
 	.frame {
 		height: 100vh;
-		width: 100vh;
+		width: 100vw;
 		background-color: #243347;
 		background-image: url('/bg10.png');
 		background-size: cover;

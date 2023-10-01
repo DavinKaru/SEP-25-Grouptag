@@ -1,6 +1,6 @@
 <!-- Groups Header Component-->
 <script>
-	import TagIcon from '../TagIcons/TagIcon_Component.svelte'; // Import the TagIcon component
+	import TagIcon from '../../TagIcons/TagIcon_Component.svelte'; // Import the TagIcon component
 	export let data; // Receive data as a prop from the parent component
 	const { Groups, GroupUsers, Users } = data;
 	// Debug logs

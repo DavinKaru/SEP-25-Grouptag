@@ -45,7 +45,7 @@
 <style>
 	.frame {
 		height: 100vh;
-		width: 100vh;
+		width: 100vw;
 		background-color: #243347;
 		background-image: url('/bg10.png');
 		background-size: cover;
@@ -58,12 +58,6 @@
 		justify-content: flex-start;
 	}
 
-	#header {
-		width: 90%;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
 	/* Better to control layout here in then in each individual component (excluding Profile Picture)*/
 
 	/* Tablet + PC Layout */
@@ -71,7 +65,7 @@
 		#content {
 			display: flex;
 			flex-wrap: nowrap;
-			width: 90%;
+			width: 55%;
 			margin-left: auto;
 			margin-right: auto;
 			gap: 10px;
@@ -84,10 +78,28 @@
 		#details {
 			width: 50%;
 		}
+
+		#userActivity {
+			width: 55%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		#header {
+			width: 55%;
+			margin-left: auto;
+			margin-right: auto;
+		}
 	}
 
 	/* Phone layout */
 	@media only screen and (max-width: 600px) {
+		#header {
+			width: 90%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
 		#content {
 			display: flex;
 			flex-wrap: wrap;
@@ -103,11 +115,11 @@
 		#details {
 			width: 90%;
 		}
-	}
 
-	#userActivity {
-		width: 90%;
-		margin-left: auto;
-		margin-right: auto;
+		#userActivity {
+			width: 90%;
+			margin-left: auto;
+			margin-right: auto;
+		}
 	}
 </style>

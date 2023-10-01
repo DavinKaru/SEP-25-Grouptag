@@ -1,5 +1,5 @@
 <script>
-	import GroupCardComponent from './GroupCard_Component/GroupCard_Component.svelte';
+	import GroupCardComponent from './GroupCard/GroupCard_Component.svelte';
 	let innerWidth = 0;
 </script>
 
