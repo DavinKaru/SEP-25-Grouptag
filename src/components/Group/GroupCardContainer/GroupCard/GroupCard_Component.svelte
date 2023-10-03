@@ -27,7 +27,7 @@
 
 		/* Dimensions */
 		margin-top: 10px;
-		width: 8rem; /* Do not change plz! */
+		width: 10rem; /* Do not change plz! */
 		height: fit-content;
 		border-radius: 10px; /* Rounded corners on top left and right */
 		margin-left: 10px;
@@ -52,7 +52,9 @@
 	#tag-icons {
 		margin-top: 3px;
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
+		width: 10rem;
+		flex-wrap: wrap;
 		gap: 3px;
 	}
 
