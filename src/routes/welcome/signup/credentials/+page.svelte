@@ -1,6 +1,6 @@
 <script>
 	import UserCredentialsComponent from '../../../../components/SignUp/UserCredentials/UserCredentials_Component.svelte';
-	import HeaderComponent from '../../../../components/Header/Header_Component.svelte';
+	import HeaderComponent from '../../../../components/WelcomeHeader/WelcomeHeader_Component.svelte';
 	import BoxComponent from '../../../../components/Box/Box_Component.svelte';
 </script>
 

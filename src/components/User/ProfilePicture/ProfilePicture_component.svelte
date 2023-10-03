@@ -11,6 +11,7 @@
 	}
 
 	#picture {
+		z-index: 1;
 		width: 100%;
 		object-fit: cover;
 		margin-right: auto;
@@ -18,6 +19,7 @@
 	
 	#name {
 		position: absolute;
+		z-index: 2;
 		margin-top: 170px;
 		margin-left: 15px;
 		text-wrap: nowrap;

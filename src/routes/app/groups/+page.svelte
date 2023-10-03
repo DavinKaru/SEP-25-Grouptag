@@ -1,6 +1,6 @@
 <script>
-	import GroupHeaderComponent from '../../../components/Group/GroupHeader/GroupHeader_Component.svelte';
-	import FeatuedGroupComponent from '../../../components/Group/FeaturedGroup/FeaturedGroup_Component.svelte';
+	import HeaderComponent from '../../../components/AppHeader/AppHeader_Component.svelte';
+	import FeaturedGroupComponent from '../../../components/Group/FeaturedGroup/FeaturedGroup_Component.svelte';
 	import GroupsSelectorComponent from '../../../components/Group/GroupSelector/GroupSelector_Component.svelte';
 	import GroupCardContainerComponent from '../../../components/Group/GroupCardContainer/GroupCardContainer_Component.svelte';
 	export let data;
@@ -8,7 +8,7 @@
 
 <body>
 	<div class="frame">
-		<GroupHeaderComponent />
+		<HeaderComponent title="Groups"/>
 		<GroupsSelectorComponent />
 		<GroupCardContainerComponent />
 	</div>

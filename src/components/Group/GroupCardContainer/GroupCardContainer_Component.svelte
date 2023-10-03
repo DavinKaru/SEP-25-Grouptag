@@ -14,15 +14,11 @@
 		<div class="row">
 			<GroupCardComponent />
 			<GroupCardComponent />
-			<GroupCardComponent />
-			<GroupCardComponent />
             <GroupCardComponent />
             <GroupCardComponent />
 			<GroupCardComponent />
 		</div>
 		<div class="row">
-			<GroupCardComponent />
-			<GroupCardComponent />
 			<GroupCardComponent />
 			<GroupCardComponent />
             <GroupCardComponent />

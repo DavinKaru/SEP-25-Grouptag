@@ -1,5 +1,5 @@
 <script>
-	import ProfileHeaderComponent from '../../../components/User/ProfileHeader/ProfileHeader_component.svelte';
+	import AppHeaderComponent from '../../../components/AppHeader/AppHeader_Component.svelte';
 	import ProfilePictureComponent from '../../../components/User/ProfilePicture/ProfilePicture_component.svelte';
 	import ContentSelectorComponent from '../../../components/User/ContentSelector/ContentSelector_Component.svelte';
 	import MyDetailsComponent from '../../../components/User/MyDetails/MyDetails_Component.svelte';
@@ -17,9 +17,7 @@
 
 <body>
 	<div class="frame">
-		<div id="header">
-			<ProfileHeaderComponent />
-		</div>
+		<AppHeaderComponent title="My Profile" />
 		<div id="content">
 			<div id="profilePicture">
 				<ProfilePictureComponent />
@@ -84,21 +82,10 @@
 			margin-left: auto;
 			margin-right: auto;
 		}
-
-		#header {
-			width: 55%;
-			margin-left: auto;
-			margin-right: auto;
-		}
 	}
 
 	/* Phone layout */
 	@media only screen and (max-width: 600px) {
-		#header {
-			width: 90%;
-			margin-left: auto;
-			margin-right: auto;
-		}
 
 		#content {
 			display: flex;
