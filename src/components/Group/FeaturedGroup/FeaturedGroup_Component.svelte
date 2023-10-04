@@ -18,17 +18,8 @@
 
 <div class="container">
 	{#each Groups as group}
-		<img src={group.logo_url} alt="Featued Group Logo" id="group-img" />
-		<div class="groups-content">
-			<div class="text">
-				<h1 id="group-name">{group.name}</h1>
-				<p id="group-description">{group.description}</p>
-			</div>
-			<div id="tags">
-				{#each group.tags as tag}
-					<TagIcon text={tag.name} />
-				{/each}
-			</div>
+		<div class="left-content">
+			<img src={group.logo_url} alt="Featued Group Logo" id="group-img" />
 			<div id="members">
 				<h2 id="members-header">Members</h2>
 				<div id="members-icons">
@@ -40,6 +31,19 @@
 					{/each}
 				</div>
 			</div>
+		</div>
+
+		<div class="right-content">
+			<div class="text">
+				<h1 id="group-name">{group.name}</h1>
+				<p id="group-description">{group.description}</p>
+			</div>
+			<div id="tags">
+				{#each group.tags as tag}
+					<TagIcon text={tag.name} />
+				{/each}
+			</div>
+
 			<a href="default" id="join-button">Join Group</a>
 		</div>
 	{/each}
@@ -47,23 +51,37 @@
 
 <style>
 	.container {
-		display: flex;
-		flex-direction: column;
-
 		/* Colors */
 		background-color: rgba(255, 255, 255, 0.127);
 
 		/* Dimensions */
-		margin-top: 10px;
 		height: fit-content;
-		border-radius: 10px; /* Rounded corners on top left and right */
-		margin-left: 10px;
-		margin-right: 10px;
+		width: 100%;
+		border-radius: 10px;
+		margin: auto;
 
 		/* Flexbox layout */
 		display: flex;
 		flex-direction: column;
 		flex-wrap: nowrap;
+
+		flex-direction: row;
+		justify-content: center;
+	}
+
+	.left-content {
+		flex-basis: 50vw;
+		border: 1px solid red;
+		padding: 5px;
+	}
+
+	.right-content {
+		flex-basis: 50vw;
+		border: 1px solid blue;
+		padding: 10px;
+
+		padding-bottom: 50px; /* Add extra padding at the bottom */
+		position: relative;
 	}
 
 	#group-img {
@@ -72,12 +90,12 @@
 	}
 
 	#group-name {
-		font-size: 20px;
+		font-size: 1.25rem;
 		color: white;
 	}
 
 	#group-description {
-		font-size: 12px;
+		font-size: 0.5rem;
 	}
 
 	#tags {
@@ -86,16 +104,10 @@
 		gap: 5px;
 	}
 
-	#members-header {
-		margin-top: 6px;
-		font-size: 14px;
-		color: white;
-	}
-
 	#join-button {
 		display: inline-block;
 		padding: 0.3em 1.2em;
-		margin: 0 0.3em 0.3em 0;
+		margin: 0.3em 0.3em 0.3em 0;
 		border-radius: 2em;
 		box-sizing: border-box;
 		text-decoration: none;
@@ -105,27 +117,128 @@
 		background-color: #3aa4d1;
 		text-align: center;
 		transition: all 0.2s;
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
 	}
 
-	#join-button:hover { 
-		background-color:#4095c6;
+	#join-button:hover {
+		background-color: #4095c6;
 	}
 
-	.groups-content {
-		padding: 10px;
+	#members {
+		margin-left: 5px;
+		margin-top: 10px;
+	}
+
+	#members-header {
+		font-size: 0.8em;
+		color: white;
+	}
+
+	#members-icons {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
 	}
 
 	.icon {
 		margin-top: 6px;
 		margin-bottom: 6px;
-		width: 6vh;
-		height: 6vh;
+		width: 6vw;
+		height: 6vw;
 		border-radius: 50%;
 		background-position: center; /* Center the background */
 		background-size: cover; /* Cover the entire area */
 		background-color: #ffffff;
 		border: 1px solid #f5f5f5;
 		display: inline-block;
-		margin-right: 3%; /* Gap between icons */
+		margin-right: 1%; /* Gap between icons */
+	}
+
+	/* Responsive font sizes */
+	@media screen and (max-width: 1920px) {
+		.container {
+			width: 80%;
+		}
+		#group-name {
+			font-size: 1.8rem;
+		}
+		#members-header {
+			font-size: 1.3rem;
+		}
+		#group-description {
+			font-size: 1.1rem;
+		}
+	}
+
+	@media screen and (max-width: 1200px) {
+		.container {
+			width: 90%;
+		}
+		#group-name {
+			font-size: 1.8rem;
+		}
+		#members-header {
+			font-size: 1.3rem;
+		}
+		#group-description {
+			font-size: 1.1rem;
+		}
+	}
+
+	@media screen and (max-width: 992px) {
+		.container {
+			width: 95%;
+		}
+		#group-name {
+			font-size: 1.6rem;
+		}
+		#members-header {
+			font-size: 1.2rem;
+		}
+		#group-description {
+			font-size: 1rem;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		.container {
+			width: 100%;
+		}
+		#group-name {
+			font-size: 1.4rem;
+		}
+		#members-header {
+			font-size: 1.1rem;
+		}
+		#group-description {
+			font-size: 0.9rem;
+		}
+	}
+
+	@media screen and (max-width: 576px) {
+		.container {
+			width: 100%;
+		}
+
+		#group-name {
+			font-size: 1rem;
+		}
+		#members-header {
+			font-size: 0.8rem;
+		}
+		#group-description {
+			font-size: 0.6rem;
+		}
+
+		#members-icons {
+			flex-wrap: wrap;
+			column-gap: 2px;
+		}
+		.icon {
+			width: 7vw;
+			height: 7vw;
+		}
 	}
 </style>
