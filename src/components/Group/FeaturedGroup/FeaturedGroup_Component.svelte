@@ -18,12 +18,11 @@
 
 <div class="container">
 	{#each Groups as group}
-		<div class="groups-left">
-			<img src={group.logo_url} alt="" class="groups-img" />
-
-			<div class="members">
-				<div><p>Members</p></div>
-				<div class="members-icons">
+		<div class="left-content">
+			<img src={group.logo_url} alt="Featued Group Logo" id="group-img" />
+			<div id="members">
+				<h2 id="members-header">Members</h2>
+				<div id="members-icons">
 					{#each getUsers(group.group_id) as user, i}
 						<!-- Only show the first 6 users -->
 						{#if i < 6}
@@ -34,305 +33,211 @@
 			</div>
 		</div>
 
-		<div class="groups-right">
+		<div class="right-content">
 			<div class="text">
-				<h2>{group.name}</h2>
-				<p>
-					{group.description}
-				</p>
+				<h1 id="group-name">{group.name}</h1>
+				<p id="group-description">{group.description}</p>
 			</div>
-
-			<div class="tags">
+			<div id="tags">
 				{#each group.tags as tag}
-					<TagIcon
-						text={tag.name}
-						customeClass="tag"
-						customStyle={`color: rgb(${tag.color}); background-color: rgba(${tag.color}, 0.21);`}
-					/>
+					<TagIcon text={tag.name} />
 				{/each}
 			</div>
-			<button class="join-button">JOIN</button>
+
+			<a href="default" id="join-button">Join Group</a>
 		</div>
 	{/each}
 </div>
 
 <style>
 	.container {
-		display: flex;
+		/* Colors */
+		background-color: rgba(255, 255, 255, 0.127);
+
+		/* Dimensions */
 		height: fit-content;
-		width: 88.8vw;
-		border-radius: 1.5vh;
-		padding-bottom: 1vh;
-		background-color: #324456;
-		margin: auto;
-		margin-top: 15vh;
-		flex-wrap: wrap;
-	}
-	.groups-img {
-		margin-top: -10vh;
-		margin-left: -3vw;
-		max-height: 15vh;
 		width: 100%;
-		border-radius: 1.5vh;
-		background-color: #000000;
-	}
-	.groups-left {
-		flex: 1;
-		margin-left: 5.5%;
-		color: #c4c4c4;
+		border-radius: 10px;
+		margin: auto;
+
+		/* Flexbox layout */
 		display: flex;
 		flex-direction: column;
-		align-items: flex-start;
+		flex-wrap: nowrap;
+
+		flex-direction: row;
+		justify-content: center;
 	}
-	.members {
-		margin: 4% 0% 0% -5%;
-		flex-grow: 1;
-		width: 23vh;
+
+	.left-content {
+		flex-basis: 50vw;
+		padding: 5px;
+	}
+
+	.right-content {
+		flex-basis: 50vw;
+		padding: 10px;
+
+		padding-bottom: 50px; /* Add extra padding at the bottom */
+		position: relative;
+	}
+
+	#group-img {
+		width: 100%;
+		border-radius: 10px;
+	}
+
+	#group-name {
+		font-size: 1.25rem;
+		color: white;
+	}
+
+	#group-description {
+		font-size: 0.5rem;
+	}
+
+	#tags {
+		margin-top: 6px;
 		display: flex;
-		flex-direction: column;
+		gap: 5px;
 	}
+
+	#join-button {
+		display: inline-block;
+		padding: 0.3em 1.2em;
+		margin: 0.3em 0.3em 0.3em 0;
+		border-radius: 2em;
+		box-sizing: border-box;
+		text-decoration: none;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 300;
+		color: #ffffff;
+		background-color: #3aa4d1;
+		text-align: center;
+		transition: all 0.2s;
+		position: absolute;
+		bottom: 10px;
+		right: 10px;
+	}
+
+	#join-button:hover {
+		background-color: #4095c6;
+	}
+
+	#members {
+		margin-left: 5px;
+		margin-top: 10px;
+	}
+
+	#members-header {
+		font-size: 0.8em;
+		color: white;
+	}
+
+	#members-icons {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+	}
+
 	.icon {
-		width: 3vh;
-		height: 3vh;
+		margin-top: 6px;
+		margin-bottom: 6px;
+		width: 6vw;
+		height: 6vw;
 		border-radius: 50%;
 		background-position: center; /* Center the background */
 		background-size: cover; /* Cover the entire area */
 		background-color: #ffffff;
 		border: 1px solid #f5f5f5;
 		display: inline-block;
-		margin-right: 3%; /* Gap between icons */
+		margin-right: 1%; /* Gap between icons */
 	}
-	.groups-right {
-		flex: 1;
-		margin-right: 2%;
-		gap: 7%;
-		display: flex;
-		flex-direction: column;
-	}
-	.text {
-		width: 100%;
-		flex-grow: 0;
-		flex-basis: 55%;
-		position: relative;
-	}
-	h2 {
-		font-size: 1.3vh;
-		position: absolute; /* Added position: absolute; */
-		top: -20px;
-	}
-	p {
-		font-size: 1vh;
-	}
-	.tags {
-		display: flex;
-		justify-content: right;
-		gap: 1.5%; /* Gap between tags */
-	}
-	.join-button {
-		align-self: end; /* Aligning the button to end of the container */
-		flex-basis: auto;
-		font-size: 1.3vh;
-		min-width: 80px;
-		border: none;
-		border-radius: 25px;
-		background-color: #3f6d9b;
-		color: #ffffff;
-		margin-bottom: 10%;
-		font-size: 3vw;
-	}
-	@media (max-width: 1280px) {
+
+	/* Responsive font sizes */
+	@media screen and (max-width: 1920px) {
 		.container {
-			padding-bottom: 1vh;
+			width: 80%;
 		}
-		.groups-img {
-			margin-top: -10vh;
-			margin-left: -3vw;
-			max-height: 30vh;
-			max-width: auto;
-			border-radius: 1.5vh;
-			background-color: #000000;
+		#group-name {
+			font-size: 1.8rem;
 		}
-		.members-icons {
-			width: 43vw;
+		#members-header {
+			font-size: 1.3rem;
 		}
-		.icon {
-			width: 4.5vw;
-			height: 4.5vw;
-			margin-right: 1vw;
-		}
-		h2 {
-			top: -3.5vw;
-			font-size: 4vh;
-		}
-		p {
-			margin-top: 1%;
-			font-size: 2.5vh;
-		}
-		.join-button {
-			margin-top: 10%;
-			width: 20vw;
-			font-size: 2vw;
+		#group-description {
+			font-size: 1.1rem;
 		}
 	}
-	@media (max-width: 1024px) {
+
+	@media screen and (max-width: 1280px) {
 		.container {
-			padding-bottom: 1vh;
+			width: 75%;
 		}
-		.groups-img {
-			margin-top: -10vh;
-			margin-left: -3vw;
-			max-height: 30vh;
-			max-width: auto;
-			border-radius: 1.5vh;
-			background-color: #000000;
+		#group-name {
+			font-size: 1.8rem;
 		}
-		.members-icons {
-			width: 43vw;
+		#members-header {
+			font-size: 1.3rem;
 		}
-		.icon {
-			width: 4.5vw;
-			height: 4.5vw;
-			margin-right: 1vw;
-		}
-		h2 {
-			top: -3.5vw;
-			font-size: 4vh;
-		}
-		p {
-			margin-top: 1%;
-			font-size: 2.5vh;
-		}
-		.join-button {
-			margin-top: 10%;
-			width: 20vw;
-			font-size: 2vw;
+		#group-description {
+			font-size: 1.1rem;
 		}
 	}
-	@media (max-width: 991px) {
+
+	@media screen and (max-width: 992px) {
 		.container {
-			padding-bottom: 2vh;
+			width: 100%;
 		}
-		.groups-img {
-			margin-top: -7vh;
+		#group-name {
+			font-size: 1.6rem;
 		}
-		.members-icons {
-			width: 43vw;
+		#members-header {
+			font-size: 1.2rem;
+		}
+		#group-description {
+			font-size: 1rem;
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		.container {
+			width: 100%;
+		}
+		#group-name {
+			font-size: 1.4rem;
+		}
+		#members-header {
+			font-size: 1.1rem;
+		}
+		#group-description {
+			font-size: 0.9rem;
+		}
+	}
+
+	@media screen and (max-width: 576px) {
+		.container {
+			width: 100%;
+		}
+
+		#group-name {
+			font-size: 1rem;
+		}
+		#members-header {
+			font-size: 0.8rem;
+		}
+		#group-description {
+			font-size: 0.5rem;
+		}
+
+		#members-icons {
+			flex-wrap: wrap;
+			column-gap: 2px;
 		}
 		.icon {
 			width: 6vw;
 			height: 6vw;
-			margin-right: 1vw;
-		}
-		h2 {
-			top: -5vw;
-			font-size: 3vw;
-		}
-		p {
-			margin-top: 1%;
-			font-size: 1.2vh;
-		}
-		.join-button {
-			margin-top: 7%;
-			margin-bottom: 2%;
-		}
-	}
-	@media (max-width: 425px) {
-		.container {
-			padding-bottom: 2vh;
-		}
-		.groups-img {
-			margin-top: -5vh;
-		}
-		.members-icons {
-			width: 43vw;
-		}
-		.icon {
-			width: 6vw;
-			height: 6vw;
-			margin-right: 1vw;
-		}
-		h2 {
-			top: -4.5vw;
-			font-size: 1.2vh;
-		}
-		p {
-			margin-top: 1%;
-			font-size: 0.8vh;
-		}
-		.join-button {
-			margin-top: 5%;
-		}
-	}
-	@media (max-width: 375px) {
-		.groups-img {
-			margin-top: -5vh;
-		}
-		.members-icons {
-			width: 43vw;
-		}
-		.icon {
-			width: 6vw;
-			height: 6vw;
-			margin-right: 1vw;
-		}
-		h2 {
-			top: -2vh;
-			font-size: 1.3vh;
-		}
-		h2 {
-			margin-top: 5%;
-			margin: 5% 0% -4% 0%;
-			position: relative;
-			font-size: 1.3vh;
-		}
-		p {
-			margin-top: 0%;
-			font-size: 1vh;
-		}
-		.text {
-			margin-top: -2vh;
-		}
-		.join-button {
-			margin-top: 0%;
-			margin-bottom: 2%;
-		}
-	}
-	/* Galaxy Fold 280w x 653h */
-	@media screen and (max-width: 280px) and (max-height: 653px) {
-		.container {
-			padding: 1vh;
-			padding-bottom: 1.5vh;
-		}
-		.groups-img {
-			margin-top: -10vh;
-		}
-		.members {
-			margin-bottom: 10%;
-		}
-		.members-icons {
-			width: 43vw;
-		}
-		.icon {
-			width: 6vw;
-			height: 6vw;
-			margin-right: 1vw;
-		}
-		h2 {
-			margin-top: 5%;
-			margin: 5% 0% -4% 0%;
-			position: relative;
-			font-size: 2vh;
-		}
-		p {
-			margin-top: 0%;
-			font-size: 1.3vh;
-		}
-		.text {
-			margin-bottom: 5%;
-		}
-		.join-button {
-			margin-top: 0%;
-			margin-bottom: 5%;
+			margin-top: 0px;
 		}
 	}
 </style>

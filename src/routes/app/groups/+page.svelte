@@ -7,10 +7,14 @@
 </script>
 
 <body>
-	<div class="frame">
+	<div class="frame">			
 		<HeaderComponent title="Groups"/>
-		<GroupsSelectorComponent />
-		<GroupCardContainerComponent />
+		<div id="content">
+			<FeaturedGroupComponent data={data}/>
+			<GroupsSelectorComponent />
+			<GroupCardContainerComponent />
+		</div>
+		
 	</div>
 </body>
 
@@ -28,5 +32,11 @@
 		flex-direction: column;
 		flex-wrap: nowrap;
 		justify-content: flex-start;
+	}
+
+	#content {
+		width: 90%;
+		margin-left: auto;
+		margin-right: auto;
 	}
 </style>
