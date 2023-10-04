@@ -71,13 +71,11 @@
 
 	.left-content {
 		flex-basis: 50vw;
-		border: 1px solid red;
 		padding: 5px;
 	}
 
 	.right-content {
 		flex-basis: 50vw;
-		border: 1px solid blue;
 		padding: 10px;
 
 		padding-bottom: 50px; /* Add extra padding at the bottom */
@@ -172,9 +170,9 @@
 		}
 	}
 
-	@media screen and (max-width: 1200px) {
+	@media screen and (max-width: 1280px) {
 		.container {
-			width: 90%;
+			width: 75%;
 		}
 		#group-name {
 			font-size: 1.8rem;
@@ -189,7 +187,7 @@
 
 	@media screen and (max-width: 992px) {
 		.container {
-			width: 95%;
+			width: 100%;
 		}
 		#group-name {
 			font-size: 1.6rem;
@@ -229,7 +227,7 @@
 			font-size: 0.8rem;
 		}
 		#group-description {
-			font-size: 0.6rem;
+			font-size: 0.5rem;
 		}
 
 		#members-icons {
@@ -237,8 +235,9 @@
 			column-gap: 2px;
 		}
 		.icon {
-			width: 7vw;
-			height: 7vw;
+			width: 6vw;
+			height: 6vw;
+			margin-top: 0px;
 		}
 	}
 </style>
