@@ -7,17 +7,11 @@
 		<!-- Home/Group's page -->
 		<img src="/Icons/Navbar Icons/Home.svg" alt="Home Icon" class="navIcon" />
 	</a>
-	<a href="/chat">
-		<img src="/Icons/Navbar Icons/Chat.svg" alt="Chat Icon" class="navIcon" />
-	</a>
 
 	<a href="/create" class="plusButton">
 		<img src="/Icons/Navbar Icons/Plus.svg" alt="Plus Icon" class="plusIcon" />
 	</a>
 
-	<a href="/notifications">
-		<img src="/Icons/Navbar Icons/Notification.svg" alt="Notification Icon" class="navIcon" />
-	</a>
 	<a href="/app/profile">
 		<img src="/Icons/Navbar Icons/Profile.svg" alt="Profile Icon" class="navIcon" />
 	</a>
@@ -33,7 +27,7 @@
 		bottom: 2.5%;
 		margin-left: auto;
 		margin-right: auto;
-		width: 69%;
+		width: 50%;
 		max-width: 850px;
 		height: 4.72vh; /* 4.72% of viewport */
 
