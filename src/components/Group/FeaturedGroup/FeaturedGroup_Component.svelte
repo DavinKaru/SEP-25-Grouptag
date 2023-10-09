@@ -103,6 +103,7 @@
 
 	#group-img {
 		width: 100%;
+		min-height: 93px;
 		border-radius: 10px;
 	}
 
