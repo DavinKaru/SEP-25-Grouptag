@@ -7,14 +7,13 @@
 </script>
 
 <body>
-	<div class="frame">			
-		<HeaderComponent title="Groups"/>
+	<div class="frame">
+		<HeaderComponent title="Groups" />
 		<div id="content">
-			<FeaturedGroupComponent data={data}/>
+			<FeaturedGroupComponent {data} />
 			<GroupsSelectorComponent />
-			<GroupCardContainerComponent />
+			<GroupCardContainerComponent groups={data.Groups} />
 		</div>
-		
 	</div>
 </body>
 

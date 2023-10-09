@@ -1,6 +1,22 @@
 <script>
 	import GroupCardComponent from './GroupCard/GroupCard_Component.svelte';
+
 	let innerWidth = 0;
+	let cardsPerRow = 0;
+	export let groups = [];
+	console.log('Groups in GroupCardComponent:', groups);
+	$: {
+		if (innerWidth >= 1100) {
+			cardsPerRow = 5;
+		} else if (innerWidth >= 700 && innerWidth <= 1100) {
+			cardsPerRow = 4;
+		} else {
+			cardsPerRow = 2;
+		}
+	}
+
+	const maxCards = 10; // Limit to 10 cards at most
+	const limitedGroups = groups.slice(0, maxCards); // Take only the first 10
 </script>
 
 <svelte:window bind:innerWidth />
@@ -11,61 +27,49 @@
 <!--If the device is a very large Tablet or PC-->
 {#if innerWidth >= 1100}
 	<div class="group-card-container">
-		<div class="row">
-			<GroupCardComponent />
-			<GroupCardComponent />
-            <GroupCardComponent />
-            <GroupCardComponent />
-			<GroupCardComponent />
-		</div>
-		<div class="row">
-			<GroupCardComponent />
-			<GroupCardComponent />
-            <GroupCardComponent />
-            <GroupCardComponent />
-			<GroupCardComponent />
-		</div>
+		{#each limitedGroups as _, i}
+			{#if i % cardsPerRow === 0}
+				<div class="row">
+					{#each limitedGroups.slice(i, i + cardsPerRow) as group}
+						<GroupCardComponent {group} />
+					{/each}
+				</div>
+			{/if}
+		{/each}
 		<div id="load" style="margin-bottom:12vh;">
 			<p>Load more...</p>
 		</div>
 	</div>
-    
 
-<!--If the device is a Tablet or PC-->
+	<!--If the device is a Tablet or PC-->
 {:else if innerWidth >= 700 && innerWidth <= 1100}
 	<div class="group-card-container">
-		<div class="row">
-			<GroupCardComponent />
-			<GroupCardComponent />
-			<GroupCardComponent />
-			<GroupCardComponent />
-		</div>
-		<div class="row">
-			<GroupCardComponent />
-			<GroupCardComponent />
-			<GroupCardComponent />
-			<GroupCardComponent />
-		</div>
+		{#each limitedGroups as _, i}
+			{#if i % cardsPerRow === 0}
+				<div class="row">
+					{#each limitedGroups.slice(i, i + cardsPerRow) as group}
+						<GroupCardComponent {group} />
+					{/each}
+				</div>
+			{/if}
+		{/each}
 		<div id="load" style="margin-bottom:10vh;">
 			<p>Load more...</p>
 		</div>
 	</div>
-    
-<!--If the device is a Smartphone-->
+
+	<!--If the device is a Smartphone-->
 {:else}
 	<div class="group-card-container">
-		<div class="row">
-			<GroupCardComponent />
-			<GroupCardComponent />
-		</div>
-		<div class="row">
-			<GroupCardComponent />
-			<GroupCardComponent />
-		</div>
-		<div class="row">
-			<GroupCardComponent />
-			<GroupCardComponent />
-		</div>
+		{#each limitedGroups as _, i}
+			{#if i % cardsPerRow === 0}
+				<div class="row">
+					{#each limitedGroups.slice(i, i + cardsPerRow) as group}
+						<GroupCardComponent {group} />
+					{/each}
+				</div>
+			{/if}
+		{/each}
 		<div id="load" style="margin-bottom:10vh;">
 			<p>Load more...</p>
 		</div>
@@ -74,11 +78,11 @@
 
 <style>
 	.group-card-container {
-		display: flex; 
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+	}
 
 	.row {
 		display: flex;
