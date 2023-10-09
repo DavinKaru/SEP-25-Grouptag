@@ -1,55 +1,74 @@
-<!-- Groups Header Component-->
+<!-- Featured Group Component-->
 <script>
 	import TagIcon from '../../TagIcons/TagIcon_Component.svelte'; // Import the TagIcon component
-	export let data; // Receive data as a prop from the parent component
+	export let data; // Receive data
 	const { Groups, GroupUsers, Users } = data;
 	// Debug logs
-	console.log('Data received:', data);
+	console.log('FeaturedGroup Component Data received:', data);
 	// Fetch users using groupid
 	function getUsers(groupId) {
 		const groupUserIds = GroupUsers.filter((gu) => gu.group_id === groupId).map((gu) => gu.user_id);
 		const users = Users.filter((user) => groupUserIds.includes(user.user_id));
 		// Debug logs
-		console.log('Group User IDs:', groupUserIds);
-		console.log('Users:', users);
+		// console.log('Group User IDs:', groupUserIds);
+		// console.log('Users:', users);
 		return users;
 	}
+
+	//const featuredGroup = Groups[0]; // Current this only gets the first group
+	const featuredGroups = Groups.slice(0, 3); // Get the first 3 featured groups
 </script>
 
-<div class="container">
-	{#each Groups as group}
-		<div class="left-content">
-			<img src={group.logo_url} alt="Featued Group Logo" id="group-img" />
-			<div id="members">
-				<h2 id="members-header">Members</h2>
-				<div id="members-icons">
-					{#each getUsers(group.group_id) as user, i}
-						<!-- Only show the first 6 users -->
-						{#if i < 6}
-							<span class="icon" style="background-image: url({user.image_url});" />
-						{/if}
-					{/each}
+<div class="carousel-container">
+	{#each featuredGroups as featuredGroup}
+		<div class="carousel-item">
+			<div class="container">
+				<div class="left-content">
+					<img src={featuredGroup.banner_url} alt="Featued Group Logo" id="group-img" />
+					<div id="members">
+						<h2 id="members-header">Members</h2>
+						<div id="members-icons">
+							{#each getUsers(featuredGroup.group_id) as user, i}
+								<!-- Only show the first 6 users -->
+								{#if i < 6}
+									<span class="icon" style="background-image: url({user.image_url});" />
+								{/if}
+							{/each}
+						</div>
+					</div>
+				</div>
+				<div class="right-content">
+					<div class="text">
+						<h1 id="group-name">{featuredGroup.name}</h1>
+						<p id="group-description">{featuredGroup.description}</p>
+					</div>
+					<div id="tags">
+						{#each featuredGroup.tags as tag}
+							<TagIcon text={tag.name} />
+						{/each}
+					</div>
+
+					<a href="default" id="join-button">Join Group</a>
 				</div>
 			</div>
-		</div>
-
-		<div class="right-content">
-			<div class="text">
-				<h1 id="group-name">{group.name}</h1>
-				<p id="group-description">{group.description}</p>
-			</div>
-			<div id="tags">
-				{#each group.tags as tag}
-					<TagIcon text={tag.name} />
-				{/each}
-			</div>
-
-			<a href="default" id="join-button">Join Group</a>
 		</div>
 	{/each}
 </div>
 
 <style>
+	.carousel-container {
+		display: flex;
+		overflow-x: scroll;
+		scroll-snap-type: x mandatory;
+		webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+	}
+
+	.carousel-item {
+		flex: 0 0 auto;
+		width: 100%;
+		scroll-snap-align: start;
+		scroll-snap-stop: always; /* Optional: Stops at this element during the scrolling */
+	}
 	.container {
 		/* Colors */
 		background-color: rgba(255, 255, 255, 0.127);

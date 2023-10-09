@@ -1,21 +1,23 @@
 <script>
 	import TagIconComponent from '../../../TagIcons/TagIcon_Component.svelte';
+	export let group;
 </script>
 
 <div id="group-card">
 	<!--Two rows..-->
 
 	<div id="row1">
-		<img src="/razorbacks-logo.svg" alt="Company Logo" />
+		<img id="logo" src={group.logo_url} alt="Group Logo" />
 	</div>
 
 	<div id="row2">
-		<h1>Swinburne Razorbacks</h1>
-		<p>Representing Swinburne on the field since 1983.</p>
+		<h1>{group.name}</h1>
+		<p>{group.short_description}</p>
+
 		<div id="tag-icons">
-			<TagIconComponent text="Swinburne" />
-			<TagIconComponent text="Mascot" />
-			<TagIconComponent text="Students" />
+			{#each group.tags as tag}
+				<TagIconComponent text={tag.name} />
+			{/each}
 		</div>
 	</div>
 </div>
@@ -56,6 +58,16 @@
 		width: 10rem;
 		flex-wrap: wrap;
 		gap: 3px;
+	}
+
+	#logo {
+		width: 100%;
+		min-width: 160px;
+		max-width: 160px;
+		height: 100%;
+		min-height: 160px;
+		max-height: 160px;
+		border-radius: 10px;
 	}
 
 	h1 {
