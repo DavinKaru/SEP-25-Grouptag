@@ -66,6 +66,7 @@
 	.carousel-item {
 		flex: 0 0 auto;
 		width: 100%;
+		margin-right: 2%;
 		scroll-snap-align: start;
 		scroll-snap-stop: always; /* Optional: Stops at this element during the scrolling */
 	}
