@@ -15,7 +15,6 @@
 		return users;
 	}
 
-	//const featuredGroup = Groups[0]; // Current this only gets the first group
 	const featuredGroups = Groups.slice(0, 3); // Get the first 3 featured groups
 </script>
 
@@ -68,7 +67,7 @@
 		width: 100%;
 		margin-right: 2%;
 		scroll-snap-align: start;
-		scroll-snap-stop: always; /* Optional: Stops at this element during the scrolling */
+		scroll-snap-stop: always;
 	}
 	.container {
 		/* Colors */
@@ -97,8 +96,7 @@
 	.right-content {
 		flex-basis: 50vw;
 		padding: 10px;
-
-		padding-bottom: 50px; /* Add extra padding at the bottom */
+		padding-bottom: 50px;
 		position: relative;
 	}
 
