@@ -37,6 +37,7 @@
     "@capacitor/cli": "^5.2.2",
     "@capacitor/core": "^5.2.2",
     "@capacitor/ios": "^5.2.2",
-    "@supabase/supabase-js": "^2.36.0"
+    "@supabase/supabase-js": "^2.36.0",
+    "svelte-navigator": "^3.2.2"
   }
 }
