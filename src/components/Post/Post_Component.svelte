@@ -11,16 +11,17 @@
     export let data;
 
     const url = $page.url;
-    const post_id = url.searchParams.get('post_id');
+    const post_id = url.searchParams.get('id');
 
-    console.log(data.Posts);
-
-    let post = data.Posts.find((p) => p.post_id === "0258ffdf-2deb-4b84-8e05-75bd1a63c7da");
+    let post = data.Posts.find((p) => p.post_id === post_id);
 
     // Grab necessary data from post
     
         // Post Title
         let postTitle = post.title;
+
+        // Post Time
+        let postTime = post.created_at;
 
         // Traverse tables and grab author name...
         let postAuthorID = post.user_id;
@@ -49,8 +50,12 @@
 
 <AppHeaderComponent title="View Post" />
 <div id="post-component">
-	<PostDetailsComponent {postTitle} {postAuthorName} {postGroupName} {postGroupLogo} {postTags}/>
-	<PostMedia {postMedia}/>
+	<PostDetailsComponent {postTitle} {postTime} {postAuthorName} {postGroupName} {postGroupLogo} {postTags}/>
+
+    {#if postMedia != null}
+        <PostMedia {postMedia}/>
+    {/if}
+
     <PostContent {postContent}/>
     <PostCommentsContainerComponent />
 </div>
