@@ -1,10 +1,11 @@
 <script>
     import PostComponent from "../../../components/Post/Post_Component.svelte";
+	export let data;
 </script>
 
 <body>
 	<div class="frame">
-        <PostComponent />
+        <PostComponent {data}/>
 	</div>
 </body>
 

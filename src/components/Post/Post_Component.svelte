@@ -1,16 +1,62 @@
 <script>
+// @ts-nocheck
+
 	import AppHeaderComponent from '../AppHeader/AppHeader_Component.svelte';
 	import PostDetailsComponent from './PostDetails/PostDetails_Component.svelte';
 	import PostMedia from './PostMedia/PostMedia_Component.svelte';
 	import PostContent from './PostContent/PostContent.svelte';
 	import PostCommentsContainerComponent from './PostCommentsContainer/PostCommentsContainer_Component.svelte';
+    import { page } from '$app/stores';  
+
+    export let data;
+
+    const url = $page.url;
+    const post_id = url.searchParams.get('id');
+
+    let post = data.Posts.find((p) => p.post_id === post_id);
+
+    // Grab necessary data from post
+    
+        // Post Title
+        let postTitle = post.title;
+
+        // Post Time
+        let postTime = post.created_at;
+
+        // Traverse tables and grab author name...
+        let postAuthorID = post.user_id;
+        let postAuthor = data.Users.find((u) => u.user_id === postAuthorID);
+        let postAuthorName = postAuthor.first_name + " " + postAuthor.last_name;
+
+        // Same as above for the group...
+        let postGroupID = post.group_id;
+        let postGroup = data.Groups.find((g) => g.group_id === postGroupID);
+        let postGroupName = postGroup.name;
+        let postGroupLogo = postGroup.logo_url;
+
+        // Post Tags
+        let postTags = post.tags;
+        console.log(postTags);
+
+        // Post Media
+        let postMedia = post.media_url;
+
+        // Post Content
+        let postContent = post.content;
+
+    console.log(post);
+
 </script>
 
 <AppHeaderComponent title="View Post" />
 <div id="post-component">
-	<PostDetailsComponent />
-	<PostMedia />
-    <PostContent />
+	<PostDetailsComponent {postTitle} {postTime} {postAuthorName} {postGroupName} {postGroupLogo} {postTags}/>
+
+    {#if postMedia != null}
+        <PostMedia {postMedia}/>
+    {/if}
+
+    <PostContent {postContent}/>
     <PostCommentsContainerComponent />
 </div>
 
