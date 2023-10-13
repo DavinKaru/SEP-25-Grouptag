@@ -1,14 +1,25 @@
 <script>
-	import ProfileIcon from '../../ProfileIcon/ProfileIcon_component.svelte';
+	// @ts-nocheck
+
 	import TagIconComponent from '../../../TagIcons/TagIcon_Component.svelte';
+	import GroupIconComponent from '../../../Icons/GroupIcon/GroupIcon_Component.svelte';
+	import { goto } from '$app/navigation';
+
+	/**
+	 * @type {{ user_id: any; group_id: any; created_at: string | number | Date; title: any; content: any; tags: any; }}
+	 */
 
 	export let post;
 	export let users;
+	export let groups;
+
 	let user = users.find((u) => u.user_id === post.user_id);
 
-	export let groups;
 	let group = groups.find((g) => g.group_id === post.group_id);
 	let groupName = group ? group.name : 'Unknown Group';
+	
+	// Get Group Logo/Icon
+	let postGroupLogo = group ? group.logo_url : null;
 
 	//Calculation for timestamp
 	let createdAt = new Date(post.created_at);
@@ -23,38 +34,55 @@
 	let minutes = Math.floor(difference / 1000 / 60);
 	let hours = Math.floor(minutes / 60);
 
+	/**
+	 * @type {string}
+	 */
 	let timeSince;
 
 	if (hours > 0) {
-		timeSince = `${hours} HOURS AGO`;
+		if (hours > 24) {
+			let days = Math.floor(hours / 24);
+			if (days > 31) {
+				let months = Math.floor(days / 31);
+				if (months > 12) {
+					let years = Math.floor(months / 12);
+					timeSince = `${years} YEARS AGO`;
+				} else {
+					timeSince = `${months} MONTHS AGO`;
+				}
+			} else {
+				timeSince = `${days} DAYS AGO`;
+			}
+		} else {
+			timeSince = `${hours} HOURS AGO`;
+		}
 	} else {
 		timeSince = `${minutes} MINUTES AGO`;
 	}
 
-	// Debug logs
-	console.log('MyPosts:', post.tags);
+	function goToPost() {
+		let postId = post.post_id;
+		goto('/app/post?id=' + postId);
+	}
 </script>
 
-<div id="post-card">
-	<!-- Left hand side contains post media or group logo , right side contains details-->
-	<div id="post-media">
-		<img src="/temp_post_media.svg" alt="Temp Post Media" />
-	</div>
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div id="post-card" on:click={goToPost}>
+	
+	<!--If Post Media is not null -->
+	{#if post.media_url != null}
+		<!-- Left hand side contains post media or group logo , right side contains details-->
+		<div id="post-media">
+			<img src={post.media_url} alt="Temp Post Media" />
+		</div>
+	{/if}
 
 	<!--Right Hand Side-->
 	<div id="post-content">
 		<!--Row 1-->
 		<div id="row-1">
-			<!--Column 1 of Row 1-->
-			<div id="column-1">
-				<ProfileIcon --width="3rem" />
-			</div>
-
-			<!--Column 2 of Row 1-->
-			<div id="column-2">
-				<h1>{post.title}</h1>
-				<h2>{user ? `${user.first_name} ${user.last_name}` : 'Unknown Author'}</h2>
-			</div>
+			<h1>{post.title}</h1>
 		</div>
 
 		<!--Row 2-->
@@ -67,7 +95,10 @@
 					<TagIconComponent text={tag.name} />
 				{/each}
 			</div>
-			<p id="post-group">{groupName}</p>
+			<div id="post-group-details">
+				<GroupIconComponent {postGroupLogo} />
+				<p id="post-group">{groupName}</p>
+			</div>
 			<p id="post-timestamp">{timeSince}</p>
 		</div>
 	</div>
@@ -80,12 +111,10 @@
 
 		/* Dimensions */
 		margin-top: 10px;
-		height: 22vh; 
+		height: fit-content;
 
 		/* If device screen is too narrow, force a certain height for component */
-		@media screen and (max-width: 400px) {
-			min-height: 210px; /* Force card to render at a minimun of 150 pixels */
-		}
+
 		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
 
 		margin-left: auto;
@@ -93,7 +122,6 @@
 
 		/* Flexbox layout */
 		display: flex;
-		align-items: center;
 		flex-direction: row;
 		flex-wrap: nowrap;
 	}
@@ -104,8 +132,14 @@
 		justify-content: center;
 		border-radius: 10px 0px 00px 10px;
 		width: 50%;
-		height: 100%;
 		overflow: hidden;
+	}
+
+	#post-group-details {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 5px;
 	}
 
 	#post-media > img {
@@ -113,40 +147,22 @@
 		width: 100%;
 	}
 
+	#row-2 {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+	}
+
 	/* Again, use 50% of the space provided by the flexbox + split right panel into columns */
 	#post-content {
-		margin-top: 25px;
+		margin-top: 10px;
 		margin-bottom: 10px;
 		margin-left: 10px;
 		margin-right: 10px;
 		display: flex;
 		flex-direction: column;
 		flex-wrap: nowrap;
-		width: 50%;
 		height: 100%;
-	}
-
-	/* Another flexbox! This one for the first row of the right panel (Profile Picture + Title + Author) */
-	#row-1 {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-items: flex-end;
-		gap: 10px;
-	}
-
-	/* Center Post Title + Post Author */
-	#column-2 {
-		margin-top: auto;
-		margin-bottom: auto;
-	}
-
-	#row-2 {
-		margin-top: 10px;
-
-		display: flex;
-		flex-direction: column;
-		gap: 5px;
 	}
 
 	/* Some container styling for tag icon components */
@@ -166,18 +182,14 @@
 		color: white;
 	}
 
-	h2 {
-		font-size: 0.75rem;
-	}
-
 	p {
 		font-size: 0.65rem;
 	}
 
 	/* Tablet + PC Layout */
 	@media only screen and (min-width: 600px) {
-		#post-card {
-			height: 175px;
+		#post-card, img {
+			max-height: 175px;
 		}
 	}
 </style>

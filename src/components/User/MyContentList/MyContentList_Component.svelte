@@ -14,9 +14,6 @@
 	export let users = [];
 	
 	let filteredPosts = posts.filter((post) => post.user_id === user_id);
-
-	console.log('MyContentList', filteredPosts);
-	console.log('Groups in MyContentList:', groups);
 </script>
 
 <div id="ContentList">

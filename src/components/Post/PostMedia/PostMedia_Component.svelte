@@ -1,4 +1,10 @@
-<img src="/temp-post-media.jpg" alt="Temp Post Media" />
+<script>
+    export let postMedia;
+
+    console.log(postMedia);
+</script>
+
+<img src={postMedia} alt="Post Media" />
 
 <style>
     
@@ -14,4 +20,5 @@
             width: 55%;
         }
 
-}</style>
+}
+</style>
