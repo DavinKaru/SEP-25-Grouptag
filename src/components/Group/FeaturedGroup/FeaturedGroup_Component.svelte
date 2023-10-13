@@ -60,6 +60,7 @@
 		overflow-x: scroll;
 		scroll-snap-type: x mandatory;
 		webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+		margin-top: 2%;
 	}
 
 	.carousel-item {
