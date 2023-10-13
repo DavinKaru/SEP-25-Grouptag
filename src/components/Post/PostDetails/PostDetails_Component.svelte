@@ -1,25 +1,33 @@
 <script>
+// @ts-nocheck
+
     import ProfileIconComponent from "../../User/ProfileIcon/ProfileIcon_component.svelte";
     import GroupIconComponent from "../../Icons/GroupIcon/GroupIcon_Component.svelte";
     import TagIconComponent from "../../TagIcons/TagIcon_Component.svelte";
+
+    export let postTitle;
+    export let postAuthorName;
+    export let postGroupName;
+    export let postGroupLogo;
+    export let postTags;
+
 </script>
 
 <div id="post-details">
-    <h1 id="post-title">Post Title</h1>
+    <h1 id="post-title">{postTitle}</h1>
     <div id="post-author">
         <ProfileIconComponent --width='25px'/>
-        <h2 id="author-name">Post Author</h2>
+        <h2 id="author-name">{postAuthorName}</h2>
     </div>
     <div id="post-group">
-        <GroupIconComponent/>
-        <h2 id="group-name">Group Name</h2>
+        <GroupIconComponent {postGroupLogo}/>
+        <h2 id="group-name">{postGroupName}</h2>
     </div>
     <div id="post-tags">
-        <TagIconComponent text="Tag 1"/>
-        <TagIconComponent text="Tag 2"/>
-        <TagIconComponent text="Tag 3"/>
+        {#each postTags as tag}
+            <TagIconComponent text={tag.name}/>
+        {/each}
     </div>
-
 </div>
 
 <style>

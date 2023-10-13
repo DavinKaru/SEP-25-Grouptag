@@ -1,12 +1,21 @@
 <script>
-	import ProfileIcon from '../../ProfileIcon/ProfileIcon_component.svelte';
 	import TagIconComponent from '../../../TagIcons/TagIcon_Component.svelte';
+	import { goto } from '$app/navigation';
+
+	// @ts-ignore
+	/**
+	 * @type {{ user_id: any; group_id: any; created_at: string | number | Date; title: any; content: any; tags: any; }}
+	 */
 
 	export let post;
 	export let users;
-	let user = users.find((u) => u.user_id === post.user_id);
-
 	export let groups;
+
+	// @ts-ignore
+	let user = users.find((u) => u.user_id === post.user_id);
+	console.log(user);
+
+	// @ts-ignore
 	let group = groups.find((g) => g.group_id === post.group_id);
 	let groupName = group ? group.name : 'Unknown Group';
 
@@ -17,25 +26,54 @@
 	let now = new Date();
 
 	// Calculate the difference
+	// @ts-ignore
 	let difference = now - createdAt;
 
 	//Conversion
 	let minutes = Math.floor(difference / 1000 / 60);
 	let hours = Math.floor(minutes / 60);
 
+	// @ts-ignore
+	/**
+	 * @type {string}
+	 */
 	let timeSince;
 
 	if (hours > 0) {
-		timeSince = `${hours} HOURS AGO`;
+		if(hours > 24) {
+			let days = Math.floor(hours / 24);
+			if (days > 31) {
+				let months = Math.floor(days / 31);
+				if (months > 12) {
+					let years = Math.floor(months / 12);
+					timeSince = `${years} YEARS AGO`;
+				}
+				else {
+					timeSince = `${months} MONTHS AGO`;
+				}
+			}
+			else {
+				timeSince = `${days} DAYS AGO`; 
+			}
+		}
+		else {
+			timeSince = `${hours} HOURS AGO`;
+		}
 	} else {
 		timeSince = `${minutes} MINUTES AGO`;
 	}
 
-	// Debug logs
-	console.log('MyPosts:', post.tags);
+	function goToPost() {
+
+		// @ts-ignore
+		let postId = post.post_id;
+		goto('/app/post?id=' + postId);
+	}
 </script>
 
-<div id="post-card">
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<div id="post-card" on:click={goToPost}>
 	<!-- Left hand side contains post media or group logo , right side contains details-->
 	<div id="post-media">
 		<img src="/temp_post_media.svg" alt="Temp Post Media" />
@@ -45,16 +83,7 @@
 	<div id="post-content">
 		<!--Row 1-->
 		<div id="row-1">
-			<!--Column 1 of Row 1-->
-			<div id="column-1">
-				<ProfileIcon --width="3rem" />
-			</div>
-
-			<!--Column 2 of Row 1-->
-			<div id="column-2">
-				<h1>{post.title}</h1>
-				<h2>{user ? `${user.first_name} ${user.last_name}` : 'Unknown Author'}</h2>
-			</div>
+			<h1>{post.title}</h1>
 		</div>
 
 		<!--Row 2-->
@@ -80,7 +109,7 @@
 
 		/* Dimensions */
 		margin-top: 10px;
-		height: 22vh; 
+		height: 22vh;
 
 		/* If device screen is too narrow, force a certain height for component */
 		@media screen and (max-width: 400px) {
@@ -126,24 +155,8 @@
 		height: 100%;
 	}
 
-	/* Another flexbox! This one for the first row of the right panel (Profile Picture + Title + Author) */
-	#row-1 {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-items: flex-end;
-		gap: 10px;
-	}
-
 	/* Center Post Title + Post Author */
-	#column-2 {
-		margin-top: auto;
-		margin-bottom: auto;
-	}
-
 	#row-2 {
-		margin-top: 10px;
-
 		display: flex;
 		flex-direction: column;
 		gap: 5px;
@@ -164,10 +177,6 @@
 	h1 {
 		font-size: 1rem;
 		color: white;
-	}
-
-	h2 {
-		font-size: 0.75rem;
 	}
 
 	p {
