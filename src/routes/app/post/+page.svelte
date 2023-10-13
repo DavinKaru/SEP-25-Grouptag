@@ -22,5 +22,6 @@
 		flex-direction: column;
 		flex-wrap: nowrap;
 		justify-content: flex-start;
+		overflow: auto;
 	}
 </style>
