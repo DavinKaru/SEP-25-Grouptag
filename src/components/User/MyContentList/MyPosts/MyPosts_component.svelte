@@ -10,12 +10,14 @@
 	 */
 
 	export let post;
-	export let users;
-	export let groups;
+	let user = post.users;
+	let group = post.groups;
+	//export let users;
+	//export let groups;
 
-	let user = users.find((u) => u.user_id === post.user_id);
+	//let user = users.find((u) => u.user_id === post.user_id);
 
-	let group = groups.find((g) => g.group_id === post.group_id);
+	//let group = groups.find((g) => g.group_id === post.group_id);
 	let groupName = group ? group.name : 'Unknown Group';
 	
 	// Get Group Logo/Icon

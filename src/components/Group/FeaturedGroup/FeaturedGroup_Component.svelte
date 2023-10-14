@@ -4,11 +4,14 @@
 	export let data; // Receive data
 	const { Groups, GroupUsers, Users } = data;
 	// Debug logs
-	console.log('FeaturedGroup Component Data received:', data);
+	//console.log('FeaturedGroup Component Data received:', data);
 	// Fetch users using groupid
 	function getUsers(groupId) {
-		const groupUserIds = GroupUsers.filter((gu) => gu.group_id === groupId).map((gu) => gu.user_id);
-		const users = Users.filter((user) => groupUserIds.includes(user.user_id));
+		const users = Users.filter((u) => u.group_id === groupId).map((u) => u.image_url);
+		//console.log(users);
+		
+		//const groupUserIds = GroupUsers.filter((gu) => gu.group_id === groupId).map((gu) => gu.user_id);
+		//const users = Users.filter((user) => groupUserIds.includes(user.user_id));
 		// Debug logs
 		// console.log('Group User IDs:', groupUserIds);
 		// console.log('Users:', users);
@@ -27,10 +30,10 @@
 					<div id="members">
 						<h2 id="members-header">Members</h2>
 						<div id="members-icons">
-							{#each getUsers(featuredGroup.group_id) as user, i}
+							{#each getUsers(featuredGroup.group_id) as image_url, i}
 								<!-- Only show the first 6 users -->
 								{#if i < 6}
-									<span class="icon" style="background-image: url({user.image_url});" />
+									<span class="icon" style="background-image: url({image_url});" />
 								{/if}
 							{/each}
 						</div>

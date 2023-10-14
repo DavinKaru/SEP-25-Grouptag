@@ -1,56 +1,59 @@
 <script>
-// @ts-nocheck
-
-	import MyPostsComponent from '../../../components/User/MyContentList/MyPosts/MyPosts_component.svelte';
-	import MyExperienceComponent from '../../../components/User/MyContentList/MyExperience/MyExperience_component.svelte';
-	import MyGroupsComponent from '../../../components/User/MyContentList/MyGroups/MyGroups_component.svelte';
-	import MyMutualsComponent from '../../../components/User/MyContentList/MyMutuals/MyMutuals_Component.svelte';
-
-	export let content = 'Experience';
-
-	export let posts = [];
-	export let groups = [];
-	export let user_id;
-	export let users = [];
+	// @ts-nocheck
 	
-	let filteredPosts = posts.filter((post) => post.user_id === user_id);
-</script>
-
-<div id="ContentList">
-	<!-- In future this will be used to dynamically generate components and populate the list with them as required. However, as we are not 
-        connecting to the database yet, this is not required currently. -->
-	{#if content == 'Experience'}
-		<p class="year">2023</p>
-		<MyExperienceComponent />
-		<MyExperienceComponent />
-		<p class="year" id="notFirstYear">2022</p>
-		<MyExperienceComponent />
-		<p class="year" id="notFirstYear">2021</p>
-		<MyExperienceComponent />
-		<MyExperienceComponent />
-	{:else if content == 'Posts'}
-		{#each filteredPosts as post}
-			<MyPostsComponent {post} {users} {groups} />
-		{/each}
-	{:else if content == 'Groups'}
-		<MyGroupsComponent />
-		<MyGroupsComponent />
-		<MyGroupsComponent />
-		<MyGroupsComponent />
-		<MyGroupsComponent />
-	{:else if content == 'Mutuals'}
-		<MyMutualsComponent />
-		<MyMutualsComponent />
-		<MyMutualsComponent />
-		<MyMutualsComponent />
-		<MyMutualsComponent />
-	{/if}
-	<div id="page-selectors">
-		<p id="back">Previous Page</p>
-		<p id="page-number">Page 1 of 5</p>
-		<p id="forward">Next Page</p>
+		import MyPostsComponent from '../../../components/User/MyContentList/MyPosts/MyPosts_component.svelte';
+		import MyExperienceComponent from '../../../components/User/MyContentList/MyExperience/MyExperience_component.svelte';
+		import MyGroupsComponent from '../../../components/User/MyContentList/MyGroups/MyGroups_component.svelte';
+		import MyMutualsComponent from '../../../components/User/MyContentList/MyMutuals/MyMutuals_Component.svelte';
+	
+		export let content = 'Experience';
+	
+		export let posts = [];
+		export let groups = [];
+		//console.log(groups)
+		//export let user = [];
+		//export let user_id;
+		export let users = [];
+		
+		//let filteredPosts = posts.filter((post) => post.user_id === user_id);
+	
+		//console.log('MyContentList', filteredPosts);
+		//console.log('Groups in MyContentList:', groups);
+	</script>
+	
+	<div id="ContentList">
+		<!-- In future this will be used to dynamically generate components and populate the list with them as required. However, as we are not 
+			connecting to the database yet, this is not required currently. -->
+		{#if content == 'Experience'}
+			<p class="year">2023</p>
+			<MyExperienceComponent />
+			<MyExperienceComponent />
+			<p class="year" id="notFirstYear">2022</p>
+			<MyExperienceComponent />
+			<p class="year" id="notFirstYear">2021</p>
+			<MyExperienceComponent />
+			<MyExperienceComponent />
+		{:else if content == 'Posts'}
+			<!--{#each filteredPosts as post}-->
+			{#each posts as post}
+				<MyPostsComponent {post}/>
+			{/each}
+		{:else if content == 'Groups'}
+			{#each groups as group}
+				<MyGroupsComponent {group}/>
+			{/each}
+	
+		{:else if content == 'Mutuals'}	
+			{#each users as user}
+				<MyMutualsComponent {user}/>
+			{/each}
+		{/if}
+		<div id="page-selectors">
+			<p id="back">Previous Page</p>
+			<p id="page-number">Page 1 of 5</p>
+			<p id="forward">Next Page</p>
+		</div>
 	</div>
-</div>
 
 <style>
 	.year {

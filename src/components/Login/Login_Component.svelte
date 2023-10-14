@@ -1,14 +1,18 @@
 <script>
 	import ButtonsComponent from '../Buttons/Buttons_Component.svelte';
+	import { enhance} from "$app/forms";
+	import { goto } from '$app/navigation';
+ 
 
 	let email = '';
 	let password = '';
 	let errorEmail = '';
 	let errorPassword = '';
 
+	export let form;
+
 	const validateForm = () => {
 		let isValid = true;
-
 		// Validate email
 		const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 		if (!emailPattern.test(email)) {
@@ -17,7 +21,6 @@
 		} else {
 			errorEmail = '';
 		}
-
 		// Validate password
 		if (password.length < 8) {
 			//subject to change
@@ -26,14 +29,28 @@
 		} else {
 			errorPassword = '';
 		}
-
-		if (isValid) {
-			// Send data to server for further validation after validating email and password
-		}
+		return isValid;
 	};
 </script>
 
-<form on:submit|preventDefault={validateForm}>
+<form id="form" on:submit method="post" action="?/login" 
+	use:enhance={({ formElement, formData, action, cancel, submitter }) => {
+	// `formElement` is this `<form>` element
+	// `formData` is its `FormData` object that's about to be submitted
+	// `action` is the URL to which the form is posted
+	// calling `cancel()` will prevent the submission
+	// `submitter` is the `HTMLElement` that caused the form to be submitted
+	if(!validateForm()){
+		cancel();
+	}
+	return async({result, update}) =>{
+		console.log(result)
+		if(result.status == 200){
+			goto('/app/profile')
+		}
+	};
+}}>
+{#if (form?.success == false)} <span class="error-msg">{form.message}</span> {/if}	
 	<div style="margin-top: 42px;">
 		<div style="margin-bottom: 31px;">
 			<label for="email">University Email</label>
@@ -62,8 +79,15 @@
 		</div>
 	</div>
 
-	<ButtonsComponent text="Login" buttonClass="login-button" />
+	<!--
+		How do you submit form data using anchors?
+		<ButtonsComponent text="Login" buttonClass="login-button" />	
+	-->
+	<input class="button login-button"type="submit" value="Login"/>
+	
+	
 </form>
+
 <a href="/" class="forgot-password">I forgot my password</a>
 
 <style>

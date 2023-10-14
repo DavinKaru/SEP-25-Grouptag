@@ -1,20 +1,21 @@
 <script>
     import ProfileIconComponent from "../../ProfileIcon/ProfileIcon_component.svelte";
+	export let user;
 </script>
 
 <div id="mutual-card">
 	<!--Two columns. Column 2 is split into 3 rows.-->
 
 	<div id="column1">
-		<ProfileIconComponent --width="3rem" />
+		<ProfileIconComponent --width="3rem" image_path={user.image_url}/>
 	</div> 
     <div id="column2">
-        <h1>User Name</h1>
+        <h1>{user.first_name} {user.last_name}</h1>
         <div id="grid">
             <img src="/profile/course.svg" alt="Course" />
-            <p class="courseInfo">Bachelor of Business Studies</p>
+            <p class="courseInfo">{user.course_name}</p>
             <img src="/profile/university.svg" alt="Course" />
-            <p class="courseInfo">Royal Melbourne Institute of Technology</p>
+            <p class="courseInfo">{user.university_name}</p>
             <img src="/profile/location-flag.svg" alt="Course" />
             <p class="courseInfo">Melbourne, Australia</p>
         </div>

@@ -1,11 +1,13 @@
 <script>
 	import ButtonsComponent from "../../Buttons/Buttons_Component.svelte";
+	import {fName, lName, dob, bio} from "../../../routes/welcome/signup/formStore.js"
 </script>
 <form>
 	<div>
 		<div>
 			<label for="fName">First Name</label>
 			<input
+				bind:value={$fName}
 				type="text"
 				id="fName"
 				name="fName"
@@ -18,6 +20,7 @@
 		<div>
 			<label for="lName">Surname</label>
 			<input
+				bind:value={$lName}
 				type="text"
 				id="lName"
 				name="lName"
@@ -29,12 +32,13 @@
 
 		<div>
 			<label for="dob">DOB</label>
-			<input type="date" id="dob" name="dob" class="input-field" style="margin-bottom: 31px;" />
+			<input bind:value={$dob} type="date" id="dob" name="dob" class="input-field" style="margin-bottom: 31px;" />
 		</div>
 
 		<div>
 			<label for="bio">User Bio</label>
 			<input
+				bind:value={$bio}
 				type="text"
 				id="bio"
 				name="bio"

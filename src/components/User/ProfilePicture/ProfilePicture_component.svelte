@@ -1,7 +1,12 @@
+<script>
+	export let user = [];
+</script>
+
+
 <!-- svelte-ignore a11y-img-redundant-alt -->
 <div id="image-container">
-	<img src="/profile-picture.svg" alt="Profile Picture" id="picture" />
-	<p id="name">User Name</p>
+	<img src="{user.image_url}" alt="Profile Picture" id="picture" />
+	<p id="name">{user.first_name} {user.last_name}</p>
 </div>
 
 <style>

@@ -1,14 +1,23 @@
+<script>
+	export let user = [];
+	let thisUser = user.users;
+	let thisCourse = user.university_courses;
+	let thisUni = user.universities;
+	//console.log(user)
+
+</script>
+
 <div id="details">
 	<div id="grid">
 		<img src="/profile/course.svg" alt="Course" />
-		<p class="courseInfo">Bachelor of Computer Science</p>
-		<img src="/profile/university.svg" alt="Course" />
-		<p class="courseInfo">Swinburne University of Technology</p>
-		<img src="/profile/location-flag.svg" alt="Course" />
+		<p class="courseInfo">{thisCourse.name}</p>
+		<img src="/profile/university.svg" alt="University" />
+		<p class="courseInfo">{thisUni.name}</p>
+		<img src="/profile/location-flag.svg" alt="Location" />
 		<p class="courseInfo">Melbourne, Australia</p>
 	</div>
 	<p id="bio">
-		Man, my life is so interesting. I bet you couldn't predict a single thing about my life.
+		{thisUser.bio}
 	</p>
 </div>
 

@@ -3,6 +3,8 @@
 	import LoginComponent from '../../../components/Login/Login_Component.svelte';
 	import BoxComponent from '../../../components/Box/Box_Component.svelte';
 	import HeaderComponent from '../../../components/WelcomeHeader/WelcomeHeader_Component.svelte';
+
+	export let form;
 </script>
 
 <body>
@@ -10,7 +12,7 @@
 		<HeaderComponent text="Great to Have You Back!"/>
 
 		<BoxComponent boxClass="signup-box">
-			<LoginComponent />
+			<LoginComponent {form}/>
 		</BoxComponent>
 	</div>
 </body>

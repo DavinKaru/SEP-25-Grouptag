@@ -1,5 +1,7 @@
 <script>
 	import ButtonsComponent from '../../Buttons/Buttons_Component.svelte';
+	import { university, course } from '../../../routes/welcome/signup/formStore.js';
+
 </script>
 
 <form>
@@ -7,6 +9,7 @@
 		<div>
 			<label for="university">University Name</label>
 			<input
+				bind:value={$university}
 				type="text"
 				id="university"
 				name="university"
@@ -16,8 +19,9 @@
 			/>
 		</div>
 		<div>
-			<label for="course">Course Name</label>
+			<label for="course">Course Name</label> 
 			<input
+				bind:value={$course}
 				type="text"
 				id="course"
 				name="course"

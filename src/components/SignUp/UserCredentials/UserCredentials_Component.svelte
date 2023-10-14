@@ -1,7 +1,16 @@
 <script> 
 	import ButtonsComponent from "../../Buttons/Buttons_Component.svelte";
+	import {university, course, fName, lName, dob, bio} from "../../../routes/welcome/signup/formStore.js"
+	import { enhance } from "$app/forms";
+
 </script>
-<form>
+<form method="post" use:enhance>
+	<input type="hidden" name="university" value={$university}/>
+	<input type="hidden" name="course" value={$course}/>
+	<input type="hidden" name="fName" value={$fName}/>
+	<input type="hidden" name="lName" value={$lName}/>
+	<input type="hidden" name="dob" value={$dob}/>
+	<input type="hidden" name="bio" value={$bio}/>
 	<div>
 		<div>
 			<label for="email">University Email</label>
@@ -20,7 +29,7 @@
 			<input
 				type="password"
 				id="password"
-				name="email"
+				name="password"
 				class="input-field"
 				placeholder="Enter your password here"
 				style="margin-bottom: 31px;"
@@ -38,7 +47,9 @@
 			/>
 		</div>
 	</div>
-	<ButtonsComponent text="Next" buttonClass="signup-button" href="/welcome/signup/industry" />
+	<!--<ButtonsComponent text="Next" buttonClass="signup-button" href="/welcome/signup/industry" />-->
+	<button type="submit">Submit</button>
+	
 </form>
 
 <style>

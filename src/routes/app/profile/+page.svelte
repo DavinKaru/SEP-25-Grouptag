@@ -20,10 +20,10 @@
 		<AppHeaderComponent title="My Profile" />
 		<div id="content">
 			<div id="profilePicture">
-				<ProfilePictureComponent />
+				<ProfilePictureComponent  user={data.user.users}/>
 			</div>
 			<div id="details">
-				<MyDetailsComponent />
+				<MyDetailsComponent user={data.user}/>
 			</div>
 		</div>
 		<div id="userActivity">
@@ -32,7 +32,6 @@
 			<MyContentListComponent
 				content={selected}
 				posts={data.Posts}
-				user_id={currentUserId}
 				users={data.Users}
 				groups={data.Groups}
 			/>
