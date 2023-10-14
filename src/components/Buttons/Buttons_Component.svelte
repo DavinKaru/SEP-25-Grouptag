@@ -2,9 +2,20 @@
 	export let text = 'default text';
 	export let buttonClass = '';
 	export let href = '';
+	export let isAnchor = true; //Default to true
+	export let buttonType = 'button';
+
+	if (!['button', 'submit', 'reset'].includes(buttonType)) {
+		console.error('Invalid buttonType');
+		buttonType = 'button'; // default to "button"
+	}
 </script>
 
-<a {href} class={`button ${buttonClass}`}>{text}</a>
+{#if isAnchor}
+	<a {href} class={`button ${buttonClass}`}>{text}</a>
+{:else}
+	<button type={buttonType} class={`button ${buttonClass}`}>{text}</button>
+{/if}
 
 <style>
 	/* Default button styling */
@@ -55,7 +66,6 @@
 		background-color: #caa2f2;
 		border: none;
 
-
 		/* If screen's height is smaller than that of the required value to display 
 		the form's input fields, adjust their height so they can fit on the screen. */
 		@media screen and (max-height: 700px) {
@@ -63,5 +73,4 @@
 			line-height: 7vh;
 		}
 	}
-
 </style>
