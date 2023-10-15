@@ -1,18 +1,21 @@
 <script>
     import ProfileIconComponent from "../../../User/ProfileIcon/ProfileIcon_component.svelte";
+
+    export let comment;
+    //console.log(comment)
 </script>
 
 <!--Main Div Container, consists of two rows. The first row is split into two columns.-->
 <div id="comment-card">
     <div id="comment-details">
-        <ProfileIconComponent />
+        <ProfileIconComponent image_url={comment.image_url}/>
         <div id="comment-details-text">
-            <h2 id="comment-author">Comment Author</h2>
-            <p id="comment-time">Time</p>
+            <h2 id="comment-author">{comment.first_name} {comment.last_name}</h2>
+            <p id="comment-time">{comment.created_at}</p>
         </div>
     </div>
     <div id="comment-content">
-        <p>Lorem Ipsum is a simple dummy text.</p>
+        <p>{comment.content}</p>
     </div>
 </div>
 

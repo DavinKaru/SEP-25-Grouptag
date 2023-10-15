@@ -6,14 +6,15 @@
 	import PostMedia from './PostMedia/PostMedia_Component.svelte';
 	import PostContent from './PostContent/PostContent.svelte';
 	import PostCommentsContainerComponent from './PostCommentsContainer/PostCommentsContainer_Component.svelte';
-    import { page } from '$app/stores';  
+    //import { page } from '$app/stores';  
 
     export let data;
 
-    const url = $page.url;
-    const post_id = url.searchParams.get('id');
+    //const url = $page.url;
+    //const post_id = url.searchParams.get('id');
 
-    let post = data.Posts.find((p) => p.post_id === post_id);
+    let post = data.Posts[0];
+    //console.log(post)
 
     // Grab necessary data from post
     
@@ -24,13 +25,13 @@
         let postTime = post.created_at;
 
         // Traverse tables and grab author name...
-        let postAuthorID = post.user_id;
-        let postAuthor = data.Users.find((u) => u.user_id === postAuthorID);
+       // let postAuthorID = post.user_id;
+        let postAuthor = data.Users[0];
         let postAuthorName = postAuthor.first_name + " " + postAuthor.last_name;
 
         // Same as above for the group...
-        let postGroupID = post.group_id;
-        let postGroup = data.Groups.find((g) => g.group_id === postGroupID);
+        //let postGroupID = post.group_id;
+        let postGroup = data.Groups[0];
         let postGroupName = postGroup.name;
         let postGroupLogo = postGroup.logo_url;
 
@@ -57,7 +58,7 @@
     {/if}
 
     <PostContent {postContent}/>
-    <PostCommentsContainerComponent />
+    <PostCommentsContainerComponent comments={data.Comments}/>
 </div>
 
 <style>
