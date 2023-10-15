@@ -6,7 +6,6 @@ export const actions = {
     const formData = await request.formData()
     const email = formData.get('email')
     const password = formData.get('password')
-
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,

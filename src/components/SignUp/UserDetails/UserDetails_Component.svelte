@@ -1,8 +1,18 @@
 <script>
 	import ButtonsComponent from "../../Buttons/Buttons_Component.svelte";
 	import {fName, lName, dob, bio} from "../../../routes/welcome/signup/formStore.js"
+	import { enhance } from "$app/forms";
+	import { goto } from "$app/navigation";
+
 </script>
-<form>
+<form method="post" on:submit use:enhance={({ formElement, formData, action, cancel, submitter }) => {
+	return async({result, update}) =>{
+		console.log(result)
+		if(result.status == 200){
+			goto('/welcome/signup/credentials')	
+		}
+	};
+}}>
 	<div>
 		<div>
 			<label for="fName">First Name</label>
@@ -14,6 +24,7 @@
 				class="input-field"
 				placeholder="Enter your first name here"
 				style="margin-bottom: 31px;"
+				required
 			/>
 		</div>
 
@@ -27,12 +38,13 @@
 				class="input-field"
 				placeholder="Enter your surname here"
 				style="margin-bottom: 31px;"
+				required
 			/>
 		</div>
 
 		<div>
 			<label for="dob">DOB</label>
-			<input bind:value={$dob} type="date" id="dob" name="dob" class="input-field" style="margin-bottom: 31px;" />
+			<input bind:value={$dob} type="date" id="dob" name="dob" class="input-field" style="margin-bottom: 31px;" required/>
 		</div>
 
 		<div>
@@ -44,10 +56,12 @@
 				name="bio"
 				class="input-field"
 				placeholder="Enter your User Bio here"
+				required
 			/>
 		</div>
 	</div>
-	<ButtonsComponent text="Next" buttonClass="signup-button" href="/welcome/signup/credentials" />
+	<ButtonsComponent buttonType="submit" text="Next" buttonClass="signup-button" isAnchor={false}/>
+
 </form>
 
 <style>

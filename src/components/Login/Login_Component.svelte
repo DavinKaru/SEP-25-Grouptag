@@ -81,9 +81,11 @@
 
 	<!--
 		How do you submit form data using anchors?
-		<ButtonsComponent text="Login" buttonClass="login-button" />	
+		<ButtonsComponent text="Login" buttonClass="login-button" />
+			<input class="button login-button"type="submit" value="Login"/>
+	
 	-->
-	<input class="button login-button"type="submit" value="Login"/>
+	<ButtonsComponent buttonType="submit" text="Login" buttonClass="login-button" isAnchor={false}/>
 	
 	
 </form>

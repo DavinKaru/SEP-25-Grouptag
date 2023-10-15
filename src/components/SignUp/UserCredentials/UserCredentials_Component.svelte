@@ -21,6 +21,7 @@
 				class="input-field"
 				placeholder="Enter your University Email here"
 				style="margin-bottom: 31px;"
+				required
 			/>
 		</div>
 
@@ -33,6 +34,7 @@
 				class="input-field"
 				placeholder="Enter your password here"
 				style="margin-bottom: 31px;"
+				required
 			/>
 		</div>
 
@@ -44,11 +46,13 @@
 				name="cPassword"
 				class="input-field"
 				placeholder="Re-enter your password here"
+				required
 			/>
 		</div>
 	</div>
-	<!--<ButtonsComponent text="Next" buttonClass="signup-button" href="/welcome/signup/industry" />-->
-	<button type="submit">Submit</button>
+	<!--//<button type="submit">Submit</button>-->	
+	<ButtonsComponent buttonType="submit" text="Next" buttonClass="signup-button" isAnchor={false}/>
+
 	
 </form>
 

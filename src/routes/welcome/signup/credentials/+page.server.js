@@ -10,6 +10,10 @@ export const actions = {
     const fName = formData.get('fName')?.toString()??'';
     const lName = formData.get('lName')?.toString()??'';
     const dob = formData.get('dob')?.toString()??'';
+    const bio = formData.get('bio')?.toString()??'';
+    const university = formData.get('university'.toString())??'';
+    const course = formData.get('course')?.toString()??'';
+
     console.log("start");      
     const { data, error } = await supabase.auth.signUp({
       email,
@@ -19,7 +23,10 @@ export const actions = {
         data:{
           first_name: fName,
           last_name: lName,
-          dob: dob   
+          dob: dob,
+          bio: bio,
+          university: university,
+          course: course
         }
       },
     })
