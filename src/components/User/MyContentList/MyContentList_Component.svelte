@@ -48,6 +48,11 @@
 </div>
 
 <style>
+
+	#ContentList {
+		margin-bottom: 65px;
+	}
+
 	.year {
 		font-size: 12px;
 		color: rgb(215, 215, 213);
