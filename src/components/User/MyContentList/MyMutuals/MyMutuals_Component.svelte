@@ -7,7 +7,7 @@
 	<!--Two columns. Column 2 is split into 3 rows.-->
 
 	<div id="column1">
-		<ProfileIconComponent --width="3rem" image_path={user.image_url}/>
+		<ProfileIconComponent --width="3rem" postAuthorPicture={user.image_url}/>
 	</div> 
     <div id="column2">
         <h1>{user.first_name} {user.last_name}</h1>
