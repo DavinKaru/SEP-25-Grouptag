@@ -1,7 +1,14 @@
 import { supabase } from '$lib/supabaseClient';
 
-export async function load() {
+export async function load({url, locals}) {
     const user_id = 'f8fe9f2f-2ddb-4c64-945a-6f686a0d614f'
+    //const my_user = await locals.getSession()
+    //let user_id= my_user?.user.id;
+    
+    //const target_user_id = url.searchParams.get('id')??'';    
+    //if(target_user_id != ''){
+    //    user_id = target_user_id
+    //}
     //const { data: user  } = await supabase.from('users').select().eq('user_id', user_id).single()
     const { data: user  } = await supabase.from('user_courses').select("users(*), university_courses (*), universities (*)").eq('user_id', user_id).single();
 
