@@ -1,17 +1,13 @@
 <script>
-    export let image_url;
-    
-
+    export let postAuthorPicture = '/temp_profile.svg';
 </script>
-{#if image_url == null}
-    <img src="/temp_profile.svg" alt="Temp Profile Icon"/>
-{:else}
-    <img src={image_url} alt="Temp Profile Icon"/>
-{/if}
+
+<img src={postAuthorPicture} alt="Profile Icon"/>
 
 <style>
 
     img {
         width: var(--width);
+        border-radius: 5px 5px 5px 5px;
     }
 </style>

@@ -58,11 +58,12 @@
 	/* Better to control layout here in then in each individual component (excluding Profile Picture)*/
 
 	/* Tablet + PC Layout */
-	@media only screen and (min-width: 600px) {
+	@media only screen and (min-width: 750px) {
 		#content {
 			display: flex;
 			flex-wrap: nowrap;
 			width: 55%;
+			margin-top: 10px;
 			margin-left: auto;
 			margin-right: auto;
 			gap: 10px;
@@ -84,7 +85,7 @@
 	}
 
 	/* Phone layout */
-	@media only screen and (max-width: 600px) {
+	@media only screen and (max-width: 750px) {
 
 		#content {
 			display: flex;
