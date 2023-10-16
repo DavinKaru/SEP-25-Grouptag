@@ -8,6 +8,7 @@
 	export let postTitle;
 	export let postTime;
 	export let postAuthorName;
+	export let postAuthorPicture;
 	export let postGroupName;
 	export let postGroupLogo;
 	export let postTags;
@@ -53,7 +54,7 @@
 	<h1 id="post-title">{postTitle}</h1>
 	<p id="post-time">{timeSince}</p>
 	<div id="post-author">
-		<ProfileIconComponent --width="25px" />
+		<ProfileIconComponent --width="25px" {postAuthorPicture} />
 		<h2 id="author-name">{postAuthorName}</h2>
 	</div>
 	<div id="post-group">

@@ -23,10 +23,13 @@
         // Post Time
         let postTime = post.created_at;
 
-        // Traverse tables and grab author name...
+        // Traverse tables and grab author name and profile picture...
         let postAuthorID = post.user_id;
         let postAuthor = data.Users.find((u) => u.user_id === postAuthorID);
         let postAuthorName = postAuthor.first_name + " " + postAuthor.last_name;
+        let postAuthorPicture = postAuthor.image_url;
+        
+        console.log(postAuthorPicture);
 
         // Same as above for the group...
         let postGroupID = post.group_id;
@@ -50,7 +53,7 @@
 
 <AppHeaderComponent title="View Post" />
 <div id="post-component">
-	<PostDetailsComponent {postTitle} {postTime} {postAuthorName} {postGroupName} {postGroupLogo} {postTags}/>
+	<PostDetailsComponent {postTitle} {postTime} {postAuthorName} {postAuthorPicture} {postGroupName} {postGroupLogo} {postTags}/>
 
     {#if postMedia != null}
         <PostMedia {postMedia}/>

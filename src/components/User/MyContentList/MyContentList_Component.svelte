@@ -45,11 +45,6 @@
 		<MyMutualsComponent />
 		<MyMutualsComponent />
 	{/if}
-	<div id="page-selectors">
-		<p id="back">Previous Page</p>
-		<p id="page-number">Page 1 of 5</p>
-		<p id="forward">Next Page</p>
-	</div>
 </div>
 
 <style>
@@ -74,14 +69,5 @@
         /* A piece of dodgy code that creates a large bottom so that the navbar does not obscure the content at the bottom of the screen.
             This will be rectified within the actual navbar component in a scalable manner at a later date */
 		margin-bottom: 60px;
-	}
-
-	#back,
-	#forward {
-		font-style: italic;
-	}
-
-	#page-number {
-		margin-right: 25px;
 	}
 </style>
