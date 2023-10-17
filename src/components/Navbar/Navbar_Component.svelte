@@ -3,13 +3,18 @@
 </script>
 
 <nav class="navbar">
+
+	<a href="/create" class="plusButton">
+		<img src="/Icons/Navbar Icons/Plus.svg" alt="Plus Icon" class="plusIcon" />
+	</a>
+
 	<a href="/">
 		<!-- Home/Group's page -->
 		<img src="/Icons/Navbar Icons/Home.svg" alt="Home Icon" class="navIcon" />
 	</a>
 
-	<a href="/create" class="plusButton">
-		<img src="/Icons/Navbar Icons/Plus.svg" alt="Plus Icon" class="plusIcon" />
+	<a href="/app/requests">
+		<img src="/Icons/Navbar Icons/Notification.svg" alt="Notification Icon" class="navIcon" />
 	</a>
 
 	<a href="/app/profile">
