@@ -1,22 +1,29 @@
 <!-- Navbar Component -->
 <script>
+	import PostCreate from '../Post/PostCreate/PostCreate_Component.svelte';
+	let showCreatePost = false;
+	function toggleCreatePost() {
+		showCreatePost = !showCreatePost; //toggle PostCreate
+	}
 </script>
 
 <nav class="navbar">
-
-	<a href="/create" class="plusButton">
-		<img src="/Icons/Navbar Icons/Plus.svg" alt="Plus Icon" class="plusIcon" />
-	</a>
-
+	{#if showCreatePost}
+		<PostCreate />
+	{/if}
 	<a href="/">
 		<!-- Home/Group's page -->
 		<img src="/Icons/Navbar Icons/Home.svg" alt="Home Icon" class="navIcon" />
 	</a>
 
-	<a href="/app/requests">
+ 	<a href="/app/requests">
 		<img src="/Icons/Navbar Icons/Notification.svg" alt="Notification Icon" class="navIcon" />
 	</a>
-
+  
+ 	<button class="plusButton" on:click={toggleCreatePost}>
+		<img src="/Icons/Navbar Icons/Plus.svg" alt="Plus Icon" class="plusIcon" />
+	</button>
+ 
 	<a href="/app/profile">
 		<img src="/Icons/Navbar Icons/Profile.svg" alt="Profile Icon" class="navIcon" />
 	</a>
@@ -42,6 +49,7 @@
 		backdrop-filter: blur(10px); /* bg blur */
 		background-color: rgba(255, 255, 255, 0.2); /* Translucent white background */
 		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+		z-index: 1000;
 	}
 
 	.navbar a {
