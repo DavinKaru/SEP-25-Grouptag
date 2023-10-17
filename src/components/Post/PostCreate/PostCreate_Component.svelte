@@ -10,7 +10,12 @@
 		<input type="text" placeholder="Tags" required />
 		<div class="button-container">
 			<button type="submit" id="mediaButton">Add Media</button>
-			<button type="button" id="groupButton">Select Group</button>
+
+			<select id="groupButton">
+				<option value="" disabled selected>Select Group</option>
+				<option value="group1">Group 1</option>
+				<option value="group2">Group 2</option>
+			</select>
 		</div>
 
 		<button type="submit" id="createButton">Create Post</button>
@@ -110,8 +115,10 @@
 		align-items: center;
 
 		/* Dimensions */
-		height: 20px;
+		height: min-content;
 		width: 50%;
+		max-width: 47%;
+		min-width: 47%;
 		border-radius: 5px;
 		margin-top: 0;
 		padding: 1%;
@@ -122,8 +129,6 @@
 
 		/* Interaction */
 		cursor: pointer;
-		max-width: 47%;
-		min-width: 47%;
 		margin: 5px 0;
 		border: none;
 
@@ -132,5 +137,8 @@
 		font-size: 1rem;
 		text-decoration: none;
 		text-align: center;
+	}
+
+	#groupButton {
 	}
 </style>
