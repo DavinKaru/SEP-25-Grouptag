@@ -60,19 +60,4 @@
 		margin-bottom: -6px;
 		text-align: center;
 	}
-
-	#page-selectors {
-		margin-top: 5px;
-		font-size: 12px;
-		color: rgb(215, 215, 213);
-		display: flex;
-		justify-content: space-between;
-		flex-wrap: nowrap;
-		margin-left: 10%;
-		margin-right: 10%;
-
-        /* A piece of dodgy code that creates a large bottom so that the navbar does not obscure the content at the bottom of the screen.
-            This will be rectified within the actual navbar component in a scalable manner at a later date */
-		margin-bottom: 60px;
-	}
 </style>

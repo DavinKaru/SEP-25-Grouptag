@@ -16,10 +16,14 @@
 		<img src="/Icons/Navbar Icons/Home.svg" alt="Home Icon" class="navIcon" />
 	</a>
 
-	<button class="plusButton" on:click={toggleCreatePost}>
+ 	<a href="/app/requests">
+		<img src="/Icons/Navbar Icons/Notification.svg" alt="Notification Icon" class="navIcon" />
+	</a>
+  
+ 	<button class="plusButton" on:click={toggleCreatePost}>
 		<img src="/Icons/Navbar Icons/Plus.svg" alt="Plus Icon" class="plusIcon" />
 	</button>
-
+ 
 	<a href="/app/profile">
 		<img src="/Icons/Navbar Icons/Profile.svg" alt="Profile Icon" class="navIcon" />
 	</a>
