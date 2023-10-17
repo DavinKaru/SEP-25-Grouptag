@@ -1,6 +1,5 @@
 <!-- PostCreate Component -->
 <script>
-	import ButtonsComponent from '../../Buttons/Buttons_Component.svelte';
 </script>
 
 <div class="create-post">
@@ -9,7 +8,11 @@
 		<input type="text" id="inputTitle" placeholder="Title" required />
 		<textarea placeholder="Content" required />
 		<input type="text" placeholder="Tags" required />
-		<button type="submit" id="mediaButton">Add Media</button>
+		<div class="button-container">
+			<button type="submit" id="mediaButton">Add Media</button>
+			<button type="button" id="groupButton">Select Group</button>
+		</div>
+
 		<button type="submit" id="createButton">Create Post</button>
 	</form>
 </div>
@@ -71,7 +74,11 @@
 		border-bottom: #ffffff 1px solid;
 		background-color: #7e97bf7c;
 	}
-
+	.button-container {
+		display: flex;
+		justify-content: center;
+		gap: 1%; /* Optional: To add some space between the buttons */
+	}
 	#createButton {
 		display: block; /* Takes full width of its parent */
 
@@ -96,7 +103,8 @@
 		text-align: center;
 	}
 
-	#mediaButton {
+	#mediaButton,
+	#groupButton {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -109,17 +117,18 @@
 		padding: 1%;
 
 		/* Colors */
-		color: white;
-		background-color: #44c7f7;
+		color: rgb(62, 62, 62);
+		background-color: #44f79b;
 
 		/* Interaction */
 		cursor: pointer;
-		max-width: 47.5%;
-		min-width: 47.5%;
-		margin: 5px auto;
+		max-width: 47%;
+		min-width: 47%;
+		margin: 5px 0;
 		border: none;
 
 		/* Text styling */
+		font-weight: bold;
 		font-size: 1rem;
 		text-decoration: none;
 		text-align: center;
