@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { enhance } from '$app/forms';
 	import ProfileIconComponent from '../../../User/ProfileIcon/ProfileIcon_component.svelte';
 	let showPopup = false; // Reactive variable to track popup visibility
 
@@ -16,12 +17,14 @@
 
 {#if showPopup}
 	<div id="comment-popup">
-		<h2>Add a Comment</h2>
-		<textarea placeholder="Write your comment" />
-		<div class="button-container">
-			<button type="submit" id="mediaButton">Add Media</button>
-			<button type="submit" id="submitButton">Submit</button>
-		</div>
+		<form method="post" action="?/comment" use:enhance>
+			<h2>Add a Comment</h2>
+			<textarea placeholder="Write your comment" />
+			<div class="button-container">
+				<button type="button" id="mediaButton">Add Media</button>
+				<button type="submit" id="submitButton">Submit</button>
+			</div>
+		</form>
 	</div>
 {/if}
 
