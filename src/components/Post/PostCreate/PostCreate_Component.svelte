@@ -139,6 +139,4 @@
 		text-align: center;
 	}
 
-	#groupButton {
-	}
 </style>

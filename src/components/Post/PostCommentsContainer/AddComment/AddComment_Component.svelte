@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from 'svelte';
+	import autosize from 'svelte-autosize';
 	import ProfileIconComponent from '../../../User/ProfileIcon/ProfileIcon_component.svelte';
 	let showPopup = false; // Reactive variable to track popup visibility
 
@@ -8,19 +8,26 @@
 	}
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+
+{#if !showPopup}
 <div id="add-comment-card" on:click={togglePopup}>
-	<ProfileIconComponent />
+	<ProfileIconComponent/>
 	<!-- Put the user's own profile picture here! -->
 	<h1 id="comment-prompt">Add Comment...</h1>
 </div>
 
-{#if showPopup}
+
+{:else}
 	<div id="comment-popup">
-		<h2>Add a Comment</h2>
-		<textarea placeholder="Write your comment" />
+		<textarea use:autosize id="add-comment-content" placeholder="Write your comment" />
 		<div class="button-container">
-			<button type="submit" id="mediaButton">Add Media</button>
-			<button type="submit" id="submitButton">Submit</button>
+			<button type="submit" id="cancel-button">
+				<p class="comment-button">Cancel</p>
+			</button>
+			<button type="submit" id="submit-button">
+				<p class="comment-button">Submit</p>
+			</button>
 		</div>
 	</div>
 {/if}
@@ -29,7 +36,6 @@
 	#comment-popup {
 		font-size: 10px;
 		border-radius: 10px;
-		border: 1px solid #ffffffd6;
 		padding: 3%;
 		width: 100%;
 		gap: 10px;
@@ -40,7 +46,6 @@
 		margin-bottom: 10px;
 		padding: 2.5%;
 		padding-left: 3%;
-		color: aliceblue;
 		outline: none; /* Remove outline */
 		border: none;
 		border-radius: 5px;
@@ -59,54 +64,17 @@
 		gap: 1%;
 	}
 
-	#submitButton {
-		display: block; /* Takes full width of its parent */
-
-		/* Dimensions */
-		height: min-content;
-		width: 50%;
-		border-radius: 5px;
-
-		/* Colors */
-		color: white;
-		background-color: #44c7f7;
-
-		/* Interaction */
-		cursor: pointer;
-
-		padding: 2%;
-		border: none;
-
-		/* Text styling */
-		font-size: 1rem;
-		font-weight: bold;
-		text-decoration: none;
-		text-align: center;
-	}
-
-	#mediaButton {
-		display: block; /* Takes full width of its parent */
-
-		/* Dimensions */
-		height: min-content;
-		width: 50%;
-		border-radius: 5px;
-
-		/* Colors */
-		color: rgb(62, 62, 62);
-		background-color: #44f79b;
-
-		/* Interaction */
-		cursor: pointer;
-		padding: 2%;
-		border: none;
-
-		/* Text styling */
-		font-size: 1rem;
-		font-weight: bold;
-		text-decoration: none;
-		text-align: center;
-	}
+	textarea {
+        font-family: "Poppins";
+        font-size: 15px;
+        border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
+        padding: 10px;
+        height: 55px;
+        width: 100%;
+        border: none;
+        outline: none;
+        resize: none;
+    }
 
 	#add-comment-card {
 		background-color: rgba(188, 188, 188, 0.221);
@@ -114,12 +82,39 @@
 		padding: 5px;
 		display: flex;
 		align-items: center;
-		flex-direction: column;
-		gap: 2px;
+		gap: 7px;
 	}
 
 	#comment-prompt {
 		margin-top: 5px;
 		font-size: 10px;
 	}
+
+	button {
+        background: none;
+        border: none;
+    }
+
+	.comment-button {
+        display: inline-block;
+		padding: 0.3em 1.2em;
+		margin: 0.3em 0.3em 0.3em 0;
+		border-radius: 2em;
+		box-sizing: border-box;
+		text-decoration: none;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 300;
+		color: #ffffff;
+		background-color: #3aa4d1;
+		text-align: center;
+		transition: all 0.2s;
+        margin-left: auto;
+        width: auto;
+        font-size: 16px;
+        font-family: "Poppins";
+    }
+
+    .comment-button:hover {
+        background-color: #4095c6;
+    }
 </style>
