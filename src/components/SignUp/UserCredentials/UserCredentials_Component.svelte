@@ -3,8 +3,22 @@
 	import {university, course, fName, lName, dob, bio} from "../../../routes/welcome/signup/formStore.js"
 	import { enhance } from "$app/forms";
 
+	let password = "";
+	let cPassword = "";
+	let errorMessage = "";
+	let validations = [];
+	let showPassword = false;
+
+	function handleSubmit() {
+		if (password !== cPassword) {
+			errorMessage = "Passwords do not match";
+		}
+		else {
+			errorMessage = "";
+		}
+	}
 </script>
-<form method="post" use:enhance>
+<form method="post" use:enhance on:submit|preventDefault={handleSubmit}>
 	<input type="hidden" name="university" value={$university}/>
 	<input type="hidden" name="course" value={$course}/>
 	<input type="hidden" name="fName" value={$fName}/>
@@ -28,6 +42,7 @@
 		<div>
 			<label for="password">Password</label>
 			<input
+				bind:value={password}
 				type="password"
 				id="password"
 				name="password"
@@ -41,6 +56,7 @@
 		<div>
 			<label for="cPassword">Confirm Password</label>
 			<input
+				bind:value={cPassword}
 				type="password"
 				id="cPassword"
 				name="cPassword"
@@ -49,6 +65,10 @@
 				required
 			/>
 		</div>
+
+		{#if errorMessage}
+			<p style="color: red;">{errorMessage}</p>
+		{/if}
 	</div>
 	<!--//<button type="submit">Submit</button>-->	
 	<ButtonsComponent buttonType="submit" text="Next" buttonClass="signup-button" isAnchor={false}/>
