@@ -4,7 +4,7 @@
 	let innerWidth = 0;
 	let cardsPerRow = 0;
 	export let groups = [];
-	console.log('Groups in GroupCardComponent:', groups);
+	// console.log('Groups in GroupCardComponent:', groups);
 	$: {
 		if (innerWidth >= 1100) {
 			cardsPerRow = 5;

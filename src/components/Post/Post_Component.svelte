@@ -1,90 +1,94 @@
 <script>
-// @ts-nocheck
+	// @ts-nocheck
 
 	import AppHeaderComponent from '../AppHeader/AppHeader_Component.svelte';
 	import PostDetailsComponent from './PostDetails/PostDetails_Component.svelte';
 	import PostMedia from './PostMedia/PostMedia_Component.svelte';
 	import PostContent from './PostContent/PostContent.svelte';
 	import PostCommentsContainerComponent from './PostCommentsContainer/PostCommentsContainer_Component.svelte';
-    import { page } from '$app/stores';  
+	import { page } from '$app/stores';
 
-    export let data;
+	export let data;
 
-    const url = $page.url;
-    const post_id = url.searchParams.get('id');
+	const url = $page.url;
+	const post_id = url.searchParams.get('id');
 
-    let post = data.Posts.find((p) => p.post_id === post_id);
+	let post = data.Posts.find((p) => p.post_id === post_id);
 
-    // Grab necessary data from post
-    
-        // Post Title
-        let postTitle = post.title;
+	// Grab necessary data from post
 
-        // Post Time
-        let postTime = post.created_at;
+	// Post Title
+	let postTitle = post.title;
 
-        // Traverse tables and grab author name and profile picture...
-        let postAuthorID = post.user_id;
-        let postAuthor = data.Users.find((u) => u.user_id === postAuthorID);
-        let postAuthorName = postAuthor.first_name + " " + postAuthor.last_name;
-        let postAuthorPicture = postAuthor.image_url;
-        
-        console.log(postAuthorPicture);
+	// Post Time
+	let postTime = post.created_at;
 
-        // Same as above for the group...
-        let postGroupID = post.group_id;
-        let postGroup = data.Groups.find((g) => g.group_id === postGroupID);
-        let postGroupName = postGroup.name;
-        let postGroupLogo = postGroup.logo_url;
+	// Traverse tables and grab author name and profile picture...
+	let postAuthorID = post.user_id;
+	let postAuthor = data.Users.find((u) => u.user_id === postAuthorID);
+	let postAuthorName = postAuthor.first_name + ' ' + postAuthor.last_name;
+	let postAuthorPicture = postAuthor.image_url;
 
-        // Post Tags
-        let postTags = post.tags;
-        console.log(postTags);
+	//console.log(postAuthorPicture);
 
-        // Post Media
-        let postMedia = post.media_url;
+	// Same as above for the group...
+	let postGroupID = post.group_id;
+	let postGroup = data.Groups.find((g) => g.group_id === postGroupID);
+	let postGroupName = postGroup.name;
+	let postGroupLogo = postGroup.logo_url;
 
-        // Post Content
-        let postContent = post.content;
+	// Post Tags
+	let postTags = post.tags;
+	//console.log(postTags);
 
-    console.log(post);
+	// Post Media
+	let postMedia = post.media_url;
 
+	// Post Content
+	let postContent = post.content;
+
+	//console.log(post);
 </script>
 
 <AppHeaderComponent title="View Post" />
 <div id="post-component">
-	<PostDetailsComponent {postTitle} {postTime} {postAuthorName} {postAuthorPicture} {postGroupName} {postGroupLogo} {postTags}/>
+	<PostDetailsComponent
+		{postTitle}
+		{postTime}
+		{postAuthorName}
+		{postAuthorPicture}
+		{postGroupName}
+		{postGroupLogo}
+		{postTags}
+	/>
 
-    {#if postMedia != null}
-        <PostMedia {postMedia}/>
-    {/if}
+	{#if postMedia != null}
+		<PostMedia {postMedia} />
+	{/if}
 
-    <PostContent {postContent}/>
-    <PostCommentsContainerComponent />
+	<PostContent {postContent} />
+	<PostCommentsContainerComponent />
 </div>
 
 <style>
+	#post-component {
+		width: 90%;
+		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 10px;
+		margin-bottom: 65px;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		background-color: rgba(255, 255, 255, 0.127);
+		padding: 10px;
+	}
 
-    #post-component {
-        width: 90%;
-        border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 10px;
-        margin-bottom: 65px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        background-color: rgba(255, 255, 255, 0.127);
-        padding: 10px;
-    }
-
-    /* Tablet + PC Sizing */
-    @media (min-width: 768px) {
-
-        #post-component {
-            width: 55%;
-        }
-    }
-
+	/* Tablet + PC Sizing */
+	@media (min-width: 768px) {
+		#post-component {
+			width: 55%;
+		}
+	}
 </style>

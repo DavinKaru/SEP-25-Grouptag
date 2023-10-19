@@ -4,7 +4,7 @@
 	export let data; // Receive data
 	const { Groups, GroupUsers, Users } = data;
 	// Debug logs
-	console.log('FeaturedGroup Component Data received:', data);
+	// console.log('FeaturedGroup Component Data received:', data);
 	// Fetch users using groupid
 	function getUsers(groupId) {
 		const groupUserIds = GroupUsers.filter((gu) => gu.group_id === groupId).map((gu) => gu.user_id);
