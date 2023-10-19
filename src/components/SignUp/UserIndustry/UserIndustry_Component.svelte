@@ -94,7 +94,6 @@
 				<input type="hidden" name="Politics" value={politics}/>
 				<input type="hidden" name="Education" value={education}/>
 				<input type="hidden" name="Arts" value={arts}/>
-				<button type="submit">Submit</button>
 			</form>
 		</div>
 	</div>
