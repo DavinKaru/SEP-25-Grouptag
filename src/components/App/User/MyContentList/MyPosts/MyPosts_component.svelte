@@ -2,7 +2,7 @@
 	// @ts-nocheck
 
 	import TagIconComponent from '../../../TagIcons/TagIcon_Component.svelte';
-	import GroupIconComponent from '../../../Icons/GroupIcon/GroupIcon_Component.svelte';
+	import GroupIconComponent from '../../../GroupIcon/GroupIcon_Component.svelte';
 	import { goto } from '$app/navigation';
 
 	/**

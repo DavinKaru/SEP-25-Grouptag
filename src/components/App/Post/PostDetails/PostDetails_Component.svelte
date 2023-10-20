@@ -2,9 +2,9 @@
 	// @ts-nocheck
 
 	import ProfileIconComponent from '../../User/ProfileIcon/ProfileIcon_component.svelte';
-	import GroupIconComponent from '../../Icons/GroupIcon/GroupIcon_Component.svelte';
+	import GroupIconComponent from '../../GroupIcon/GroupIcon_Component.svelte';
 	import TagIconComponent from '../../TagIcons/TagIcon_Component.svelte';
-
+	
 	export let postTitle;
 	export let postTime;
 	export let postAuthorName;

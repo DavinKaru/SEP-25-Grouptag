@@ -1,5 +1,5 @@
 <script>
-    import ProfileIconComponent from "../../ProfileIcon/ProfileIcon_component.svelte";
+	import ProfileIconComponent from "../../ProfileIcon/ProfileIcon_component.svelte";
 </script>
 
 <div id="mutual-card">

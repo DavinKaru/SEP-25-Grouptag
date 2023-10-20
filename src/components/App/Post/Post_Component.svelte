@@ -3,12 +3,14 @@
 
 	import AppHeaderComponent from '../AppHeader/AppHeader_Component.svelte';
 	import PostDetailsComponent from './PostDetails/PostDetails_Component.svelte';
-	import PostMedia from './PostMedia/PostMedia_Component.svelte';
-	import PostContent from './PostContent/PostContent.svelte';
+	import PostMediaComponent from './PostMedia/PostMedia_Component.svelte';
+	import PostContentComponent from './PostContent/PostContent.svelte';
 	import PostCommentsContainerComponent from './PostCommentsContainer/PostCommentsContainer_Component.svelte';
 	import { page } from '$app/stores';
 
 	export let data;
+
+	console.log(data);
 
 	const url = $page.url;
 	const post_id = url.searchParams.get('id');
@@ -63,10 +65,10 @@
 	/>
 
 	{#if postMedia != null}
-		<PostMedia {postMedia} />
+		<PostMediaComponent {postMedia} />
 	{/if}
 
-	<PostContent {postContent} />
+	<PostContentComponent {postContent} />
 	<PostCommentsContainerComponent />
 </div>
 
