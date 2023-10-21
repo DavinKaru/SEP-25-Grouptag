@@ -14,6 +14,8 @@
 		//export let user = [];
 		//export let user_id;
 		export let users = [];
+
+
 		
 		//let filteredPosts = posts.filter((post) => post.user_id === user_id);
 	

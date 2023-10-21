@@ -26,21 +26,21 @@
 
         // Traverse tables and grab author name...
        // let postAuthorID = post.user_id;
-        let postAuthor = data.Users[0];
-        let postAuthorName = postAuthor.first_name + " " + postAuthor.last_name;
-        let postAuthorPicture = postAuthor.image_url;
+        //let postAuthor = data.Users[0];
+        let postAuthorName = post.first_name + " " + post.last_name;
+        let postAuthorPicture = post.image_url;
         
-        console.log(postAuthorPicture);
+        //console.log(postAuthorPicture);
 
         // Same as above for the group...
         //let postGroupID = post.group_id;
-        let postGroup = data.Groups[0];
-        let postGroupName = postGroup.name;
-        let postGroupLogo = postGroup.logo_url;
+        //let postGroup = data.Groups[0];
+        let postGroupName = post.name;
+        let postGroupLogo = post.logo_url;
 
         // Post Tags
         let postTags = post.tags;
-        console.log(postTags);
+        //console.log(postTags);
 
         // Post Media
         let postMedia = post.media_url;
@@ -48,7 +48,7 @@
         // Post Content
         let postContent = post.content;
 
-    console.log(post);
+    //console.log(post);
 
 </script>
 

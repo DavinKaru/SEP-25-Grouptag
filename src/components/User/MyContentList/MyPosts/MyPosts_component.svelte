@@ -5,9 +5,6 @@
 	import GroupIconComponent from '../../../Icons/GroupIcon/GroupIcon_Component.svelte';
 	import { goto } from '$app/navigation';
 
-	/**
-	 * @type {{ user_id: any; group_id: any; created_at: string | number | Date; title: any; content: any; tags: any; }}
-	 */
 
 	export let post;
 	let user = post.users;
@@ -18,10 +15,10 @@
 	//let user = users.find((u) => u.user_id === post.user_id);
 
 	//let group = groups.find((g) => g.group_id === post.group_id);
-	let groupName = group ? group.name : 'Unknown Group';
+	let groupName = post ? post.name : 'Unknown Group';
 	
 	// Get Group Logo/Icon
-	let postGroupLogo = group ? group.logo_url : null;
+	let postGroupLogo = post ? post.logo_url : null;
 
 	//Calculation for timestamp
 	let createdAt = new Date(post.created_at);

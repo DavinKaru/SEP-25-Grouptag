@@ -1,4 +1,4 @@
-<script>
+<script lang>
 	import AppHeaderComponent from '../../../components/AppHeader/AppHeader_Component.svelte';
 	import ProfilePictureComponent from '../../../components/User/ProfilePicture/ProfilePicture_component.svelte';
 	import ContentSelectorComponent from '../../../components/User/ContentSelector/ContentSelector_Component.svelte';
@@ -7,9 +7,10 @@
 	import MyContentListComponent from '../../../components/User/MyContentList/MyContentList_Component.svelte';
 
 	let selected = 'Experience';
-	const currentUserId = 'f8fe9f2f-2ddb-4c64-945a-6f686a0d614f'; //Will need to get this from login session in the future
-	export let data;
 
+	export let data;
+	let { user, Users,  Posts, Groups } = data
+	$: ({ user, Users,  Posts, Groups } = data)
 	function handleSubmit() {
 		console.log(selected);
 	}

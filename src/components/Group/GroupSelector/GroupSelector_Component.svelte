@@ -1,5 +1,5 @@
 <script>
-    let allGroups = true;
+    export let allGroups = true;
     let myGroups = false;
 
     /**

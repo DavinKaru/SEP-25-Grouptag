@@ -2,9 +2,6 @@
 	import TagIconComponent from '../../../TagIcons/TagIcon_Component.svelte';
 
 	export let group;
-	// group is actually the list groups with our user , so we need extract actual 'group' from it
-	let thisgroup = group.groups;
-	//console.log(thisgroup)
 
 </script>
 
@@ -12,16 +9,16 @@
 	<!--Two columns. Column 2 is split into 3 rows.-->
 
 	<div id="column1">
-		<img src={thisgroup.logo_url} alt="Company Logo" />
+		<img src={group.logo_url} alt="Company Logo" />
 	</div>
 
 	<div id="column2">
-		<h1>{thisgroup.name}</h1>
-		<p>{thisgroup.description}</p>
+		<h1>{group.name}</h1>
+		<p>{group.description}</p>
 		<div id="tag-icons">
-			<TagIconComponent text="Swinburne" />
-			<TagIconComponent text="Mascot" />
-			<TagIconComponent text="Students" />
+			{#each group.tags as tag}
+			<TagIconComponent text={tag.name} />
+			{/each}
 		</div>
 	</div>
 </div>
