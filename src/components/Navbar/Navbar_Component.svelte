@@ -8,18 +8,19 @@
 </script>
 
 <nav class="navbar">
-	{#if showCreatePost}
-		<PostCreate />
-	{/if}
-	<a href="/">
+	<a href="/app/groups">
 		<!-- Home/Group's page -->
 		<img src="/Icons/Navbar Icons/Home.svg" alt="Home Icon" class="navIcon" />
 	</a>
 
-	<button class="plusButton" on:click={toggleCreatePost}>
-		<img src="/Icons/Navbar Icons/Plus.svg" alt="Plus Icon" class="plusIcon" />
-	</button>
-
+ 	<a href="/app/requests">
+		<img src="/Icons/Navbar Icons/Notification.svg" alt="Notification Icon" class="navIcon" />
+	</a>
+  
+ 	<a href="/app/create">
+		<img src="/Icons/Navbar Icons/Plus.svg" alt="Plus Icon" class="navIcon" />
+	</a>
+ 
 	<a href="/app/profile">
 		<img src="/Icons/Navbar Icons/Profile.svg" alt="Profile Icon" class="navIcon" />
 	</a>
@@ -43,7 +44,7 @@
 		padding: 0 5%;
 
 		backdrop-filter: blur(10px); /* bg blur */
-		background-color: rgba(255, 255, 255, 0.2); /* Translucent white background */
+		background-color: rgba(0, 0, 0, 0.2); /* Translucent white background */
 		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 		z-index: 1000;
 	}
@@ -61,17 +62,4 @@
 		vertical-align: middle; /* Aligning the icons with the plus button */
 	}
 
-	.plusButton {
-		cursor: pointer;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-size: 3vh;
-		border-radius: 50%;
-		color: #ffffff !important;
-		background-color: #2673ff !important;
-		height: calc(4.72vh * 1.58); /* 158% of the navbar's height */
-		width: calc(4.72vh * 1.58); /* 158% of the navbar's width */
-		border: 3px solid #11172d !important;
-	}
 </style>

@@ -8,18 +8,9 @@
 	// Fetch users using groupid
 	function getFeaturedImages(i, groupid) {
 		const users = FeaturedGroupsImages[i].filter((u) => u.group_id === groupid).map((u) => u.image_url);
-		//console.log(users);
-		
-		//const groupUserIds = GroupUsers.filter((gu) => gu.group_id === groupId).map((gu) => gu.user_id);
-		//const users = Users.filter((user) => groupUserIds.includes(user.user_id));
-		// Debug logs
-		// console.log('Group User IDs:', groupUserIds);
-		// console.log('Users:', users);
 		return users;
 	}
 
-	//const featuredGroups = Groups.slice(0, 3); // Get the first 3 featured groups
-	//console.log(featuredGroups)
 </script>
 
 <div class="carousel-container">

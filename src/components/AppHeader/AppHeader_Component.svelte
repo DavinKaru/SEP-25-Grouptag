@@ -1,7 +1,6 @@
 <script>
 	import { navigate, useNavigate } from 'svelte-navigator';
 	export let title = 'App';
-
 </script>
 
 <div id="header-background">
@@ -19,11 +18,15 @@
 </div>
 
 <style>
+	#text {
+		text-wrap: nowrap;
+	}
+
 	#header-background {
 		background-color: rgb(23, 26, 59);
 		box-shadow: 0 1px rgb(0 0 0 / 0.2);
 
-		width: 100%;
+		max-width: 100vw;
 
 		position: sticky;
 		top: 0px;
@@ -58,7 +61,7 @@
 		margin-top: 6%;
 		margin-bottom: auto;
 		margin-right: 10px;
-    }
+	}
 
 	/* Tablet + PC Layout */
 	@media only screen and (min-width: 600px) {
