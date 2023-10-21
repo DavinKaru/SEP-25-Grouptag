@@ -14,7 +14,6 @@
     //const post_id = url.searchParams.get('id');
 
     let post = data.Posts[0];
-    //console.log(post)
 
     // Grab necessary data from post
     
@@ -24,31 +23,21 @@
         // Post Time
         let postTime = post.created_at;
 
-        // Traverse tables and grab author name...
-       // let postAuthorID = post.user_id;
-        //let postAuthor = data.Users[0];
         let postAuthorName = post.first_name + " " + post.last_name;
         let postAuthorPicture = post.image_url;
         
-        //console.log(postAuthorPicture);
 
-        // Same as above for the group...
-        //let postGroupID = post.group_id;
-        //let postGroup = data.Groups[0];
         let postGroupName = post.name;
         let postGroupLogo = post.logo_url;
 
         // Post Tags
         let postTags = post.tags;
-        //console.log(postTags);
 
         // Post Media
         let postMedia = post.media_url;
 
         // Post Content
         let postContent = post.content;
-
-    //console.log(post);
 
 </script>
 

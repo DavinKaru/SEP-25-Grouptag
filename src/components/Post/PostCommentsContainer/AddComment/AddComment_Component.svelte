@@ -3,6 +3,8 @@
 	import { enhance } from '$app/forms';
 	import ProfileIconComponent from '../../../User/ProfileIcon/ProfileIcon_component.svelte';
 	let showPopup = false; // Reactive variable to track popup visibility
+	import { page } from '$app/stores';
+    const post_id = $page.url.searchParams.get('id');
 
 	function togglePopup() {
 		showPopup = !showPopup; // Toggle the popup
@@ -19,7 +21,8 @@
 	<div id="comment-popup">
 		<form method="post" action="?/comment" use:enhance>
 			<h2>Add a Comment</h2>
-			<textarea placeholder="Write your comment" />
+			<input type="hidden" name="post_id" value={post_id}>
+			<textarea name="comment" placeholder="Write your comment" required/>
 			<div class="button-container">
 				<button type="button" id="mediaButton">Add Media</button>
 				<button type="submit" id="submitButton">Submit</button>

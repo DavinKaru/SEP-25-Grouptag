@@ -1,4 +1,4 @@
-//import { supabase } from '$lib/supabaseClient';
+//src/routes/app/groups/+page.js
 
 export async function load({parent}) {
     const { supabase, session } = await parent()

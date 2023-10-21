@@ -1,3 +1,5 @@
+//src/routes/app/groups/+page.svelte
+
 <script>
 	import HeaderComponent from '../../../components/AppHeader/AppHeader_Component.svelte';
 	import FeaturedGroupComponent from '../../../components/Group/FeaturedGroup/FeaturedGroup_Component.svelte';

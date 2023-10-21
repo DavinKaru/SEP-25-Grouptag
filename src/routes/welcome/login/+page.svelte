@@ -1,4 +1,4 @@
-<!-- Login page -->
+<!--//src/routes/welcome/login/+page.svelte-->
 <script>
 	import LoginComponent from '../../../components/Login/Login_Component.svelte';
 	import BoxComponent from '../../../components/Box/Box_Component.svelte';

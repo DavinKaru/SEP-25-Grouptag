@@ -1,4 +1,5 @@
-<script lang>
+<!--//src/routes/app/profile/+page.svelte-->
+<script>
 	import AppHeaderComponent from '../../../components/AppHeader/AppHeader_Component.svelte';
 	import ProfilePictureComponent from '../../../components/User/ProfilePicture/ProfilePicture_component.svelte';
 	import ContentSelectorComponent from '../../../components/User/ContentSelector/ContentSelector_Component.svelte';
@@ -12,7 +13,7 @@
 	let { user, Users,  Posts, Groups } = data
 	$: ({ user, Users,  Posts, Groups } = data)
 	function handleSubmit() {
-		console.log(selected);
+		//console.log(selected);
 	}
 </script>
 

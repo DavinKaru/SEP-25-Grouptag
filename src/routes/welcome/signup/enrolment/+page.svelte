@@ -1,3 +1,4 @@
+//src/routes/welcome/signup/enrolment/+page.svelte
 <script>
 	import HeaderComponent from '../../../../components/WelcomeHeader/WelcomeHeader_Component.svelte';
 	import UserEnrolmentComponent from '../../../../components/SignUp/UserEnrolment/UserEnrolment_Component.svelte';

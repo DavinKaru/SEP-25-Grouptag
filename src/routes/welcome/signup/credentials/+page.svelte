@@ -1,3 +1,5 @@
+//src/routes/welcome/signup/credentials/+page.svelte
+
 <script>
 	import UserCredentialsComponent from '../../../../components/SignUp/UserCredentials/UserCredentials_Component.svelte';
 	import HeaderComponent from '../../../../components/WelcomeHeader/WelcomeHeader_Component.svelte';
