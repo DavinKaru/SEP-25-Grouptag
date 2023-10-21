@@ -12,7 +12,7 @@
 
 	<div id="row2">
 		<h1>{group.name}</h1>
-		<p>{group.short_description}</p>
+		<p>{group.description}</p>
 
 		<div id="tag-icons">
 			{#each group.tags as tag}

@@ -1,4 +1,4 @@
-//src/routes/app/groups/+page.svelte
+<!--//src/routes/app/groups/+page.svelte-->
 
 <script>
 	import HeaderComponent from '../../../components/AppHeader/AppHeader_Component.svelte';

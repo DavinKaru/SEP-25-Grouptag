@@ -1,4 +1,4 @@
-//src/routes/app/post/+page.svelte
+<!--//src/routes/app/post/+page.svelte-->
 
 <script>
     import PostComponent from "../../../components/Post/Post_Component.svelte";

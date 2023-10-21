@@ -26,7 +26,7 @@
 	<div id="comment-popup">
 		<form method="post" action="?/comment" use:enhance>
 			<input type="hidden" name="post_id" value={post_id}>
-			<textarea use:autosize id="add-comment-content" placeholder="Write your comment" />
+			<textarea use:autosize name="comment" id="add-comment-content" placeholder="Write your comment" />
 			<div class="button-container">
 			<button type="submit" id="cancel-button">
 				<p class="comment-button">Cancel</p>
@@ -36,7 +36,6 @@
 			</button>
 		</form>
 		
-		</div>
 	</div>
 {/if}
 
