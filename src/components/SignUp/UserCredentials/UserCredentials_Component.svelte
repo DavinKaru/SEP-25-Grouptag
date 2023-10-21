@@ -3,8 +3,37 @@
 	import {university, course, fName, lName, dob, bio} from "../../../routes/welcome/signup/formStore.js"
 	import { enhance } from "$app/forms";
 
+	let password = "";
+	let cPassword = "";
+	let errorMessage = "";
+	let validations = [];
+	let showPassword = false;
+	let showCPassword = false;
+
+	function handleSubmit() {
+		if (password !== cPassword) {
+			errorMessage = "Passwords do not match";
+		} else if (!validations.every(validation => validation)) {
+			errorMessage = "Password has to contain 8 characters with at least 1 Capital, 1 Number and 1 Symbol";
+		} else {
+			errorMessage = "";
+		}
+	}
+
+	function validatePassword(e) {
+		const vPassword = e.target.value;
+
+		validations = [
+			vPassword.length >= 8,
+			vPassword.search(/[A-Z]/) > -1,
+			vPassword.search(/[0-9]/) > -1,
+			vPassword.search(/[$&+,:;=?@#]/) > -1,
+		]
+
+		//passwordStr = validations.reduce((acc, cur) => acc + (cur ? 1 : 0), 0)
+	}
 </script>
-<form method="post" use:enhance>
+<form method="post" use:enhance on:submit|preventDefault={handleSubmit}>
 	<input type="hidden" name="university" value={$university}/>
 	<input type="hidden" name="course" value={$course}/>
 	<input type="hidden" name="fName" value={$fName}/>
@@ -27,31 +56,87 @@
 
 		<div>
 			<label for="password">Password</label>
+			{#if showPassword}
 			<input
+				bind:value={password}
+				type="text"
+				id="password"
+				name="password"
+				class="input-field"
+				placeholder="Enter your password here"
+				
+				on:input={validatePassword}
+				required
+			/>
+			{:else}
+			<input
+				bind:value={password}
 				type="password"
 				id="password"
 				name="password"
 				class="input-field"
 				placeholder="Enter your password here"
-				style="margin-bottom: 31px;"
+				
+				on:input={validatePassword}
 				required
 			/>
+			{/if}
+			<div class = "password-input-container">
+				<input
+					type="checkbox"
+					bind:checked={showPassword}
+					id="showPassword"
+					name="showPassword"
+					
+				/>
+				<label for="showPassword">Show Password</label>
+			</div>
 		</div>
+		
 
-		<div>
-			<label for="cPassword">Confirm Password</label>
+		<div style="margin-top: 31px;">
+			<label for="cPassword" >Confirm Password</label>
+			{#if showCPassword}
 			<input
+				bind:value={cPassword}
+				type="text"
+				id="cPassword"
+				name="cPassword"
+				class="input-field"
+				placeholder="Re-enter your password here"
+				on:input={validatePassword}
+				required
+			/>
+			{:else}
+			<input
+				bind:value={cPassword}
 				type="password"
 				id="cPassword"
 				name="cPassword"
 				class="input-field"
 				placeholder="Re-enter your password here"
+				on:input={validatePassword}
 				required
 			/>
+			{/if}
+			<div class = "password-input-container">
+				<input
+					type="checkbox"
+					bind:checked={showCPassword}
+					id="showCPassword"
+					name="showCPassword"
+				/>
+				<label for="showPassword">Show Password</label>
+			</div>
 		</div>
+		
+			
+		{#if errorMessage}
+			<p style="color: red;">{errorMessage}</p>
+		{/if}
 	</div>
 	<!--//<button type="submit">Submit</button>-->	
-	<ButtonsComponent buttonType="submit" text="Next" buttonClass="signup-button" isAnchor={false}/>
+	<ButtonsComponent buttonType="submit" text="Next" buttonClass="signup-button" isAnchor={false} />
 
 	
 </form>
@@ -97,5 +182,23 @@
 		.input-field {
 			height: 6.5vh;
 		}
+	}
+
+	.password-input-container {
+		position: relative;
+	}
+
+	#showPassword {
+		position: absolute;
+		top: 50%;
+		right: 10px;
+		transform: translateY(-50%);
+	}
+
+	#showCPassword {
+		position: absolute;
+		top: 50%;
+		right: 10px;
+		transform: translateY(-50%);
 	}
 </style>
