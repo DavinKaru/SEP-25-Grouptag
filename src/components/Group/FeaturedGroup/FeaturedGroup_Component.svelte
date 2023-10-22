@@ -97,7 +97,8 @@
 
 	#group-img {
 		width: 100%;
-		min-height: 93px;
+		min-height: 10.5vh;
+		max-height: 10.5vh;
 		border-radius: 10px;
 	}
 
@@ -176,6 +177,10 @@
 		#group-name {
 			font-size: 1.8rem;
 		}
+		#group-img {
+			min-height: 25.5vh;
+			max-height: 25.5vh;
+		}
 		#members-header {
 			font-size: 1.3rem;
 		}
@@ -190,6 +195,10 @@
 		}
 		#group-name {
 			font-size: 1.8rem;
+		}
+		#group-img {
+			min-height: 25.5vh;
+			max-height: 25.5vh;
 		}
 		#members-header {
 			font-size: 1.3rem;
@@ -206,6 +215,10 @@
 		#group-name {
 			font-size: 1.6rem;
 		}
+		#group-img {
+			min-height: 20.5vh;
+			max-height: 20.5vh;
+		}
 		#members-header {
 			font-size: 1.2rem;
 		}
@@ -221,6 +234,10 @@
 		#group-name {
 			font-size: 1.4rem;
 		}
+		#group-img {
+			min-height: 15.5vh;
+			max-height: 15.5vh;
+		}
 		#members-header {
 			font-size: 1.1rem;
 		}
@@ -233,9 +250,12 @@
 		.container {
 			width: 100%;
 		}
-
 		#group-name {
 			font-size: 1rem;
+		}
+		#group-img {
+			min-height: 10.5vh;
+			max-height: 10.5vh;
 		}
 		#members-header {
 			font-size: 0.8rem;
