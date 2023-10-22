@@ -1,4 +1,4 @@
-//src/routes/welcome/signup/credentials/+page.svelte
+<!--//src/routes/welcome/signup/credentials/+page.svelte-->
 
 <script>
 	import UserCredentialsComponent from '../../../../components/SignUp/UserCredentials/UserCredentials_Component.svelte';
