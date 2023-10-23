@@ -6,9 +6,7 @@
 	import { goto } from '$app/navigation';
 
 	export let post;
-	export let user;
 
-	let userDetails = user.users;
 
 	//Calculation for timestamp
 	let createdAt = new Date(post.created_at);
@@ -77,9 +75,9 @@
 			<!--Column 2 of Row 1-->
 			<div id="row-1b">
 				<div id="profile-icon">
-					<ProfileIconComponent --width="1.5rem" />
+					<ProfileIconComponent --width="1.5rem" postAuthorPicture={post.image_url}/>
 				</div>
-				<h2>{userDetails.first_name} {userDetails.last_name}</h2>
+				<h2>{post.first_name} {post.last_name}</h2>
 			</div>
 		</div>
 

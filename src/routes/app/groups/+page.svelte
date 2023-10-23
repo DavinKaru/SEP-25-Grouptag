@@ -1,9 +1,15 @@
+<!--//src/routes/app/groups/+page.svelte-->
+
 <script>
 	import HeaderComponent from '../../../components/App/AppHeader/AppHeader_Component.svelte';
 	import FeaturedGroupComponent from '../../../components/App/Groups/FeaturedGroup/FeaturedGroup_Component.svelte';
 	import GroupsSelectorComponent from '../../../components/App/Groups/GroupSelector/GroupSelector_Component.svelte';
 	import GroupCardContainerComponent from '../../../components/App/Groups/GroupCardContainer/GroupCardContainer_Component.svelte';
 	export let data;
+	let allGroups = true;
+	let displayGroups = data.Groups
+	$: if(allGroups){displayGroups = data.Groups}else{displayGroups = data.MyGroups} ;
+
 </script>
 
 <body>
@@ -11,8 +17,8 @@
 		<HeaderComponent title="Groups" />
 		<div id="content">
 			<FeaturedGroupComponent {data} />
-			<GroupsSelectorComponent />
-			<GroupCardContainerComponent groups={data.Groups} />
+			<GroupsSelectorComponent bind:allGroups={allGroups}/>
+			<GroupCardContainerComponent groups={displayGroups}/>
 		</div>
 	</div>
 </body>

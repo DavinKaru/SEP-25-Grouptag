@@ -1,4 +1,4 @@
-<!-- Svelte Layout -->
+<!--//src/routes/app/+layout.svelte-->
 
 <script>
 	import Navbar from '../../components/App/Navbar/Navbar_Component.svelte';

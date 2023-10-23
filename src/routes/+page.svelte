@@ -1,4 +1,4 @@
-<!-- Welcome page -->
+<!--// src/routes/+page.svelte-->
 <script>
 	import ButtonsComponent from '../components/Welcome/Buttons/Buttons_Component.svelte';
 	import BoxComponent from '../components/Box/Box_Component.svelte';

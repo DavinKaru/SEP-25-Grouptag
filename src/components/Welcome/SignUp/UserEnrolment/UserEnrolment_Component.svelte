@@ -1,33 +1,57 @@
 <script>
 	import ButtonsComponent from '../../Buttons/Buttons_Component.svelte';
+	import { university, course } from '../../../../routes/welcome/signup/formStore.js';
+	import { enhance } from '$app/forms';
+	import { goto } from '$app/navigation';
+
 </script>
 
-<form>
+<form method="post" action="?/uniCheck" use:enhance={({ formElement, formData, action, cancel, submitter }) => {
+	// `formElement` is this `<form>` element
+	// `formData` is its `FormData` object that's about to be submitted
+	// `action` is the URL to which the form is posted
+	// calling `cancel()` will prevent the submission
+	// `submitter` is the `HTMLElement` that caused the form to be submitted
+	return async({result, update}) =>{
+		console.log(result)
+		if(result.status == 200){
+			goto('/welcome/signup/details')
+		}
+		else{
+			
+
+		}
+	};
+}}>
 	<div>
 		<div>
 			<label for="university">University Name</label>
 			<input
+				bind:value={$university}
 				type="text"
 				id="university"
 				name="university"
 				class="input-field"
 				placeholder="Enter your university's name here"
 				style="margin-bottom: 31px;"
+				required
 			/>
 		</div>
 		<div>
-			<label for="course">Course Name</label>
+			<label for="course">Course Name</label> 
 			<input
+				bind:value={$course}
 				type="text"
 				id="course"
 				name="course"
 				class="input-field"
 				placeholder="Enter your course name here"
+				required
 			/>
 		</div>
 	</div>
 
-	<ButtonsComponent text="Next" buttonClass="signup-button" href="/welcome/signup/details" />
+	<ButtonsComponent text="Next" buttonClass="signup-button" buttonType="submit" isAnchor={false}/>
 </form>
 
 <style>

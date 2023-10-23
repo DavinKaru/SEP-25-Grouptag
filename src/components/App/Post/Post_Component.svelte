@@ -6,11 +6,11 @@
 	import PostMediaComponent from './PostMedia/PostMedia_Component.svelte';
 	import PostContentComponent from './PostContent/PostContent_Component.svelte';
 	import PostCommentsContainerComponent from './PostCommentsContainer/PostCommentsContainer_Component.svelte';
-	import { page } from '$app/stores';
+    //import { page } from '$app/stores';  
 
 	export let data;
 
-	console.log(data);
+	//console.log(data);
 
 	const url = $page.url;
 	const post_id = url.searchParams.get('id');
@@ -26,25 +26,22 @@
 	// Post Title
 	let postTitle = post.title;
 
-	// Post Time
-	let postTime = post.created_at;
+        let postAuthorName = post.first_name + " " + post.last_name;
+        let postAuthorPicture = post.image_url;
+        
 
-	// Traverse tables and grab author name and profile picture...
-	let postAuthorID = post.user_id;
-	let postAuthor = data.Users.find((u) => u.user_id === postAuthorID);
-	let postAuthorName = postAuthor.first_name + ' ' + postAuthor.last_name;
-	let postAuthorPicture = postAuthor.image_url;
+        let postGroupName = post.name;
+        let postGroupLogo = post.logo_url;
 
-	//console.log(postAuthorPicture);
+        // Post Tags
+        let postTags = post.tags;
 
 	// Same as above for the group...
 	let postGroupID = post.group_id;
-	let postGroup = data.Groups.find((g) => g.group_id === postGroupID);
-	let postGroupName = postGroup.name;
-	let postGroupLogo = postGroup.logo_url;
+	// Post Time
+	let postTime = post.created_at;
 
 	// Post Tags
-	let postTags = post.tags;
 	//console.log(postTags);
 
 	// Post Media

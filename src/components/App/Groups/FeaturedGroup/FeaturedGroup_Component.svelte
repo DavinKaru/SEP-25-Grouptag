@@ -2,24 +2,19 @@
 <script>
 	import TagIcon from '../../TagIcons/TagIcon_Component.svelte'; // Import the TagIcon component
 	export let data; // Receive data
-	const { Groups, GroupUsers, Users } = data;
+	const { FeaturedGroups, FeaturedGroupsImages } = data;
 	// Debug logs
-	// console.log('FeaturedGroup Component Data received:', data);
+	//console.log('FeaturedGroup Component Data received:', data);
 	// Fetch users using groupid
-	function getUsers(groupId) {
-		const groupUserIds = GroupUsers.filter((gu) => gu.group_id === groupId).map((gu) => gu.user_id);
-		const users = Users.filter((user) => groupUserIds.includes(user.user_id));
-		// Debug logs
-		// console.log('Group User IDs:', groupUserIds);
-		// console.log('Users:', users);
+	function getFeaturedImages(i, groupid) {
+		const users = FeaturedGroupsImages[i].filter((u) => u.group_id === groupid).map((u) => u.image_url);
 		return users;
 	}
 
-	const featuredGroups = Groups.slice(0, 3); // Get the first 3 featured groups
 </script>
 
 <div class="carousel-container">
-	{#each featuredGroups as featuredGroup}
+	{#each FeaturedGroups as featuredGroup, n}
 		<div class="carousel-item">
 			<div class="container">
 				<div class="left-content">
@@ -27,10 +22,9 @@
 					<div id="members">
 						<h2 id="members-header">Members</h2>
 						<div id="members-icons">
-							{#each getUsers(featuredGroup.group_id) as user, i}
-								<!-- Only show the first 6 users -->
+							{#each getFeaturedImages(n, featuredGroup.group_id) as image_url, i}
 								{#if i < 6}
-									<span class="icon" style="background-image: url({user.image_url});" />
+									<span class="icon" style="background-image: url({image_url});" />
 								{/if}
 							{/each}
 						</div>

@@ -4,7 +4,7 @@
 	let innerWidth = 0;
 	let cardsPerRow = 0;
 	export let groups = [];
-	// console.log('Groups in GroupCardComponent:', groups);
+	//console.log('Groups in GroupCardComponent:', groups);
 	$: {
 		if (innerWidth >= 1100) {
 			cardsPerRow = 5;
@@ -15,8 +15,9 @@
 		}
 	}
 
-	const maxCards = 10; // Limit to 10 cards at most
-	const limitedGroups = groups.slice(0, maxCards); // Take only the first 10
+
+	$: limitedGroups = groups; 
+
 </script>
 
 <svelte:window bind:innerWidth />

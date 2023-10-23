@@ -1,7 +1,11 @@
 <script>
+	import { onMount } from 'svelte';
+	import { enhance } from '$app/forms';
 	import autosize from 'svelte-autosize';
 	import ProfileIconComponent from '../../../User/ProfileIcon/ProfileIcon_component.svelte';
 	let showPopup = false; // Reactive variable to track popup visibility
+	import { page } from '$app/stores';
+    const post_id = $page.url.searchParams.get('id');
 
 	function togglePopup() {
 		showPopup = !showPopup; // Toggle the popup
@@ -18,15 +22,18 @@
 	</div>
 {:else}
 	<div id="comment-popup">
-		<textarea use:autosize id="add-comment-content" placeholder="Write your comment" />
-		<div class="button-container">
-			<button type="submit" id="cancel-button" on:click={togglePopup}>
+		<form method="post" action="?/comment" use:enhance>
+			<input type="hidden" name="post_id" value={post_id}>
+			<textarea use:autosize name="comment" id="add-comment-content" placeholder="Write your comment" />
+			<div class="button-container">
+			<button type="button" id="cancel-button"  on:click={togglePopup}>
 				<p class="comment-button">Cancel</p>
 			</button>
 			<button type="submit" id="submit-button">
 				<p class="comment-button">Submit</p>
 			</button>
-		</div>
+		</form>
+		
 	</div>
 {/if}
 

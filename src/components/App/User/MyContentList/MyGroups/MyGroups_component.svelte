@@ -1,24 +1,27 @@
 <script>
-	import TagIconComponent from "../../../TagIcons/TagIcon_Component.svelte";
+	import TagIconComponent from '../../../TagIcons/TagIcon_Component.svelte';
+	export let group;
+	
 </script>
 
 <div id="group-card">
 	<!--Two columns. Column 2 is split into 3 rows.-->
 
 	<div id="column1">
-		<img src="/razorbacks-logo.svg" alt="Company Logo" />
+		<img src={group.logo_url} alt="Company Logo" />
 	</div>
 
 	<div id="column2">
-		<h1>Swinburne Razorbacks</h1>
-		<p>The official group of the Swinburne Razorbacks! What do we do? Who knows!</p>
+		<h1>{group.name}</h1>
+		<p>{group.description}</p>
 		<div id="tag-icons">
-			<TagIconComponent text="Swinburne" />
-			<TagIconComponent text="Mascot" />
-			<TagIconComponent text="Students" />
+			{#each group.tags as tag}
+			<TagIconComponent text={tag.name} />
+			{/each}
 		</div>
 	</div>
 </div>
+
 
 <style>
 	#group-card {

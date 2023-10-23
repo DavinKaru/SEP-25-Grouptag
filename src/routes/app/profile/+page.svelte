@@ -1,3 +1,4 @@
+<!--//src/routes/app/profile/+page.svelte-->
 <script>
 	import AppHeaderComponent from '../../../components/App/AppHeader/AppHeader_Component.svelte';
 	import ProfilePictureComponent from '../../../components/App/User/ProfilePicture/ProfilePicture_component.svelte';
@@ -7,11 +8,10 @@
 	import MyContentListComponent from '../../../components/App/User/MyContentList/MyContentList_Component.svelte';
 
 	let selected = 'Experience';
-	const currentUserId = 'f8fe9f2f-2ddb-4c64-945a-6f686a0d614f'; //Will need to get this from login session in the future
-	export let data;
 
+	export let data;
 	function handleSubmit() {
-		console.log(selected);
+		//console.log(selected);
 	}
 </script>
 
@@ -20,10 +20,10 @@
 		<AppHeaderComponent title="My Profile" />
 		<div id="content">
 			<div id="profilePicture">
-				<ProfilePictureComponent />
+				<ProfilePictureComponent  user={data.user.users}/>
 			</div>
 			<div id="details">
-				<MyDetailsComponent />
+				<MyDetailsComponent user={data.user}/>
 			</div>
 		</div>
 		<div id="userActivity">
@@ -32,7 +32,6 @@
 			<MyContentListComponent
 				content={selected}
 				posts={data.Posts}
-				user_id={currentUserId}
 				users={data.Users}
 				groups={data.Groups}
 			/>

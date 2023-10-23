@@ -3,15 +3,14 @@
     export let icon2 = "default text";
     export let name = "default text";
     export let alt = "default text";
-    let selected = false;
-
+    export let selected = false;
     /* 
         Swaps the icons around when the user clicks. 
         The first block assigns icon1 (the default) to a variable temp, before assigning icon2 in its place.
         Then, it assigns temp to icon2. The second block is the same, in the opposite direction.
     */
     function swapIcon() {
-        if (!selected) {
+        if (selected) {
             let temp = icon1
             icon1 = icon2;
             icon2 = temp;
