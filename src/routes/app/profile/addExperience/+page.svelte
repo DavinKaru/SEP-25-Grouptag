@@ -102,6 +102,10 @@
 		gap: 20px; /* Adjust the gap as needed */
 	}
 
+	#jobDesc {
+		height: 100px;
+	}
+
 	.field {
 		display: flex;
 		flex-direction: column;
@@ -110,32 +114,6 @@
 		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
 		padding: 10px;
 		width: 100%;
-	}
-
-	textarea {
-		background-color: white;
-		font-family: 'Poppins';
-		font-size: 15px;
-		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
-		padding: 10px;
-		height: 55px;
-		width: 100%;
-		border: none;
-		outline: none;
-		resize: none;
-	}
-
-	textarea::placeholder {
-		color: darkslategrey;
-	}
-
-	#jobDesc {
-		height: 100px;
-	}
-
-	button {
-		background: none;
-		border: none;
 	}
 
 	.submit-button {
@@ -159,5 +137,27 @@
 
 	.submit-button:hover {
 		background-color: #4095c6;
+	}
+
+	textarea {
+		background-color: white;
+		font-family: 'Poppins';
+		font-size: 15px;
+		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
+		padding: 10px;
+		height: 55px;
+		width: 100%;
+		border: none;
+		outline: none;
+		resize: none;
+	}
+
+	textarea::placeholder {
+		color: darkslategrey;
+	}
+
+	button {
+		background: none;
+		border: none;
 	}
 </style>
