@@ -13,9 +13,7 @@ export const actions = {
 
     if (error) {
       return fail(500, { message: 'Server error. Try again later.', success: false, email })
-      console.log("failed")
     }
-    console.log("success")
     return {
       
       success: true,

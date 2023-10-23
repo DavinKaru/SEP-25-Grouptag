@@ -8,8 +8,8 @@
 
 	import TagIcon from '../../TagIcons/TagIcon_Component.svelte'; // Import the TagIcon component
 	export let data; // Receive data
-	let group = data.Group[0];
-	let groupUsers = data.GroupUsers;
+	let group = data.Group;
+	let GroupFeaturedImages = data.GroupFeaturedImages;
 </script>
 
 <div id="group-container">
@@ -18,10 +18,10 @@
 		<div id="members">
 			<h2 id="members-header">Members</h2>
 			<div id="members-icons">
-				{#each groupUsers as user, i}
+				{#each GroupFeaturedImages as user, i}
 					<!-- Only show the first 6 users -->
 					{#if i < 6}
-						<span class="icon" style="background-image: url({user.users.image_url});" />
+						<span class="icon" style="background-image: url({user.image_url});" />
 					{/if}
 				{/each}
 			</div>

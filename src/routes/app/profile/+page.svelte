@@ -10,8 +10,6 @@
 	let selected = 'Experience';
 
 	export let data;
-	let { user, Users,  Posts, Groups } = data
-	$: ({ user, Users,  Posts, Groups } = data)
 	function handleSubmit() {
 		//console.log(selected);
 	}

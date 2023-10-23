@@ -1,23 +1,20 @@
 <script>
-	export let user = [];
-	let thisUser = user.users;
-	let thisCourse = user.university_courses;
-	let thisUni = user.universities;
-	//console.log(user)
+	export let user;
+	console.log(user)
 
 </script>
 
 <div id="details">
 	<div id="grid">
 		<img src="/profile/course.svg" alt="Course" />
-		<p class="courseInfo">{thisCourse.name}</p>
+		<p class="courseInfo">{user.university_courses.name}</p>
 		<img src="/profile/university.svg" alt="University" />
-		<p class="courseInfo">{thisUni.name}</p>
+		<p class="courseInfo">{user.universities.name}</p>
 		<img src="/profile/location-flag.svg" alt="Location" />
 		<p class="courseInfo">Melbourne, Australia</p>
 	</div>
 	<p id="bio">
-		{thisUser.bio}
+		{user.users.bio}
 	</p>
 </div>
 

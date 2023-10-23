@@ -10,7 +10,6 @@
 
 	export let posts = [];
 	export let groups = [];
-	export let user_id;
 	export let users = [];		
 </script>
 	

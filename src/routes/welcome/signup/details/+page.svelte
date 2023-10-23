@@ -1,4 +1,4 @@
-//src/routes/welcome/signup/details/+page.svelte
+<!--//src/routes/welcome/signup/details/+page.svelte-->
 
 <script>
 	import HeaderComponent from '../../../../components/Welcome/WelcomeHeader/WelcomeHeader_Component.svelte';

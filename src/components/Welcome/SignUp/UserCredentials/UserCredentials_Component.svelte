@@ -1,6 +1,6 @@
 <script> 
 	import ButtonsComponent from "../../Buttons/Buttons_Component.svelte";
-	import {university, course, fName, lName, dob, bio} from "../../../routes/welcome/signup/formStore.js"
+	import {university, course, fName, lName, dob, bio} from '../../../../routes/welcome/signup/formStore.js';
 	import { enhance } from "$app/forms";
 
 	let password = "";

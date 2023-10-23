@@ -1,7 +1,7 @@
 <script>
 	import Select from 'svelte-select';
 	import autosize from 'svelte-autosize';
-	import AppHeaderComponent from '../../../../components/AppHeader/AppHeader_Component.svelte';
+	import AppHeaderComponent from '../../../../components/App/AppHeader/AppHeader_Component.svelte';
 
 	const employmentType = ['Full-time', 'Part-time', 'Casual', 'Volunteer', 'Internship'];
 </script>

@@ -14,7 +14,6 @@ export const actions = {
     const university = formData.get('university'.toString())??'';
     const course = formData.get('course')?.toString()??'';
 
-    console.log("start");      
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
@@ -30,8 +29,6 @@ export const actions = {
         }
       },
     })
-    console.log("end");      
-    console.log(error);  
     if (error) {
       if(error instanceof AuthApiError && error.status == 400){
         return fail(400, { message: 'Invalid login credential.', success: false, email })

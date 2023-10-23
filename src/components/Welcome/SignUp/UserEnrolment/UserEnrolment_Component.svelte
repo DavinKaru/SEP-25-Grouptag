@@ -1,6 +1,6 @@
 <script>
 	import ButtonsComponent from '../../Buttons/Buttons_Component.svelte';
-	import { university, course } from '../../../routes/welcome/signup/formStore.js';
+	import { university, course } from '../../../../routes/welcome/signup/formStore.js';
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
 

@@ -10,7 +10,7 @@
 </script>
 
 <div id="frame">
-    <AppHeaderComponent title="{data.Group[0].Name}" />
+    <AppHeaderComponent title="{data.Group.Name}" />
     <div id="content">
         <GroupDetailsComponent {data} />
         <div id="post-header">  
@@ -18,11 +18,7 @@
             <a href="default" id="post-button">Make Post</a>
         </div>
         {#each data.GroupPosts as post}
-            {#each data.GroupUsers as user}
-                {#if user.users.user_id === post.user_id}
-                    <GroupPostComponent {post} {user} />
-                {/if}
-            {/each}
+            <GroupPostComponent {post}/>
         {/each}
     </div>
 </div>

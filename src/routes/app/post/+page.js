@@ -7,7 +7,7 @@ export async function load({url, parent}) {
     const { data: Comments } = await supabase.rpc('get_comments', {get_post_id: post_id});
 
     return {
-        Posts: Posts ?? [],
+        Posts: Posts[0] ?? [],
         Comments: Comments ?? []
     };
 }

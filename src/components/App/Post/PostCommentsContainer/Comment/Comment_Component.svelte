@@ -7,7 +7,7 @@
 <!--Main Div Container, consists of two rows. The first row is split into two columns.-->
 <div id="comment-card">
     <div id="comment-details">
-        <ProfileIconComponent --width="2rem"/>
+        <ProfileIconComponent --width="2rem" postAuthorPicture={comment.image_url}/>
         <div id="comment-details-text">
             <h2 id="comment-author">{comment.first_name} {comment.last_name}</h2>
             <p id="comment-time">{comment.created_at}</p>

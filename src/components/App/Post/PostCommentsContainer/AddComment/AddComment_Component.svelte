@@ -28,7 +28,7 @@
 			<input type="hidden" name="post_id" value={post_id}>
 			<textarea use:autosize name="comment" id="add-comment-content" placeholder="Write your comment" />
 			<div class="button-container">
-			<button type="submit" id="cancel-button">
+			<button type="button" id="cancel-button"  on:click={togglePopup}>
 				<p class="comment-button">Cancel</p>
 			</button>
 			<button type="submit" id="submit-button">
