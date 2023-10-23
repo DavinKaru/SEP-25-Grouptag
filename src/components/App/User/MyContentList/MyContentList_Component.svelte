@@ -1,27 +1,18 @@
 <script>
-	// @ts-nocheck
-	
-		import MyPostsComponent from '../../../components/User/MyContentList/MyPosts/MyPosts_component.svelte';
-		import MyExperienceComponent from '../../../components/User/MyContentList/MyExperience/MyExperience_component.svelte';
-		import MyGroupsComponent from '../../../components/User/MyContentList/MyGroups/MyGroups_component.svelte';
-		import MyMutualsComponent from '../../../components/User/MyContentList/MyMutuals/MyMutuals_Component.svelte';
-	
-		export let content = 'Experience';
-	
-		export let posts = [];
-		export let groups = [];
-		//console.log(groups)
-		//export let user = [];
-		//export let user_id;
-		export let users = [];
+// @ts-nocheck
 
+	import MyExperienceComponent from "./MyExperience/MyExperience_component.svelte";
+	import MyPostsComponent from "./MyPosts/MyPosts_component.svelte";
+	import MyGroupsComponent from "./MyGroups/MyGroups_component.svelte";
+	import MyMutualsComponent from "./MyMutuals/MyMutuals_Component.svelte";
 
-		
-		//let filteredPosts = posts.filter((post) => post.user_id === user_id);
-	
-		//console.log('MyContentList', filteredPosts);
-		//console.log('Groups in MyContentList:', groups);
-	</script>
+	export let content = 'Groups';
+
+	export let posts = [];
+	export let groups = [];
+	export let user_id;
+	export let users = [];		
+</script>
 	
 	<div id="ContentList">
 		<!-- In future this will be used to dynamically generate components and populate the list with them as required. However, as we are not 

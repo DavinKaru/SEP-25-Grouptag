@@ -1,6 +1,6 @@
 <script>
-    import AppHeaderComponent from "../../../components/AppHeader/AppHeader_Component.svelte";
-    import ConnectionRequestComponent from "../../../components/ConnectionRequest/ConnectionRequest_Component.svelte";
+    import AppHeaderComponent from "../../../components/App/AppHeader/AppHeader_Component.svelte";
+    import ConnectionRequestComponent from "../../../components/App/ConnectionRequest/ConnectionRequest_Component.svelte";
 </script>
 
 <div id="frame">
@@ -34,19 +34,4 @@
         margin-right: auto;
         margin-bottom: 65px;
     }
-
-    /* Tablet + PC Layout */
-	@media only screen and (min-width: 750px) {
-		#content {
-			width: 55%;
-		}
-	}
-
-	/* Phone layout */
-	@media only screen and (max-width: 750px) {
-
-		#content {
-			width: 90%;
-		}
-	}
 </style>

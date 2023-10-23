@@ -1,8 +1,8 @@
 <!--// src/routes/+page.svelte-->
 <script>
-	import ButtonsComponent from '../components/Buttons/Buttons_Component.svelte';
+	import ButtonsComponent from '../components/Welcome/Buttons/Buttons_Component.svelte';
 	import BoxComponent from '../components/Box/Box_Component.svelte';
-	import HeaderComponent from '../components/WelcomeHeader/WelcomeHeader_Component.svelte';
+	import HeaderComponent from '../components/Welcome/WelcomeHeader/WelcomeHeader_Component.svelte';
 </script>
 
 <body>

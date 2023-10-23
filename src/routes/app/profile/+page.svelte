@@ -1,11 +1,11 @@
 <!--//src/routes/app/profile/+page.svelte-->
 <script>
-	import AppHeaderComponent from '../../../components/AppHeader/AppHeader_Component.svelte';
-	import ProfilePictureComponent from '../../../components/User/ProfilePicture/ProfilePicture_component.svelte';
-	import ContentSelectorComponent from '../../../components/User/ContentSelector/ContentSelector_Component.svelte';
-	import MyDetailsComponent from '../../../components/User/MyDetails/MyDetails_Component.svelte';
-	import ConnectWithMeComponent from '../../../components/User/ConnectWithMe/ConnectWithMe_Component.svelte';
-	import MyContentListComponent from '../../../components/User/MyContentList/MyContentList_Component.svelte';
+	import AppHeaderComponent from '../../../components/App/AppHeader/AppHeader_Component.svelte';
+	import ProfilePictureComponent from '../../../components/App/User/ProfilePicture/ProfilePicture_component.svelte';
+	import ContentSelectorComponent from '../../../components/App/User/ContentSelector/ContentSelector_Component.svelte';
+	import MyDetailsComponent from '../../../components/App/User/MyDetails/MyDetails_Component.svelte';
+	import ConnectWithMeComponent from '../../../components/App/User/ConnectWithMe/ConnectWithMe_Component.svelte';
+	import MyContentListComponent from '../../../components/App/User/MyContentList/MyContentList_Component.svelte';
 
 	let selected = 'Experience';
 

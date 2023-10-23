@@ -1,5 +1,5 @@
 <script>
-    export let postAuthorPicture = '/temp_profile.svg';    
+    export let postAuthorPicture = '/default/user-icon-default.png';    
 </script>
 
 <img src={postAuthorPicture} alt="Profile Icon"/>

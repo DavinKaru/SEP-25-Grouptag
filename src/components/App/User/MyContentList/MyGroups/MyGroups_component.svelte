@@ -1,8 +1,7 @@
 <script>
 	import TagIconComponent from '../../../TagIcons/TagIcon_Component.svelte';
-
 	export let group;
-
+	
 </script>
 
 <div id="group-card">

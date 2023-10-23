@@ -1,7 +1,7 @@
 <!--//src/routes/welcome/signup/enrolment/+page.svelte-->
 <script>
-	import HeaderComponent from '../../../../components/WelcomeHeader/WelcomeHeader_Component.svelte';
-	import UserEnrolmentComponent from '../../../../components/SignUp/UserEnrolment/UserEnrolment_Component.svelte';
+	import HeaderComponent from '../../../../components/Welcome/WelcomeHeader/WelcomeHeader_Component.svelte';
+	import UserEnrolmentComponent from '../../../../components/Welcome/SignUp/UserEnrolment/UserEnrolment_Component.svelte';
 	import BoxComponent from '../../../../components/Box/Box_Component.svelte';
 </script>
 

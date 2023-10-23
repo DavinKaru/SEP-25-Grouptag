@@ -1,10 +1,10 @@
 <!--//src/routes/app/groups/+page.svelte-->
 
 <script>
-	import HeaderComponent from '../../../components/AppHeader/AppHeader_Component.svelte';
-	import FeaturedGroupComponent from '../../../components/Group/FeaturedGroup/FeaturedGroup_Component.svelte';
-	import GroupsSelectorComponent from '../../../components/Group/GroupSelector/GroupSelector_Component.svelte';
-	import GroupCardContainerComponent from '../../../components/Group/GroupCardContainer/GroupCardContainer_Component.svelte';
+	import HeaderComponent from '../../../components/App/AppHeader/AppHeader_Component.svelte';
+	import FeaturedGroupComponent from '../../../components/App/Groups/FeaturedGroup/FeaturedGroup_Component.svelte';
+	import GroupsSelectorComponent from '../../../components/App/Groups/GroupSelector/GroupSelector_Component.svelte';
+	import GroupCardContainerComponent from '../../../components/App/Groups/GroupCardContainer/GroupCardContainer_Component.svelte';
 	export let data;
 	let allGroups = true;
 	let displayGroups = data.Groups

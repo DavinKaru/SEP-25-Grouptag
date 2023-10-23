@@ -3,17 +3,23 @@
 
 	import AppHeaderComponent from '../AppHeader/AppHeader_Component.svelte';
 	import PostDetailsComponent from './PostDetails/PostDetails_Component.svelte';
-	import PostMedia from './PostMedia/PostMedia_Component.svelte';
-	import PostContent from './PostContent/PostContent.svelte';
+	import PostMediaComponent from './PostMedia/PostMedia_Component.svelte';
+	import PostContentComponent from './PostContent/PostContent_Component.svelte';
 	import PostCommentsContainerComponent from './PostCommentsContainer/PostCommentsContainer_Component.svelte';
     //import { page } from '$app/stores';  
 
 	export let data;
 
-    //const url = $page.url;
-    //const post_id = url.searchParams.get('id');
+	//console.log(data);
 
-    let post = data.Posts[0];
+	const url = $page.url;
+	const post_id = url.searchParams.get('id');
+
+	export let post;
+	export let user;
+	export let group;
+
+	let post = data.Posts.find((p) => p.post_id === post_id);
 
 	// Grab necessary data from post
 
@@ -60,11 +66,11 @@
 	/>
 
 	{#if postMedia != null}
-		<PostMedia {postMedia} />
+		<PostMediaComponent {postMedia} />
 	{/if}
 
-    <PostContent {postContent}/>
-    <PostCommentsContainerComponent comments={data.Comments}/>
+	<PostContentComponent {postContent} />
+	<PostCommentsContainerComponent />
 </div>
 
 <style>

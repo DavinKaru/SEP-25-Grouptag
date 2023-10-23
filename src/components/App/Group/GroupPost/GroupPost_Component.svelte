@@ -1,24 +1,14 @@
 <script>
 	// @ts-nocheck
 
-	import TagIconComponent from '../../../TagIcons/TagIcon_Component.svelte';
-	import GroupIconComponent from '../../../Icons/GroupIcon/GroupIcon_Component.svelte';
+	import ProfileIconComponent from '../../User/ProfileIcon/ProfileIcon_component.svelte';
+	import TagIconComponent from '../../TagIcons/TagIcon_Component.svelte';
 	import { goto } from '$app/navigation';
 
-
 	export let post;
-	let user = post.users;
-	let group = post.groups;
-	//export let users;
-	//export let groups;
+	export let user;
 
-	//let user = users.find((u) => u.user_id === post.user_id);
-
-	//let group = groups.find((g) => g.group_id === post.group_id);
-	let groupName = post ? post.name : 'Unknown Group';
-	
-	// Get Group Logo/Icon
-	let postGroupLogo = post ? post.logo_url : null;
+	let userDetails = user.users;
 
 	//Calculation for timestamp
 	let createdAt = new Date(post.created_at);
@@ -33,9 +23,6 @@
 	let minutes = Math.floor(difference / 1000 / 60);
 	let hours = Math.floor(minutes / 60);
 
-	/**
-	 * @type {string}
-	 */
 	let timeSince;
 
 	if (hours > 0) {
@@ -68,7 +55,8 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div id="post-card" on:click={goToPost}>
-	
+	<!-- Left hand side contains post media or group logo , right side contains details-->
+
 	<!--If Post Media is not null -->
 	{#if post.media_url != null}
 		<!-- Left hand side contains post media or group logo , right side contains details-->
@@ -81,7 +69,18 @@
 	<div id="post-content">
 		<!--Row 1-->
 		<div id="row-1">
-			<h1>{post.title}</h1>
+			<!--Column 1 of Row 1-->
+			<div id="row-1a">
+				<h1>{post.title}</h1>
+			</div>
+
+			<!--Column 2 of Row 1-->
+			<div id="row-1b">
+				<div id="profile-icon">
+					<ProfileIconComponent --width="1.5rem" />
+				</div>
+				<h2>{userDetails.first_name} {userDetails.last_name}</h2>
+			</div>
 		</div>
 
 		<!--Row 2-->
@@ -94,10 +93,6 @@
 					<TagIconComponent text={tag.name} />
 				{/each}
 			</div>
-			<div id="post-group-details">
-				<GroupIconComponent {postGroupLogo} />
-				<p id="post-group">{groupName}</p>
-			</div>
 			<p id="post-timestamp">{timeSince}</p>
 		</div>
 	</div>
@@ -109,8 +104,8 @@
 		background-color: rgba(255, 255, 255, 0.127);
 
 		/* Dimensions */
-		margin-top: 10px;
 		height: fit-content;
+		width: 100%;
 
 		/* If device screen is too narrow, force a certain height for component */
 
@@ -134,16 +129,31 @@
 		overflow: hidden;
 	}
 
-	#post-group-details {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		gap: 5px;
-	}
-
 	#post-media > img {
 		object-fit: cover;
 		width: 100%;
+	}
+
+	/* Another flexbox! This one for the first row of the right panel (Profile Picture + Title + Author) */
+	#row-1 {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		align-items: flex-end;
+		gap: 10px;
+	}
+
+	#row-1a {
+		margin-top: auto;
+		margin-bottom: auto;
+        margin-right: auto;
+	}
+
+	/* Center Post Title + Post Author */
+	#row-1b {
+		display: flex;
+		gap: 5px;
+		margin-right: auto;
 	}
 
 	#row-2 {
@@ -164,6 +174,11 @@
 		height: 100%;
 	}
 
+	/* Some minor positioning */
+	#profile-icon {
+		margin-top: -3px;
+	}
+
 	/* Some container styling for tag icon components */
 	#tag-icons {
 		display: flex;
@@ -181,14 +196,18 @@
 		color: white;
 	}
 
+	h2 {
+		font-size: 0.75rem;
+	}
+
 	p {
 		font-size: 0.65rem;
 	}
 
 	/* Tablet + PC Layout */
 	@media only screen and (min-width: 600px) {
-		#post-card, img {
-			max-height: 175px;
+		#post-card {
+			height: 175px;
 		}
 	}
 </style>

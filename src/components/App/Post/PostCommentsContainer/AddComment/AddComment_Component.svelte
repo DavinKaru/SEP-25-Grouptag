@@ -16,7 +16,7 @@
 
 {#if !showPopup}
 <div id="add-comment-card" on:click={togglePopup}>
-	<ProfileIconComponent/>
+	<ProfileIconComponent --width="2rem"/>
 	<!-- Put the user's own profile picture here! -->
 	<h1 id="comment-prompt">Add Comment...</h1>
 </div>
