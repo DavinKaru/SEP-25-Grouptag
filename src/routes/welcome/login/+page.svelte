@@ -1,8 +1,8 @@
 <!-- Login page -->
 <script>
-	import LoginComponent from '../../../components/Login/Login_Component.svelte';
+	import LoginComponent from '../../../components/Welcome/Login/Login_Component.svelte';
 	import BoxComponent from '../../../components/Box/Box_Component.svelte';
-	import HeaderComponent from '../../../components/WelcomeHeader/WelcomeHeader_Component.svelte';
+	import HeaderComponent from '../../../components/Welcome/WelcomeHeader/WelcomeHeader_Component.svelte';
 </script>
 
 <body>

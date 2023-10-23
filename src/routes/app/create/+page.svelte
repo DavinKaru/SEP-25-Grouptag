@@ -1,7 +1,7 @@
 <script>
     import Select from 'svelte-select';
     import autosize from 'svelte-autosize';
-	import AppHeaderComponent from '../../../components/AppHeader/AppHeader_Component.svelte';
+	import AppHeaderComponent from '../../../components/App/AppHeader/AppHeader_Component.svelte';
     
     const groupOptions = ['Swinburne Razorbacks', 'Cybersecurity Club'];
 </script>
@@ -15,7 +15,7 @@
 
 <div id="frame">
     <AppHeaderComponent title="Create Post"/>
-	<div id="body">
+	<div id="content">
         <h2>What do you want to say?</h2>
         <div class="field">
 			<label for="postGroup">Group</label>
@@ -72,7 +72,7 @@
 		justify-content: flex-start;
 	}
 
-    #body {
+    #content {
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
@@ -146,4 +146,19 @@
         background-color: #4095c6;
     }
 
+
+    /* Tablet + PC Layout */
+    @media only screen and (min-width: 750px) {
+        #content {
+            width: 55%;
+        }
+    }
+
+    /* Phone layout */
+    @media only screen and (max-width: 750px) {
+
+        #content {
+            width: 90%;
+        }
+    }
 </style>

@@ -1,7 +1,7 @@
 <!-- Svelte Layout -->
 
 <script>
-	import Navbar from '../../components/Navbar/Navbar_Component.svelte';
+	import Navbar from '../../components/App/Navbar/Navbar_Component.svelte';
 </script>
 
 <Navbar />

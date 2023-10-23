@@ -1,5 +1,5 @@
 <script>
-	import TagIconComponent from '../../../TagIcons/TagIcon_Component.svelte';
+	import TagIconComponent from "../../../TagIcons/TagIcon_Component.svelte";
 </script>
 
 <div id="group-card">

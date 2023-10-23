@@ -2,16 +2,16 @@
 	// @ts-nocheck
 
 	import ProfileIconComponent from '../../User/ProfileIcon/ProfileIcon_component.svelte';
-	import GroupIconComponent from '../../Icons/GroupIcon/GroupIcon_Component.svelte';
+	import GroupIconComponent from '../../GroupIcon/GroupIcon_Component.svelte';
 	import TagIconComponent from '../../TagIcons/TagIcon_Component.svelte';
-
-	export let postTitle;
-	export let postTime;
-	export let postAuthorName;
-	export let postAuthorPicture;
-	export let postGroupName;
-	export let postGroupLogo;
-	export let postTags;
+	
+	export let postTitle = "Default Title";
+	export let postTime = "null";
+	export let postAuthorName = "Default Author";
+	export let postAuthorPicture = "/default/user-icon-default.png";
+	export let postGroupName = "Default Group";
+	export let postGroupLogo = "/default/group-icon-default.png";
+	export let postTags = ["Default Tags"];
 
 	// Calculation for timestamp
 	let createdAt = new Date(postTime);
