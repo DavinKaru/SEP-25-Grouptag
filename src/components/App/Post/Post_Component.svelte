@@ -4,7 +4,7 @@
 	import AppHeaderComponent from '../AppHeader/AppHeader_Component.svelte';
 	import PostDetailsComponent from './PostDetails/PostDetails_Component.svelte';
 	import PostMediaComponent from './PostMedia/PostMedia_Component.svelte';
-	import PostContentComponent from './PostContent/PostContent.svelte';
+	import PostContentComponent from './PostContent/PostContent_Component.svelte';
 	import PostCommentsContainerComponent from './PostCommentsContainer/PostCommentsContainer_Component.svelte';
 	import { page } from '$app/stores';
 
@@ -14,6 +14,10 @@
 
 	const url = $page.url;
 	const post_id = url.searchParams.get('id');
+
+	export let post;
+	export let user;
+	export let group;
 
 	let post = data.Posts.find((p) => p.post_id === post_id);
 

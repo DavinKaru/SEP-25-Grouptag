@@ -1,5 +1,7 @@
-
-<img src="/grouptag-g.logo.png" alt="Temporary Grouptag 'G' Logo" />
+<script>
+    export let groupIcon = "/default/group-icon-default.png";
+</script>
+<img src={groupIcon} alt="Temporary Grouptag 'G' Logo" />
 
 <style>
     img {

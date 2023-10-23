@@ -5,7 +5,7 @@
 <!--Main Div Container, consists of two rows. The first row is split into two columns.-->
 <div id="comment-card">
     <div id="comment-details">
-        <ProfileIconComponent />
+        <ProfileIconComponent --width="2rem"/>
         <div id="comment-details-text">
             <h2 id="comment-author">Comment Author</h2>
             <p id="comment-time">Time</p>
