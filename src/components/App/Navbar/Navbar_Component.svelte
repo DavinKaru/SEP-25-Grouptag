@@ -21,7 +21,7 @@
 		<img src="/Icons/Navbar Icons/Plus.svg" alt="Plus Icon" class="navIcon" />
 	</a>
  
-	<a href="/app/profile">
+	<a href="/app/myprofile">
 		<img src="/Icons/Navbar Icons/Profile.svg" alt="Profile Icon" class="navIcon" />
 	</a>
 </nav>
