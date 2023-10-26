@@ -42,6 +42,7 @@
     "@supabase/auth-helpers-sveltekit": "^0.10.3",
     "@supabase/supabase-js": "^2.38.1",
     "svelte-autosize": "^1.1.0",
+    "svelte-file-dropzone": "^2.0.2",
     "svelte-french-toast": "^1.2.0",
     "svelte-gestures": "^1.5.2",
     "svelte-navigator": "^3.2.2",
