@@ -41,7 +41,7 @@
 			{#each files.accepted as item, index}
 				<div>
 					<span>{item.name}</span>
-					<button on:click={(e) => handleRemoveFile(e, index)}>Remove</button>
+					<button on:click={(e) => handleRemoveFile(e, index)} id="removeButton">Remove</button>
 				</div>
 			{/each}
 		</div>
@@ -58,9 +58,24 @@
 		gap: 10px;
 	}
 
-	#submitButton {
+	#submitButton,
+	#removeButton {
 		margin-left: auto;
 		margin-right: auto;
+	}
+
+	#removeButton {
+		padding: 0.2em 1.2em;
+		margin: 2% 0;
+		border-radius: 2em;
+		box-sizing: border-box;
+		text-decoration: none;
+		font-family: 'Roboto', sans-serif;
+		font-weight: 300;
+		color: #ffffff;
+		background-color: #3aa4d1;
+		text-align: center;
+		transition: all 0.2s;
 	}
 
 	h1,
@@ -87,6 +102,10 @@
 		padding: 0 20px;
 		width: 100%;
 		color: rgb(255, 255, 255);
+	}
+
+	.dropFiles > div > span {
+		font-size: small;
 	}
 
 	textarea {
