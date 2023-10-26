@@ -58,8 +58,7 @@
 		gap: 10px;
 	}
 
-	#submitButton,
-	#removeButton {
+	#submitButton {
 		margin-left: auto;
 		margin-right: auto;
 	}
