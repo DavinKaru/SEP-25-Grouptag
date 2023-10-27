@@ -5,8 +5,8 @@
 	import ProfileIconComponent from '../../../User/ProfileIcon/ProfileIcon_component.svelte';
 	let showPopup = false; // Reactive variable to track popup visibility
 	import { page } from '$app/stores';
-    const post_id = $page.url.searchParams.get('id');
-
+    //const post_id = $page.url.searchParams.get('id');
+	const post_id = '629b17cf-b958-4ebb-879c-03622894d677';
 	function togglePopup() {
 		showPopup = !showPopup; // Toggle the popup
 	}

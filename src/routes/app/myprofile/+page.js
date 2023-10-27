@@ -2,10 +2,11 @@
 
 export async function load({url, parent}) {
     const { supabase, session } = await parent()
-    let user_id = url.searchParams.get('id')??'';
-    if(user_id == ''){
-        user_id = session.user.id
-    }
+    //let user_id = url.searchParams.get('id')??'';
+    //if(user_id == ''){
+    //    user_id = session.user.id
+    //}
+    const user_id = '032dcabb-97a3-47a3-8390-b2e5575da8bb';
 
     const { data: user  } = await supabase.from('user_courses').select("users(*), university_courses (*), universities (*)").eq('user_id', user_id).single();
 

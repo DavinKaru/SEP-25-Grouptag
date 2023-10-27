@@ -1,4 +1,4 @@
-<!--//src/routes/app/groups/+page.svelte-->
+<!-- //src/routes/app/groups/+page.svelte
 
 <script>
 	import HeaderComponent from '../../../components/App/AppHeader/AppHeader_Component.svelte';
@@ -45,4 +45,4 @@
 		margin-right: auto;
 		z-index: 1;
 	}
-</style>
+</style> -->

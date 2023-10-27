@@ -13,6 +13,10 @@
 			<h2>Get Started</h2>
 			<ButtonsComponent text="Login" href="/welcome/login" buttonClass="login-button" />
 			<ButtonsComponent text="Sign Up" href="/welcome/signup/enrolment" buttonClass="signup-button" />
+
+
+
+			<ButtonsComponent text="Profile Page" href="/app/profile" buttonClass="login-button" />
 		</BoxComponent>
 	</div>
 </body>

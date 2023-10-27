@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 // @ts-nocheck
 
     import AppHeaderComponent from "../../../components/App/AppHeader/AppHeader_Component.svelte";
@@ -84,4 +84,4 @@
 		background-color: #4095c6;
 	}
 
-</style>
+</style> -->
