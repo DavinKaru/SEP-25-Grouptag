@@ -4,12 +4,25 @@
 -->
 
 <script>
-	// @ts-nocheck
-
 	import TagIcon from '../../TagIcons/TagIcon_Component.svelte'; // Import the TagIcon component
+	import { supabase } from '../../../../supabaseClient';
 	export let data; // Receive data
 	let group = data.Group[0];
 	let GroupFeaturedImages = data.GroupFeaturedImages;
+
+	const handleJoinGroup = async () => {
+    try {
+		const myUserId = (await supabase.auth.getSession()).data.session?.user.id;
+	  	const {error} = await supabase.from('group_users').insert({group_id: group.group_id, user_id: myUserId})
+		if (error) throw error
+	  	  
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message)
+      }
+    } finally {
+	}
+	}
 </script>
 
 <div id="group-container">
@@ -38,7 +51,9 @@
 			{/each}
 		</div>
 
-		<a href="default" id="join-button">Join Group</a>
+		<button type="button" id="submit-button" on:click={handleJoinGroup}>
+			<p class="comment-button">Join Group</p>
+		</button>
 	</div>
 </div>
 

@@ -1,7 +1,9 @@
 <script>
+	import ButtonsComponent from '../../../../Welcome/Buttons/Buttons_Component.svelte';
 	import FormButtonComponent from '../../../FormButton/FormButton_Component.svelte';
 	import Dropzone from 'svelte-file-dropzone/Dropzone.svelte';
 	import { supabase } from '../../../../../supabaseClient';
+	import { invalidateAll } from '$app/navigation';
 	let loading = false;
 	export let location,bio,image_url;
 	
@@ -34,13 +36,14 @@
       }
     } finally {
       loading = false
+	  invalidateAll();
     }
 	}
 </script>
 
 <div id="editWindow">
 	<h1>Edit Profile</h1>
-	<form on:submit|preventDefault={handleEdit}>
+	<form id="form" method="post" on:submit|preventDefault="{handleEdit}">
 		<div class="field">
 			<label for="location">Location</label>
 			<textarea id="location" name="location" placeholder="Where am I?"/>
@@ -66,9 +69,10 @@
 				{/each}
 			</div>
 		</div>
-		<div id="submitButton">
+		<!-- <div id="submitButton">
 			<FormButtonComponent text="Save Changes" />
-		</div>
+		</div> -->
+		<ButtonsComponent buttonType="submit" text="Save Changes" buttonClass="login-button" isAnchor={false}/>
 	</form>
 </div>
 

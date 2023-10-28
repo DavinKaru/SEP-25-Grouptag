@@ -8,7 +8,7 @@
 <div id="details">
 	<div id="grid">
 		<img src="/profile/course.svg" alt="Course" />
-		<p class="courseInfo">{user.universities.course}</p>
+		<p class="courseInfo">{user.university_courses.name}</p>
 		<img src="/profile/university.svg" alt="University" />
 		<p class="courseInfo">{user.universities.name}</p>
 		<img src="/profile/location-flag.svg" alt="Location" />

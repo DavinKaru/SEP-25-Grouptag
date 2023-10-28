@@ -20,6 +20,7 @@
 			errorMessage = "Password has to contain 8 characters with at least 1 Capital, 1 Number and 1 Symbol";
 		} else {
 			errorMessage = "";
+			handleSignup()
 		}
 	}
 
@@ -45,19 +46,17 @@
       options: {
         emailRedirectTo: `${URL}/auth/callback`,
         data:{
-          first_name: fName,
-          last_name: lName,
-          dob: dob,
-          bio: bio,
-          university: university,
-          course: course
+          first_name: $fName,
+          last_name: $lName,
+          dob: $dob,
+          bio: $bio,
+          university: $university,
+          course: $course
         }
       },
     })
       if (error) throw error
-	  //  vvv If successful then do this vvv
-	  //
-	  //
+		goto('/welcome/login')
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message)
@@ -67,7 +66,7 @@
     }
 }
 </script>
-<form method="post" use:enhance on:submit|preventDefault={handleSubmit}>
+<form on:submit|preventDefault={handleSubmit}>
 	<input type="hidden" name="university" bind:value={$university}/>
 	<input type="hidden" name="course" bind:value={$course}/>
 	<input type="hidden" name="fName" bind:value={$fName}/>

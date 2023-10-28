@@ -1,5 +1,6 @@
 <script>
  	import toast, {Toaster} from 'svelte-french-toast';
+	import { supabase } from '../../../../supabaseClient';
 
 	/* TO-DO: Function should:
 		1. Check whether the current user is already connected to the target user. If so, fail and send error message, i.e. (toast.error(Error Message))
@@ -8,7 +9,8 @@
 		4. Lastly, if none of the above are true, send a request to the target user and send success message.
 	*/
 
-	function requestMutual() {
+	function showToastMutual() {
+
 		toast.success('Request sent!');
 	}
 
@@ -26,12 +28,26 @@
 	}
 
 	/* Some props that may prove useful... up to you if you use them. */
-	let userID = "default ID";
-	let targetID = "default ID";
+	export let targetID;
+	console.log("The target ID is", targetID)
+	const handleMutualRequest = async () => {
+    try {
+		const myUserId = (await supabase.auth.getSession()).data.session?.user.id;
+	  	const {error} = await supabase.from('connection_requests').insert({sender_id: myUserId, receiver_id: targetID})
+		if (error) throw error
+		showToastMutual()
+	  
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message)
+      }
+    } finally {
+	}
+	}
 </script>
 
 <div id="userConnectGrid">
-	<button on:click={requestMutual}>
+	<button on:click={handleMutualRequest}>
 		<img class="connectIcon" src="/profile/Connect.svg" alt="Connect with me" />
 	</button>
 	<button on:click={copyLink}>

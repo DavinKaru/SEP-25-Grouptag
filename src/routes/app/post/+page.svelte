@@ -29,7 +29,7 @@
 					postTags = {Posts.tags}
 				/>
 				<PostContentComponent postContent={Posts.content} />
-				<PostCommentsContainerComponent comments={Comments} post_id={Post_id}/>
+				<PostCommentsContainerComponent comments={data.Comments} post_id={data.Post_id}/>
 			</div>
 	</div>
 </body>

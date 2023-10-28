@@ -5,37 +5,29 @@
 	import { goto } from '$app/navigation';
 	import { supabase } from '../../../../supabaseClient';
 	let loading = false;
-	let check;
-
-	const uniCheck = async() =>{
-		try {
-			const {data: result, error: err} = await supabase.rpc("check_uni_and_course", {uni: university, cou: course})			
-			check = result;
-		} catch (err) {
-			if (err instanceof Error) {
-				alert(err.message)
-			}
-		} finally {
-
-		}
-	}
+	let errUni, errCou;
 
 	const handleNext = async () => {
     try {
+		errUni="";
+		errCou="";
       loading = true
-	  uniCheck
-	  if (!check.data[0].university){
+	  const {data: result, error: err} = await supabase.rpc("check_uni_and_course", {uni: $university, cou: $course})
+	   if (!result[0].university){
+		errUni="Please enter a valid University";
 
-	  }
-	  if (!check.data[0].course){
+	   }
+	   if (!result[0].course){
+		errCou="This course is not valid at this University";
 
-	  } 
-	  // insert some extra javascript checks here
-	  ///
-	  //
-	  //
-      //if (error) throw error
-	  if(check.data[0].university && check.data[0].course){
+	   } 
+	//   // insert some extra javascript checks here
+	//   ///
+	//   //
+	//   //
+    //   //if (error) throw error
+	  if(result[0].university && result[0].course){
+
 		goto('/welcome/signup/details');
 	  }
     } catch (error) {
@@ -52,6 +44,7 @@
 <form method="post" on:submit|preventDefault={handleNext}>
 	<div>
 		<div>
+			{#if errUni != null}<span>{errUni}</span><br>{/if}
 			<label for="university">University Name</label>
 			<input
 				bind:value={$university}
@@ -65,6 +58,7 @@
 			/>
 		</div>
 		<div>
+			{#if errCou != null}<span>{errCou}</span><br>{/if}
 			<label for="course">Course Name</label> 
 			<input
 				bind:value={$course}

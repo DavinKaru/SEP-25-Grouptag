@@ -7,10 +7,10 @@
     import { onMount } from "svelte";   
     let loading = true;
     export let data;
-    onMount(()=>{
-        loading = false;
+     onMount(()=>{
+         loading = false;
 
-    })
+     })
 
 
 </script>

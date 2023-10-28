@@ -55,7 +55,7 @@
 
 </script>
 
-<form id="form" on:submit|preventDefault="{validateForm}">
+<form id="form" on:submit|preventDefault="{handleLogin}">
 	<div style="margin-top: 42px;">
 		<div style="margin-bottom: 31px;">
 			<label for="email">University Email</label>

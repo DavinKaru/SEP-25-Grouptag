@@ -2,6 +2,7 @@
     import ProfileIconComponent from "../User/ProfileIcon/ProfileIcon_component.svelte";
     export let user;
     import { supabase } from "../../../supabaseClient";
+    let exist = true;
     let loading = false;
 
     const handleAccept = async () => {
@@ -15,14 +16,15 @@
         alert(error.message)
       }
     } finally {
-      loading = false
+      loading = false;
+       exist = false;
     }
 	}
 
     const handleReject = async () => {
     try {
       loading = true	  
-	  	const {error} = await supabase.rpc( 'reject_mutual_requests', {sender_id: user.sender_id})
+	  	const {error} = await supabase.rpc( 'reject_mutual_requests', {get_sender_id: user.sender_id})
 		if (error) throw error
     } catch (error) {
       if (error instanceof Error) {
@@ -30,6 +32,7 @@
       }
     } finally {
       loading = false
+      exist = false;
     }
 	}
 </script>
@@ -48,7 +51,7 @@
             - Delete Component
     3.) Allow the User to access a Requester's Profile by tapping the Request (Excluding the accept/reject buttons obviously)
 -->
-
+{#if exist}
 <div id="connection-request-card">
     <div id="column1">
         <ProfileIconComponent --width="4rem" postAuthorPicture={user.image_url}/>
@@ -77,6 +80,7 @@
     </div>
 
 </div>
+{/if}
 
 <style>
 
