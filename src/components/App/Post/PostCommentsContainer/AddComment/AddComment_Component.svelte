@@ -3,12 +3,32 @@
 	import { enhance } from '$app/forms';
 	import autosize from 'svelte-autosize';
 	import ProfileIconComponent from '../../../User/ProfileIcon/ProfileIcon_component.svelte';
+	import { supabase } from '../../../../../supabaseClient';
 	let showPopup = false; // Reactive variable to track popup visibility
-	import { page } from '$app/stores';
-    //const post_id = $page.url.searchParams.get('id');
-	const post_id = '629b17cf-b958-4ebb-879c-03622894d677';
+	export let post_id = '629b17cf-b958-4ebb-879c-03622894d677';
+	
+	let loading = false;
+	let comment = "";
+
 	function togglePopup() {
 		showPopup = !showPopup; // Toggle the popup
+	}
+	const handleAddComment = async () => {
+    try {
+      loading = true	  
+	  if(comment.trim() != ""){
+		const myUserId = (await supabase.auth.getSession()).data.session?.user.id;
+	  	const {error} = await supabase.from('comments').insert({post_id: post_id, user_id: myUserId, content: comment})
+		if (error) throw error
+	  }	  
+	  togglePopup
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message)
+      }
+    } finally {
+      loading = false
+    }
 	}
 </script>
 
@@ -22,9 +42,9 @@
 	</div>
 {:else}
 	<div id="comment-popup">
-		<form method="post" action="?/comment" use:enhance>
+		<form method="post" on:submit|preventDefault={handleAddComment} use:enhance>
 			<input type="hidden" name="post_id" value={post_id}>
-			<textarea use:autosize name="comment" id="add-comment-content" placeholder="Write your comment" />
+			<textarea use:autosize name="comment" id="add-comment-content" placeholder="Write your comment" bind:value={comment}/>
 			<div class="button-container">
 			<button type="button" id="cancel-button"  on:click={togglePopup}>
 				<p class="comment-button">Cancel</p>

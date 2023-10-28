@@ -2,7 +2,10 @@
 	import ButtonsComponent from "../../Buttons/Buttons_Component.svelte";
 	import {university, course, fName, lName, dob, bio} from '../../../../routes/welcome/signup/formStore.js';
 	import { enhance } from "$app/forms";
-
+	import { goto } from "$app/navigation";
+	import { supabase } from "../../../../supabaseClient";
+	let loading = false;
+	let email = "";
 	let password = "";
 	let cPassword = "";
 	let errorMessage = "";
@@ -31,19 +34,51 @@
 		]
 
 		//passwordStr = validations.reduce((acc, cur) => acc + (cur ? 1 : 0), 0)
+		
 	}
+	const handleSignup = async () => {
+    try {
+      loading = true
+      const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        emailRedirectTo: `${URL}/auth/callback`,
+        data:{
+          first_name: fName,
+          last_name: lName,
+          dob: dob,
+          bio: bio,
+          university: university,
+          course: course
+        }
+      },
+    })
+      if (error) throw error
+	  //  vvv If successful then do this vvv
+	  //
+	  //
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message)
+      }
+    } finally {
+      loading = false
+    }
+}
 </script>
 <form method="post" use:enhance on:submit|preventDefault={handleSubmit}>
-	<input type="hidden" name="university" value={$university}/>
-	<input type="hidden" name="course" value={$course}/>
-	<input type="hidden" name="fName" value={$fName}/>
-	<input type="hidden" name="lName" value={$lName}/>
-	<input type="hidden" name="dob" value={$dob}/>
-	<input type="hidden" name="bio" value={$bio}/>
+	<input type="hidden" name="university" bind:value={$university}/>
+	<input type="hidden" name="course" bind:value={$course}/>
+	<input type="hidden" name="fName" bind:value={$fName}/>
+	<input type="hidden" name="lName" bind:value={$lName}/>
+	<input type="hidden" name="dob" bind:value={$dob}/>
+	<input type="hidden" name="bio" bind:value={$bio}/>
 	<div>
 		<div>
 			<label for="email">University Email</label>
 			<input
+				bind:value={email}
 				type="email"
 				id="email"
 				name="email"

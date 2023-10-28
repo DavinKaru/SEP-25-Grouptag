@@ -3,26 +3,53 @@
 	import { university, course } from '../../../../routes/welcome/signup/formStore.js';
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
+	import { supabase } from '../../../../supabaseClient';
+	let loading = false;
+	let check;
+
+	const uniCheck = async() =>{
+		try {
+			const {data: result, error: err} = await supabase.rpc("check_uni_and_course", {uni: university, cou: course})			
+			check = result;
+		} catch (err) {
+			if (err instanceof Error) {
+				alert(err.message)
+			}
+		} finally {
+
+		}
+	}
+
+	const handleNext = async () => {
+    try {
+      loading = true
+	  uniCheck
+	  if (!check.data[0].university){
+
+	  }
+	  if (!check.data[0].course){
+
+	  } 
+	  // insert some extra javascript checks here
+	  ///
+	  //
+	  //
+      //if (error) throw error
+	  if(check.data[0].university && check.data[0].course){
+		goto('/welcome/signup/details');
+	  }
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message)
+      }
+    } finally {
+      loading = false
+    }
+  }
 
 </script>
 
-<form method="post" action="?/uniCheck" use:enhance={({ formElement, formData, action, cancel, submitter }) => {
-	// `formElement` is this `<form>` element
-	// `formData` is its `FormData` object that's about to be submitted
-	// `action` is the URL to which the form is posted
-	// calling `cancel()` will prevent the submission
-	// `submitter` is the `HTMLElement` that caused the form to be submitted
-	return async({result, update}) =>{
-		console.log(result)
-		if(result.status == 200){
-			goto('/welcome/signup/details')
-		}
-		else{
-			
-
-		}
-	};
-}}>
+<form method="post" on:submit|preventDefault={handleNext}>
 	<div>
 		<div>
 			<label for="university">University Name</label>

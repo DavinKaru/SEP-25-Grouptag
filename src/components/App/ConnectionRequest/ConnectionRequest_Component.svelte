@@ -1,5 +1,37 @@
 <script>
     import ProfileIconComponent from "../User/ProfileIcon/ProfileIcon_component.svelte";
+    export let user;
+    import { supabase } from "../../../supabaseClient";
+    let loading = false;
+
+    const handleAccept = async () => {
+    try {
+      loading = true	  
+		const myUserId = (await supabase.auth.getSession()).data.session?.user.id;
+	  	const {error} = await supabase.from('connection_process').insert({sender_id: user.sender_id, receiver_id: myUserId})
+		if (error) throw error
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message)
+      }
+    } finally {
+      loading = false
+    }
+	}
+
+    const handleReject = async () => {
+    try {
+      loading = true	  
+	  	const {error} = await supabase.rpc( 'reject_mutual_requests', {sender_id: user.sender_id})
+		if (error) throw error
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message)
+      }
+    } finally {
+      loading = false
+    }
+	}
 </script>
 
 
@@ -19,25 +51,25 @@
 
 <div id="connection-request-card">
     <div id="column1">
-        <ProfileIconComponent --width="4rem"/>
+        <ProfileIconComponent --width="4rem" postAuthorPicture={user.image_url}/>
     </div>
     <div id="column2">
         <div id="row1">
-            <h1 id="sender-name">User Name</h1>
+            <h1 id="sender-name">{user.first_name} {user.last_name}</h1>
             <div id="grid">
                 <img src="/profile/course.svg" alt="Course" id="courseNameIcon"/>
-                <p class="courseInfo">Bachelor of Computer Science</p>
+                <p class="courseInfo">{user.course_name}</p>
                 <img src="/profile/university.svg" alt="Course" />
-                <p class="courseInfo">Swinburne University of Technology</p>
+                <p class="courseInfo">{user.university_name}</p>
                 <img src="/profile/location-flag.svg" alt="Course" />
                 <p class="courseInfo">Melbourne, Australia</p>
             </div>
         </div>
         <div id="row2">
-            <button id="accept">
+            <button id="accept" on:click={handleAccept}>
                 <p class="user-response">Accept</p>
             </button>
-            <button id="reject">
+            <button id="reject" on:click={handleReject}>
                 <p class="user-response">Reject</p>
             </button>
         </div>

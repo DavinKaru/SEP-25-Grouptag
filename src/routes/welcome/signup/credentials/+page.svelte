@@ -17,7 +17,7 @@
 
 <style>
 	.frame {
-		height: 100vh;
+		height: 100vh; 
 		width: 100vw;
 		background-color: #243347;
 		background-image: url('/bg10.png');

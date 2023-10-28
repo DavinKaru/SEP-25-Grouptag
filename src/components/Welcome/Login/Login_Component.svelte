@@ -30,7 +30,9 @@
 		} else {
 			errorPassword = '';
 		}
-		return isValid;
+		if(isValid){
+			handleLogin
+		}
 	};
 
 	const handleLogin = async () => {
@@ -53,7 +55,7 @@
 
 </script>
 
-<form id="form" on:submit|preventDefault="{handleLogin}">
+<form id="form" on:submit|preventDefault="{validateForm}">
 	<div style="margin-top: 42px;">
 		<div style="margin-bottom: 31px;">
 			<label for="email">University Email</label>

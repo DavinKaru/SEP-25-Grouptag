@@ -3,16 +3,28 @@
 	import {fName, lName, dob, bio} from '../../../../routes/welcome/signup/formStore.js';
 	import { enhance } from "$app/forms";
 	import { goto } from "$app/navigation";
+	let loading = false;
+
+	const handleNext = async () => {
+    try {
+      loading = true
+	  // insert some extra javascript checks here
+	  ///
+	  //
+	  //
+      //if (error) throw error
+	  goto('/welcome/signup/credentials');
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message)
+      }
+    } finally {
+      loading = false
+    }
+  }
 
 </script>
-<form method="post" on:submit use:enhance={({ formElement, formData, action, cancel, submitter }) => {
-	return async({result, update}) =>{
-		console.log(result)
-		if(result.status == 200){
-			goto('/welcome/signup/credentials')	
-		}
-	};
-}}>
+<form method="post" on:submit|preventDefault={handleNext}>
 	<div>
 		<div>
 			<label for="fName">First Name</label>
