@@ -30,7 +30,9 @@
 		} else {
 			errorPassword = '';
 		}
-		return isValid;
+		if(isValid){
+			handleLogin
+		}
 	};
 
 	const handleLogin = async () => {

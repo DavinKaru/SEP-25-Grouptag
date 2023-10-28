@@ -34,7 +34,7 @@
 			</div>
 		</div>
 		<div id="userActivity">
-            <ProfileEditorComponent/>
+            <ProfileEditorComponent bio={data.user.users.bio}, image_url={data.user.users.image_url}/>
 			<ContentSelectorComponent bind:selected on:submit={handleSubmit} />
 			<MyContentListComponent
 				content={selected}

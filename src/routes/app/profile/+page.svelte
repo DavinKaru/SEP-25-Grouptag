@@ -47,7 +47,7 @@
 			</div>
 		</div>
 		<div id="userActivity">
-			<ConnectWithMeComponent />
+			<ConnectWithMeComponent targetID={data.user.users.user_id}/>
 			<ContentSelectorComponent bind:selected on:submit={handleSubmit} />
 			<MyContentListComponent
 				content={selected}
