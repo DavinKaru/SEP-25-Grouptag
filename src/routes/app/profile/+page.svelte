@@ -20,10 +20,10 @@
 		<AppHeaderComponent title="My Profile" />
 		<div id="content">
 			<div id="profilePicture">
-				<ProfilePictureComponent  user={data.user.users}/>
+				<ProfilePictureComponent user={data.user.users} />
 			</div>
 			<div id="details">
-				<MyDetailsComponent user={data.user}/>
+				<MyDetailsComponent user={data.user} />
 			</div>
 		</div>
 		<div id="userActivity">
@@ -34,6 +34,7 @@
 				posts={data.Posts}
 				users={data.Users}
 				groups={data.Groups}
+				experiences={data.user.users['experience ']}
 			/>
 		</div>
 	</div>
@@ -86,7 +87,6 @@
 
 	/* Phone layout */
 	@media only screen and (max-width: 750px) {
-
 		#content {
 			display: flex;
 			flex-wrap: wrap;

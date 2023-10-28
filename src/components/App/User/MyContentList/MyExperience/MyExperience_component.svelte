@@ -1,39 +1,41 @@
+<script>
+	export let experience;
+</script>
+
 <div id="experience-card">
 	<!--Card is split into 5 columns.-->
 
 	<!--Column 1: Company Logo-->
 
 	<div id="column1">
-		<img src="/grouptag-g-logo.svg" alt="Company Logo" />
+		<img src={experience.companyLogo || '/grouptag-g-logo.svg'} alt="Company Logo" />
 	</div>
 
 	<!--Column 2: Job Role and Company Name + Location-->
 	<div id="column2">
-		<h1 id="jobRole">UI/UX Designer</h1>
-		<h2 id="jobDetails">Grouptag @ Melbourne, Australia</h2>
+		<h1 id="jobRole">{experience.jobRole}</h1>
+		<h2 id="jobDetails">{experience.company} @ {experience.location}</h2>
 	</div>
 
-    <!--Dates subdivision for page organisation-->
+	<!--Dates subdivision for page organisation-->
 	<div id="dates">
-
-        <!--Column 3: Start Date-->
+		<!--Column 3: Start Date-->
 		<div id="column3">
-			<p class="month">MAR</p>
-			<p class="year">2023</p>
+			<p class="month">{experience.startMonth}</p>
+			<p class="year">{experience.startYear}</p>
 		</div>
 
-        <!--Column 4: Hyphen-->
+		<!--Column 4: Hyphen-->
 		<div id="column4">
 			<p>-</p>
 		</div>
 
-        <!--Column 5: End Date-->
+		<!--Column 5: End Date-->
 		<div id="column5">
-			<p class="month">NOW</p>
-			<p class="year">2023</p>
+			<p class="month">{experience.endMonth}</p>
+			<p class="year">{experience.endYear}</p>
 		</div>
 	</div>
-
 </div>
 
 <style>
@@ -58,21 +60,21 @@
 	#jobRole {
 		font-size: 15px;
 		font: 'Poppins', sans-serif;
-        text-wrap: nowrap;
+		text-wrap: nowrap;
 	}
 
 	#jobDetails {
 		font-size: 8px;
 	}
 
-    /* Another flexbox to contain the date values.
+	/* Another flexbox to contain the date values.
        Uses margin-left: auto to push the dates to the right. */
 	#dates {
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        margin-left: auto;
-    }
+		display: flex;
+		flex-direction: row;
+		gap: 10px;
+		margin-left: auto;
+	}
 
 	.month {
 		font-size: 12px;
