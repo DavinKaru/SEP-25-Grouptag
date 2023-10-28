@@ -3,9 +3,6 @@
 	import LoginComponent from '../../../components/Welcome/Login/Login_Component.svelte';
 	import BoxComponent from '../../../components/Box/Box_Component.svelte';
 	import HeaderComponent from '../../../components/Welcome/WelcomeHeader/WelcomeHeader_Component.svelte';
-	import { onMount } from 'svelte';
-	import { supabase } from '../../../supabaseClient';
-	let session;
 
 	export let form;
 </script>

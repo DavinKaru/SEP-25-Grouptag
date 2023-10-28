@@ -6,12 +6,8 @@
 	import MyDetailsComponent from '../../../components/App/User/MyDetails/MyDetails_Component.svelte';
 	import ConnectWithMeComponent from '../../../components/App/User/ConnectWithMe/ConnectWithMe_Component.svelte';
 	import MyContentListComponent from '../../../components/App/User/MyContentList/MyContentList_Component.svelte';
-	import { supabase } from '../../../supabaseClient';
 	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
-	import { load } from '../myprofile/+page';
 	let selected = 'Experience';
-	let userid;
 
 	let loading = true;
 
@@ -23,27 +19,6 @@
 		loading = false
 	})
 
-	const getUser = async () => {
-		console.log("getUser");
-    try {
-      loading = true
-	  	const { data: user, error: err  } = await supabase.from('user_courses').select("users(*), university_courses (*), universities (*)").eq('user_id', userid).single();
-		const { data: Users } = await supabase.rpc('get_mutuals', { search_user_id:  userid});
-		const { data: Posts } = await supabase.rpc('get_user_posts', {get_user_post_id: userid, amount: 100, startingat: 0} );
-		const { data: Groups } = await supabase.rpc('get_user_groups', {get_user_post_id: userid, amount: 100, startingat: 0});
-      if (err) throw err
-	  data.user = user
-	  data.Users = Users
-	  data.Posts = Posts
-	  data.Groups = Groups
-
-    } catch (error) {
-      if (error instanceof Error) {
-        alert(error.message)
-      }
-    } finally {
-      loading = false
-    }}
 </script>
 
 <body>
@@ -54,20 +29,21 @@
 			<div id="profilePicture">
 				<ProfilePictureComponent  user={data.user.users}/>
 			</div>
+			
+				<!-- <form on:submit|preventDefault={getUser}>
+					<label for="USERID">USERID</label>
+					<input
+						bind:value={userid}
+						type="text"
+						id="userid"
+						name="userid"
+						class="input-field"
+						placeholder="Enter your userid here"
+					/>
+					<button>Refresh</button>
+				</form> -->
 			<div id="details">
-				<form on:submit|preventDefault={getUser}>
-				<label for="USERID">USERID</label>
-				<input
-					bind:value={userid}
-					type="text"
-					id="userid"
-					name="userid"
-					class="input-field"
-					placeholder="Enter your userid here"
-				/>
-				<MyDetailsComponent user={data.user}/>
-				<button>Refresh</button>
-			</form>
+			<MyDetailsComponent user={data.user}/>
 			</div>
 		</div>
 		<div id="userActivity">

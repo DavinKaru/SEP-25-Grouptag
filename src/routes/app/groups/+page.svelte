@@ -1,25 +1,32 @@
-<!-- //src/routes/app/groups/+page.svelte
+<!--//src/routes/app/groups/+page.svelte-->
 
 <script>
 	import HeaderComponent from '../../../components/App/AppHeader/AppHeader_Component.svelte';
 	import FeaturedGroupComponent from '../../../components/App/Groups/FeaturedGroup/FeaturedGroup_Component.svelte';
 	import GroupsSelectorComponent from '../../../components/App/Groups/GroupSelector/GroupSelector_Component.svelte';
 	import GroupCardContainerComponent from '../../../components/App/Groups/GroupCardContainer/GroupCardContainer_Component.svelte';
+	import { onMount } from 'svelte';
+	let loading = true
 	export let data;
 	let allGroups = true;
 	let displayGroups = data.Groups
 	$: if(allGroups){displayGroups = data.Groups}else{displayGroups = data.MyGroups} ;
+	onMount(()=>{
+		loading = false;
+	})
 
 </script>
 
 <body>
 	<div class="frame">
 		<HeaderComponent title="Groups" />
-		<div id="content">
-			<FeaturedGroupComponent {data} />
-			<GroupsSelectorComponent bind:allGroups={allGroups}/>
-			<GroupCardContainerComponent groups={displayGroups}/>
-		</div>
+		{#if !loading}
+			<div id="content">
+				<FeaturedGroupComponent {data} />
+				<GroupsSelectorComponent bind:allGroups={allGroups}/>
+				<GroupCardContainerComponent groups={displayGroups}/>
+			</div>
+		{/if}
 	</div>
 </body>
 
@@ -45,4 +52,4 @@
 		margin-right: auto;
 		z-index: 1;
 	}
-</style> -->
+</style>

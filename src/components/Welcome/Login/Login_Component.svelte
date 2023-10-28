@@ -1,12 +1,7 @@
 <script>
-	console.log("onLoad");
-
-
 	import ButtonsComponent from '../Buttons/Buttons_Component.svelte';
 	import { supabase } from '../../../supabaseClient';
-	import { enhance} from "$app/forms";
 	import { goto } from '$app/navigation';
-	import { navigate, useNavigate } from 'svelte-navigator';
  
 
 	let email = '';
@@ -39,7 +34,6 @@
 	};
 
 	const handleLogin = async () => {
-		console.log("handleLogin");
     try {
       loading = true
       const { error } = await supabase.auth.signInWithPassword({
@@ -47,7 +41,7 @@
       password,
     })
       if (error) throw error
-	  goto('/app/profile?id=0d510af4-ed95-42e1-a55e-0f9b370e274a');
+	  goto('/app/myprofile');
     } catch (error) {
       if (error instanceof Error) {
         alert(error.message)

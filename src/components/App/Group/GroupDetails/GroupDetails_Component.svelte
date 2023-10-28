@@ -8,7 +8,7 @@
 
 	import TagIcon from '../../TagIcons/TagIcon_Component.svelte'; // Import the TagIcon component
 	export let data; // Receive data
-	let group = data.Group;
+	let group = data.Group[0];
 	let GroupFeaturedImages = data.GroupFeaturedImages;
 </script>
 

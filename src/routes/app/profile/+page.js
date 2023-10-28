@@ -1,8 +1,7 @@
 //src/routes/app/profile/+page.js
 import { supabase } from '../../../supabaseClient.js';
-import { page } from '$app/stores';
+import { goto } from '$app/navigation';
 export async function load({url}) {
-    //const { supabase, session } = await parent()
     let urlString = url.href;
     let paramString = urlString.split('?')[1];
     let queryString = new URLSearchParams(paramString);
@@ -10,12 +9,10 @@ export async function load({url}) {
     let user_id = 'f8fe9f2f-2ddb-4c64-945a-6f686a0d614f';
     if(params != ''){
         user_id = params;
-    }    
+    }else{
+        goto('/app/myprofile')
+    }
     
-    const {data: mySession} = await supabase.auth.getSession()
-    console.log("My UserID is ", mySession.session?.user.id)
-
-
 
     const { data: user  } = await supabase.from('user_courses').select("users(*), university_courses (*), universities (*)").eq('user_id', user_id).single();
 
