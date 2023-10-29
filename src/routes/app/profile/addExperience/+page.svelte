@@ -141,15 +141,20 @@
 					required
 				/>
 				<label for="startMonth">Start Month:</label>
-				<input
-					bind:value={startMonth}
-					type="number"
-					id="startMonth"
-					name="startMonth"
-					min="1"
-					max="12"
-					required
-				/>
+				<select bind:value={startMonth} id="startMonth" name="startMonth" required>
+					<option value="JAN">JAN</option>
+					<option value="FEB">FEB</option>
+					<option value="MAR">MAR</option>
+					<option value="APR">APR</option>
+					<option value="MAY">MAY</option>
+					<option value="JUN">JUN</option>
+					<option value="JUL">JUL</option>
+					<option value="AUG">AUG</option>
+					<option value="SEP">SEP</option>
+					<option value="OCT">OCT</option>
+					<option value="NOV">NOV</option>
+					<option value="DEC">DEC</option>
+				</select>
 			</div>
 
 			<div class="field" id="dateType">
@@ -164,15 +169,20 @@
 					required
 				/>
 				<label for="endMonth">End Month:</label>
-				<input
-					bind:value={endMonth}
-					type="number"
-					id="endMonth"
-					name="endMonth"
-					min="1"
-					max="12"
-					required
-				/>
+				<select bind:value={endMonth} id="endMonth" name="endMonth" required>
+					<option value="JAN">JAN</option>
+					<option value="FEB">FEB</option>
+					<option value="MAR">MAR</option>
+					<option value="APR">APR</option>
+					<option value="MAY">MAY</option>
+					<option value="JUN">JUN</option>
+					<option value="JUL">JUL</option>
+					<option value="AUG">AUG</option>
+					<option value="SEP">SEP</option>
+					<option value="OCT">OCT</option>
+					<option value="NOV">NOV</option>
+					<option value="DEC">DEC</option>
+				</select>
 			</div>
 
 			<div class="field">
