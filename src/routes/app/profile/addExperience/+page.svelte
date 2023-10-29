@@ -4,6 +4,8 @@
 	import autosize from 'svelte-autosize';
 	import AppHeaderComponent from '../../../../components/App/AppHeader/AppHeader_Component.svelte';
 	import { supabase } from '$lib/supabaseClient';
+	import toast, { Toaster } from 'svelte-french-toast';
+
 	const employmentType = ['Full-time', 'Part-time', 'Casual', 'Volunteer', 'Internship'];
 
 	export let data;
@@ -36,6 +38,7 @@
 
 		const result = await addExperienceToDatabase(experience);
 		if (result.success) {
+			toast.success('Experience added!');
 		} else {
 			console.error('Failed to add experience:', result.error);
 		}
@@ -80,6 +83,7 @@
 <div id="frame">
 	<AppHeaderComponent title="Add Experience" />
 	<div id="body">
+		<Toaster />
 		<h2>What do you want to add?</h2>
 		<form on:submit={handleSubmit}>
 			<div class="field">
