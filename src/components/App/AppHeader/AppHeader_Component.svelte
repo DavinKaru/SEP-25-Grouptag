@@ -1,3 +1,4 @@
+<!-- AppHeader_Component.svelte -->
 <script>
 	import { navigate, useNavigate } from 'svelte-navigator';
 	export let title = 'App';
