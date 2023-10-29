@@ -1,14 +1,14 @@
 <!--//src/routes/app/myprofile/+page.svelte-->
 <script>
-// @ts-nocheck
+	// @ts-nocheck
 
 	import Modal from 'svelte-simple-modal';
 	import AppHeaderComponent from '../../../components/App/AppHeader/AppHeader_Component.svelte';
 	import ProfilePictureComponent from '../../../components/App/User/ProfilePicture/ProfilePicture_component.svelte';
 	import ContentSelectorComponent from '../../../components/App/User/ContentSelector/ContentSelector_Component.svelte';
 	import MyDetailsComponent from '../../../components/App/User/MyDetails/MyDetails_Component.svelte';
-    import ProfileEditorComponent from '../../../components/App/User/ProfileEditor/ProfileEditor_Component.svelte';
-    import MyContentListComponent from '../../../components/App/User/MyContentList/MyContentList_Component.svelte';
+	import ProfileEditorComponent from '../../../components/App/User/ProfileEditor/ProfileEditor_Component.svelte';
+	import MyContentListComponent from '../../../components/App/User/MyContentList/MyContentList_Component.svelte';
 
 	let selected = 'Experience';
 
@@ -19,32 +19,33 @@
 </script>
 
 <Modal
-	styleWindow={{ backdropFilter: 'blur(20px)', background: 'rgba(0, 0, 0, 0.2)'  }}
+	styleWindow={{ backdropFilter: 'blur(20px)', background: 'rgba(0, 0, 0, 0.2)' }}
 	styleBg={{ background: 'rgba(0, 0, 0, 0)' }}
 >
-<body>
-	<div class="frame">
-		<AppHeaderComponent title="My Profile" />
-		<div id="content">
-			<div id="profilePicture">
-				<ProfilePictureComponent  user={data.user.users}/>
+	<body>
+		<div class="frame">
+			<AppHeaderComponent title="My Profile" />
+			<div id="content">
+				<div id="profilePicture">
+					<ProfilePictureComponent user={data.user.users} />
+				</div>
+				<div id="details">
+					<MyDetailsComponent user={data.user} />
+				</div>
 			</div>
-			<div id="details">
-				<MyDetailsComponent user={data.user}/>
+			<div id="userActivity">
+				<ProfileEditorComponent />
+				<ContentSelectorComponent bind:selected on:submit={handleSubmit} />
+				<MyContentListComponent
+					content={selected}
+					posts={data.Posts}
+					users={data.Users}
+					groups={data.Groups}
+					experiences={data.user.users['experience ']}
+				/>
 			</div>
 		</div>
-		<div id="userActivity">
-            <ProfileEditorComponent/>
-			<ContentSelectorComponent bind:selected on:submit={handleSubmit} />
-			<MyContentListComponent
-				content={selected}
-				posts={data.Posts}
-				users={data.Users}
-				groups={data.Groups}
-			/>
-		</div>
-	</div>
-</body>
+	</body>
 </Modal>
 
 <style>
@@ -94,7 +95,6 @@
 
 	/* Phone layout */
 	@media only screen and (max-width: 750px) {
-
 		#content {
 			display: flex;
 			flex-wrap: wrap;
