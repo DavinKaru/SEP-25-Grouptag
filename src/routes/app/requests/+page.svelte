@@ -1,15 +1,23 @@
 <script>
     import AppHeaderComponent from "../../../components/App/AppHeader/AppHeader_Component.svelte";
     import ConnectionRequestComponent from "../../../components/App/ConnectionRequest/ConnectionRequest_Component.svelte";
+    import { onMount } from "svelte";
+    let loading = true;
+    export let data;
+
+    onMount(()=>{
+        loading = false;
+    })
 </script>
 
 <div id="frame">
     <AppHeaderComponent title="Requests" />
     <div id="content">
-        <ConnectionRequestComponent />
-        <ConnectionRequestComponent />          
-        <ConnectionRequestComponent />
-        <ConnectionRequestComponent />                             
+        {#if !loading}
+            {#each data.Users as user}
+                <ConnectionRequestComponent user={user}/>
+            {/each}
+        {/if}                             
     </div>
 </div>
 

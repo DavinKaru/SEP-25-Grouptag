@@ -1,9 +1,17 @@
 <script>
     import ProfileIconComponent from "../../ProfileIcon/ProfileIcon_component.svelte";
+	import { goto } from "$app/navigation";
 	export let user;
+
+	function goToProfile() {
+		let userId = user.connection_id ;
+		goto('/app/profile?id=' + userId);
+	}
 </script>
 
-<div id="mutual-card">
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div id="mutual-card" on:click={goToProfile}>
 	<!--Two columns. Column 2 is split into 3 rows.-->
 
 	<div id="column1">

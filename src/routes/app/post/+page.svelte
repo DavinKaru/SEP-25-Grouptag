@@ -11,7 +11,7 @@
 
 	/* Data variables for Database Information*/
 	export let data;
-	const {Posts, Comments} = data;
+	const {Post_id, Posts, Comments} = data;
 </script>
 
 <body>
@@ -29,7 +29,7 @@
 					postTags = {Posts.tags}
 				/>
 				<PostContentComponent postContent={Posts.content} />
-				<PostCommentsContainerComponent comments={Comments}/>
+				<PostCommentsContainerComponent comments={data.Comments} post_id={data.Post_id}/>
 			</div>
 	</div>
 </body>

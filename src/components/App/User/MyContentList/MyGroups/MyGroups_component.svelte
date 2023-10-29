@@ -1,10 +1,17 @@
 <script>
 	import TagIconComponent from '../../../TagIcons/TagIcon_Component.svelte';
+	import { goto } from '$app/navigation';
 	export let group;
 	
+	function goToGroup() {
+		let groupId = group.group_id;
+		goto('/app/group?id=' + groupId);
+	}
 </script>
 
-<div id="group-card">
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<div id="group-card" on:click={goToGroup}>
 	<!--Two columns. Column 2 is split into 3 rows.-->
 
 	<div id="column1">

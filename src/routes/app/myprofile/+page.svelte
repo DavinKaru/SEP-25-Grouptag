@@ -33,19 +33,18 @@
 					<MyDetailsComponent user={data.user} />
 				</div>
 			</div>
-			<div id="userActivity">
-				<ProfileEditorComponent />
-				<ContentSelectorComponent bind:selected on:submit={handleSubmit} />
-				<MyContentListComponent
-					content={selected}
-					posts={data.Posts}
-					users={data.Users}
-					groups={data.Groups}
-					experiences={data.user.users['experience ']}
-				/>
-			</div>
+		<div id="userActivity">
+            <ProfileEditorComponent bio={data.user.users.bio}, image_url={data.user.users.image_url}/>
+			<ContentSelectorComponent bind:selected on:submit={handleSubmit} />
+			<MyContentListComponent
+				content={selected}
+				posts={data.Posts}
+				users={data.Users}
+				groups={data.Groups}
+			/>
 		</div>
-	</body>
+	</div>
+</body>
 </Modal>
 
 <style>

@@ -3,24 +3,32 @@
 
     import AppHeaderComponent from "../../../components/App/AppHeader/AppHeader_Component.svelte";
     import GroupDetailsComponent from "../../../components/App/Group/GroupDetails/GroupDetails_Component.svelte";
-    import GroupPostComponent from "../../../components/App/Group/GroupPost/GroupPost_Component.svelte";    
-    
+    import GroupPostComponent from "../../../components/App/Group/GroupPost/GroupPost_Component.svelte";
+    import { onMount } from "svelte";   
+    let loading = true;
     export let data;
+     onMount(()=>{
+         loading = false;
+
+     })
+
 
 </script>
 
 <div id="frame">
-    <AppHeaderComponent title="{data.Group.Name}" />
-    <div id="content">
-        <GroupDetailsComponent {data} />
-        <div id="post-header">  
-            <p id="recent-posts">RECENT POSTS</p>
-            <a href="default" id="post-button">Make Post</a>
+    {#if !loading} 
+    <AppHeaderComponent title="{data.Group[0].Name}" /> 
+        <div id="content">
+            <GroupDetailsComponent {data} />
+            <div id="post-header">  
+                <p id="recent-posts">RECENT POSTS</p>
+                <a href="default" id="post-button">Make Post</a>
+            </div>
+            {#each data.GroupPosts as post}
+                <GroupPostComponent {post}/>
+            {/each}
         </div>
-        {#each data.GroupPosts as post}
-            <GroupPostComponent {post}/>
-        {/each}
-    </div>
+    {/if}
 </div>
 
 <style>

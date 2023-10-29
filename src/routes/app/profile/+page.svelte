@@ -6,28 +6,48 @@
 	import MyDetailsComponent from '../../../components/App/User/MyDetails/MyDetails_Component.svelte';
 	import ConnectWithMeComponent from '../../../components/App/User/ConnectWithMe/ConnectWithMe_Component.svelte';
 	import MyContentListComponent from '../../../components/App/User/MyContentList/MyContentList_Component.svelte';
-
+	import { onMount } from 'svelte';
 	let selected = 'Experience';
+
+	let loading = true;
 
 	export let data;
 	function handleSubmit() {
 		//console.log(selected);
 	}
+	onMount(()=>{
+		loading = false
+	})
+
 </script>
 
 <body>
 	<div class="frame">
 		<AppHeaderComponent title="My Profile" />
+		{#if !loading}
 		<div id="content">
 			<div id="profilePicture">
 				<ProfilePictureComponent user={data.user.users} />
 			</div>
+			
+				<!-- <form on:submit|preventDefault={getUser}>
+					<label for="USERID">USERID</label>
+					<input
+						bind:value={userid}
+						type="text"
+						id="userid"
+						name="userid"
+						class="input-field"
+						placeholder="Enter your userid here"
+					/>
+					<button>Refresh</button>
+				</form> -->
 			<div id="details">
-				<MyDetailsComponent user={data.user} />
+			<MyDetailsComponent user={data.user}/>
 			</div>
 		</div>
 		<div id="userActivity">
-			<ConnectWithMeComponent />
+			<ConnectWithMeComponent targetID={data.user.users.user_id}/>
 			<ContentSelectorComponent bind:selected on:submit={handleSubmit} />
 			<MyContentListComponent
 				content={selected}
@@ -37,6 +57,7 @@
 				experiences={data.user.users['experience ']}
 			/>
 		</div>
+		{/if}
 	</div>
 </body>
 

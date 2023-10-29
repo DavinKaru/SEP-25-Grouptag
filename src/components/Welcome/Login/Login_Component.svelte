@@ -1,6 +1,6 @@
 <script>
 	import ButtonsComponent from '../Buttons/Buttons_Component.svelte';
-	import { enhance} from "$app/forms";
+	import { supabase } from '../../../supabaseClient';
 	import { goto } from '$app/navigation';
  
 
@@ -8,6 +8,7 @@
 	let password = '';
 	let errorEmail = '';
 	let errorPassword = '';
+	let loading = false;
 
 	export let form;
 
@@ -29,28 +30,32 @@
 		} else {
 			errorPassword = '';
 		}
-		return isValid;
-	};
-</script>
-
-<form id="form" on:submit method="post" action="?/login" 
-	use:enhance={({ formElement, formData, action, cancel, submitter }) => {
-	// `formElement` is this `<form>` element
-	// `formData` is its `FormData` object that's about to be submitted
-	// `action` is the URL to which the form is posted
-	// calling `cancel()` will prevent the submission
-	// `submitter` is the `HTMLElement` that caused the form to be submitted
-	if(!validateForm()){
-		cancel();
-	}
-	return async({result, update}) =>{
-		console.log(result)
-		if(result.status == 200){
-			goto('/app/profile')
+		if(isValid){
+			handleLogin
 		}
 	};
-}}>
-{#if (form?.success == false)} <span class="error-msg">{form.message}</span> {/if}	
+
+	const handleLogin = async () => {
+    try {
+      loading = true
+      const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    })
+      if (error) throw error
+	  goto('/app/myprofile');
+    } catch (error) {
+      if (error instanceof Error) {
+        alert(error.message)
+      }
+    } finally {
+      loading = false
+    }
+  }
+
+</script>
+
+<form id="form" on:submit|preventDefault="{handleLogin}">
 	<div style="margin-top: 42px;">
 		<div style="margin-bottom: 31px;">
 			<label for="email">University Email</label>

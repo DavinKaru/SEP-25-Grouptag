@@ -1,11 +1,18 @@
 //src/routes/app/profile/+page.js
-
-export async function load({url, parent}) {
-    const { supabase, session } = await parent()
-    let user_id = url.searchParams.get('id')??'';
-    if(user_id == ''){
-        user_id = session.user.id
+import { supabase } from '../../../supabaseClient.js';
+import { goto } from '$app/navigation';
+export async function load({url}) {
+    let urlString = url.href;
+    let paramString = urlString.split('?')[1];
+    let queryString = new URLSearchParams(paramString);
+    let params = queryString.get('id')
+    let user_id = 'f8fe9f2f-2ddb-4c64-945a-6f686a0d614f';
+    if(params != ''){
+        user_id = params;
+    }else{
+        goto('/app/myprofile')
     }
+    
 
     const { data: user  } = await supabase.from('user_courses').select("users(*), university_courses (*), universities (*)").eq('user_id', user_id).single();
 
