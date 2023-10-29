@@ -13,8 +13,8 @@
 
 	<!--Column 2: Job Role and Company Name + Location-->
 	<div id="column2">
-		<h1 id="jobRole">{experience.jobRole}</h1>
-		<h2 id="jobDetails">{experience.company} @ {experience.location}</h2>
+		<h1 id="jobTitle">{experience.jobTitle}</h1>
+		<h2 id="jobDetails">{experience.companyName} @ {experience.location}</h2>
 	</div>
 
 	<!--Dates subdivision for page organisation-->
@@ -57,7 +57,7 @@
 		gap: 20px;
 	}
 
-	#jobRole {
+	#jobTitle {
 		font-size: 15px;
 		font: 'Poppins', sans-serif;
 		text-wrap: nowrap;
