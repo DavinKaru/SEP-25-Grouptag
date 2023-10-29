@@ -5,7 +5,6 @@ const config: CapacitorConfig = {
   appName: 'Grouptag',
   webDir: 'build',
   server: {
-    hostname: '192.168.4.100:5173',
     androidScheme: 'https'
   },
   plugins: {
