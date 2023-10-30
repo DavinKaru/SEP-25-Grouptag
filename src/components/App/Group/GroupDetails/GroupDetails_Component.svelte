@@ -11,18 +11,19 @@
 	let GroupFeaturedImages = data.GroupFeaturedImages;
 
 	const handleJoinGroup = async () => {
-    try {
-		const myUserId = (await supabase.auth.getSession()).data.session?.user.id;
-	  	const {error} = await supabase.from('group_users').insert({group_id: group.group_id, user_id: myUserId})
-		if (error) throw error
-	  	  
-    } catch (error) {
-      if (error instanceof Error) {
-        alert(error.message)
-      }
-    } finally {
-	}
-	}
+		try {
+			const myUserId = (await supabase.auth.getSession()).data.session?.user.id;
+			const { error } = await supabase
+				.from('group_users')
+				.insert({ group_id: group.group_id, user_id: myUserId });
+			if (error) throw error;
+		} catch (error) {
+			if (error instanceof Error) {
+				alert(error.message);
+			}
+		} finally {
+		}
+	};
 </script>
 
 <div id="group-container">
@@ -51,7 +52,7 @@
 			{/each}
 		</div>
 
-		<button type="button" id="submit-button" on:click={handleJoinGroup}>
+		<button type="button" id="join-button" on:click={handleJoinGroup}>
 			<p class="comment-button">Join Group</p>
 		</button>
 	</div>
@@ -116,6 +117,7 @@
 	}
 
 	#join-button {
+		border: none;
 		display: inline-block;
 		padding: 0.3em 1.2em;
 		margin: 0.3em 0.3em 0.3em 0;

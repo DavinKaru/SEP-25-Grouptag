@@ -1,16 +1,18 @@
 <!-- Featured Group Component-->
 <script>
-	import TagIcon from '../../TagIcons/TagIcon_Component.svelte'; // Import the TagIcon component
-	export let data; // Receive data
+	// @ts-nocheck
+
+	import TagIcon from '../../TagIcons/TagIcon_Component.svelte';
+	export let data;
 	const { FeaturedGroups, FeaturedGroupsImages } = data;
-	// Debug logs
-	//console.log('FeaturedGroup Component Data received:', data);
+
 	// Fetch users using groupid
 	function getFeaturedImages(i, groupid) {
-		const users = FeaturedGroupsImages[i].filter((u) => u.group_id === groupid).map((u) => u.image_url);
+		const users = FeaturedGroupsImages[i]
+			.filter((u) => u.group_id === groupid)
+			.map((u) => u.image_url);
 		return users;
 	}
-
 </script>
 
 <div class="carousel-container">
@@ -40,7 +42,6 @@
 							<TagIcon text={tag.name} />
 						{/each}
 					</div>
-
 					<a href="default" id="join-button">Join Group</a>
 				</div>
 			</div>
@@ -71,6 +72,7 @@
 		/* Dimensions */
 		height: fit-content;
 		width: 100%;
+		height: 100%;
 		border-radius: 10px;
 		margin: auto;
 
@@ -97,8 +99,7 @@
 
 	#group-img {
 		width: 100%;
-		min-height: 10.5vh;
-		max-height: 10.5vh;
+		min-height: 15vh;
 		border-radius: 10px;
 	}
 
@@ -160,6 +161,8 @@
 		margin-bottom: 6px;
 		width: 6vw;
 		height: 6vw;
+		max-width: 30px;
+		max-height: 30px;
 		border-radius: 50%;
 		background-position: center; /* Center the background */
 		background-size: cover; /* Cover the entire area */
@@ -167,111 +170,5 @@
 		border: 1px solid #f5f5f5;
 		display: inline-block;
 		margin-right: 1%; /* Gap between icons */
-	}
-
-	/* Responsive font sizes */
-	@media screen and (max-width: 1920px) {
-		.container {
-			width: 80%;
-		}
-		#group-name {
-			font-size: 1.8rem;
-		}
-		#group-img {
-			min-height: 25.5vh;
-			max-height: 25.5vh;
-		}
-		#members-header {
-			font-size: 1.3rem;
-		}
-		#group-description {
-			font-size: 1.1rem;
-		}
-	}
-
-	@media screen and (max-width: 1280px) {
-		.container {
-			width: 75%;
-		}
-		#group-name {
-			font-size: 1.8rem;
-		}
-		#group-img {
-			min-height: 25.5vh;
-			max-height: 25.5vh;
-		}
-		#members-header {
-			font-size: 1.3rem;
-		}
-		#group-description {
-			font-size: 1.1rem;
-		}
-	}
-
-	@media screen and (max-width: 992px) {
-		.container {
-			width: 100%;
-		}
-		#group-name {
-			font-size: 1.6rem;
-		}
-		#group-img {
-			min-height: 20.5vh;
-			max-height: 20.5vh;
-		}
-		#members-header {
-			font-size: 1.2rem;
-		}
-		#group-description {
-			font-size: 1rem;
-		}
-	}
-
-	@media screen and (max-width: 768px) {
-		.container {
-			width: 100%;
-		}
-		#group-name {
-			font-size: 1.4rem;
-		}
-		#group-img {
-			min-height: 15.5vh;
-			max-height: 15.5vh;
-		}
-		#members-header {
-			font-size: 1.1rem;
-		}
-		#group-description {
-			font-size: 0.9rem;
-		}
-	}
-
-	@media screen and (max-width: 576px) {
-		.container {
-			width: 100%;
-		}
-		#group-name {
-			font-size: 1rem;
-		}
-		#group-img {
-			min-height: 10.5vh;
-			max-height: 10.5vh;
-		}
-		#members-header {
-			font-size: 0.8rem;
-		}
-		#group-description {
-			font-size: 0.5rem;
-		}
-
-		#members-icons {
-			flex-wrap: wrap;
-			column-gap: 2px;
-		}
-		.icon {
-			width: 6vw;
-			height: 6vw;
-			margin-top: 0px;
-		}
 	}
 </style>

@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
 	import ButtonsComponent from '../../../../Welcome/Buttons/Buttons_Component.svelte';
 	import FormButtonComponent from '../../../FormButton/FormButton_Component.svelte';
 	import Dropzone from 'svelte-file-dropzone/Dropzone.svelte';
@@ -69,9 +71,6 @@
 				{/each}
 			</div>
 		</div>
-		<!-- <div id="submitButton">
-			<FormButtonComponent text="Save Changes" />
-		</div> -->
 		<ButtonsComponent buttonType="submit" text="Save Changes" buttonClass="login-button" isAnchor={false}/>
 	</form>
 </div>
@@ -81,11 +80,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
-	}
-
-	#submitButton {
-		margin-left: auto;
-		margin-right: auto;
 	}
 
 	#removeButton {
@@ -110,11 +104,11 @@
 	.field {
 		display: flex;
 		flex-direction: column;
-		gap: 5px;
 		background-color: rgba(255, 255, 255, 0.127);
 		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
 		padding: 10px;
 		width: 100%;
+		margin-top: 10px;
 	}
 
 	.dropFiles {

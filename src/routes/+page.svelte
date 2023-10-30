@@ -5,48 +5,27 @@
 	import HeaderComponent from '../components/Welcome/WelcomeHeader/WelcomeHeader_Component.svelte';
 	// import { supabase } from '../supabaseClient';
 	// import { goto } from '$app/navigation';
-	
+
 	// const handleIsLoggedIn = async () => {
-    // try {
+	// try {
 	// 	const myUserId = (await supabase.auth.getSession()).data.session?.user.id;
 	// 	if(myUserId != null){
 	// 		goto('/app/myprofile')
 	// 	}
-    // } catch (error) {
-    //   if (error instanceof Error) {
-    //     alert(error.message)
-    //   }
-    // } finally {
+	// } catch (error) {
+	//   if (error instanceof Error) {
+	//     alert(error.message)
+	//   }
+	// } finally {
 	// }
 	// }
 	// handleIsLoggedIn
 </script>
 
-<body>
-	<div class="frame">
-		<HeaderComponent text="Welcome!" />
+<HeaderComponent text="Welcome!" />
 
-		<BoxComponent boxClass="signup-box">
-			<h2>Get Started</h2>
-			<ButtonsComponent text="Login" href="/welcome/login" buttonClass="login-button" />
-			<ButtonsComponent text="Sign Up" href="/welcome/signup/enrolment" buttonClass="signup-button" />
-
-		</BoxComponent>
-	</div>
-</body>
-
-<style>
-	.frame {
-		height: 100vh;
-		width: 100vw;
-		background-color: #243347;
-		background-image: url('/bg10.png');
-		background-size: cover;
-		background-position: center;
-
-		/* I know flexboxes are dodgy but trust me ;) */
-		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
-	}
-</style>
+<BoxComponent boxClass="signup-box">
+	<h2>Get Started</h2>
+	<ButtonsComponent text="Login" href="/welcome/login" buttonClass="login-button" />
+	<ButtonsComponent text="Sign Up" href="/welcome/signup/enrolment" buttonClass="signup-button" />
+</BoxComponent>

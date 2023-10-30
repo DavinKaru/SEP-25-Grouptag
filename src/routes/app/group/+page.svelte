@@ -12,41 +12,26 @@
 
      })
 
-
 </script>
 
-<div id="frame">
     {#if !loading} 
-    <AppHeaderComponent title="{data.Group[0].Name}" /> 
+    <AppHeaderComponent title="Group View" /> 
         <div id="content">
             <GroupDetailsComponent {data} />
             <div id="post-header">  
                 <p id="recent-posts">RECENT POSTS</p>
                 <a href="default" id="post-button">Make Post</a>
             </div>
+            <div id="posts-container">
             {#each data.GroupPosts as post}
                 <GroupPostComponent {post}/>
             {/each}
+            </div>
         </div>
     {/if}
-</div>
 
 <style>
-	#frame {
-		height: 100vh + 65px; 
-		width: 100vw;
-		background-color: #243347;
-		background-image: url('/bg10.png');
-		background-size: cover;
-		background-position: center;
-
-		/* I know flexboxes are dodgy but trust me ;) */
-		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		justify-content: flex-start;
-	}
-
+	
     #content {
         display: flex;
         flex-direction: column;
@@ -63,7 +48,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: inherit;
+        width: 100%;
     }
 
     #recent-posts {
@@ -86,10 +71,24 @@
 		background-color: #3aa4d1;
 		text-align: center;
 		transition: all 0.2s;
+        margin-top: 10px;
 	}
+
+    #posts-container {
+       display: flex;
+       flex-direction: column;
+       gap: 10px;
+       margin-bottom: 10vh;
+    }
 
 	#post-button:hover {
 		background-color: #4095c6;
 	}
-
+    
+	/* Tablet + PC Layout */
+	@media only screen and (min-width: 750px) {
+        #content {
+            width: 55%;
+        }
+    }
 </style>

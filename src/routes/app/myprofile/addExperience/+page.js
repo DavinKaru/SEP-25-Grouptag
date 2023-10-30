@@ -1,4 +1,5 @@
-//src/routes/app/profile/addExperience/+page.js
+// @ts-nocheck
+//src/routes/app/myprofile/addExperience/+page.js
 
 export async function load({ url, parent }) {
     const { supabase, session } = await parent()

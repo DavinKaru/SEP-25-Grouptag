@@ -16,10 +16,8 @@
 	const post_id = url.searchParams.get('id');
 
 	export let post;
-	export let user;
-	export let group;
 
-	let post = data.Posts.find((p) => p.post_id === post_id);
+	post = data.Posts.find((p) => p.post_id === post_id);
 
 	// Grab necessary data from post
 
@@ -40,9 +38,6 @@
 	let postGroupID = post.group_id;
 	// Post Time
 	let postTime = post.created_at;
-
-	// Post Tags
-	//console.log(postTags);
 
 	// Post Media
 	let postMedia = post.media_url;

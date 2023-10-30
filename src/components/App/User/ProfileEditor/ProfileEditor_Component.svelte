@@ -11,7 +11,9 @@
 		<img class="editIcon" src="/profile/Connect.svg" alt="Connect with me" />
 	</button>
 	<button>
-		<img class="editIcon" src="/profile/Connect.svg" alt="Add Experience" />
+		<a href="myprofile/addExperience">
+			<img class="editIcon" src="/profile/Connect.svg" alt="Add Experience" />
+		</a>
 	</button>
 	<button on:click={showSurprise}>
 		<img class="editIcon" src="/profile/Share.svg" alt="Share my Profile" />
