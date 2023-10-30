@@ -1,5 +1,7 @@
 <!--//src/routes/app/profile/+page.svelte-->
 <script>
+// @ts-nocheck
+
 	import AppHeaderComponent from '../../../components/App/AppHeader/AppHeader_Component.svelte';
 	import ProfilePictureComponent from '../../../components/App/User/ProfilePicture/ProfilePicture_component.svelte';
 	import ContentSelectorComponent from '../../../components/App/User/ContentSelector/ContentSelector_Component.svelte';
@@ -65,10 +67,6 @@
 	.frame {
 		height: 100vh;
 		width: 100vw;
-		background-color: #243347;
-		background-image: url('/bg10.png');
-		background-size: cover;
-		background-position: center;
 
 		/* I know flexboxes are dodgy but trust me ;) */
 		display: flex;

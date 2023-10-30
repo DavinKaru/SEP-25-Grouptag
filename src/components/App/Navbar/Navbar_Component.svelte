@@ -1,6 +1,12 @@
 <!-- Navbar Component -->
 <script>
-	import PostCreate from '../Post/PostCreate/PostCreate_Component.svelte';
+
+	/* Create Menu Component has to live here to ensure context is acquired correctly. */
+	import { getContext } from 'svelte';
+	const { open} = getContext('simple-modal');
+	import CreateMenuComponent from './CreateMenu/CreateMenu_Component.svelte';
+	const showSurprise = () => open(CreateMenuComponent, { message: "It's a modal!" });
+
 	let showCreatePost = false;
 	function toggleCreatePost() {
 		showCreatePost = !showCreatePost; //toggle PostCreate
@@ -17,12 +23,17 @@
 		<img src="/Icons/Navbar Icons/Notification.svg" alt="Notification Icon" class="navIcon" />
 	</a>
   
- 	<a href="/app/create">
+ 	<button on:click={showSurprise}>
 		<img src="/Icons/Navbar Icons/Plus.svg" alt="Plus Icon" class="navIcon" />
-	</a>
+	</button>
  
 	<a href="/app/myprofile">
 		<img src="/Icons/Navbar Icons/Profile.svg" alt="Profile Icon" class="navIcon" />
+	</a>
+
+	<!--Needs to be replaced with signout code-->
+	<a href="/app/myprofile">
+		<img src="/Icons/Navbar Icons/Logout.svg" alt="Logout Icon" class="navIcon" />
 	</a>
 </nav>
 
@@ -33,12 +44,13 @@
 		align-items: center;
 
 		position: fixed;
-		bottom: 2.5%;
-		margin-left: auto;
-		margin-right: auto;
 		width: 50%;
 		max-width: 850px;
 		height: 4.72vh; /* 4.72% of viewport */
+
+		left: 50%;
+		bottom: 2.5%;
+		transform: translate(-50%);
 
 		border-radius: 50px;
 		padding: 0 5%;
@@ -60,6 +72,11 @@
 		height: 2.41vh;
 		width: 2.41vh;
 		vertical-align: middle; /* Aligning the icons with the plus button */
+	}
+
+	button {
+		background: none;
+		border: none;
 	}
 
 </style>

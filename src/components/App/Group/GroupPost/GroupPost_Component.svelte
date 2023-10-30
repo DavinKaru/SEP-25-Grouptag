@@ -53,8 +53,8 @@
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div id="post-card" on:click={goToPost}>
-	<!-- Left hand side contains post media or group logo , right side contains details-->
 
+	<!-- Left hand side contains post media or group logo , right side contains details-->
 	<!--If Post Media is not null -->
 	{#if post.media_url != null}
 		<!-- Left hand side contains post media or group logo , right side contains details-->

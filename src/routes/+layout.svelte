@@ -17,5 +17,19 @@ $: ({ supabase, session } = data);
 // 	return () => subscription.unsubscribe();
 // });
 </script>
+<div id="frame">
+    <slot />
+</div>
 
-<slot />
+
+<style>
+    #frame {
+        height: 100vh;
+		width: 100vw;
+
+		/* I know flexboxes are dodgy but trust me ;) */
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+    }
+</style>

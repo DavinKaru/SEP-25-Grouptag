@@ -6,50 +6,41 @@
 	import GroupsSelectorComponent from '../../../components/App/Groups/GroupSelector/GroupSelector_Component.svelte';
 	import GroupCardContainerComponent from '../../../components/App/Groups/GroupCardContainer/GroupCardContainer_Component.svelte';
 	import { onMount } from 'svelte';
-	let loading = true
+	let loading = true;
 	export let data;
 	let allGroups = true;
-	let displayGroups = data.Groups
-	$: if(allGroups){displayGroups = data.Groups}else{displayGroups = data.MyGroups} ;
-	onMount(()=>{
+	let displayGroups = data.Groups;
+	$: if (allGroups) {
+		displayGroups = data.Groups;
+	} else {
+		displayGroups = data.MyGroups;
+	}
+	onMount(() => {
 		loading = false;
-	})
-
+	});
 </script>
 
-<body>
-	<div class="frame">
-		<HeaderComponent title="Groups" />
-		{#if !loading}
-			<div id="content">
-				<FeaturedGroupComponent {data} />
-				<GroupsSelectorComponent bind:allGroups={allGroups}/>
-				<GroupCardContainerComponent groups={displayGroups}/>
-			</div>
-		{/if}
+<HeaderComponent title="Groups" />
+{#if !loading}
+	<div id="content">
+		<FeaturedGroupComponent {data} />
+		<GroupsSelectorComponent bind:allGroups />
+		<GroupCardContainerComponent groups={displayGroups} />
 	</div>
-</body>
+{/if}
 
 <style>
-	.frame {
-		height: 100vh;
-		width: 100vw;
-		background-color: #243347;
-		background-image: url('/bg10.png');
-		background-size: cover;
-		background-position: center;
-
-		/* I know flexboxes are dodgy but trust me ;) */
-		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		justify-content: flex-start;
-	}
-
 	#content {
 		width: 90%;
 		margin-left: auto;
 		margin-right: auto;
 		z-index: 1;
+	}
+
+	/* Tablet + PC Layout */
+	@media only screen and (min-width: 750px) {
+		#content {
+			width: 55%;
+		}
 	}
 </style>

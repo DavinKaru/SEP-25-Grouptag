@@ -7,28 +7,8 @@
 	export let form;
 </script>
 
-<body>
-	<div class="frame">
-		<HeaderComponent text="Great to Have You Back!"/>
+<HeaderComponent text="Great to Have You Back!" />
 
-		<BoxComponent boxClass="signup-box">
-			<LoginComponent {form}/>
-		</BoxComponent>
-	</div>
-</body>
-
-<style>
-	.frame {
-		height: 100vh;
-		width: 100vw;
-		background-color: #243347;
-		background-image: url('/bg10.png');
-		background-size: cover;
-		background-position: center;
-
-		/* I know flexboxes are dodgy but trust me ;) */
-		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
-	}
-</style>
+<BoxComponent boxClass="signup-box">
+	<LoginComponent {form} />
+</BoxComponent>

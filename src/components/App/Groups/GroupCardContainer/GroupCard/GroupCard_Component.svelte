@@ -38,7 +38,7 @@
 		/* Dimensions */
 		margin-top: 10px;
 		width: 10rem; /* Do not change plz! */
-		height: fit-content;
+		height: auto;
 		border-radius: 10px; /* Rounded corners on top left and right */
 		margin-left: 10px;
 		margin-right: 10px;
@@ -63,7 +63,7 @@
 		margin-top: 3px;
 		display: flex;
 		flex-direction: row;
-		width: 10rem;
+		width: auto;
 		flex-wrap: wrap;
 		gap: 3px;
 	}

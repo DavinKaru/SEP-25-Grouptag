@@ -18,55 +18,28 @@
 	}
 </script>
 
-<Modal
-	styleWindow={{ backdropFilter: 'blur(20px)', background: 'rgba(0, 0, 0, 0.2)' }}
-	styleBg={{ background: 'rgba(0, 0, 0, 0)' }}
->
-	<body>
-		<div class="frame">
-			<AppHeaderComponent title="My Profile" />
-			<div id="content">
-				<div id="profilePicture">
-					<ProfilePictureComponent user={data.user.users} />
-				</div>
-				<div id="details">
-					<MyDetailsComponent user={data.user} />
-				</div>
-			</div>
-			<div id="userActivity">
-				<ProfileEditorComponent
-					bio="{data.user.users.bio},"
-					image_url={data.user.users.image_url}
-				/>
-				<ContentSelectorComponent bind:selected on:submit={handleSubmit} />
-				<MyContentListComponent
-					content={selected}
-					posts={data.Posts}
-					users={data.Users}
-					groups={data.Groups}
-					experiences={data.user.users['experience ']}
-				/>
-			</div>
-		</div>
-	</body>
-</Modal>
+<AppHeaderComponent title="My Profile" />
+<div id="content">
+	<div id="profilePicture">
+		<ProfilePictureComponent user={data.user.users} />
+	</div>
+	<div id="details">
+		<MyDetailsComponent user={data.user} />
+	</div>
+</div>
+<div id="userActivity">
+	<ProfileEditorComponent bio="{data.user.users.bio}," image_url={data.user.users.image_url} />
+	<ContentSelectorComponent bind:selected on:submit={handleSubmit} />
+	<MyContentListComponent
+		content={selected}
+		posts={data.Posts}
+		users={data.Users}
+		groups={data.Groups}
+		experiences={data.user.users['experience ']}
+	/>
+</div>
 
 <style>
-	.frame {
-		height: 100vh;
-		width: 100vw;
-		background-color: #243347;
-		background-image: url('/bg10.png');
-		background-size: cover;
-		background-position: center;
-
-		/* I know flexboxes are dodgy but trust me ;) */
-		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		justify-content: flex-start;
-	}
-
 	/* Better to control layout here in then in each individual component (excluding Profile Picture)*/
 
 	/* Tablet + PC Layout */
