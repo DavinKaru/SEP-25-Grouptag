@@ -27,7 +27,7 @@
 			vPassword.length >= 8,
 			vPassword.search(/[A-Z]/) > -1,
 			vPassword.search(/[0-9]/) > -1,
-			vPassword.search(/[$&+,:;=?@#]/) > -1,
+			vPassword.search(/[$&+,:;=?@#!]/) > -1,
 		]
 
 		//passwordStr = validations.reduce((acc, cur) => acc + (cur ? 1 : 0), 0)
