@@ -4,6 +4,7 @@
 	import ProfileIconComponent from '../../User/ProfileIcon/ProfileIcon_component.svelte';
 	import GroupIconComponent from '../../GroupIcon/GroupIcon_Component.svelte';
 	import TagIconComponent from '../../TagIcons/TagIcon_Component.svelte';
+	import { convertTime } from '$lib/timeConversion';
 	
 	export let postTitle = "Default Title";
 	export let postTime = "null";
@@ -13,41 +14,7 @@
 	export let postGroupLogo = "/default/group-icon-default.png";
 	export let postTags = ["Default Tags"];
 
-	// Calculation for timestamp
-	let createdAt = new Date(postTime);
-
-	// Get the current date
-	let now = new Date();
-
-	// Calculate the difference
-	let difference = now - createdAt;
-
-	// Conversion
-	let minutes = Math.floor(difference / 1000 / 60);
-	let hours = Math.floor(minutes / 60);
-
-	let timeSince;
-
-	if (hours > 0) {
-		if (hours > 24) {
-			let days = Math.floor(hours / 24);
-			if (days > 31) {
-				let months = Math.floor(days / 31);
-				if (months > 12) {
-					let years = Math.floor(months / 12);
-					timeSince = `${years} YEARS AGO`;
-				} else {
-					timeSince = `${months} MONTHS AGO`;
-				}
-			} else {
-				timeSince = `${days} DAYS AGO`;
-			}
-		} else {
-			timeSince = `${hours} HOURS AGO`;
-		}
-	} else {
-		timeSince = `${minutes} MINUTES AGO`;
-	}
+	let timeSince = convertTime(postTime);
 </script>
 
 <div id="post-details">

@@ -23,7 +23,7 @@
 				<MyExperienceComponent {experience} />
 			{/each}
 		{:else}
-			<p style="text-align: center; margin-top: 5%;">No experiences to display.</p>
+			<p class="empty-msg" style="text-align: center; margin-top: 5%;">No Experience to display</p>
 		{/if}
 	{:else if content == 'Posts'}
 		<!--{#each filteredPosts as post}-->
@@ -32,7 +32,7 @@
 				<MyPostsComponent {post} />
 			{/each}
 		{:else}
-			<p style="text-align: center; margin-top: 5%;">No Posts to display.</p>
+			<p class="empty-msg" style="text-align: center; margin-top: 5%;">No Posts to display</p>
 		{/if}
 	{:else if content == 'Groups'}
 		{#if groups && groups.length > 0}
@@ -40,7 +40,7 @@
 				<MyGroupsComponent {group} />
 			{/each}
 		{:else}
-			<p style="text-align: center; margin-top: 5%;">No Groups to display.</p>
+			<p class="empty-msg" style="text-align: center; margin-top: 5%;">No Groups to display</p>
 		{/if}
 	{:else if content == 'Mutuals'}
 		{#if users && users.length > 0}
@@ -48,7 +48,7 @@
 				<MyMutualsComponent {user} />
 			{/each}
 		{:else}
-			<p style="text-align: center; margin-top: 5%;">No Mutuals to display.</p>
+			<p class="empty-msg" style="text-align: center; margin-top: 5%;">No Mutual Connections to display</p>
 		{/if}
 	{/if}
 </div>
@@ -58,11 +58,7 @@
 		margin-bottom: 65px;
 	}
 
-	.year {
-		font-size: 12px;
-		color: rgb(215, 215, 213);
-		margin-top: 10px;
-		margin-bottom: -6px;
-		text-align: center;
+	.empty-msg {
+		color: #c9c9c9;
 	}
 </style>

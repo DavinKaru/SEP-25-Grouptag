@@ -1,9 +1,20 @@
 <script>
+// @ts-nocheck
+
 	import Select from 'svelte-select';
 	import autosize from 'svelte-autosize';
 	import AppHeaderComponent from '../../../../components/App/AppHeader/AppHeader_Component.svelte';
 
-	const groupOptions = ['Swinburne Razorbacks', 'Cybersecurity Club'];
+	export let data;
+
+	let groupData = [[],[]];
+
+	/* Would have liked to create a supabase function that specifically recieved this but ran out of time */
+	for (let i = 0; i < data.Groups.length; i++) {
+		groupData[0].push(data.Groups[i].group_id);
+		groupData[1].push(data.Groups[i].name);
+	}
+
 </script>
 
 <!-- 
@@ -19,7 +30,7 @@
 	<div class="field">
 		<label for="postGroup">Group</label>
 		<Select
-			items={groupOptions}
+			items={groupData[1]}
 			placeholder="Where should we go?"
 			--border-radius="10px 10px 10px 10px"
 			--padding="10px"
