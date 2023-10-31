@@ -11,6 +11,8 @@
 	/* Data variables for Database Information*/
 	export let data;
 	const { Post_id, Posts, Comments } = data;
+	let mediaUrl = data.Posts.media_url;
+	console.log(mediaUrl);
 </script>
 
 <AppHeaderComponent title="Post" />
@@ -25,6 +27,9 @@
 			postGroupLogo={Posts.logo_url}
 			postTags={Posts.tags}
 		/>
+		{#if  mediaUrl !== null}
+			<img src={mediaUrl} alt="Post Media"/>
+		{/if}
 		<PostContentComponent postContent={Posts.content} />
 		<PostCommentsContainerComponent comments={data.Comments} post_id={data.Post_id} />
 	</div>

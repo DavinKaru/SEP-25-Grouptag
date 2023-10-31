@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
 	import TagIconComponent from '../../../TagIcons/TagIcon_Component.svelte';
 	import { goto } from '$app/navigation';
 	export let group;
@@ -52,6 +54,11 @@
 
 	}
 
+	#column1 {
+		width: 6rem;
+		
+	}
+
 	#column2 {
 		display: flex;
 		flex-direction: column;
@@ -76,6 +83,8 @@
 	}
 
 	img {
+		height: 6rem;
 		width: 6rem;
+		border-radius: 10px 10px 10px 10px;
 	}
 </style>

@@ -8,8 +8,6 @@ export async function load() {
      if (myUserId != null){
          user_id = myUserId;
      }
-    //console.log(myUserId)
-
 
     const { data: user  } = await supabase.from('user_courses').select("users(*), university_courses (*), universities (*)").eq('user_id', user_id).single();
 

@@ -9,7 +9,6 @@
     export let data;
      onMount(()=>{
          loading = false;
-
      })
 
 </script>
@@ -20,7 +19,7 @@
             <GroupDetailsComponent {data} />
             <div id="post-header">  
                 <p id="recent-posts">RECENT POSTS</p>
-                <a href="default" id="post-button">Make Post</a>
+                <a href="/app/create/post" id="post-button">Make Post</a>
             </div>
             <div id="posts-container">
             {#each data.GroupPosts as post}
@@ -79,6 +78,7 @@
        flex-direction: column;
        gap: 10px;
        margin-bottom: 10vh;
+       width: 100%;
     }
 
 	#post-button:hover {

@@ -55,6 +55,7 @@
 <div id="post-card" on:click={goToPost}>
 
 	<!-- Left hand side contains post media or group logo , right side contains details-->
+	
 	<!--If Post Media is not null -->
 	{#if post.media_url != null}
 		<!-- Left hand side contains post media or group logo , right side contains details-->
@@ -202,10 +203,5 @@
 		font-size: 0.65rem;
 	}
 
-	/* Tablet + PC Layout */
-	@media only screen and (min-width: 600px) {
-		#post-card {
-			height: 175px;
-		}
-	}
+	
 </style>
