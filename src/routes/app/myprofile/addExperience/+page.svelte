@@ -5,6 +5,7 @@
 	import AppHeaderComponent from '../../../../components/App/AppHeader/AppHeader_Component.svelte';
 	import { supabase } from '$lib/supabaseClient';
 	import toast, { Toaster } from 'svelte-french-toast';
+	import Dropzone from 'svelte-file-dropzone/Dropzone.svelte';
 
 	const employmentType = ['Full-time', 'Part-time', 'Casual', 'Volunteer', 'Internship'];
 
@@ -78,6 +79,22 @@
 			};
 		}
 	}
+
+	let files = {
+		accepted: [],
+		rejected: []
+	};
+
+	function handleFilesSelect(e) {
+		const { acceptedFiles, fileRejections } = e.detail;
+		files.accepted = [...files.accepted, ...acceptedFiles];
+		files.rejected = [...files.rejected, ...fileRejections];
+	}
+
+	function handleRemoveFile(e, index) {
+		files.accepted.splice(index, 1);
+		files.accepted = [...files.accepted];
+	}
 </script>
 
 <AppHeaderComponent title="Add Experience" />
@@ -109,15 +126,32 @@
 			/>
 		</div>
 
-		<div class="field">
-			<label for="companyLogo">Company Logo</label>
-			<textarea
+		<!-- Previous done using url link -->
+		<!--
+				<label for="companyLogo">Company Logo</label> 
+				<textarea
 				bind:value={companyLogo}
 				use:autosize
 				id="companyLogo"
 				name="companyLogo"
 				placeholder="Your Company's Logo!"
-			/>
+			/> -->
+
+		<div class="field">
+			<label for="companyLogo">Company Logo</label>
+			<div class="dropZone">
+				<Dropzone on:drop={handleFilesSelect} accept="image/*">
+					<p>Click here to upload</p>
+				</Dropzone>
+			</div>
+			<div class="dropFiles">
+				{#each files.accepted as item, index}
+					<div>
+						<span>{item.name}</span>
+						<button on:click={(e) => handleRemoveFile(e, index)} id="removeButton">Remove</button>
+					</div>
+				{/each}
+			</div>
 		</div>
 
 		<div class="field">
@@ -315,5 +349,33 @@
 		align-items: center;
 		margin: 0 auto;
 		margin-bottom: 10vh;
+	}
+
+	.dropFiles {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		background-color: rgba(255, 255, 255, 0.127);
+		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
+		padding: 0 20px;
+		width: 100%;
+		color: rgb(255, 255, 255);
+	}
+
+	.dropFiles > div > span {
+		font-size: small;
+	}
+
+	.dropZone {
+		background-color: rgb(255, 255, 255);
+		font-family: 'Poppins';
+		font-size: 15px;
+		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
+		padding: 5px;
+		height: fit-content;
+		width: 100%;
+		border: none;
+		outline: none;
+		resize: none;
 	}
 </style>
