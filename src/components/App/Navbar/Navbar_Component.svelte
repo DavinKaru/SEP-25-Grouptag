@@ -1,35 +1,43 @@
 <!-- Navbar Component -->
+<!-- src/components/App/Navbar/Navbar_Component.svelte -->
 <script>
-
 	/* Create Menu Component has to live here to ensure context is acquired correctly. */
 	import { getContext } from 'svelte';
-	const { open} = getContext('simple-modal');
 	import CreateMenuComponent from './CreateMenu/CreateMenu_Component.svelte';
 	import SignoutComponent from './Signout/Signout_Component.svelte';
-	const createMenu = () => open(CreateMenuComponent, { message: "It's a modal!" });
-	const signoutMenu = () => open(SignoutComponent, { message: "It's a modal!" });
+	import { page } from '$app/stores';
 
-	let showCreatePost = false;
-	function toggleCreatePost() {
-		showCreatePost = !showCreatePost; //toggle PostCreate
-	}
+	const { open } = getContext('simple-modal');
+
+	let activeButton = null;
+	let activePage;
+	$: activePage = $page.route.id; // Replace $page with your current page variable
+
+	const createMenu = () => {
+		open(CreateMenuComponent, { message: "It's a modal!" });
+		activeButton = 'createMenu'; // Set activeButton when clicked
+	};
+	const signoutMenu = () => {
+		open(SignoutComponent, { message: "It's a modal!" });
+		activeButton = 'signoutMenu'; // Set activeButton when clicked
+	};
 </script>
 
 <nav class="navbar">
-	<a href="/app/groups">
+	<a href="/app/groups" class:active={activePage === '/app/groups'}>
 		<!-- Home/Group's page -->
 		<img src="/Icons/Navbar Icons/Home.svg" alt="Home Icon" class="navIcon" />
 	</a>
 
- 	<a href="/app/requests">
+	<a href="/app/requests" class:active={activePage === '/app/requests'}>
 		<img src="/Icons/Navbar Icons/Notification.svg" alt="Notification Icon" class="navIcon" />
 	</a>
-  
- 	<button on:click={createMenu}>
+
+	<button on:click={createMenu}>
 		<img src="/Icons/Navbar Icons/Plus.svg" alt="Plus Icon" class="navIcon" />
 	</button>
- 
-	<a href="/app/myprofile">
+
+	<a href="/app/myprofile" class:active={activePage === '/app/myprofile'}>
 		<img src="/Icons/Navbar Icons/Profile.svg" alt="Profile Icon" class="navIcon" />
 	</a>
 
@@ -40,6 +48,10 @@
 </nav>
 
 <style>
+	.active img {
+		filter: drop-shadow(1px 2px 10px rgb(255, 255, 255));
+	}
+
 	.navbar {
 		display: flex;
 		justify-content: space-between;
@@ -80,5 +92,4 @@
 		background: none;
 		border: none;
 	}
-
 </style>
