@@ -10,28 +10,25 @@
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div id="createWindow" on:click={closeModal}>
-	<h1>Create</h1>
+<div id="signOutWindow" on:click={closeModal}>
+	<h1>Log Out</h1>
+    <p>Are you sure you'd like to Log Out?</p>
 	<ButtonsComponent
 		on:click={closeModal}
 		buttonType="submit"
-		text="Create Post"
+		text="Log Out"
 		buttonClass="login-button"
-		href="/app/create/post"
-		isAnchor={true}
 	/>
-	<ButtonsComponent
+    <ButtonsComponent
 		on:click={closeModal}
 		buttonType="submit"
-		text="Create Group"
+		text="Cancel"
 		buttonClass="login-button"
-		href="/app/create/group"
-		isAnchor={true}
 	/>
 </div>
 
 <style>
-	h1 {
+	h1, p {
 		color: white;
 	}
 </style>

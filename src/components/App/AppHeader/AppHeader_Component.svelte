@@ -59,8 +59,6 @@
 		/* Remove default button styling */
 		background: none;
 		border: none;
-		margin-top: 6%;
-		margin-bottom: auto;
 		margin-right: 10px;
 	}
 

@@ -25,7 +25,7 @@
 
 <body>
 	<div class="frame">
-		<AppHeaderComponent title="My Profile" />
+		<AppHeaderComponent title="User Profile" />
 		{#if !loading}
 		<div id="content">
 			<div id="profilePicture">

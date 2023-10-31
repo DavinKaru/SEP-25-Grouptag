@@ -24,12 +24,13 @@ $: ({ supabase, session } = data);
 
 <style>
     #frame {
-        height: 100vh;
+		height: 100vh;
 		width: 100vw;
 
 		/* I know flexboxes are dodgy but trust me ;) */
 		display: flex;
 		flex-direction: column;
 		flex-wrap: nowrap;
+		margin-bottom: 60px;
     }
 </style>

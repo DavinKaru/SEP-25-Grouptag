@@ -5,7 +5,9 @@
 	import { getContext } from 'svelte';
 	const { open} = getContext('simple-modal');
 	import CreateMenuComponent from './CreateMenu/CreateMenu_Component.svelte';
-	const showSurprise = () => open(CreateMenuComponent, { message: "It's a modal!" });
+	import SignoutComponent from './Signout/Signout_Component.svelte';
+	const createMenu = () => open(CreateMenuComponent, { message: "It's a modal!" });
+	const signoutMenu = () => open(SignoutComponent, { message: "It's a modal!" });
 
 	let showCreatePost = false;
 	function toggleCreatePost() {
@@ -23,7 +25,7 @@
 		<img src="/Icons/Navbar Icons/Notification.svg" alt="Notification Icon" class="navIcon" />
 	</a>
   
- 	<button on:click={showSurprise}>
+ 	<button on:click={createMenu}>
 		<img src="/Icons/Navbar Icons/Plus.svg" alt="Plus Icon" class="navIcon" />
 	</button>
  
@@ -32,9 +34,9 @@
 	</a>
 
 	<!--Needs to be replaced with signout code-->
-	<a href="/app/myprofile">
+	<button on:click={signoutMenu}>
 		<img src="/Icons/Navbar Icons/Logout.svg" alt="Logout Icon" class="navIcon" />
-	</a>
+	</button>
 </nav>
 
 <style>
@@ -44,7 +46,7 @@
 		align-items: center;
 
 		position: fixed;
-		width: 50%;
+		width: 70%;
 		max-width: 850px;
 		height: 4.72vh; /* 4.72% of viewport */
 

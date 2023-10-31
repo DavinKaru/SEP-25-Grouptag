@@ -15,30 +15,35 @@
 
 <AppHeaderComponent title="Post" />
 <div id="content">
-	<PostDetailsComponent
-		postTitle={Posts.title}
-		postTime={Posts.created_at}
-		postAuthorName={Posts.first_name + ' ' + Posts.last_name}
-		postAuthorPicture={Posts.image_url}
-		postGroupName={Posts.name}
-		postGroupLogo={Posts.logo_url}
-		postTags={Posts.tags}
-	/>
-	<PostContentComponent postContent={Posts.content} />
-	<PostCommentsContainerComponent comments={data.Comments} post_id={data.Post_id} />
+	<div id="post">
+		<PostDetailsComponent
+			postTitle={Posts.title}
+			postTime={Posts.created_at}
+			postAuthorName={Posts.first_name + ' ' + Posts.last_name}
+			postAuthorPicture={Posts.image_url}
+			postGroupName={Posts.name}
+			postGroupLogo={Posts.logo_url}
+			postTags={Posts.tags}
+		/>
+		<PostContentComponent postContent={Posts.content} />
+		<PostCommentsContainerComponent comments={data.Comments} post_id={data.Post_id} />
+	</div>
 </div>
 
 <style>
 	#content {
 		width: 90%;
-		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
 		margin-left: auto;
 		margin-right: auto;
+	}
+
+	#post {
 		margin-top: 10px;
 		margin-bottom: 65px;
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
+		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
 		background-color: rgba(255, 255, 255, 0.127);
 		padding: 10px;
 	}
