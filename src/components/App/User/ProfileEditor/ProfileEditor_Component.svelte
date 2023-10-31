@@ -12,7 +12,7 @@
 	</button>
 	<button>
 		<a href="myprofile/addExperience">
-			<img class="editIcon" src="/profile/Connect.svg" alt="Add Experience" />
+			<img class="editIcon" src="/profile/addExperience.svg" alt="Add Experience" />
 		</a>
 	</button>
 	<button on:click={showSurprise}>
