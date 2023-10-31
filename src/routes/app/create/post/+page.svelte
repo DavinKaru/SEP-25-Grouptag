@@ -1,13 +1,14 @@
 <script>
-// @ts-nocheck
+	// @ts-nocheck
 
 	import Select from 'svelte-select';
 	import autosize from 'svelte-autosize';
 	import AppHeaderComponent from '../../../../components/App/AppHeader/AppHeader_Component.svelte';
+	import Dropzone from 'svelte-file-dropzone/Dropzone.svelte';
 
 	export let data;
 
-	let groupData = [[],[]];
+	let groupData = [[], []];
 
 	/* Would have liked to create a supabase function that specifically recieved this but ran out of time */
 	for (let i = 0; i < data.Groups.length; i++) {
@@ -15,6 +16,21 @@
 		groupData[1].push(data.Groups[i].name);
 	}
 
+	let files = {
+		accepted: [],
+		rejected: []
+	};
+
+	function handleFilesSelect(e) {
+		const { acceptedFiles, fileRejections } = e.detail;
+		files.accepted = [...files.accepted, ...acceptedFiles];
+		files.rejected = [...files.rejected, ...fileRejections];
+	}
+
+	function handleRemoveFile(e, index) {
+		files.accepted.splice(index, 1);
+		files.accepted = [...files.accepted];
+	}
 </script>
 
 <!-- 
@@ -59,7 +75,22 @@
 			placeholder="Write something cool here!"
 		/>
 	</div>
-	<p>Upload the Post Media here!</p>
+	<div class="field">
+		<label for="postMedia">Upload the Post Media here!</label>
+		<div class="dropZone">
+			<Dropzone on:drop={handleFilesSelect} accept="image/*">
+				<p>Click here to upload</p>
+			</Dropzone>
+		</div>
+		<div class="dropFiles">
+			{#each files.accepted as item, index}
+				<div>
+					<span>{item.name}</span>
+					<button on:click={(e) => handleRemoveFile(e, index)} id="removeButton">Remove</button>
+				</div>
+			{/each}
+		</div>
+	</div>
 	<div class="field">
 		<label for="postTags">Tags</label>
 		<textarea use:autosize id="postTags" name="postTags" placeholder="Seperate with a comma :)" />
@@ -137,11 +168,39 @@
 		width: 140px;
 		font-size: 16px;
 		font-family: 'Poppins';
-        margin-bottom: 10vh;
+		margin-bottom: 10vh;
 	}
 
 	.create-button:hover {
 		background-color: #4095c6;
+	}
+
+	.dropFiles {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		background-color: rgba(255, 255, 255, 0.127);
+		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
+		padding: 0 20px;
+		width: 100%;
+		color: rgb(255, 255, 255);
+	}
+
+	.dropFiles > div > span {
+		font-size: small;
+	}
+
+	.dropZone {
+		background-color: rgb(255, 255, 255);
+		font-family: 'Poppins';
+		font-size: 15px;
+		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
+		padding: 5px;
+		height: fit-content;
+		width: 100%;
+		border: none;
+		outline: none;
+		resize: none;
 	}
 
 	/* Tablet + PC Layout */

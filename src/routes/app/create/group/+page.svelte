@@ -2,6 +2,23 @@
 	// @ts-nocheck
 	import autosize from 'svelte-autosize';
 	import AppHeaderComponent from '../../../../components/App/AppHeader/AppHeader_Component.svelte';
+	import Dropzone from 'svelte-file-dropzone/Dropzone.svelte';
+
+	let files = {
+		accepted: [],
+		rejected: []
+	};
+
+	function handleFilesSelect(e) {
+		const { acceptedFiles, fileRejections } = e.detail;
+		files.accepted = [...files.accepted, ...acceptedFiles];
+		files.rejected = [...files.rejected, ...fileRejections];
+	}
+
+	function handleRemoveFile(e, index) {
+		files.accepted.splice(index, 1);
+		files.accepted = [...files.accepted];
+	}
 </script>
 
 <AppHeaderComponent title="Create Group" />
@@ -11,8 +28,39 @@
 		<label for="groupName">Name</label>
 		<textarea use:autosize id="groupName" name="groupName" placeholder="Be original!" />
 	</div>
-	<p>Upload the Group Logo here!</p>
-	<p>Upload the Group Banner here!</p>
+
+	<div class="field">
+		<label for="groupLogo">Upload the Group Logo here!</label>
+		<div class="dropZone">
+			<Dropzone on:drop={handleFilesSelect} accept="image/*">
+				<p>Click here to upload</p>
+			</Dropzone>
+		</div>
+		<div class="dropFiles">
+			{#each files.accepted as item, index}
+				<div>
+					<span>{item.name}</span>
+					<button on:click={(e) => handleRemoveFile(e, index)} id="removeButton">Remove</button>
+				</div>
+			{/each}
+		</div>
+	</div>
+	<div class="field">
+		<label for="groupBanner">Upload the Group Banner here!</label>
+		<div class="dropZone">
+			<Dropzone on:drop={handleFilesSelect} accept="image/*">
+				<p>Click here to upload</p>
+			</Dropzone>
+		</div>
+		<div class="dropFiles">
+			{#each files.accepted as item, index}
+				<div>
+					<span>{item.name}</span>
+					<button on:click={(e) => handleRemoveFile(e, index)} id="removeButton">Remove</button>
+				</div>
+			{/each}
+		</div>
+	</div>
 	<div class="field">
 		<label for="groupDescription">Description</label>
 		<textarea
@@ -22,6 +70,7 @@
 			placeholder="Who is this group for?"
 		/>
 	</div>
+
 	<div class="field">
 		<label for="groupTags">Tags</label>
 		<textarea use:autosize id="groupTags" name="groupTags" placeholder="Seperate with a comma :)" />
@@ -98,11 +147,39 @@
 		width: auto;
 		font-size: 16px;
 		font-family: 'Poppins';
-        margin-bottom: 10vh;
+		margin-bottom: 10vh;
 	}
 
 	.create-button:hover {
 		background-color: #4095c6;
+	}
+
+	.dropFiles {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		background-color: rgba(255, 255, 255, 0.127);
+		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
+		padding: 0 20px;
+		width: 100%;
+		color: rgb(255, 255, 255);
+	}
+
+	.dropFiles > div > span {
+		font-size: small;
+	}
+
+	.dropZone {
+		background-color: rgb(255, 255, 255);
+		font-family: 'Poppins';
+		font-size: 15px;
+		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
+		padding: 5px;
+		height: fit-content;
+		width: 100%;
+		border: none;
+		outline: none;
+		resize: none;
 	}
 
 	/* Tablet + PC Layout */
