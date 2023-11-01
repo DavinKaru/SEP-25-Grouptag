@@ -20,7 +20,6 @@
 	let endYear = '';
 	let endMonth = '';
 	let selectedEmploymentType = '';
-	let jobDesc = '';
 
 	async function handleSubmit(event) {
 		event.preventDefault(); // Prevent the default form submission
@@ -33,8 +32,7 @@
 			startMonth,
 			endYear,
 			endMonth,
-			employmentType: selectedEmploymentType,
-			jobDesc
+			employmentType: selectedEmploymentType
 		};
 
 		const result = await addExperienceToDatabase(experience);
@@ -243,17 +241,6 @@
 			/>
 		</div>
 
-		<div class="field">
-			<label for="jobDesc">Description</label>
-			<textarea
-				bind:value={jobDesc}
-				use:autosize
-				id="jobDesc"
-				name="jobDesc"
-				placeholder="Write what you did!"
-			/>
-		</div>
-
 		<button id="submit">
 			<p class="submit-button">Add Experience</p>
 		</button>
@@ -281,10 +268,6 @@
 		justify-content: flex-start;
 		align-items: center;
 		gap: 20px; /* Adjust the gap as needed */
-	}
-
-	#jobDesc {
-		height: 100px;
 	}
 
 	.field {
