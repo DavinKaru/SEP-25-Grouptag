@@ -8,7 +8,6 @@
 	import { supabase } from '$lib/supabaseClient';
 	export let data;
 
-	console.log('Create Post - Autheticated user:', supabase.auth.user);
 	//Insert data from the form into the database
 	let name;
 	let logo_url;
@@ -28,7 +27,6 @@
 			description,
 			tags: tagArray
 		};
-		console.log('newGroup:', newGroup);
 
 		const result = await addNewGroupToDatabase(newGroup);
 		if (result.success) {
