@@ -7,8 +7,7 @@
 	import toast, { Toaster } from 'svelte-french-toast';
 	import { supabase } from '$lib/supabaseClient';
 
-	export let data;
-
+	console.log('Autheticated user:', supabase.auth.user);
 	//Insert data from the form into the database
 	let name;
 	let logo_url;
