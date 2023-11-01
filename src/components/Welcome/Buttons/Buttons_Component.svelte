@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
 	export let text = 'default text';
 	export let buttonClass = '';
 	export let href = '';
