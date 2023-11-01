@@ -1,9 +1,63 @@
+<!-- src/routes/app/create/group/+page.svelte -->
 <script>
 	// @ts-nocheck
 	import autosize from 'svelte-autosize';
 	import AppHeaderComponent from '../../../../components/App/AppHeader/AppHeader_Component.svelte';
 	import Dropzone from 'svelte-file-dropzone/Dropzone.svelte';
+	import toast, { Toaster } from 'svelte-french-toast';
+	import { supabase } from '$lib/supabaseClient';
+	export let data;
 
+	console.log('Create Post - Autheticated user:', supabase.auth.user);
+	//Insert data from the form into the database
+	let name;
+	let logo_url;
+	let banner_url;
+	let description;
+	let tags;
+
+	async function handleSubmit(event) {
+		event.preventDefault(); // Prevent the default form submission
+
+		// Convert tags string to array of objects
+		const tagArray = tags.split(',').map((tag) => ({ name: tag.trim() }));
+		const newGroup = {
+			name,
+			logo_url,
+			banner_url,
+			description,
+			tags: tagArray
+		};
+		console.log('newGroup:', newGroup);
+
+		const result = await addNewGroupToDatabase(newGroup);
+		if (result.success) {
+			toast.success('New Group added!');
+		} else {
+			console.error('Failed to add experience:', result.error);
+			toast.error('Failed to add experience');
+		}
+	}
+
+	async function addNewGroupToDatabase(newGroup) {
+		const { newdata, error } = await supabase.from('groups').insert([
+			{
+				name: newGroup.name,
+				logo_url: newGroup.logo_url,
+				banner_url: newGroup.banner_url,
+				description: newGroup.description,
+				tags: newGroup.tags,
+				public: true
+			}
+		]);
+
+		if (error) {
+			return { success: false, error };
+		}
+		return { success: true };
+	}
+
+	//Dropfile
 	let files = {
 		accepted: [],
 		rejected: []
@@ -22,63 +76,100 @@
 </script>
 
 <AppHeaderComponent title="Create Group" />
-<div id="content">
-	<h2>Let's make a place!</h2>
-	<div class="field">
-		<label for="groupName">Name</label>
-		<textarea use:autosize id="groupName" name="groupName" placeholder="Be original!" />
-	</div>
+<form on:submit={handleSubmit}>
+	<div id="content">
+		<Toaster />
+		<h2>Let's make a place!</h2>
+		<div class="field">
+			<label for="groupName">Name</label>
+			<textarea
+				use:autosize
+				bind:value={name}
+				id="groupName"
+				name="groupName"
+				placeholder="Be original!"
+				required
+			/>
+		</div>
 
-	<div class="field">
-		<label for="groupLogo">Upload the Group Logo here!</label>
-		<div class="dropZone">
-			<Dropzone on:drop={handleFilesSelect} accept="image/*">
-				<p>Click here to upload</p>
-			</Dropzone>
+		<div class="field">
+			<label for="groupLogo">Upload the Group Logo here!</label>
+			<textarea
+				bind:value={logo_url}
+				use:autosize
+				id="logo_url"
+				name="logo_url"
+				placeholder="Your Logo's URL!"
+			/>
+			<!-- Removed Dropzone,  because we will need to upload the file to Supabase storage, then use the URL from the storage to insert into database-->
+			<!-- <div class="dropZone">
+				<Dropzone on:drop={handleFilesSelect} bind:value={logo_url} accept="image/*">
+					<p>Click here to upload</p>
+				</Dropzone>
+			</div>
+			<div class="dropFiles">
+				{#each files.accepted as item, index}
+					<div>
+						<span>{item.name}</span>
+						<button on:click={(e) => handleRemoveFile(e, index)} id="removeButton">Remove</button>
+					</div>
+				{/each}
+			</div> -->
 		</div>
-		<div class="dropFiles">
-			{#each files.accepted as item, index}
-				<div>
-					<span>{item.name}</span>
-					<button on:click={(e) => handleRemoveFile(e, index)} id="removeButton">Remove</button>
-				</div>
-			{/each}
-		</div>
-	</div>
-	<div class="field">
-		<label for="groupBanner">Upload the Group Banner here!</label>
-		<div class="dropZone">
-			<Dropzone on:drop={handleFilesSelect} accept="image/*">
-				<p>Click here to upload</p>
-			</Dropzone>
-		</div>
-		<div class="dropFiles">
-			{#each files.accepted as item, index}
-				<div>
-					<span>{item.name}</span>
-					<button on:click={(e) => handleRemoveFile(e, index)} id="removeButton">Remove</button>
-				</div>
-			{/each}
-		</div>
-	</div>
-	<div class="field">
-		<label for="groupDescription">Description</label>
-		<textarea
-			use:autosize
-			id="groupDescription"
-			name="groupDescription"
-			placeholder="Who is this group for?"
-		/>
-	</div>
 
-	<div class="field">
-		<label for="groupTags">Tags</label>
-		<textarea use:autosize id="groupTags" name="groupTags" placeholder="Seperate with a comma :)" />
+		<div class="field">
+			<label for="groupBanner">Upload the Group Banner here!</label>
+			<textarea
+				bind:value={banner_url}
+				use:autosize
+				id="banner_url"
+				name="banner_url"
+				placeholder="Your Banner's URL!"
+			/>
+			<!-- <div class="dropZone">
+				<Dropzone on:drop={handleFilesSelect} bind:value={banner_url} accept="image/*">
+					<p>Click here to upload</p>
+				</Dropzone>
+			</div>
+			<div class="dropFiles">
+				{#each files.accepted as item, index}
+					<div>
+						<span>{item.name}</span>
+						<button on:click={(e) => handleRemoveFile(e, index)} id="removeButton">Remove</button>
+					</div>
+				{/each}
+			</div> -->
+		</div>
+
+		<div class="field">
+			<label for="groupDescription">Description</label>
+			<textarea
+				use:autosize
+				bind:value={description}
+				id="groupDescription"
+				name="groupDescription"
+				placeholder="Who is this group for?"
+				required
+			/>
+		</div>
+
+		<div class="field">
+			<label for="groupTags">Tags</label>
+			<textarea
+				use:autosize
+				bind:value={tags}
+				id="groupTags"
+				name="groupTags"
+				placeholder="Separate with a comma :) (EX: Tag1, Tag2, Tag3)"
+				required
+			/>
+		</div>
+
+		<button id="submit">
+			<p class="create-button">Create Group</p>
+		</button>
 	</div>
-	<button id="submit">
-		<p class="create-button">Create Group</p>
-	</button>
-</div>
+</form>
 
 <style>
 	#content {
@@ -87,11 +178,10 @@
 		flex-wrap: nowrap;
 		justify-content: flex-start;
 		align-items: center;
-		margin-top: 10px;
 		gap: 15px;
-		width: 90%;
-		margin-left: auto;
-		margin-right: auto;
+		width: 100%;
+		margin: auto;
+		margin-top: 10px;
 	}
 
 	.field {
@@ -102,6 +192,7 @@
 		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
 		padding: 10px;
 		width: 100%;
+		margin-bottom: 3%;
 	}
 
 	textarea {
@@ -125,6 +216,13 @@
 		height: 100px;
 	}
 
+	#submit {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0 auto;
+		margin-bottom: 10vh;
+	}
 	button {
 		background: none;
 		border: none;
