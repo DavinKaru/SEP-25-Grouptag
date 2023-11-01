@@ -40,18 +40,16 @@
 	}
 
 	async function addNewGroupToDatabase(newGroup) {
-		const { newdata, error } = await supabase
-			.from('groups')
-			.insert([
-				{
-					name: newGroup.name,
-					logo_url: newGroup.logo_url,
-					banner_url: newGroup.banner_url,
-					description: newGroup.description,
-					tags: newGroup.tags
-				}
-			])
-			.select();
+		const { newdata, error } = await supabase.from('groups').insert([
+			{
+				name: newGroup.name,
+				logo_url: newGroup.logo_url,
+				banner_url: newGroup.banner_url,
+				description: newGroup.description,
+				tags: newGroup.tags,
+				public: true
+			}
+		]);
 
 		if (error) {
 			return { success: false, error };
