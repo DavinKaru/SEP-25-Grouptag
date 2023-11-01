@@ -9,27 +9,12 @@
 
 	export let data;
 
-	let files = {
-		accepted: [],
-		rejected: []
-	};
-
-	function handleFilesSelect(e) {
-		const { acceptedFiles, fileRejections } = e.detail;
-		files.accepted = [...files.accepted, ...acceptedFiles];
-		files.rejected = [...files.rejected, ...fileRejections];
-	}
-
-	function handleRemoveFile(e, index) {
-		files.accepted.splice(index, 1);
-		files.accepted = [...files.accepted];
-	}
-
-	let name = '';
-	let logo_url = '';
-	let banner_url = '';
-	let description = '';
-	let tags = '';
+	//Insert data from the form into the database
+	let name;
+	let logo_url;
+	let banner_url;
+	let description;
+	let tags;
 
 	async function handleSubmit(event) {
 		event.preventDefault(); // Prevent the default form submission
@@ -50,11 +35,12 @@
 			toast.success('New Group added!');
 		} else {
 			console.error('Failed to add experience:', result.error);
+			toast.error('Failed to add experience');
 		}
 	}
 
 	async function addNewGroupToDatabase(newGroup) {
-		const { groupData, error } = await supabase
+		const { newdata, error } = await supabase
 			.from('groups')
 			.insert([
 				{
@@ -71,6 +57,23 @@
 			return { success: false, error };
 		}
 		return { success: true };
+	}
+
+	//Dropfile
+	let files = {
+		accepted: [],
+		rejected: []
+	};
+
+	function handleFilesSelect(e) {
+		const { acceptedFiles, fileRejections } = e.detail;
+		files.accepted = [...files.accepted, ...acceptedFiles];
+		files.rejected = [...files.rejected, ...fileRejections];
+	}
+
+	function handleRemoveFile(e, index) {
+		files.accepted.splice(index, 1);
+		files.accepted = [...files.accepted];
 	}
 </script>
 
