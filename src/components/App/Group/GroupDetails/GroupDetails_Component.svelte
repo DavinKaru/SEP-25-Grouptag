@@ -4,11 +4,25 @@
 -->
 
 <script>
+	import { invalidateAll } from '$app/navigation';
 	import TagIcon from '../../TagIcons/TagIcon_Component.svelte'; // Import the TagIcon component
 	import { supabase } from '../../../../supabaseClient';
+	import { onMount } from 'svelte';
 	export let data; // Receive data
 	let group = data.Group[0];
+	let groupUsers = data.GroupUsers;
 	let GroupFeaturedImages = data.GroupFeaturedImages;
+	let inGroup = { status: false };
+
+	// Check if user is in group
+	const checkUserGroup = async () => {
+		let user_id = (await supabase.auth.getSession()).data.session?.user.id;
+		for (let i = 0; i < groupUsers.length; i++) {
+			if (groupUsers[i].user_id === user_id) {
+				inGroup.status = true;
+			}
+		}
+	};
 
 	const handleJoinGroup = async () => {
 		try {
@@ -21,24 +35,58 @@
 			if (error instanceof Error) {
 				alert(error.message);
 			}
-		} finally {
 		}
+
+		/* Refresh page */
+		invalidateAll().then(() => {
+			window.location.reload();
+		});
 	};
+
+	const handleLeaveGroup = async () => {
+		try {
+			const myUserId = (await supabase.auth.getSession()).data.session?.user.id;
+			const { error } = await supabase
+				.from('group_users')
+				.delete()
+				.eq('group_id', group.group_id)
+				.eq('user_id', myUserId);
+			if (error) throw error;
+		} catch (error) {
+			if (error instanceof Error) {
+				alert(error.message);
+			}
+		}
+
+		/* Refresh page */
+		invalidateAll().then(() => {
+			window.location.reload();
+		});
+	};
+
+	onMount(() => {
+		checkUserGroup();
+	});
 </script>
 
 <div id="group-container">
 	<div id="left-content">
 		<img src={group.banner_url} alt="Group Banner Logo" id="group-img" />
 		<div id="members">
-			<h2 id="members-header">Members</h2>
-			<div id="members-icons">
-				{#each GroupFeaturedImages as user, i}
-					<!-- Only show the first 6 users -->
-					{#if i < 6}
-						<span class="icon" style="background-image: url({user.image_url});" />
-					{/if}
-				{/each}
-			</div>
+			{#if GroupFeaturedImages.length === 0}
+				<p class="empty-group-msg">This group currently has no members.</p>
+				<p class="empty-group-msg">Why not be the first?</p>
+			{:else}
+				<h2 id="members-header">Members</h2>
+				<div id="members-icons">
+					{#each GroupFeaturedImages as user, i}
+						<!-- Only show the first 6 users -->
+						{#if i < 6}
+							<span class="icon" style="background-image: url({user.image_url});" />
+						{/if}
+					{/each}
+				</div>
+			{/if}
 		</div>
 	</div>
 	<div id="right-content">
@@ -52,9 +100,16 @@
 			{/each}
 		</div>
 
-		<button type="button" id="join-button" on:click={handleJoinGroup}>
-			<p class="comment-button">Join Group</p>
-		</button>
+		<!--If inGroup is set to true, offer user the ability to leave the group. Otherwise present the joing group button.-->
+		{#if inGroup.status}
+			<a href={'/app/group?id=' + group.group_id} on:click={handleLeaveGroup} id="join-button"
+				>Leave Group</a
+			>
+		{:else}
+			<a on:click={handleJoinGroup} href={'/app/group?id=' + group.group_id} id="join-button"
+				>Join Group</a
+			>
+		{/if}
 	</div>
 </div>
 
@@ -134,6 +189,12 @@
 		bottom: 10px;
 		right: 10px;
 	}
+
+	.empty-group-msg {
+		font-size: 0.8rem;
+		color: #c9c9c9;
+	}
+
 
 	#join-button:hover {
 		background-color: #4095c6;

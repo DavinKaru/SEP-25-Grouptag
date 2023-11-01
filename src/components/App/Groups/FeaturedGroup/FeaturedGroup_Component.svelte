@@ -13,6 +13,8 @@
 			.map((u) => u.image_url);
 		return users;
 	}
+
+	console.log(FeaturedGroupsImages[0].length);
 </script>
 
 <div class="carousel-container">
@@ -22,18 +24,24 @@
 				<div class="left-content">
 					<img src={featuredGroup.banner_url} alt="Featued Group Logo" id="group-img" />
 					<div id="members">
-						<h2 id="members-header">Members</h2>
-						<div id="members-icons">
-							{#each getFeaturedImages(n, featuredGroup.group_id) as image_url, i}
-								{#if i < 6}
-									<span class="icon" style="background-image: url({image_url});" />
-								{/if}
-							{/each}
-						</div>
+						{#if FeaturedGroupsImages[n].length === 0}
+							<p class="empty-group-msg">This group currently has no members.</p>
+							<p class="empty-group-msg">Why not be the first?</p>
+						{:else}
+							<h2 id="members-header">Members</h2>
+							<div id="members-icons">
+								{#each getFeaturedImages(n, featuredGroup.group_id) as image_url, i}
+									{#if i < 6}
+										<span class="icon" style="background-image: url({image_url});" />
+									{/if}
+								{/each}
+							</div>
+						{/if}
 					</div>
 				</div>
 				<div class="right-content">
 					<div class="text">
+						<p id="featured-text">FEATURED GROUP</p>
 						<h1 id="group-name">{featuredGroup.name}</h1>
 						<p id="group-description">{featuredGroup.description}</p>
 					</div>
@@ -42,7 +50,7 @@
 							<TagIcon text={tag.name} />
 						{/each}
 					</div>
-					<a href="default" id="join-button">Join Group</a>
+					<a href={'/app/group?id=' + featuredGroup.group_id} id="join-button">Visit Group</a>
 				</div>
 			</div>
 		</div>
@@ -65,6 +73,7 @@
 		scroll-snap-align: start;
 		scroll-snap-stop: always;
 	}
+
 	.container {
 		/* Colors */
 		background-color: rgba(255, 255, 255, 0.127);
@@ -103,6 +112,11 @@
 		border-radius: 10px;
 	}
 
+	#featured-text {
+		font-size: 0.8rem;
+		color: #c9c9c9;
+	}
+
 	#group-name {
 		font-size: 1.25rem;
 		color: white;
@@ -110,6 +124,11 @@
 
 	#group-description {
 		font-size: 0.5rem;
+	}
+
+	.empty-group-msg {
+		font-size: 0.8rem;
+		color: #c9c9c9;
 	}
 
 	#tags {
