@@ -5,7 +5,7 @@
 	import AppHeaderComponent from '../../../../components/App/AppHeader/AppHeader_Component.svelte';
 	import Dropzone from 'svelte-file-dropzone/Dropzone.svelte';
 	import toast, { Toaster } from 'svelte-french-toast';
-	import { supabase } from '$lib/supabaseClient';
+	import { supabase } from '../../../../supabaseClient';
 	export let data;
 
 	//Insert data from the form into the database
@@ -32,8 +32,8 @@
 		if (result.success) {
 			toast.success('New Group added!');
 		} else {
-			console.error('Failed to add experience:', result.error);
-			toast.error('Failed to add experience');
+			console.error('Failed to add group:', result.error);
+			toast.error('Failed to add group');
 		}
 	}
 

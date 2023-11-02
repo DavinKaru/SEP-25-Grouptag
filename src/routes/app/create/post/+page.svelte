@@ -5,8 +5,10 @@
 	import autosize from 'svelte-autosize';
 	import AppHeaderComponent from '../../../../components/App/AppHeader/AppHeader_Component.svelte';
 	import Dropzone from 'svelte-file-dropzone/Dropzone.svelte';
-
+	import toast, { Toaster } from 'svelte-french-toast';
+	import { supabase } from '../../../../supabaseClient';
 	export let data;
+	let thisGroupId, title, content, media_url, tags, selectedGroup;
 
 	let groupData = [[], []];
 
@@ -31,6 +33,50 @@
 		files.accepted.splice(index, 1);
 		files.accepted = [...files.accepted];
 	}
+
+	async function handleSubmit(event) {
+		event.preventDefault(); // Prevent the default form submission
+
+		// Convert tags string to array of objects
+		const tagArray = tags.split(',').map((tag) => ({ name: tag.trim() }));
+		thisGroupId = groupData[0][selectedGroup.index];
+		const myUserId = data.myUserId;
+		const newPost = {
+			thisGroupId,
+			myUserId,
+			title,
+			content,
+			media_url,			
+			tags: tagArray
+		};
+		const result = await addNewPostoDatabase(newPost);
+		if (result.success) {
+			toast.success('New Post added!');
+		} else {
+			console.error('Failed to add post:', result.error);
+			toast.error('Failed to add post');
+		}
+	}
+	async function addNewPostoDatabase(newPost) {
+		const { newdata, error } = await supabase.from('posts').insert(
+			{
+				user_id: newPost.myUserId,
+				group_id: newPost.thisGroupId,
+				title: newPost.title,
+				content: newPost.content,
+				media_url: newPost.media_url,
+				tags: newPost.tags
+			}
+		);
+
+		if (error) {
+			console.log(error)
+			return { success: false, error };
+		}
+		return { success: true };
+	}
+
+
 </script>
 
 <!-- 
@@ -41,7 +87,9 @@
 -->
 
 <AppHeaderComponent title="Create Post" />
+<form on:submit={handleSubmit}>
 <div id="content">
+	<Toaster />
 	<h2>What do you want to say?</h2>
 	<div class="field">
 		<label for="postGroup">Group</label>
@@ -60,11 +108,12 @@
 			--item-hover-bg="white"
 			--item-hover-color="black"
 			--placeholder-font="Poppins"
+			bind:value={selectedGroup}
 		/>
 	</div>
 	<div class="field">
 		<label for="postTitle">Title</label>
-		<textarea use:autosize id="postTitle" name="postTitle" placeholder="Make it eye-catching!" />
+		<textarea use:autosize id="postTitle" name="postTitle" placeholder="Make it eye-catching!" bind:value={title} required/>
 	</div>
 	<div class="field">
 		<label for="postContent">Content</label>
@@ -73,12 +122,14 @@
 			id="postContent"
 			name="postContent"
 			placeholder="Write something cool here!"
+			bind:value={content}
+			required
 		/>
 	</div>
 	<div class="field">
 		<label for="postMedia">Upload the Post Media here!</label>
 		<div class="dropZone">
-			<Dropzone on:drop={handleFilesSelect} accept="image/*">
+			<Dropzone on:drop={handleFilesSelect} accept="image/*" bind:value={media_url}>
 				<p>Click here to upload</p>
 			</Dropzone>
 		</div>
@@ -93,12 +144,13 @@
 	</div>
 	<div class="field">
 		<label for="postTags">Tags</label>
-		<textarea use:autosize id="postTags" name="postTags" placeholder="Seperate with a comma :)" />
+		<textarea use:autosize id="postTags" name="postTags" placeholder="Seperate with a comma :)" bind:value={tags}/>
 	</div>
 	<button id="submit">
 		<p class="create-button">Create Post</p>
 	</button>
 </div>
+</form>
 
 <style>
 	#content {

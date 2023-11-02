@@ -13,6 +13,7 @@ export async function load() {
      const { data: Groups } = await supabase.rpc('get_user_groups', {get_user_post_id: user_id, amount: 100, startingat: 0});
     
     return {
+        myUserId: myUserId,
         Groups: Groups ?? []
     };
 }
