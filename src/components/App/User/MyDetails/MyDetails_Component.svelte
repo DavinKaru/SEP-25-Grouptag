@@ -12,7 +12,7 @@
 		<img src="/profile/university.svg" alt="University" />
 		<p class="courseInfo">{user.universities.name}</p>
 		<img src="/profile/location-flag.svg" alt="Location" />
-		<p class="courseInfo">Melbourne, Australia</p>
+		<p class="courseInfo">{user.users.location}</p>
 	</div>
 	<p id="bio">
 		{user.users.bio}
