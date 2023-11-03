@@ -8,7 +8,7 @@
 	import { invalidateAll } from '$app/navigation';
 	let loading = false;
 	export let location,bio,image_url;
-	
+
 	let files = {
 		accepted: [],
 		rejected: []
@@ -18,6 +18,11 @@
 		const { acceptedFiles, fileRejections } = e.detail;
 		files.accepted = [...files.accepted, ...acceptedFiles];
 		files.rejected = [...files.rejected, ...fileRejections];
+
+		if (acceptedFiles.length > 0) {
+			onImageUpload(acceptedFiles[0]); 
+		}
+
 	}
 
 	function handleRemoveFile(e, index) {
@@ -30,7 +35,7 @@
       loading = true	  
 		const myUserId = (await supabase.auth.getSession()).data.session?.user.id;
 		///  Need to update various other things too
-	  	const {error} = await supabase.from('users').update({ bio: bio }).eq('user_id', myUserId)
+	  	const {error} = await supabase.from('users').update({ bio: bio, location: location }).eq('user_id', myUserId)
 		if (error) throw error
     } catch (error) {
       if (error instanceof Error) {
@@ -41,6 +46,39 @@
 	  invalidateAll();
     }
 	}
+
+	const onImageUpload = async (file) => {
+		const myUserId = (await supabase.auth.getSession()).data.session?.user.id;
+		const objectName = `${myUserId}_${file.name}`;
+		
+		const {data: imageData, error} = await supabase.storage
+			.from('users-avatar')
+			.upload(objectName, file);
+
+		if (error) {
+			console.error('Error Uploading Image', error.message);
+		}
+		else {
+			const imageUrl = supabase.storage
+				.from('users-avatar')
+				.getPublicUrl(objectName);
+				
+			const publicUrl = imageUrl.data.publicUrl;
+
+			const {data: updatedUser, updateError} = await supabase
+				.from('users')
+				.update({image_url: publicUrl})
+				.eq('user_id',myUserId);
+			
+			if (updateError) {
+				console.error('Database update error: ', updateError.message);
+			}
+			else {
+
+				console.log('Updated image')
+			}
+		}
+	}
 </script>
 
 <div id="editWindow">
@@ -48,7 +86,7 @@
 	<form id="form" method="post" on:submit|preventDefault="{handleEdit}">
 		<div class="field">
 			<label for="location">Location</label>
-			<textarea id="location" name="location" placeholder="Where am I?"/>
+			<textarea id="location" name="location" placeholder="Where am I?" bind:value={location}/>
 		</div>
 		<div class="field">
 			<label for="bio">User Bio</label>
