@@ -1,8 +1,8 @@
 <script>
-    export let postAuthorPicture = '/default/user-icon-default.png';    
+    export let myUserImage = '/default/user-icon-default.png';    
 </script>
 
-<img src={postAuthorPicture} alt="Profile Icon"/>
+<img src={myUserImage} alt="Profile Icon"/>
 
 <style>
 

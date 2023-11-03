@@ -10,9 +10,8 @@
 
 	/* Data variables for Database Information*/
 	export let data;
-	const { Post_id, Posts, Comments } = data;
+	const { Posts, MyUserID } = data;
 	let mediaUrl = data.Posts.media_url;
-	console.log(mediaUrl);
 </script>
 
 <AppHeaderComponent title="Post" />
@@ -22,16 +21,19 @@
 			postTitle={Posts.title}
 			postTime={Posts.created_at}
 			postAuthorName={Posts.first_name + ' ' + Posts.last_name}
+			postAuthorID={Posts.user_id}
 			postAuthorPicture={Posts.image_url}
 			postGroupName={Posts.name}
+			postGroupID={Posts.group_id}
 			postGroupLogo={Posts.logo_url}
 			postTags={Posts.tags}
+			myUserID={data.MyUserID}
 		/>
 		{#if  mediaUrl !== null}
 			<img src={mediaUrl} alt="Post Media"/>
 		{/if}
 		<PostContentComponent postContent={Posts.content} />
-		<PostCommentsContainerComponent comments={data.Comments} post_id={data.Post_id} />
+		<PostCommentsContainerComponent comments={data.Comments} post_id={data.Post_id} myUserID={data.myUserID} myUserImage={data.User.image_url}/>
 	</div>
 </div>
 
