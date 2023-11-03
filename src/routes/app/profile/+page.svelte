@@ -8,7 +8,7 @@
 	import EdifProfileComponent from '../../../components/User/EditProfile/EdifProfile_component.svelte';
 
 	let selected = 'Experience';
-	const currentUserId = 'f8fe9f2f-2ddb-4c64-945a-6f686a0d614f'; //Will need to get this from login session in the future
+	const currentUserId = '01cdffd6-6519-4987-a50a-dd2c16a872db'; //Will need to get this from login session in the future
 	export let data;
 
 	function handleSubmit() {
@@ -22,9 +22,6 @@
 		<div id="content">
 			<div id="profilePicture">
 				<ProfilePictureComponent  user={data.user.users}/>
-			</div>
-			<div>
-				<EdifProfileComponent user={data.user.users}/>
 			</div>
 			<div id="details">
 				<MyDetailsComponent user={data.user}/>

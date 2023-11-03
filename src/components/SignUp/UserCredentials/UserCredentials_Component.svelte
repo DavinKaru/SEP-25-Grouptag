@@ -2,6 +2,7 @@
 	import ButtonsComponent from "../../Buttons/Buttons_Component.svelte";
 	import {university, course, fName, lName, dob, bio} from "../../../routes/welcome/signup/formStore.js"
 	import { enhance } from "$app/forms";
+	import { goto } from "$app/navigation";
 
 	let password = "";
 	let cPassword = "";
@@ -17,6 +18,11 @@
 			errorMessage = "Password has to contain 8 characters with at least 1 Capital, 1 Number and 1 Symbol";
 		} else {
 			errorMessage = "";
+			
+			if (!errorMessage) {
+				// Navigate to the next page
+				goto('/welcome/signup/industry');
+			}	
 		}
 	}
 
@@ -33,7 +39,7 @@
 		//passwordStr = validations.reduce((acc, cur) => acc + (cur ? 1 : 0), 0)
 	}
 </script>
-<form method="post" use:enhance on:submit|preventDefault={handleSubmit}>
+<form method="post" on:submit|preventDefault={handleSubmit} use:enhance>
 	<input type="hidden" name="university" value={$university}/>
 	<input type="hidden" name="course" value={$course}/>
 	<input type="hidden" name="fName" value={$fName}/>

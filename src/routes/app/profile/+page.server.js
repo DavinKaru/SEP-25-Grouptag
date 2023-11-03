@@ -1,7 +1,7 @@
 import { supabase } from '$lib/supabaseClient';
 
 export async function load({url, locals}) {
-    const user_id = '0d510af4-ed95-42e1-a55e-0f9b370e274a'
+    const user_id = '01cdffd6-6519-4987-a50a-dd2c16a872db'
     //const my_user = await locals.getSession()
     //let user_id= my_user?.user.id;
     
