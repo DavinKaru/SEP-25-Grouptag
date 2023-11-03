@@ -59,8 +59,11 @@
 			return { success: false, error: fetchError };
 		}
 
+		let updatedExperience = [experience];
 		// Append new experience to existing experiences
-		const updatedExperience = [...existingData['experience '], experience];
+		if (existingData['experience '] != null){
+			updatedExperience = [...existingData['experience '], experience];
+		}
 		console.log('updatedExperience:', updatedExperience);
 		// Update the database
 		const { data: updateData, error: updateError } = await supabase
