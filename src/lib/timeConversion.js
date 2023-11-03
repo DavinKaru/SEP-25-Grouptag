@@ -22,22 +22,43 @@ export function convertTime(postTime) {
                 let months = Math.floor(days / 31);
                 if (months > 12) {
                     let years = Math.floor(months / 12);
-                    timeSince = `${years} YEARS AGO`;
-                    return timeSince;
+                    if (years === 1) {
+                        return "1 YEAR AGO";
+                    }
+                    else {
+                        timeSince = `${years} YEARS AGO`;
+                        return timeSince;
+                    }
                 } else {
-                    timeSince = `${months} MONTHS AGO`;
-                    return timeSince;
+                    if (months == 1) {
+                        return "1 MONTH AGO";
+                    } else {
+                        timeSince = `${months} MONTHS AGO`;
+                        return timeSince;
+                    }
                 }
             } else {
-                timeSince = `${days} DAYS AGO`;
-                return timeSince;
+                if (days === 1) {
+                    return "1 DAY AGO";
+                } else {
+                    timeSince = `${days} DAYS AGO`;
+                    return timeSince;
+                }
             }
         } else {
-            timeSince = `${hours} HOURS AGO`;
-            return timeSince;
+            if (hours === 1) {
+                return "1 HOUR AGO";
+            } else {
+                timeSince = `${hours} HOURS AGO`;
+                return timeSince;
+            }
         }
     } else {
-        timeSince = `${minutes} MINUTES AGO`;
-        return timeSince;
+        if (minutes === 1) {
+            return "1 MINUTE AGO";
+        } else {
+            timeSince = `${minutes} MINUTES AGO`;
+            return timeSince;
+        }
     }
 }
