@@ -1,4 +1,6 @@
 <script>
+// @ts-nocheck
+
 	import ButtonsComponent from '../../../../Welcome/Buttons/Buttons_Component.svelte';
 	import FormButtonComponent from '../../../FormButton/FormButton_Component.svelte';
 	import Dropzone from 'svelte-file-dropzone/Dropzone.svelte';
@@ -12,11 +14,11 @@
 		rejected: []
 	};
 
-	function handleFilesSelect(e) {
+	/*function handleFilesSelect(e) {
 		const { acceptedFiles, fileRejections } = e.detail;
 		files.accepted = [...files.accepted, ...acceptedFiles];
 		files.rejected = [...files.rejected, ...fileRejections];
-	}
+	}*/
 
 	function handleRemoveFile(e, index) {
 		files.accepted.splice(index, 1);
@@ -39,6 +41,43 @@
 	  invalidateAll();
     }
 	}
+
+	export let user = [];
+
+	let fileInput;
+
+	const onImageUpload = async (e) => {
+		const image = e.target.files[0];
+		const objectName = `${user.user_id}_${image.name}`;
+		
+		const {data: imageData, error} = await supabase.storage
+			.from('users-avatar')
+			.upload(objectName, image);
+
+		if (error) {
+			console.error('Error Uploading Image', error.message);
+		}
+		else {
+			const imageUrl = supabase.storage
+				.from('users-avatar')
+				.getPublicUrl(objectName);
+				
+			const publicUrl = imageUrl.data.publicUrl;
+
+			const {data: updatedUser, updateError} = await supabase
+				.from('users')
+				.update({image_url: publicUrl})
+				.eq('user_id', user.user_id);
+			
+			if (updateError) {
+				console.error('Database update error: ', updateError.message);
+			}
+			else {
+				user ={...user, image_url: publicUrl}
+				console.log('Updated image')
+			}
+		}
+	}
 </script>
 
 <div id="editWindow">
@@ -54,11 +93,16 @@
 		</div>
 		<div class="field">
 			<label for="bio">User Profile Picture</label>
-			<div class="dropZone">
-				<Dropzone on:drop={handleFilesSelect} accept="image/*">
-					<p>Click here to upload</p>
-				</Dropzone>
+			<div id="image-container" on:click={() => { fileInput.click(); }}>
+				<div class="dropZone">
+					<Dropzone on:drop={onImageUpload} accept="image/*">
+						<p>Click here to upload</p>
+					</Dropzone>
+				</div>
+			
+				<input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e) => onImageUpload(e)} bind:this={fileInput}>
 			</div>
+			
 
 			<div class="dropFiles">
 				{#each files.accepted as item, index}
@@ -69,9 +113,6 @@
 				{/each}
 			</div>
 		</div>
-		<!-- <div id="submitButton">
-			<FormButtonComponent text="Save Changes" />
-		</div> -->
 		<ButtonsComponent buttonType="submit" text="Save Changes" buttonClass="login-button" isAnchor={false}/>
 	</form>
 </div>
@@ -81,11 +122,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
-	}
-
-	#submitButton {
-		margin-left: auto;
-		margin-right: auto;
 	}
 
 	#removeButton {
@@ -110,11 +146,11 @@
 	.field {
 		display: flex;
 		flex-direction: column;
-		gap: 5px;
 		background-color: rgba(255, 255, 255, 0.127);
 		border-radius: 10px 10px 10px 10px; /* Rounded corners on top left and right */
 		padding: 10px;
 		width: 100%;
+		margin-top: 10px;
 	}
 
 	.dropFiles {
