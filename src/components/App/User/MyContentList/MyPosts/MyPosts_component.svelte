@@ -4,17 +4,10 @@
 	import TagIconComponent from '../../../TagIcons/TagIcon_Component.svelte';
 	import GroupIconComponent from '../../../GroupIcon/GroupIcon_Component.svelte';
 	import { goto } from '$app/navigation';
-
+	import { convertTime } from '$lib/timeConversion';
 
 	export let post;
-	let user = post.users;
-	let group = post.groups;
-	//export let users;
-	//export let groups;
 
-	//let user = users.find((u) => u.user_id === post.user_id);
-
-	//let group = groups.find((g) => g.group_id === post.group_id);
 	let groupName = post ? post.name : 'Unknown Group';
 	
 	// Get Group Logo/Icon
@@ -22,42 +15,7 @@
 
 	//Calculation for timestamp
 	let createdAt = new Date(post.created_at);
-
-	// Get the current date
-	let now = new Date();
-
-	// Calculate the difference
-	let difference = now - createdAt;
-
-	//Conversion
-	let minutes = Math.floor(difference / 1000 / 60);
-	let hours = Math.floor(minutes / 60);
-
-	/**
-	 * @type {string}
-	 */
-	let timeSince;
-
-	if (hours > 0) {
-		if (hours > 24) {
-			let days = Math.floor(hours / 24);
-			if (days > 31) {
-				let months = Math.floor(days / 31);
-				if (months > 12) {
-					let years = Math.floor(months / 12);
-					timeSince = `${years} YEARS AGO`;
-				} else {
-					timeSince = `${months} MONTHS AGO`;
-				}
-			} else {
-				timeSince = `${days} DAYS AGO`;
-			}
-		} else {
-			timeSince = `${hours} HOURS AGO`;
-		}
-	} else {
-		timeSince = `${minutes} MINUTES AGO`;
-	}
+	let timeSince = convertTime(createdAt);
 
 	function goToPost() {
 		let postId = post.post_id;

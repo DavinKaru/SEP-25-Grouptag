@@ -1,3 +1,4 @@
+// @ts-nocheck
 //src/routes/app/profile/+page.js
 import { supabase } from '../../../supabaseClient.js';
 import { goto } from '$app/navigation';
