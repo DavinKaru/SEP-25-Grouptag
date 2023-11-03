@@ -26,6 +26,7 @@
 			logo_url,
 			banner_url,
 			description,
+			short_description,
 			tags: tagArray
 		};
 
