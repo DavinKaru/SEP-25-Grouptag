@@ -176,7 +176,7 @@
 				type="number"
 				id="startYear"
 				name="startYear"
-				min="1000"
+				min="1900"
 				max="3000"
 				required
 			/>
@@ -204,7 +204,7 @@
 				type="number"
 				id="endYear"
 				name="endYear"
-				min="1000"
+				min="1900"
 				max="3000"
 				required
 			/>
