@@ -1,5 +1,7 @@
 <!-- src\routes\app\profile\addExperience\+page.svelte -->
 <script>
+// @ts-nocheck
+
 	import Select from 'svelte-select';
 	import autosize from 'svelte-autosize';
 	import AppHeaderComponent from '../../../../components/App/AppHeader/AppHeader_Component.svelte';

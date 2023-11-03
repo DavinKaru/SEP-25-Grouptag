@@ -5,8 +5,10 @@
     import { convertTime } from "$lib/timeConversion";
 
     export let comment;
+    console.log(comment);
 
     let timeSince = convertTime(comment.created_at);
+	let profileLink = 'profile?id=' + comment.user_id;
 
 </script>
 
@@ -15,7 +17,7 @@
     <div id="comment-details">
         <ProfileIconComponent --width="2rem" postAuthorPicture={comment.image_url}/>
         <div id="comment-details-text">
-            <h2 id="comment-author">{comment.first_name} {comment.last_name}</h2>
+            <h2 id="comment-author"><a href={profileLink}>{comment.first_name} {comment.last_name}</a></h2>
             <p id="comment-time">{timeSince}</p>
         </div>
     </div>
@@ -61,4 +63,13 @@
         margin-left: 42px;
         font-size: 10px;
     }
+
+    a {
+		color: white;
+		text-decoration: none;
+	}
+
+	h2 {
+		display: flex;
+	}
 </style>

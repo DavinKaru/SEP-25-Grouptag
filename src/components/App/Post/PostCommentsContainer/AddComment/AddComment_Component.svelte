@@ -1,12 +1,13 @@
 <script>
-	import { onMount } from 'svelte';
-	import { enhance } from '$app/forms';
 	import autosize from 'svelte-autosize';
 	import ProfileIconComponent from '../../../User/ProfileIcon/ProfileIcon_component.svelte';
 	import { supabase } from '../../../../../supabaseClient';
-	import { invalidate, invalidateAll } from '$app/navigation';
+	import { invalidateAll } from '$app/navigation';
 	let showPopup = false; // Reactive variable to track popup visibility
 	export let post_id = '629b17cf-b958-4ebb-879c-03622894d677';
+	export let myUserImage = "Default Image URL";
+
+	console.log(myUserImage);
 	
 	let loading = false;
 	let comment = "";
@@ -39,7 +40,7 @@
 
 {#if !showPopup}
 	<div id="add-comment-card" on:click={togglePopup}>
-		<ProfileIconComponent --width="2rem" />
+		<ProfileIconComponent {myUserImage} --width="2rem"/>
 		<!-- Put the user's own profile picture here! -->
 		<h1 id="comment-prompt">Add Comment...</h1>
 	</div>
