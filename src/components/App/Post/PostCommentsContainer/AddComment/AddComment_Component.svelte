@@ -6,8 +6,6 @@
 	let showPopup = false; // Reactive variable to track popup visibility
 	export let post_id = '629b17cf-b958-4ebb-879c-03622894d677';
 	export let myUserImage = "Default Image URL";
-
-	console.log(myUserImage);
 	
 	let loading = false;
 	let comment = "";
