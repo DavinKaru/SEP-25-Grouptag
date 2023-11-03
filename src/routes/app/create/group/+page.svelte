@@ -20,7 +20,7 @@
 		event.preventDefault(); // Prevent the default form submission
 
 		// Convert tags string to array of objects
-		const tagArray = tags.split(',').map((tag) => ({ name: tag.trim() }));
+		const tagArray = tags?.trim() ? tags.split(',').map((tag) => ({ name: tag.trim() })) : [];
 		const newGroup = {
 			name,
 			logo_url,
@@ -46,7 +46,7 @@
 				logo_url: newGroup.logo_url,
 				banner_url: newGroup.banner_url,
 				description: newGroup.description,
-				short_description: newGroup.short_description,		
+				short_description: newGroup.short_description,
 				tags: newGroup.tags,
 				public: true
 			}
@@ -59,21 +59,66 @@
 	}
 
 	//Dropfile
-	let files = {
+	let logoFiles = {
+		accepted: [],
+		rejected: []
+	};
+	let bannerFiles = {
 		accepted: [],
 		rejected: []
 	};
 
-	function handleFilesSelect(e) {
+	async function handleFilesSelect(e, type) {
 		const { acceptedFiles, fileRejections } = e.detail;
-		files.accepted = [...files.accepted, ...acceptedFiles];
-		files.rejected = [...files.rejected, ...fileRejections];
+		if (type === 'logo') {
+			logoFiles.accepted = [...logoFiles.accepted, ...acceptedFiles];
+			logoFiles.rejected = [...logoFiles.rejected, ...fileRejections];
+			if (acceptedFiles.length > 0) {
+				const uploadUrl = await onImageUpload(acceptedFiles[0]);
+				if (uploadUrl) {
+					logo_url = uploadUrl;
+				}
+			}
+		} else if (type === 'banner') {
+			bannerFiles.accepted = [...bannerFiles.accepted, ...acceptedFiles];
+			bannerFiles.rejected = [...bannerFiles.rejected, ...fileRejections];
+			if (acceptedFiles.length > 0) {
+				const uploadUrl = await onImageUpload(acceptedFiles[0]);
+				if (uploadUrl) {
+					banner_url = uploadUrl;
+				}
+			}
+		}
 	}
 
-	function handleRemoveFile(e, index) {
-		files.accepted.splice(index, 1);
-		files.accepted = [...files.accepted];
+	function handleRemoveFile(e, index, type) {
+		if (type === 'logo') {
+			logoFiles.accepted.splice(index, 1);
+			logoFiles.accepted = [...logoFiles.accepted];
+		} else if (type === 'banner') {
+			bannerFiles.accepted.splice(index, 1);
+			bannerFiles.accepted = [...bannerFiles.accepted];
+		}
 	}
+
+	const onImageUpload = async (file) => {
+		const myUserId = (await supabase.auth.getSession()).data.session?.user.id;
+		const objectName = `${myUserId}_${file.name}`;
+
+		const { data: imageData, error } = await supabase.storage
+			.from('groups-media')
+			.upload(objectName, file);
+
+		if (error) {
+			console.error('Error Uploading Image', error.message);
+		} else {
+			const imageUrl = supabase.storage.from('groups-media').getPublicUrl(objectName);
+
+			const publicUrl = imageUrl.data.publicUrl;
+
+			return publicUrl;
+		}
+	};
 </script>
 
 <AppHeaderComponent title="Create Group" />
@@ -95,51 +140,41 @@
 
 		<div class="field">
 			<label for="groupLogo">Upload the Group Logo here!</label>
-			<textarea
-				bind:value={logo_url}
-				use:autosize
-				id="logo_url"
-				name="logo_url"
-				placeholder="Your Logo's URL!"
-			/>
-			<!-- Removed Dropzone,  because we will need to upload the file to Supabase storage, then use the URL from the storage to insert into database-->
-			<!-- <div class="dropZone">
-				<Dropzone on:drop={handleFilesSelect} bind:value={logo_url} accept="image/*">
+			<div class="dropZone">
+				<Dropzone on:drop={(e) => handleFilesSelect(e, 'logo')} accept="image/*">
 					<p>Click here to upload</p>
 				</Dropzone>
 			</div>
 			<div class="dropFiles">
-				{#each files.accepted as item, index}
+				{#each logoFiles.accepted as item, index}
 					<div>
 						<span>{item.name}</span>
-						<button on:click={(e) => handleRemoveFile(e, index)} id="removeButton">Remove</button>
+						<button on:click={(e) => handleRemoveFile(e, index, 'logo')} id="removeButton"
+							>Remove</button
+						>
 					</div>
 				{/each}
-			</div> -->
+			</div>
 		</div>
 
 		<div class="field">
 			<label for="groupBanner">Upload the Group Banner here!</label>
-			<textarea
-				bind:value={banner_url}
-				use:autosize
-				id="banner_url"
-				name="banner_url"
-				placeholder="Your Banner's URL!"
-			/>
-			<!-- <div class="dropZone">
-				<Dropzone on:drop={handleFilesSelect} bind:value={banner_url} accept="image/*">
+			<div class="dropZone">
+				<Dropzone on:drop={(e) => handleFilesSelect(e, 'banner')} accept="image/*">
 					<p>Click here to upload</p>
 				</Dropzone>
 			</div>
+
 			<div class="dropFiles">
-				{#each files.accepted as item, index}
+				{#each bannerFiles.accepted as item, index}
 					<div>
 						<span>{item.name}</span>
-						<button on:click={(e) => handleRemoveFile(e, index)} id="removeButton">Remove</button>
+						<button on:click={(e) => handleRemoveFile(e, index, 'banner')} id="removeButton"
+							>Remove</button
+						>
 					</div>
 				{/each}
-			</div> -->
+			</div>
 		</div>
 
 		<div class="field">
