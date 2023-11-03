@@ -88,16 +88,41 @@
 		rejected: []
 	};
 
-	function handleFilesSelect(e) {
+	async function handleFilesSelect(e) {
 		const { acceptedFiles, fileRejections } = e.detail;
 		files.accepted = [...files.accepted, ...acceptedFiles];
 		files.rejected = [...files.rejected, ...fileRejections];
+		if (acceptedFiles.length > 0) {
+			const uploadUrl = await onImageUpload(acceptedFiles[0]); // Await the upload and get the URL
+			if (uploadUrl) {
+				companyLogo = uploadUrl;
+			}
+		}
 	}
 
 	function handleRemoveFile(e, index) {
 		files.accepted.splice(index, 1);
 		files.accepted = [...files.accepted];
 	}
+
+	const onImageUpload = async (file) => {
+		const myUserId = (await supabase.auth.getSession()).data.session?.user.id;
+		const objectName = `${myUserId}_${file.name}`;
+
+		const { data: imageData, error } = await supabase.storage
+			.from('posts-media')
+			.upload(objectName, file);
+
+		if (error) {
+			console.error('Error Uploading Image', error.message);
+		} else {
+			const imageUrl = supabase.storage.from('posts-media').getPublicUrl(objectName);
+
+			const publicUrl = imageUrl.data.publicUrl;
+
+			return publicUrl;
+		}
+	};
 </script>
 
 <AppHeaderComponent title="Add Experience" />
@@ -129,21 +154,10 @@
 			/>
 		</div>
 
-		<!-- Previous done using url link -->
-		<!--
-				<label for="companyLogo">Company Logo</label> 
-				<textarea
-				bind:value={companyLogo}
-				use:autosize
-				id="companyLogo"
-				name="companyLogo"
-				placeholder="Your Company's Logo!"
-			/> -->
-
 		<div class="field">
 			<label for="companyLogo">Company Logo</label>
 			<div class="dropZone">
-				<Dropzone on:drop={handleFilesSelect} accept="image/*">
+				<Dropzone on:drop={handleFilesSelect} accept="image/*" bind:value={companyLogo}>
 					<p>Click here to upload</p>
 				</Dropzone>
 			</div>
