@@ -19,7 +19,6 @@
 		loading = false;
 	});
 
-	console.log(data);
 </script>
 
 <HeaderComponent title="Groups" />

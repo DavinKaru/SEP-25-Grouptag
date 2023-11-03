@@ -4,16 +4,18 @@
 -->
 
 <script>
-	import { invalidateAll } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	import TagIcon from '../../TagIcons/TagIcon_Component.svelte'; // Import the TagIcon component
 	import { supabase } from '../../../../supabaseClient';
 	import { onMount } from 'svelte';
+	import { navigate } from 'svelte-navigator';
+	import { redirect } from '@sveltejs/kit';
 	export let data; // Receive data
 	let group = data.Group[0];
 	let groupUsers = data.GroupUsers;
 	let GroupFeaturedImages = data.GroupFeaturedImages;
 	let inGroup = { status: false };
-
+	$: inGroup;
 	// Check if user is in group
 	const checkUserGroup = async () => {
 		let user_id = (await supabase.auth.getSession()).data.session?.user.id;
@@ -35,11 +37,13 @@
 			if (error instanceof Error) {
 				alert(error.message);
 			}
+		} finally{
+			inGroup.status = true;
 		}
 
 		/* Refresh page */
 		invalidateAll().then(() => {
-			window.location.reload();
+			goto("/app/group?id="+group.group_id)
 		});
 	};
 
@@ -60,7 +64,7 @@
 
 		/* Refresh page */
 		invalidateAll().then(() => {
-			window.location.reload();
+			goto("/app/groups")
 		});
 	};
 
@@ -99,7 +103,7 @@
 				<TagIcon text={tag.name} />
 			{/each}
 		</div>
-
+		{#key inGroup.status}	
 		<!--If inGroup is set to true, offer user the ability to leave the group. Otherwise present the joing group button.-->
 		{#if inGroup.status}
 			<a href={'/app/group?id=' + group.group_id} on:click={handleLeaveGroup} id="join-button"
@@ -110,6 +114,7 @@
 				>Join Group</a
 			>
 		{/if}
+		{/key}
 	</div>
 </div>
 

@@ -1,7 +1,6 @@
 <script>
     export let postMedia;
 
-    console.log(postMedia);
 </script>
 
 <img src={postMedia} alt="Post Media" />

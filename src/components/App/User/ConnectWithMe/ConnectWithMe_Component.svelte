@@ -29,7 +29,6 @@
 
 	/* Some props that may prove useful... up to you if you use them. */
 	export let targetID;
-	console.log("The target ID is", targetID)
 	const handleMutualRequest = async () => {
     try {
 		const myUserId = (await supabase.auth.getSession()).data.session?.user.id;

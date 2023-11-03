@@ -13,8 +13,6 @@
 			.map((u) => u.image_url);
 		return users;
 	}
-
-	console.log(FeaturedGroupsImages[0].length);
 </script>
 
 <div class="carousel-container">

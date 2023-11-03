@@ -5,7 +5,6 @@
     import { convertTime } from "$lib/timeConversion";
 
     export let comment;
-    console.log(comment);
 
     let timeSince = convertTime(comment.created_at);
 	let profileLink = 'profile?id=' + comment.user_id;

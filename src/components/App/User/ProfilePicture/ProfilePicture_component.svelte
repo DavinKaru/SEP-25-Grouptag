@@ -32,7 +32,6 @@
 			}
 			else {
 				user ={...user, image_url: publicUrl}
-				console.log('Updated image')
 			}
 		}
 	}
