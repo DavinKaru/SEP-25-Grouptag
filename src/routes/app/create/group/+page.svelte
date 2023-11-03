@@ -13,6 +13,7 @@
 	let logo_url;
 	let banner_url;
 	let description;
+	let short_description;
 	let tags;
 
 	async function handleSubmit(event) {
@@ -44,6 +45,7 @@
 				logo_url: newGroup.logo_url,
 				banner_url: newGroup.banner_url,
 				description: newGroup.description,
+				short_description: newGroup.short_description,		
 				tags: newGroup.tags,
 				public: true
 			}
@@ -150,7 +152,17 @@
 				required
 			/>
 		</div>
-
+		<div class="field">
+			<label for="groupShortDescription">Short Description</label>
+			<textarea
+				use:autosize
+				bind:value={short_description}
+				id="groupShortDescription"
+				name="groupShortDescription"
+				placeholder="Short Description of your group"
+				required
+			/>
+		</div>
 		<div class="field">
 			<label for="groupTags">Tags</label>
 			<textarea
