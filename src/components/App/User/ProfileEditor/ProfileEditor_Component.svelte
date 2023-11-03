@@ -8,7 +8,9 @@
 
 <div id="userEditGrid">
 	<button>
-		<img class="editIcon" src="/profile/Connect.svg" alt="Connect with me" />
+		<a href="create/post">
+			<img class="editIcon" src="/profile/Connect.svg" alt="Connect with me" />
+		</a>
 	</button>
 	<button>
 		<a href="myprofile/addExperience">
